@@ -2022,9 +2022,9 @@ formidable@1.0.x:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.0.17.tgz#ef5491490f9433b705faa77249c99029ae348559"
 
-"fresh-scaffold@https://github.com/yisraelgrimes/fresh-scaffold#v0.0.1":
+"fresh-scaffold@https://github.com/yisraelgrimes/fresh-scaffold#v0.0.2":
   version "0.0.0"
-  resolved "https://github.com/yisraelgrimes/fresh-scaffold#5abd87d440b005bb8c3c3e0aec109fe4499bf737"
+  resolved "https://github.com/yisraelgrimes/fresh-scaffold#7a9e9fde0bf21e6c2b755c74dbb1cb4038216ee7"
 
 fresh@0.5.0:
   version "0.5.0"
@@ -4026,9 +4026,9 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
-"luscious-sass@https://gitlab.com/yisraelgrimes/luscious-sass#feature/test-fresh":
+"luscious-sass@https://github.com/yisraelgrimes/luscious-sass#v0.0.1":
   version "0.0.0"
-  resolved "https://gitlab.com/yisraelgrimes/luscious-sass#edd7dbd8c788b116184b73a2c84c982b44dd2962"
+  resolved "https://github.com/yisraelgrimes/luscious-sass#2b8e80b82a920ced8d158290780459e1ff515ecc"
 
 macaddress@^0.2.8:
   version "0.2.8"
