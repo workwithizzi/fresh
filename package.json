@@ -1,0 +1,28 @@
+{
+	"name": "fresh",
+	"version": "3.0.0",
+	"description": "A starter kit for static or cms based websites. Built with Yarn, Gulp, Pug, and SASS.",
+	"repository": "https://github.com/yisraelgrimes/fresh.git",
+	"author": {
+		"name": "Yisrael Grimes",
+		"url": "yisraelgrimes.com"
+	},
+	"license": "MIT",
+	"private": true,
+	"keywords": [
+		"boilerplate",
+		"sass",
+		"scss",
+		"pug",
+		"gulp"
+	],
+	"scripts": {
+		"install": "node install.js"
+	},
+	"dependencies": {
+		"fresh-scaffold": "https://github.com/yisraelgrimes/fresh-scaffold#v0.0.1",
+		"fs-extra": "^4.0.2",
+		"gulpy": "https://github.com/yisraelgrimes/gulpy#v0.0.1",
+		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.1"
+	}
+}
