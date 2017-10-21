@@ -48,22 +48,22 @@ var node = {
 
 
 
-// fs.stat('./README_fresh.md', function(err, stat) {
-// 	if(err == null) {
-// 		// If file exists: do nothing
-// 	} else {
-// 		// If file doesn't exist: Rename it and copy the template file
-// 		
-// 		fs.renameSync('./README.md', './README_fresh.md')
-// 		
-// 		fs.copy( node.scaffoldD + '/rootfiles/README.md', './README.md', {
-// 			overwrite: false,
-// 			preserveTimestamps: true
-// 			}, err => {
-// 				if (err) return console.error(err)
-// 		})
-// 	}
-// });
+fs.stat('./README_fresh.md', function(err, stat) {
+	if(err == null) {
+		// If file exists: do nothing
+	} else {
+		// If file doesn't exist: Rename it and copy the template file
+		
+		fs.renameSync('./README.md', './README_fresh.md')
+		
+		fs.copy( node.scaffoldD + '/rootfiles/README.md', './README.md', {
+			overwrite: false,
+			preserveTimestamps: true
+			}, err => {
+				if (err) return console.error(err)
+		})
+	}
+});
 
 
 
