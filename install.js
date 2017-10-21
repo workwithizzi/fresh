@@ -45,17 +45,17 @@ fs.copy( node.gulpyD + '/gulp.options.js', './gulp.options.js', {
 // create a symlink to the gulp tasks directory ('node_modules/gulpy/gulp')
 // Would it be better to just copy this to the root or symlink?? I was thinking it would be better to symlink since we don't want to edit the gulp tasks from within this project. Another idea was to symlink it, then if you need to mdoify a task for this particular project you could run a command to turn remove the symlink and copy the actual files so they could be tracked.
 
-// fs.ensureSymlink(node.gulpyD + '/gulp', './gulp', err => {
-// 	if (err) return console.error(err)
-// })
-
-// Temporary--Copying instead of Symlinking
-fs.copy( node.gulpyD + '/gulp', './gulp', {
-	overwrite: false,
-	preserveTimestamps: true
-	}, err => {
+fs.ensureSymlink(node.gulpyD + '/gulp', './gulp', err => {
 	if (err) return console.error(err)
 })
+
+// Temporary--Copying instead of Symlinking
+// fs.copy( node.gulpyD + '/gulp', './gulp', {
+// 	overwrite: false,
+// 	preserveTimestamps: true
+// 	}, err => {
+// 	if (err) return console.error(err)
+// })
 
 
 // ----------------
@@ -124,14 +124,14 @@ fs.copy( node.scaffoldD + '/rootfiles', './', {
 // Goal: Create a symlink from './node_modules/luscious-sass' to './dev/styles/01_utils/luscious'.
 // Wondering the same thing about this one that I was for #3 with the Gulp tasks.
 
-// fs.ensureSymlink(node.lusciousD, './dev/styles/01_utils/luscious', err => {
-// 	if (err) return console.error(err)
-// })
-
-// Temporary--Copying instead of Symlinking
-fs.copy( node.lusciousD, './dev/styles/01_utils/luscious', {
-	overwrite: false,
-	preserveTimestamps: true
-	}, err => {
+fs.ensureSymlink(node.lusciousD, './dev/styles/01_utils/luscious', err => {
 	if (err) return console.error(err)
 })
+
+// Temporary--Copying instead of Symlinking
+// fs.copy( node.lusciousD, './dev/styles/01_utils/luscious', {
+// 	overwrite: false,
+// 	preserveTimestamps: true
+// 	}, err => {
+// 	if (err) return console.error(err)
+// })
