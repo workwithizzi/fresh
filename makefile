@@ -23,10 +23,16 @@ burn:
 	rm -rf ./node_modules
 
 
+# Remove Gulp symlink and copy tasks to project
 track-gulp:
-	rm -rf ./gulp
-	cp ./node_modules/gulpy/gulp ./gulp
-	
-track-lus:
-	rm -rf ./dev/styles/01_utils/luscious
-	cp ./node_modules/luscious-sass ./dev/styles/01_utils/luscious
+	@[[ -L "./gulp" ]] && rm -rf ./gulp && cp -r ./node_modules/gulpy/gulp ./gulp || echo Gulp is already being tracked
+
+
+# Remove Luscious symlink and copy files to project
+track-luscious:
+	@[[ -L "./dev/styles/01_utils/luscious" ]] && rm -rf ./dev/styles/01_utils/luscious && cp -r ./node_modules/luscious-sass ./dev/styles/01_utils/luscious || echo Luscious is already being tracked
+
+# Add Gulp and Luscious to the project
+track-all:
+	make add-gulp
+	make add-luscious
