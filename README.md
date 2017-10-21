@@ -113,6 +113,8 @@ Running `gulp deploy` will, by default, copy everything from `./build` to be pub
 ---
 
 ## Changelog
+- v3.0.1
+	- Added a 'hack' to the install script to check for the existence of the `README_fresh.md` file before trying to rename `README.md`. This should temporarily keep the installer from exiting with an error.
 - v2.0.5
 	- Removed the 'tabify' task from gulp.
 	- Minor version bump when moving from Github.
