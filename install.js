@@ -80,11 +80,29 @@ fs.copy( node.scaffoldD + '/dev', './dev', {
 //
 // This task and #6 throws an error if you run `yarn install` again after
 // the initial install.
-fs.move('./README.md', './README_fresh.md', {
-	overwrite: false
-	}, err => {
-	if (err) return console.error(err)
-})
+
+// fs.move('./README.md', './README_fresh.md', {
+// 	overwrite: false
+// 	}, err => {
+// 	if (err) return console.error(err)
+// })
+
+// HACK: Just to make it work without errors.
+fs.stat('./README_fresh.md', function(err, stat) {
+	if(err == null) {
+		// If file exists: do nothing
+	} else {
+		// If file doesn't exist
+		fs.renameSync('./README.md', './README_fresh.md')
+		fs.copy( node.scaffoldD + '/rootfiles/README.md', './README.md', {
+			overwrite: false,
+			preserveTimestamps: true
+			}, err => {
+				if (err) return console.error(err)
+		})
+	}
+});
+
 
 
 // 6. Copy dev files templates into the project

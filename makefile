@@ -1,9 +1,5 @@
 # Removes all the stuff that is added while running `yarn install` and `gulp`
 
-test:
-	node install_test.js
-
-
 remove:
 	rm -rf ./gulp
 	rm -rf ./gulpfile.js
