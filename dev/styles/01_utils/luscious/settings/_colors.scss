@@ -1,43 +1,24 @@
 // Lus v0.0.2
 //
-// Default color variables
-//
-// sass-lint:disable class-name-format
+// Project Color Variables
 // ===================================================================
-// Default colors set up using https://material.io/color/
 
-
-// Project Colors (other colors are built on top of these)
-$cl_primary:   #546e7a !default;
-$cl_secondary: #00b8d4 !default;
-$cl_gray_base: #263238 !default;
-$cl_success:   #66bb6a !default;
-$cl_warning:   #ffa000 !default;
-$cl_alert:     #ef5350 !default;
-
-// Color Mods
-$cl_primary_light   : lighten($cl_primary  , 20%   ) !default;
-$cl_primary_dark    : darken( $cl_primary  , 13.5% ) !default;
-$cl_secondary_light : lighten($cl_secondary, 20%   ) !default;
-$cl_secondary_dark  : darken( $cl_secondary, 13.5% ) !default;
-
-// Grayscales
-$cl_gray_darker     : lighten($cl_gray_base, 13.5% ) !default;
-$cl_gray_dark       : lighten($cl_gray_base, 20%   ) !default;
-$cl_gray            : lighten($cl_gray_base, 33.5% ) !default;
-$cl_gray_light      : lighten($cl_gray_base, 46.7% ) !default;
-$cl_gray_lighter    : lighten($cl_gray_base, 80%   ) !default;
-
-$cl_almost_black    : $cl_gray_base !default;
-$cl_almost_white    : lighten($cl_gray_base, 80% ) !default;
+// // Project Colors (other colors are built on top of these)
+$cl_primary   : #546e7a !default;
+$cl_secondary : #00b8d4 !default;
+$cl_black     : #263238 !default;
+$cl_white     : #fafbfc !default;
+$cl_success   : #66bb6a !default;
+$cl_warning   : #ffa000 !default;
+$cl_alert     : #ef5350 !default;
 
 // UI Colors
-$cl_body_bg    : $cl_almost_white   !default;
-$cl_body       : $cl_almost_black   !default;
-$cl_link       : $cl_secondary      !default;
-$cl_link_hover : $cl_secondary_dark !default;
-$cl_border     : $cl_gray           !default;
-$cl_nav_bg     : $cl_primary        !default;
-$cl_nav        : $cl_almost_white   !default;
-$cl_nav_active : $cl_secondary      !default;
-$cl_nav_hover  : darken($cl_nav, 15% ) !default;
+$cl_body_bg    : $cl_white                    !default;
+$cl_body       : $cl_black                    !default;
+$cl_border     : lighten($cl_black, 30% )     !default;
+$cl_link       : $cl_secondary                !default;
+$cl_link_hover : darken( $cl_secondary, 15% ) !default;
+$cl_nav_bg     : $cl_primary                  !default;
+$cl_nav        : $cl_white                    !default;
+$cl_nav_active : $cl_secondary                !default;
+$cl_nav_hover  : darken($cl_nav, 15% )        !default;

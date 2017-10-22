@@ -13,7 +13,7 @@ $button_fill: solid !default;
 $button_border_width: .1rem !default;
 
 // Default hover style
-$button_hover: lighten !default; // Sass color functions: goo.gl/Qdc0rM 
+$button_hover: lighten !default; // Sass color functions: goo.gl/Qdc0rM
 $button_hover_amount: 30% !default;
 
 
@@ -46,20 +46,20 @@ $button_styles: (
 		border-radius: 0px,
 	),
 	primary: (
-		color: $cl_almost_white,
+		color: $cl_white,
 		background-color: $cl_primary,
 	),
 	secondary: (
-		color: $cl_almost_white,
+		color: $cl_white,
 		background-color: $cl_secondary,
 	),
 	light: (
-		color: $cl_almost_black,
-		background-color: $cl_almost_white,
-		border-color: $cl_almost_black,
+		color: $cl_black,
+		background-color: $cl_white,
+		border-color: $cl_black,
 	),
 	dark: (
-		color: $cl_almost_white,
-		background-color: $cl_almost_black,
+		color: $cl_white,
+		background-color: $cl_black,
 	),
 ) !default;
