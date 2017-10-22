@@ -90,9 +90,7 @@
 	@if $x == "invisible"               { @include __info_invisible;       }
 	@if $x == "show"                    { @include __info_show;            }
 	// Utility Classes
-	@if $x == "zindex_utility_classes"       { @include __info_zindex_utility_classes;       }
 	@if $x == "dev_color_utility_classes"    { @include __info_dev_color_utility_classes;    }
-	@if $x == "font_stacks_utility_classes"  { @include __info_font_stacks_utility_classes;  }
 	@if $x == "clearfix_utility_class"       { @include __info_clearfix_utility_class;       }
 	@if $x == "centerblock_utility_class"    { @include __info_centerblock_utility_class;    }
 	@if $x == "pull_utility_classes"         { @include __info_pull_utility_classes;         }

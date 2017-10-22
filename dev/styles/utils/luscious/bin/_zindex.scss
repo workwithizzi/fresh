@@ -43,53 +43,6 @@
 }
 
 
-// -------------------------------------------------------------------
-// Utility Classes
-// -------------------------------------------------------------------
-
-// Global Utility Prefix
-$utility_class_prefix: 'u_' !default;
-
-@mixin __info_zindex_utility_classes {
-	@debug "[INFO]
-	The `zindex_utility_classes` makes it so that you can output
-	z-index utility classes from anywhere in the project.
-	You can also turn on utility classes from `settings/utility_classes`.
-	Type  : Standalone Mixin
-	Params:
-	- $prefix : Optional. Defaults to `z_` but can be any prefix you want.
-	-           The $prefix is combined with the global prefix
-	-           $utility_class_prefix (`#{$utility_class_prefix}`) to create `.#{$utility_class_prefix}z_`
-	-           followed by each key in the map `$z_index`.
-	Example :   `.u_z_nav`
-	";
-}
-
-
-@mixin zindex_utility_classes($prefix: z_) {
-	@if $prefix == "info" {
-		@include __info_zindex_utility_classes;
-	}
-	@else {
-		@if variable-exists(z_index) {
-			@each $key, $value in $z_index {
-				.#{$utility_class_prefix}#{$prefix}#{$key} {
-					z-index: map-get($z_index, $key);
-				}
-			}
-		} @else {
-			@warn "The map `$z_index` isn’t defined or isn't found.";
-		}
-	}
-}
-
-
-// Output Util Classes based on Luscious Config
-@if index($utility_classes, z_index) {
-	@include zindex_utility_classes;
-}
-
-
 
 // ===================================================================
 // Tests
@@ -140,15 +93,4 @@ $utility_class_prefix: 'u_' !default;
 // Alias
 @mixin __test_z {
 	@include __test_zindex;
-}
-
-
-@mixin __test_zindex_utility_classes {
-	@if $output_test_message { @debug "[TESTING] `zindex_utility_classes`"; }
-	/* `zindex_utility_classes` --------- */
-	/*
-	@include zindex_utility_classes;
-	*/
-	@include zindex_utility_classes;
-	/* End `zindex_utility_classes` ----- */
 }

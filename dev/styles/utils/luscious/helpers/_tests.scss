@@ -122,9 +122,7 @@
 		@include __test_invisible;
 	}
 	// Utility Classes
-	@if $x == "zindex_utility_classes"       { @include __test_zindex_utility_classes;       }
 	@if $x == "dev_color_utility_classes"    { @include __test_dev_color_utility_classes;    }
-	@if $x == "font_stacks_utility_classes"  { @include __test_font_stacks_utility_classes;  }
 	@if $x == "clearfix_utility_class"       { @include __test_clearfix_utility_class;       }
 	@if $x == "centerblock_utility_class"    { @include __test_centerblock_utility_class;    }
 	@if $x == "pull_utility_classes"         { @include __test_pull_utility_classes;         }
@@ -132,9 +130,7 @@
 	@if $x == "button_utility_classes"       { @include __test_button_utility_classes;       }
 	@if $x == "visibility_utility_classes"   { @include __test_visibility_utility_classes;   }
 	@if $all or $x == "all_utility_classes"  {
-		@include __test_zindex_utility_classes;
 		@include __test_dev_color_utility_classes;
-		@include __test_font_stacks_utility_classes;
 		@include __test_clearfix_utility_class;
 		@include __test_centerblock_utility_class;
 		@include __test_pull_utility_classes;

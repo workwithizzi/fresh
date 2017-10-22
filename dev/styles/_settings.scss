@@ -15,7 +15,7 @@
 // 9. Icons
 // 10. Grid
 // 11. Buttons
-// 12. Hamburger Menu
+// 12. Hamburger Menus
 
 // -------------------------------------------------------------------
 
@@ -258,7 +258,7 @@ $button_styles: (
 
 
 // -------------------------------------
-// 12. Hamburger Menu
+// 12. Hamburger Menus
 // -------------------------------------
 
 // Sizes (in rem)
@@ -276,46 +276,7 @@ $burger-hover-opacity                   : 0.7         !default;
 $burger-hover-transition-duration       : 0.15s       !default;
 $burger-hover-transition-timing-function: linear      !default;
 
-// To use CSS filters as the hover effect instead of opacity,
-// set $burger-hover-use-filter as true and
-// change the value of $burger-hover-filter accordingly.
-$burger-hover-use-filter: false        !default;
-$burger-hover-filter    : opacity(50%) !default;
-
-// Base Utility Classes
-$burger-base-classes: (
-	// burger,
-	burger-box,
-	burger-inner,
-) !default;
-
-
-// Types (Remove or comment out what you don’t need)
+// Add Burger Type. See bin/burgers/burgers.scss for list of available types.
 $burger-types: (
-	// 3dx,
-	// 3dx-r,
-	// 3dy,
-	// 3dy-r,
-	// arrow,
-	// arrow-r,
-	// arrowalt,
-	// arrowalt-r,
-	// boring,
-	// collapse,
-	// collapse-r,
-	// elastic,
-	// elastic-r,
-	// emphatic,
-	// emphatic-r,
-	// slider,
-	// slider-r,
-	// spring,
-	// spring-r,
-	// stand,
-	// stand-r,
-	// spin,
-	// spin-r,
-	// squeeze,
-	// vortex,
-	// vortex-r
+
 ) !default;
