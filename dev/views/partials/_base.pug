@@ -1,0 +1,34 @@
+//- Contains the html that is reused on almost every page
+doctype html
+
+html
+
+	block head
+		head
+			meta(charset='utf-8')
+			meta(http-equiv='x-ua-compatible', content='ie=edge')
+			meta(name='viewport', content='width=device-width,initial-scale=1')
+
+			block title
+
+				title Fresh Starter
+
+			//- link(rel='apple-touch-icon', href='apple-touch-icon.png')
+			//- // Place favicon.ico in the root directory
+
+			// build:css css/main.min.css
+			link(rel='stylesheet', href='css/normalize.css')
+			link(rel='stylesheet', href='css/main.css')
+			// endbuild
+
+	body
+
+		block content
+		//- Page content goes here
+
+
+	block bottom
+
+		//build:js js/main.min.js
+		script(src='js/main.js')
+		// endbuild

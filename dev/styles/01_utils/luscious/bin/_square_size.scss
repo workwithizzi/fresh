@@ -1,0 +1,96 @@
+// Lus v0.0.1
+//
+// Description
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+// From Bootstrap 5
+// https://git.io/v7ZN0
+
+@mixin __info_size {
+	@debug "[INFO]
+	The `size` mixin is a shorthand for declaring width/height properties.
+	More info see `https://git.io/v7ZN0`.
+	Type  : Included Mixin
+	Params:
+	- $width:  Required. Accepts any value.
+	- $height: Optional. Defaults to $width to create a square.
+	Related:   `square` mixin. A size mixin that
+	-          only accepts the first parameter.
+	";
+}
+
+@mixin size($width, $height: $width) {
+	@if $width == "info" {
+		@include __info_size;
+	}
+	@else {
+		width: $width;
+		height: $height;
+	}
+}
+
+// -------------------------------------
+
+// Square
+@mixin __info_square {
+	@debug "[INFO]
+	The `square` mixin is a shorthand for declaring width/height properties.
+	More info see `https://git.io/v7ZN0`.
+	Type  : Included Mixin
+	Params:
+	- $size:  Required. Accepts any value. Applies $size to width and height.
+	Related:  `size` mixin. Try `__info(size)` for info about the mixin.
+	";
+}
+@mixin square($size) {
+	@if $size == "info" {
+		@include __info_square;
+	}
+	@else { @include size($size, $size); }
+}
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_size {
+	@if $output_test_message { @debug "[TESTING] `size`"; }
+	/* `size` --------------------------- */
+	/*
+	.test.size.first_param {
+		@include size(10px);
+	}
+	*/
+	.test.size.first_param {
+		@include size(10px);
+	}
+	/*
+	.test.size.both_param {
+		@include size(10px, 20px);
+	}
+	*/
+	.test.size.both_param {
+		@include size(10px, 20px);
+	}
+	/* End `size` ----------------------- */
+}
+
+
+@mixin __test_square {
+	@if $output_test_message { @debug "[TESTING] `square`"; }
+	/* `square` ------------------------- */
+	/*
+	.test.square {
+		@include square(20px);
+	}
+	*/
+	.test.square {
+		@include square(20px);
+	}
+	/* End `square` --------------------- */
+}

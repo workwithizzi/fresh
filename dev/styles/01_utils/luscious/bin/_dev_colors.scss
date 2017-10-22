@@ -1,0 +1,198 @@
+// Lus v0.0.1
+//
+// Sets up some simple color variables and utility classes to use during dev.
+// To turn on/off, change vars from the luscious import file
+// or from here
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+
+// Colors for Testing and Dev (s - saturated, d - desaturated)
+$dev_colors: (
+	s1: #00ffff,
+	s2: #ff00ff,
+	s3: #ffff00,
+	s4: #ff1744,
+	s5: #4a148c,
+	s6: #3949ab,
+	s7: #00b0ff,
+	s8: #388e3c,
+	s9: #ff3d00,
+	d1: #F1A9A0,
+	d2: #BE90D4,
+	d3: #89C4F4,
+	d4: #A2DED0,
+	d5: #F5D76E,
+	d6: #F4B350,
+	d7: #FDE3A7,
+	d8: #DADFE1,
+	d9: #446CB3,
+) !default;
+
+// -------------------------------------
+
+@mixin __info_dev_color {
+	@debug "[INFO]
+	The `dev_color` mixin adds a background-color
+	to the element for easier dev.
+	Type  :   Standalone Mixin
+	Params:
+	- $color:        Required. Accepts any color from the map `$dev_colors`
+	-                s1-s9 for saturated colors, d1-d9 for desaturated.
+	- $type:         Optional. Either `bg` (defualt) for background, or `border`.
+	- $border-width: Optional. Defaults to `1px`.
+	- $border-style: Optional. Defaults to `solid`.
+	Alias:    `dev_cl`
+	";
+}
+
+
+// Creates Background or Border Color for testing/dev
+@mixin dev_color($color, $type: bg, $width: 1px, $style: solid) {
+	// Notify me if I'm outputting these classes during production build.
+	@if $production_mode {
+		@warn "[TIP] [Production Mode]
+		Don\'t forget to remove the `dev_colors` (`dev_cl` - alias) mixin from
+		the output before final production so things aren\'t jacked up!";
+	}
+	@if $color == "info" { 
+		@include __info_dev_color;
+	}
+	@else {
+		$color: map_get_check($dev_colors, $color);
+		@if $type == "bg" {
+			background-color: $color !important;
+		}
+		@else {
+			border: $width $style $color !important;
+		}
+	}
+}
+
+
+// Alias
+@mixin __info_dev_cl {
+	@include __info_dev_color;
+}
+
+@mixin dev_cl($color, $type: bg, $width: 1px, $style: solid) {
+	@include dev_color($color, $type, $width, $style);
+}
+
+
+// -------------------------------------------------------------------
+// Utility Classes
+$utility_class_prefix: 'u_' !default;
+
+
+// Helper Mixin
+@mixin __info_dev_color_utility_classes {
+	@debug "[INFO]
+	The mixin `dev_color_utility_classes` outputs background-color
+	and border utility classes for each color
+	listed in the map `$dev_colors`.
+	Type  :  Standalone Mixin
+	Params:
+	- $border-width: Optional. Defaults to `1px`.
+	- $border-style: Optional. Defaults to `solid`.
+	Class Naming:
+	- .u_dev_color_s1  - Background color class
+	- .u_dev_border_s1 - Border color class
+	Available:
+	- Saturated Colors:   (s1-s9)
+	- Desaturated Colors: (d1-d9)
+	";
+}
+
+
+// Outputs Utility Classes for `dev_colors`
+@mixin dev_color_utility_classes($width: 1px, $style: solid) {
+	@if $width == "info" { @include __info_dev_color_utility_classes; }
+	@else {
+		// Notify me if I'm outputting these classes.
+		@if $production_mode {
+			@warn "[TIP] [Production Mode]
+			Don\'t forget to remove the `dev_color_utility_classes` mixin from the output
+			before production so things stay clean!";
+		}
+		// Output CSS
+		@if variable-exists(dev_colors) {
+			// Background Colors
+			@each $key, $value in $dev_colors {
+				.#{$utility_class_prefix}dev_color_#{$key} {
+					@include dev_color($key);
+				}
+			}
+			// Borders
+			@each $key, $value in $dev_colors {
+				.#{$utility_class_prefix}dev_border_#{$key} {
+					@include dev_color($key, border, $width, $style);
+				}
+			}
+		} @else {
+			@warn "The map `$dev_colors` isn’t defined or isn't found.";
+		}
+	} // end: @else
+} // end: mixin
+
+// -------------------------------------
+
+// Output based on config file
+@if $output_dev_utility_classes {
+	@include dev_color_utility_classes;
+}
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_dev_color {
+	@if $output_test_message { @debug "[TESTING] `dev_color`"; }
+	/* `dev_color` or `dev_cl` ---------- */
+	/*
+	.test.dev_color.default {
+		@include dev_color(s1);
+		@include dev_color(d1);
+	}
+	*/
+	.test.dev_color.default {
+		@include dev_color(s1);
+		@include dev_color(d1);
+	}
+	/*
+	.test.dev_color.border {
+		@include dev_color(s1, border);
+	}
+	*/
+	.test.dev_color.border {
+		@include dev_color(s1, border);
+	}
+	/*
+	.test.dev_color.border_mod {
+		@include dev_color(s1, border, 4px, dotted);
+	}
+	*/
+	.test.dev_color.border_mod {
+		@include dev_color(s1, border, 4px, dotted);
+	}
+	/* End `dev_color` or `dev_cl` ------ */
+}
+
+// Alias
+@mixin __test_dev_cl {
+	@include __test_dev_color;
+}
+
+
+@mixin __test_dev_color_utility_classes {
+	@if $output_test_message { @debug "[TESTING] `dev_color_utility_classes`"; }
+	/* `dev_color_utility_classes` ------ */
+	/*
+	@include dev_color_utility_classes;
+	*/
+	@include dev_color_utility_classes;
+	/* End `dev_color_utility_classes` -- */
+}

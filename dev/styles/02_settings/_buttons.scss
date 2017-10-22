@@ -1,0 +1,65 @@
+// Lus v0.0.1
+//
+// Button Settings
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+// Decide if buttons are solid or hollow by defualt
+$button_fill: solid !default;
+
+// Default border-width for buttons
+$button_border_width: .1rem !default;
+
+// Default hover style
+$button_hover: lighten !default; // Sass color functions: goo.gl/Qdc0rM 
+$button_hover_amount: 30% !default;
+
+
+// Hollow Button
+$button_hollow_border_width: $button_border_width !default;
+// $button_hollow_hover: -50%;
+
+// Disabled Buttons
+$button_disabled_opacity: .4 !default;
+
+// Set default button to primary
+$button_default_style: primary !default;
+
+$button_styles: (
+	default: (
+		width: auto,
+		margin: .4rem,
+		padding: .8rem,
+		font-family: inherit,
+		font-size: 1rem,
+		font-weight: 600,
+		line-height: 1,
+		text-decoration: none,
+		text-transform: none,
+		text-align: center,
+		transition: all 250ms ease-in-out,
+		border-width: $button_border_width,
+		border-style: solid,
+		border-color: transparent,
+		border-radius: 0px,
+	),
+	primary: (
+		color: $cl_almost_white,
+		background-color: $cl_primary,
+	),
+	secondary: (
+		color: $cl_almost_white,
+		background-color: $cl_secondary,
+	),
+	light: (
+		color: $cl_almost_black,
+		background-color: $cl_almost_white,
+		border-color: $cl_almost_black,
+	),
+	dark: (
+		color: $cl_almost_white,
+		background-color: $cl_almost_black,
+	),
+) !default;

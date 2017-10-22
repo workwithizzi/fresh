@@ -1,0 +1,112 @@
+// Lus v0.0.1
+//
+// Import Info Mixins
+//
+// sass-lint:disable no-css-comments
+// ===================================================================
+// Add info mixin for Luscious to list available mixins/functions/project structure
+
+// Info about the `__info` mixin.
+@mixin __info_info {
+	@debug "[INFO]
+	Each function and mixin in Luscious contain
+	an info mixin to help you easily trouble-shoot any errors and
+	learn what things are doing behind the scenes. To see a compiled
+	example of the `feature`, try `__test(feature)` and view the CSS.
+	Params     :
+	- $feature : mixin/function/variable that you want info about
+	Type       : Standalone Mixin
+	";
+}
+
+
+
+@mixin __info($x) {
+	@if $x == "info" { @include __info_info; }
+	@if $x == "test" { @include __info_test; }
+
+	// -------------------------------------
+	// Helpers
+	@if $x == "map_get_check"          { @include __info_map_get_check;   }
+	@if $x == "map_collect"            { @include __info_map_collect;     }
+	@if $x == "map_get_nested"         { @include __info_map_get_nested;  }
+	@if $x == "strip_unit"             { @include __info_strip_unit;      }
+
+	// -------------------------------------
+	// Bin
+	@if $x == "dev_config"             { @include __info_dev_config;      }
+	@if $x == "zindex"                 { @include __info_zindex;          }
+	@if $x == "z"                      { @include __info_z;               }
+	@if $x == "font_stacks"            { @include __info_font_stacks;     }
+	@if $x == "font_weight"            { @include __info_font_weight;     }
+	@if $x == "when_is"                { @include __info_when_is;         }
+	@if $x == "at_root"                { @include __info_at_root;         }
+	@if $x == "placeholder"            { @include __info_placeholder;     }
+	@if $x == "google_fonts"           { @include __info_google_fonts;    }
+	@if $x == "pesticide"              { @include __info_pesticide;       }
+	@if $x == "dev_color"              { @include __info_dev_color;       }
+	@if $x == "dev_cl"                 { @include __info_dev_cl;          }
+	@if $x == "img"                    { @include __info_img;             }
+	@if $x == "image"                  { @include __info_image;           }
+	@if $x == "font"                   { @include __info_font;            }
+	@if $x == "clearfix"               { @include __info_clearfix;        }
+	@if $x == "centerblock"            { @include __info_centerblock;     }
+	@if $x == "bg_image"               { @include __info_bg_image;        }
+	@if $x == "hocus"                  { @include __info_hocus;           }
+	@if $x == "size"                   { @include __info_size;            }
+	@if $x == "square"                 { @include __info_square;          }
+	@if $x == "reset_list"             { @include __info_reset_list;      }
+	@if $x == "reset_nav_list"         { @include __info_reset_nav_list;  }
+	@if $x == "pull"                   { @include __info_pull;            }
+	@if $x == "rem_calc"               { @include __info_rem_calc;        }
+	@if $x == "rem"                    { @include __info_rem;             }
+	@if $x == "em_calc"                { @include __info_em_calc;         }
+	@if $x == "em"                     { @include __info_em;              }
+	// Queries
+	// @if $x == "mq"                      { @include __info_mq;             }
+	// @if $x == "bp"                      { @include __info_bp;             }
+	// @if $x == "between_sizes"           { @include __info_between_sizes;  }
+	// @if $x == "for_phone_only"          { @include __info_for_phone_only; }
+	// @if $x == "for_tablet_up"           { @include __info_for_tablet_up;  }
+	// @if $x == "for_desktop_up"          { @include __info_for_desktop_up; }
+	// @if $x == "print"                   { @include __info_print;          }
+	// @if $x == "for_print_only"          { @include __info_for_print_only; }
+	// @if $x == "for_tablet_portrait_up"  { @include __info_for_tablet_portrait_up;  }
+	// @if $x == "for_tablet_landscape_up" { @include __info_for_tablet_landscape_up; }
+	// @if $x == "for_big_desktop_up"      { @include __info_for_big_desktop_up;      }
+	// Colors
+	@if $x == "pallete"                 { @include __info_pallete;        }
+	@if $x == "tint"                    { @include __info_tint;           }
+	@if $x == "shade"                   { @include __info_shade;          }
+	@if $x == "tone"                    { @include __info_tone;           }
+	@if $x == "color_function"          { @include __info_color_function; }
+	// Buttons
+	@if $x == "disable_mouse_outline"   { @include __info_disable_mouse_outline; }
+	@if $x == "reset_html_button"       { @include __info_reset_html_button;     }
+	@if $x == "btn"                     { @include __info_btn;                   }
+	@if $x == "button"                  { @include __info_button;                }
+	// Edges
+	@if $x == "vertical"                { @include __info_vertical;        }
+	@if $x == "v"                       { @include __info_v;               }
+	@if $x == "horizontal"              { @include __info_horizontal;      }
+	@if $x == "h"                       { @include __info_h;               }
+	// Visibility
+	@if $x == "hidden"                  { @include __info_hidden;          }
+	@if $x == "hide_text"               { @include __info_hide_text;       }
+	@if $x == "visuallyhidden"          { @include __info_vissuallyhidden; }
+	@if $x == "sr_only"                 { @include __info_sr_only;         }
+	@if $x == "invisible"               { @include __info_invisible;       }
+	@if $x == "show"                    { @include __info_show;            }
+	// Utility Classes
+	@if $x == "zindex_utility_classes"       { @include __info_zindex_utility_classes;       }
+	@if $x == "dev_color_utility_classes"    { @include __info_dev_color_utility_classes;    }
+	@if $x == "font_stacks_utility_classes"  { @include __info_font_stacks_utility_classes;  }
+	@if $x == "font_weights_utility_classes" { @include __info_font_weights_utility_classes; }
+	@if $x == "clearfix_utility_class"       { @include __info_clearfix_utility_class;       }
+	@if $x == "centerblock_utility_class"    { @include __info_centerblock_utility_class;    }
+	@if $x == "pull_utility_classes"         { @include __info_pull_utility_classes;         }
+	@if $x == "btn_utility_classes"          { @include __info_btn_utility_classes;          }
+	@if $x == "button_utility_classes"       { @include __info_button_utility_classes;       }
+	@if $x == "visibility_utility_classes"   { @include __info_visibility_utility_classes;   }
+
+} // end: `__info`

@@ -1,0 +1,125 @@
+// Lus v0.0.1
+//
+// Description
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+// # Vertical (top/bottom) Properties
+// Simple mixin that targets top and bottom properties so you won't
+// have to write both out or uneccesarily declare values for sides.
+@mixin __info_vertical {
+	@debug "[INFO]
+	The `vertical` mixin provides a shorthand for top/bottom declarations
+	of a property without having to declare anything for the sides.
+	Type  : Included Mixin
+	Params:
+	- $property: Required. Any property like `margin` or `padding`.
+	- $value:    Required. Accepts any value.
+	Alias: `v`
+	";
+}
+
+@mixin vertical($property, $val: null) {
+	@if $property == "info" {
+		@include __info_vertical;
+	}
+	@else {
+		#{$property}-top: $val;
+		#{$property}-bottom: $val;
+	}
+}
+
+
+// Alias
+@mixin __info_v {
+	@include __info_vertical;
+}
+
+@mixin v($property, $val: null) {
+	@include vertical($property, $val);
+}
+
+
+// -------------------------------------
+
+// Horizontal (left/right) Properties
+// Simple mixin that targets left and right properties so you won't
+// have to write both out or uneccesarily declare values for top/bottom.
+
+@mixin __info_horizontal {
+	@debug "[INFO]
+	The `horizontal` mixin provides a shorthand for left/right declarations
+	of a property without having to declare anything for the top/bottom.
+	Type  :  Included Mixin
+	Params:
+	- $property: Required. Any property like `margin` or `padding`.
+	- $value:    Required. Accepts any value.
+	Alias: `h`
+	";
+}
+
+@mixin horizontal($property, $val: null) {
+	@if $property == "info" {
+		@include __info_horizontal;
+	}
+	@else {
+		#{$property}-right: $val;
+		#{$property}-left: $val;
+	}
+}
+
+
+// Alias
+@mixin __info_h {
+	@include __info_horizonal;
+}
+
+@mixin h($property, $val: null) {
+	@include horizontal($property, $val);
+}
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_vertical {
+	@if $output_test_message { @debug "[TESTING] `vertical`"; }
+	/* `vertical` ----------------------- */
+	/*
+	.test.vertical {
+		@include vertical(margin, 10px);
+	}
+	*/
+	.test.vertical {
+		@include vertical(margin, 10px);
+	}
+	/* End `vertical` ------------------- */
+}
+
+// Alias
+@mixin __test_v {
+	@include __test_vertical;
+}
+
+
+@mixin __test_horizontal {
+	@if $output_test_message { @debug "[TESTING] `horizontal`"; }
+	/* `horizontal` --------------------- */
+	/*
+	.test.horizontal {
+		@include horizontal(margin, 10px);
+	}
+	*/
+	.test.horizontal {
+		@include horizontal(margin, 10px);
+	}
+	/* End `horizontal` ----------------- */
+}
+
+@mixin __test_h {
+	@include __test_horizontal;
+}

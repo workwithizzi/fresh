@@ -1,0 +1,162 @@
+// Lus v0.0.1
+//
+// Import Test Mixins
+//
+// sass-lint:disable no-css-comments
+// ===================================================================
+
+
+@mixin __info_test {
+	@debug "[INFO]
+	Each function and mixin in Luscious contain
+	a test to make sure things are working properly and to help
+	you see how some things work behind the scenes. To see a compiled
+	example of the `feature`, try `__test(feature)` and view the CSS.
+	For a little more info and some quick tips about the `feature`,
+	try `__info(feature)`.
+	Params     :
+	- $feature : mixin/function/variable that you want to test
+	Type       : Standalone Mixin
+	";
+}
+
+
+
+@mixin __test($x) {
+	// Test All Tools
+	$all: null;
+	@if $x == "all" { $all: true; }
+
+	@if $x == "info" { @include __info_test; }
+
+	// -------------------------------------
+	// Helpers
+	@if $all or $x == "map_get_check"   { @include __test_map_get_check;  }
+	@if $all or $x == "map_collect"     { @include __test_map_collect;    }
+	@if $all or $x == "map_get_nested"  { @include __test_map_get_nested; }
+	@if $all or $x == "strip_unit"      { @include __test_strip_unit;     }
+
+	// -------------------------------------
+	// Bin
+	@if         $x == "zindex"          { @include __test_zindex;         }
+	@if $all or $x == "z"               { @include __test_z;              }
+	@if $all or $x == "font_stacks"     { @include __test_font_stacks;    }
+	@if $all or $x == "font_weight"     { @include __test_font_weight;    }
+	@if $all or $x == "pesticide"       { @include __test_pesticide;      }
+	@if         $x == "dev_color"       { @include __test_dev_color;      }
+	@if $all or $x == "dev_cl"          { @include __test_dev_cl;         }
+	@if         $x == "img"             { @include __test_img;            }
+	@if $all or $x == "image"           { @include __test_image;          }
+	@if $all or $x == "font"            { @include __test_font;           }
+	@if $all or $x == "clearfix"        { @include __test_clearfix;       }
+	@if $all or $x == "centerblock"     { @include __test_centerblock;    }
+	@if $all or $x == "bg_image"        { @include __test_bg_image;       }
+	@if $all or $x == "hocus"           { @include __test_hocus;          }
+	@if $all or $x == "size"            { @include __test_size;           }
+	@if $all or $x == "square"          { @include __test_square;         }
+	@if $all or $x == "reset_list"      { @include __test_reset_list;     }
+	@if $all or $x == "reset_nav_list"  { @include __test_reset_nav_list; }
+	@if $all or $x == "pull"            { @include __test_pull;           }
+	@if         $x == "when_is"         { @include __test_when_is;        }
+	@if $all or $x == "at_root"         { @include __test_at_root;        }
+	@if $all or $x == "placeholder"     { @include __test_placeholder;    }
+	@if $all or $x == "google_fonts"    { @include __test_google_fonts;   }
+	@if         $x == "rem_calc"        { @include __test_rem_calc;       }
+	@if $all or $x == "rem"             { @include __test_rem;            }
+	@if         $x == "em_calc"         { @include __test_em_calc;        }
+	@if $all or $x == "em"              { @include __test_em;             }
+	// Queries
+	// @if $x == "bp"                      { @include __test_bp;             }
+	// @if $x == "mq"                      { @include __test_bp;             }
+	// @if $x == "between_sizes"           { @include __test_between_sizes;  }
+	// @if $x == "for_phone_only"          { @include __test_for_phone_only; }
+	// @if $x == "for_tablet_up"           { @include __test_for_tablet_up;  }
+	// @if $x == "for_desktop_up"          { @include __test_for_desktop_up; }
+	// @if $x == "print"                   { @include __test_print;          }
+	// @if $x == "for_print_only"          { @include __test_for_print_only; }
+	// @if $x == "for_tablet_portrait_up"  { @include __test_for_tablet_portrait_up;  }
+	// @if $x == "for_tablet_landscape_up" { @include __test_for_tablet_landscape_up; }
+	// @if $x == "for_big_desktop_up"      { @include __test_for_big_desktop_up;      }
+	// Test All Queries
+	@if $all or $x == "all_breakpoints" {
+		@include __test_mq;
+		@include __test_between_sizes;
+		@include __test_for_phone_only;
+		@include __test_for_tablet_up;
+		@include __test_for_tablet_landscape_up;
+		@include __test_for_desktop_up;
+		@include __test_for_big_desktop_up;
+		@include __test_for_print_only;
+	}
+	// Colors
+	@if $x == "pallete"              { @include __test_pallete;        }
+	@if $x == "tint"                 { @include __test_tint;           }
+	@if $x == "shade"                { @include __test_shade;          }
+	@if $x == "tone"                 { @include __test_tone;           }
+	@if $x == "color_function"       { @include __test_color_function; }
+	// Test All Color
+	@if $all or $x == "all_color" {
+		@include __test_pallete;
+		@include __test_tint;
+		@include __test_shade;
+		@include __test_tone;
+		@include __test_color_function;
+	}
+	// Buttons
+	@if $x == "disable_mouse_outline" { @include __test_disable_mouse_outline; }
+	@if $x == "reset_html_button"     { @include __test_reset_html_button; }
+	@if $x == "btn"                   { @include __test_btn;               }
+	@if $x == "button"                { @include __test_button;            }
+	@if $x == "btn_defaults"          { @include __test_btn_defaults;      }
+	@if $x == "button_defaults"       { @include __test_button_defaults;   }
+	// Test All Button
+	@if $all or $x == "all_button" {
+		@include __test_disable_mouse_outline;
+		@include __test_reset_html_button;
+		@include __test_button;
+		@include __test_button_defaults;
+	}
+	// Edges
+	@if         $x == "vertical"       { @include __test_vertical;       }
+	@if $all or $x == "v"              { @include __test_v;              }
+	@if         $x == "horizontal"     { @include __test_horizontal;     }
+	@if $all or $x == "h"              { @include __test_h;              }
+	// Visibility
+	@if $x == "hidden"                 { @include __test_hidden;         }
+	@if $x == "hide_text"              { @include __test_hide_text;      }
+	@if $x == "visuallyhidden"         { @include __test_visuallyhidden; }
+	@if $x == "sr_only"                { @include __test_sr_only;        }
+	@if $x == "show"                   { @include __test_show;           }
+	@if $x == "invisible"              { @include __test_invisible;      }
+	@if $all or $x == "all_visibility" {
+		@include __test_hidden;
+		@include __test_hide_text;
+		@include __test_sr_only;
+		@include __test_show;
+		@include __test_invisible;
+	}
+	// Utility Classes
+	@if $x == "zindex_utility_classes"       { @include __test_zindex_utility_classes;       }
+	@if $x == "dev_color_utility_classes"    { @include __test_dev_color_utility_classes;    }
+	@if $x == "font_stacks_utility_classes"  { @include __test_font_stacks_utility_classes;  }
+	@if $x == "font_weights_utility_classes" { @include __test_font_weights_utility_classes; }
+	@if $x == "clearfix_utility_class"       { @include __test_clearfix_utility_class;       }
+	@if $x == "centerblock_utility_class"    { @include __test_centerblock_utility_class;    }
+	@if $x == "pull_utility_classes"         { @include __test_pull_utility_classes;         }
+	@if $x == "btn_utility_classes"          { @include __test_btn_utility_classes;          }
+	@if $x == "button_utility_classes"       { @include __test_button_utility_classes;       }
+	@if $x == "visibility_utility_classes"   { @include __test_visibility_utility_classes;   }
+	@if $all or $x == "all_utility_classes"  {
+		@include __test_zindex_utility_classes;
+		@include __test_dev_color_utility_classes;
+		@include __test_font_stacks_utility_classes;
+		@include __test_font_weights_utility_classes;
+		@include __test_clearfix_utility_class;
+		@include __test_centerblock_utility_class;
+		@include __test_pull_utility_classes;
+		@include __test_btn_utility_classes;
+		@include __test_button_utility_classes;
+		@include __test_visibility_utility_classes;
+	}
+
+} // end: `__test`

@@ -1,0 +1,44 @@
+// Lus v0.0.1
+//
+// Description
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+
+// Base Breakpoints as Variables
+// $html_font_size variable is not applied to breakpoints
+$bp_xs : 37.437em !default; // 599px
+$bp_sm : 37.5em   !default; // 600px
+$bp_md : 61.875em !default; // 990px
+$bp_lg : 75em     !default; // 1200px
+$bp_xl : 112.5em  !default; // 1800px
+
+// -------------------------------------
+
+// Base Breakpoints as a Map
+$base_bp: (
+	xs : $bp_xs,
+	sm : $bp_sm,
+	md : $bp_md,
+	lg : $bp_lg,
+	xl : $bp_xl,
+);
+
+// Device named sizes (used in declaritive queries)
+$device_bp: (
+	phone            : map-get($base_bp, xs),
+	tablet_portrait  : map-get($base_bp, sm),
+	tablet_landscape : map-get($base_bp, md),
+	desktop          : map-get($base_bp, lg),
+	big_desktop      : map-get($base_bp, xl),
+) !default;
+
+
+// Add the maps together
+// **Don't Remove** (Used in core-functions)
+$breakpoints: map-merge($base_bp, $device_bp) !default;
+
+// Alias
+$bp: $breakpoints !default;

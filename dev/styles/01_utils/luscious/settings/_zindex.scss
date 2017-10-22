@@ -1,0 +1,21 @@
+// Lus v0.0.1
+//
+// Sets z-index levels in a map
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+// You can add/remove/change keys in this map to use in your project.
+
+$z_index: (
+	nosebleed    : 9999,
+	tooltip      : 600,
+	popup        : 500,
+	popup_bg     : 400,
+	nav          : 300,
+	footer       : 200,
+	scrim        : 100,
+	overlay_base : 100,
+	base         : 1,
+	bottomless   : -9999,
+) !default;

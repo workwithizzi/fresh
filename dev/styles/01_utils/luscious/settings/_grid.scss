@@ -1,0 +1,39 @@
+// Lus v0.0.1
+//
+// By default, Luscious is using Susy V2 for it's grid layout
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+// 2DO-LUS: Set up Susy and test
+// http://susy.readthedocs.io/install/#quick-start
+// http://susy.readthedocs.io/settings/
+// https://zellwk.com/blog/susy2-tutorial/
+//
+// Susy Layout Defaults
+
+$susy: (
+	flow: ltr,
+	math: fluid,
+	output: float,
+	gutter-position: after,
+	container: auto,
+	container-position: center,
+	columns: 12,
+	gutters: .25,
+	column-width: false,
+	global-box-sizing: content-box,
+	last-flow: to,
+	debug: (
+		image: hide,
+		color: rgba(#66f, .25),
+		output: background,
+		toggle: top right,
+	),
+	use-custom: (
+		background-image: true,
+		background-options: false,
+		box-sizing: true,
+		clearfix: false,
+		rem: true,
+	)
+) !default;

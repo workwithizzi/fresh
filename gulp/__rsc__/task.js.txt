@@ -1,0 +1,52 @@
+// Fresh v2.0.2
+// -------------------------------------
+
+// Plugins
+var g           = require( 'gulp'             );
+var shell       = require( 'gulp-shell'       );
+var html2pug    = require( 'gulp-html2pug'    );
+var rename      = require( 'gulp-rename'      );
+var prettyPug   = require( 'gulp-pug-beautify');
+var gulpif      = require( 'gulp-if'          );
+var pug         = require( 'gulp-pug'         );
+var puglint     = require( 'gulp-pug-lint'    );
+var tabify      = require( 'gulp-tabify'      );
+var htmlmin     = require( 'gulp-htmlmin'     );
+var useref      = require( 'gulp-useref'      );
+var sass        = require( 'gulp-sass'        );
+var sassLint    = require( 'gulp-sass-lint'   );
+var sourcemaps  = require( 'gulp-sourcemaps'  );
+var prefix      = require( 'gulp-autoprefixer');
+var parker      = require( 'gulp-parker'      );
+var cssnano     = require( 'gulp-cssnano'     );
+var runSequence = require( 'run-sequence'     );
+var del         = require( 'del'              );
+var fixmyjs     = require( 'gulp-fixmyjs'     );
+var uglify      = require( 'gulp-uglify'      );
+var jshint      = require( 'gulp-jshint'      );
+var mkdir       = require( 'mkdirp'           );
+var download    = require( 'gulp-download'    );
+var touch       = require( 'touch'            );
+var removeCode  = require( 'gulp-remove-code' );
+var replace     = require( 'gulp-ex-replace'  );
+var todo        = require( 'gulp-todo'        );
+var archy       = require( 'archy'            );
+var map         = require( 'gulp-map'         );
+var filetree    = require( 'gulp-filetree'    );
+var deploy      = require( 'gulp-gh-pages'    );
+var sloc        = require( 'gulp-sloc'        );
+var data        = require( 'gulp-data'        );
+var usage       = require( 'gulp-help-doc'    );
+var browserSync = require( 'browser-sync'     ),
+		reload      = browserSync.reload;
+
+// Config Options
+var op = require(pth.options);
+
+// -------------------------------------------------------------------
+
+
+g.task('task', function() {
+	return g.src(pth.devD + pth.stylesD + pth.stylesFiles)
+		.pipe(g.dest(pth.stagingD + pth.stylesDestD));
+});

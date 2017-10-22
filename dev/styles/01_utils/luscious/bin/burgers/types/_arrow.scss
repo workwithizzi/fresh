@@ -1,0 +1,25 @@
+// Arrow
+
+@mixin burger--arrow {
+
+	@include burger;
+	&.is-active{
+		.burger-inner {
+			&::before {
+				transform: translate3d($burger-layer-width * -0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+			}
+
+			&::after {
+				transform: translate3d($burger-layer-width * -0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+			}
+		}
+	}
+}
+
+// -------------------------------------
+// Utility Class
+@if index($burger-types, arrow) {
+	.burger--arrow {
+		@include burger--arrow;
+	}
+}

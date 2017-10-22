@@ -1,0 +1,272 @@
+// Lus v0.0.1
+//
+// Description
+//
+// sass-lint:disable no-css-comments, no-duplicate-properties
+// ===================================================================
+
+
+// Hidden
+// Hide from both screenreaders and browsers
+@mixin __info_hidden {
+	@debug "[INFO]
+	The `hidden` mixin hides the element from
+	screen readers and visual browsers.
+	Type  : Included Mixin
+	Params: none
+	";
+}
+
+@mixin hidden($info: null) {
+	display: none !important;
+	visibility: hidden;
+	@if $info { @include __info_hidden; }
+}
+
+// -------------------------------------
+
+// Hide Text
+@mixin __info_hide_text {
+	@debug "[INFO]
+	The `hide_text` mixin hides the text for visual browsers
+	but keeps it accessible to screen readers.
+	Type  : Included Mixin
+	Params: none
+	";
+}
+
+@mixin hide_text($info: null) {
+	@if $info { @include __info_hide_text; }
+	
+	@else {
+		overflow: hidden;
+		text-indent: 101%;
+		white-space: nowrap;
+	}
+}
+
+// -------------------------------------
+
+// Visually Hidden
+// Hide only visually, but have it available for screenreaders
+@mixin __info_vissuallyhidden {
+	@debug "[INFO]
+	The `visuallyhidden` mixin hides the element for visual browsers
+	but keeps it accessible to screen readers.
+	Type  : Included Mixin
+	Params: none
+	Alias: `sr_only`
+	";
+}
+
+@mixin visuallyhidden($info: null) {
+	@if $info { @include __info_vissuallyhidden; }
+	
+	@else {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+
+		// Extends the .visuallyhidden class to allow the element to be focusable
+		// when navigated to via the keyboard: h5bp.com/p
+
+		&.focusable {
+			&:active,
+			&:focus {
+				clip: auto;
+				height: auto;
+				margin: 0;
+				overflow: visible;
+				position: static;
+				width: auto;
+			}
+		}
+	}
+	
+}
+
+// Alias
+@mixin __info_sr_only {
+	@include __info_vissuallyhidden;
+}
+
+@mixin sr_only($info: null) {
+	@include visuallyhidden($info);
+}
+
+// -------------------------------------
+
+// Invisible
+// Hide visually and from screenreaders, but maintains layout
+@mixin __info_invisible {
+	@debug "[INFO]
+	The `invisible` mixin hides the element visually 
+	and from screenreaders, but maintains layout.
+	Type  : Included Mixin
+	Params: none
+	";
+}
+
+@mixin invisible($info: null) { 
+	@if $info { @include __info_invisible; }
+	@else {
+		visibility: hidden;
+	}
+}
+
+// -------------------------------------
+
+// Show
+@mixin __info_show {
+	@debug "[INFO]
+	The `show` mixin sets `display: block !important`.
+	Type  : Included Mixin
+	Params: none
+	";
+}
+
+@mixin show($info: null) {
+	@if $info { @include __info_show; }
+	
+	@else {
+		display: block !important;
+	}
+}
+
+
+// -------------------------------------------------------------------
+// Utility Classes
+// -------------------------------------------------------------------
+// Global Utility Class Prefix
+$utility_class_prefix: 'u_' !default;
+
+@mixin __info_visibility_utility_classes {
+	@debug "[INFO]
+	
+	";
+}
+
+@mixin visibility_utility_classes($info: null) {
+	@if $info { @include __info_visibility_utility_classes; }
+	@else {
+		.#{$utility_class_prefix}hidden         { @include hidden;         }
+		.#{$utility_class_prefix}hide_text      { @include hide_text;      }
+		.#{$utility_class_prefix}visuallyhidden { @include visuallyhidden; }
+		.#{$utility_class_prefix}sr_only        { @include sr_only;        }
+		.#{$utility_class_prefix}invisible      { @include invisible;      }
+		.#{$utility_class_prefix}show           { @include show;           }
+	}
+}
+
+// Output Utility Classes from Luscious Config
+@if index($utility_classes, visibility_classes) {
+	@include visibility_utility_classes;
+}
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_hidden {
+	@if $output_test_message { @debug "[TESTING] `hidden`"; }
+	/* `hidden` ------------------------- */
+	/*
+	.test.hidden {
+		@include hidden;
+	}
+	*/
+	.test.hidden {
+		@include hidden;
+	}
+	/* End `hidden` --------------------- */
+}
+
+
+@mixin __test_hide_text {
+	@if $output_test_message { @debug "[TESTING] `hide_text`"; }
+	/* `hide_text` ---------------------- */
+	/*
+	.test.hide_text {
+		@include hide_text;
+	}
+	*/
+	.test.hide_text {
+		@include hide_text;
+	}
+	/* End `hide_text` ------------------ */
+}
+
+
+@mixin __test_visuallyhidden {
+	@if $output_test_message { @debug "[TESTING] `visuallyhidden`"; }
+	/* `visuallyhidden` ----------------- */
+	/*
+	.test.visuallyhidden {
+		@include visuallyhidden;
+	}
+	*/
+	.test.visuallyhidden {
+		@include visuallyhidden;
+	}
+	/*
+	.test.sr_only {
+		@include sr_only;
+	}
+	*/
+	.test.sr_only {
+		@include sr_only;
+	}
+	/* End `visuallyhidden` ------------- */
+}
+
+// Alias
+@mixin __test_sr_only {
+	@include __test_visuallyhidden;
+}
+
+
+@mixin __test_invisible {
+	@if $output_test_message { @debug "[TESTING] `invisible`"; }
+	/* `invisible` ---------------------- */
+	/*
+	.test.invisible {
+		@include invisible;
+	}
+	*/
+	.test.invisible {
+		@include invisible;
+	}
+	/* End `invisible` ------------------ */
+}
+
+
+@mixin __test_show {
+	@if $output_test_message { @debug "[TESTING] `show`"; }
+	/* `show` --------------------------- */
+	/*
+	.test.show {
+		@include show;
+	}
+	*/
+	.test.show {
+		@include show;
+	}
+	/* End `show` ----------------------- */
+}
+
+
+@mixin __test_visibility_utility_classes {
+	@if $output_test_message { @debug "[TESTING] `visibility_utility_classes`"; }
+	/* `visibility_utility_classes` ----------- */
+	/*
+	@include visibility_utility_classes;
+	*/
+	@include visibility_utility_classes;
+	/* End `visibility_utility_classes` ------- */
+}
