@@ -1,29 +1,10 @@
-// Lus v0.0.1
+// Lus v0.0.2
 //
 // Make Sass color functions dynamic
 //
 // sass-lint:disable no-css-comments
 // ===================================================================
 
-// Color function/maps helper
-@mixin __info_pallete {
-	@debug "[INFO]
-	The `pallete` function get's a color value from the map `$color_pallete`
-	To use in Luscious functions and in your project.
-	To see the avaialble colors in the map use `@debug $color_pallete`.
-	To see a list of all colors/variables, go to `settings/colors.scss`.
-	Type  : Function
-	Params:
-	- $key: Required. A key that is defined in the map.
-	";
-}
-
-// Color Pallete Function
-@function pallete($key) {
-	@return map_get_check($color_pallete, $key);
-}
-
-// -------------------------------------
 
 // Helper for other color functions/mixins
 // Used internally in Luscious
@@ -38,11 +19,11 @@
 		For more info try the `__info(#{$mix})` mixin.";
 		@return null;
 	} @else {
-		
+
 		@if $mix == "tint" { $mix_with: #fff; }
 		@if $mix == "shade" { $mix_with: #000; }
 		@if $mix == "tone" { $mix_with: #808080; }
-		
+
 		@return mix($mix_with, $color, $amount);
 	}
 }
@@ -125,7 +106,7 @@
 	}
 	@else if $function == 'darken' {
 		@return darken($color, $amount);
-	} 
+	}
 	@else if $function == 'saturate' {
 		@return saturate($color, $amount);
 	}
@@ -175,20 +156,6 @@
 // ===================================================================
 // Tests
 // ===================================================================
-
-@mixin __test_pallete {
-	@if $output_test_message { @debug "[TESTING] `pallete`"; }
-	/* `pallete` ------------------------ */
-	/*
-	.test.pallete {
-		color: pallete(primary);
-	}
-	*/
-	.test.pallete {
-		color: pallete(primary);
-	}
-	/* End `pallete` -------------------- */
-}
 
 
 @mixin __test_tint {

@@ -1,4 +1,4 @@
-// Lus v0.0.1
+// Lus v0.0.2
 //
 // Default color variables
 //
@@ -7,7 +7,7 @@
 // Default colors set up using https://material.io/color/
 
 
-// Project Pallete Colors (other colors are built on top of these)
+// Project Colors (other colors are built on top of these)
 $cl_primary:   #546e7a !default;
 $cl_secondary: #00b8d4 !default;
 $cl_gray_base: #263238 !default;
@@ -15,17 +15,7 @@ $cl_success:   #66bb6a !default;
 $cl_warning:   #ffa000 !default;
 $cl_alert:     #ef5350 !default;
 
-// Pallete Colors as a map for core-functions
-$color_pallete: (
-	primary   : $cl_primary,
-	secondary : $cl_secondary,
-	gray_base : $cl_gray_base,
-	success   : $cl_success,
-	warning   : $cl_warning,
-	alert     : $cl_alert,
-) !default;
-
-// Pallete Mods
+// Color Mods
 $cl_primary_light   : lighten($cl_primary  , 20%   ) !default;
 $cl_primary_dark    : darken( $cl_primary  , 13.5% ) !default;
 $cl_secondary_light : lighten($cl_secondary, 20%   ) !default;

@@ -78,14 +78,12 @@
 		@include __test_for_print;
 	}
 	// Colors
-	@if $x == "pallete"              { @include __test_pallete;        }
 	@if $x == "tint"                 { @include __test_tint;           }
 	@if $x == "shade"                { @include __test_shade;          }
 	@if $x == "tone"                 { @include __test_tone;           }
 	@if $x == "color_function"       { @include __test_color_function; }
 	// Test All Color
 	@if $all or $x == "all_color" {
-		@include __test_pallete;
 		@include __test_tint;
 		@include __test_shade;
 		@include __test_tone;

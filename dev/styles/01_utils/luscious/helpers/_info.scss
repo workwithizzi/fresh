@@ -69,7 +69,6 @@
 	@if $x == "between_bp"             { @include __info_between_breakpoints; }
 	@if $x == "for_print"              { @include __info_for_print;       }
 	// Colors
-	@if $x == "pallete"                 { @include __info_pallete;        }
 	@if $x == "tint"                    { @include __info_tint;           }
 	@if $x == "shade"                   { @include __info_shade;          }
 	@if $x == "tone"                    { @include __info_tone;           }
