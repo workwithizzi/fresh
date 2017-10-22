@@ -1,21 +1,12 @@
 // Lus v0.0.2
 //
 // BreakPoint mixins
+// - breakpoint
+//   - alias: bp
+// - between_breakpoints
+//   - alias: between_bp
+// - for_print
 //
-// sass-lint:disable class-name-format
-// ===================================================================
-
-$breakpoints: (
-	xs : 37.437em, // 599px
-	sm : 37.5em ,  // 600px
-	md : 61.875em, // 990px
-	lg : 75em,     // 1200px
-	xl : 112.5em,  // 1800px
-) !default;
-
-
-// ===================================================================
-// ===================================================================
 // ===================================================================
 
 
@@ -36,6 +27,7 @@ $breakpoints: (
 	";
 }
 
+// -----------------
 
 // Media Query Mixin
 @mixin breakpoint($size, $query: 'min-width', $map: $breakpoints) {
@@ -68,6 +60,8 @@ $breakpoints: (
 	}
 }
 
+// -----------------
+
 // Alias mixin
 @mixin bp($size, $query: 'min-width', $map: $breakpoints) {
 	@include breakpoints($size, $query, $map) {
@@ -95,6 +89,7 @@ $breakpoints: (
 	";
 }
 
+// -----------------
 
 // Mix-Max Media Query
 @mixin between_breakpoints($min, $max: null, $map: $breakpoints) {
@@ -124,10 +119,10 @@ $breakpoints: (
 		@media only screen and (min-width: $min) and (max-width: $max) {
 			@content;
 		}
-
 	}
 }
 
+// -----------------
 
 // Alias mixin
 @mixin between_bp($size, $query: 'min-width', $map: $breakpoints) {
@@ -138,5 +133,183 @@ $breakpoints: (
 
 // -------------------------------------
 
+// Info for `for_print` mixin
+@mixin __info_for_print {
+	@debug "[INFO]
+	The `for_print` mixin creates a basic `@media print` query.
+	Params  : none
+	Requires: Content Block
+	Related : Mixins- `breakpoint`, `between_breakpoints`
+	";
+}
 
-// TODO::: Make `print` query
+// Print Media Query
+@mixin for_print($info: null) {
+	@if $info { @include __info_for_print; }
+	@else {
+		@media print {
+			@content;
+		}
+	}
+}
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_breakpoint {
+	@if $output_test_message { @debug "[TESTING] `breakpoint`"; }
+	/* `breakpoint` --------------------- */
+	/*
+	.test.breakpoint {
+		color: red;
+		@include breakpoint(xs) {
+			color: green;
+		}
+	}
+	*/
+	.test.breakpoint {
+		color: red;
+		@include breakpoint(xs) {
+			color: green;
+		}
+	}
+	/* ================ */
+	/*
+	.test.breakpoint_size {
+		color: pink;
+		@include breakpoint(900px) {
+			color: purple;
+		}
+	}
+	*/
+	.test.breakpoint_size {
+		color: pink;
+		@include breakpoint(900px) {
+			color: purple;
+		}
+	}
+	/* ================ */
+	/*
+	.test.breakpoint_query {
+		color: blue;
+		@include breakpoint(599px, 'max') {
+			color: seagreen;
+		}
+	}
+	*/
+	.test.breakpoint_query {
+		color: blue;
+		@include breakpoint(599px, 'max') {
+			color: seagreen;
+		}
+	}
+	/* ================ */
+	/*
+	.test.breakpoint_alias {
+		color: deepskyblue;
+		@include bp(599px, 'max') {
+			color: cornsilk;
+		}
+	}
+	*/
+	.test.breakpoint_alias {
+		color: deepskyblue;
+		@include bp(599px, 'max') {
+			color: cornsilk;
+		}
+	}
+	/* End `breakpoint` ------------------- */
+}
+
+// -------------------------------------
+
+@mixin __test_between_breakpoints {
+	@if $output_test_message { @debug "[TESTING] `between_breakpoints`"; }
+	/* `between_breakpoints` ------------ */
+	/*
+	.test.between_breakpoints {
+		color: red;
+		@include between_breakpoints(xs, lg) {
+			color: green;
+		}
+	}
+	*/
+	.test.between_breakpoints {
+		color: red;
+		@include between_breakpoints(xs, lg) {
+			color: green;
+		}
+	}
+	/* ================ */
+	/*
+	.test.between_breakpoints_min {
+		color: pink;
+		@include between_breakpoints(700px, lg) {
+			color: blue;
+		}
+	}
+	*/
+	.test.between_breakpoints_min {
+		color: pink;
+		@include between_breakpoints(700px, lg) {
+			color: blue;
+		}
+	}
+	/* ================ */
+	/*
+	.test.between_breakpoints_min-max {
+		color: purple;
+		@include between_breakpoints(700px, 80em) {
+			color: yellow;
+		}
+	}
+	*/
+	.test.between_breakpoints_min-max {
+		color: purple;
+		@include between_breakpoints(700px, 80em) {
+			color: yellow;
+		}
+	}
+	/* ================ */
+	/*
+	.test.between_breakpoints_alias {
+		color: chocolate;
+		@include between_bp(500px, xl) {
+			color: cadetblue;
+		}
+	}
+	*/
+	.test.between_breakpoints_alias {
+		color: chocolate;
+		@include between_breakpoints(500px, xl) {
+			color: cadetblue;
+		}
+	}
+	/* End `between_breakpoints` ---------- */
+}
+
+
+// -------------------------------------
+
+@mixin __test_for_print {
+	@if $output_test_message { @debug "[TESTING] `for_print`"; }
+	/* `for_print` ---------------------- */
+	/*
+	.test.for_print {
+		color: red;
+		@include for_print {
+			color: green;
+		}
+	}
+	*/
+	.test.for_print {
+		color: red;
+		@include for_print {
+			color: green;
+		}
+	}
+	/* End `for_print` -------------------- */
+}

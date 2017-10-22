@@ -1,4 +1,4 @@
-// Lus v0.0.1
+// Lus v0.0.2
 //
 // Import Info Mixins
 //
@@ -63,17 +63,11 @@
 	@if $x == "em_calc"                { @include __info_em_calc;         }
 	@if $x == "em"                     { @include __info_em;              }
 	// Queries
-	// @if $x == "mq"                      { @include __info_mq;             }
-	// @if $x == "bp"                      { @include __info_bp;             }
-	// @if $x == "between_sizes"           { @include __info_between_sizes;  }
-	// @if $x == "for_phone_only"          { @include __info_for_phone_only; }
-	// @if $x == "for_tablet_up"           { @include __info_for_tablet_up;  }
-	// @if $x == "for_desktop_up"          { @include __info_for_desktop_up; }
-	// @if $x == "print"                   { @include __info_print;          }
-	// @if $x == "for_print_only"          { @include __info_for_print_only; }
-	// @if $x == "for_tablet_portrait_up"  { @include __info_for_tablet_portrait_up;  }
-	// @if $x == "for_tablet_landscape_up" { @include __info_for_tablet_landscape_up; }
-	// @if $x == "for_big_desktop_up"      { @include __info_for_big_desktop_up;      }
+	@if $x == "breakpoint"             { @include __info_breakpoint;      }
+	@if $x == "bp"                     { @include __info_breakpoint;      }
+	@if $x == "between_breakpoints"    { @include __info_between_breakpoints; }
+	@if $x == "between_bp"             { @include __info_between_breakpoints; }
+	@if $x == "for_print"              { @include __info_for_print;       }
 	// Colors
 	@if $x == "pallete"                 { @include __info_pallete;        }
 	@if $x == "tint"                    { @include __info_tint;           }
