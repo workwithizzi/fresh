@@ -22,5 +22,7 @@ Good luck :)
 	- Removed 'tip' output from clearfix mixin
 	- Cleaned up color variables
 	- Refactored breakpoint mixins
+	- Restructured most of the files
+	- Removed the `settings` directory and condensed everything to a settings file.
 - v0.0.1
 	- Added initial task files
