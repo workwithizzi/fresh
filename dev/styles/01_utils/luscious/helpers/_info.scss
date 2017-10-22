@@ -38,7 +38,6 @@
 	@if $x == "zindex"                 { @include __info_zindex;          }
 	@if $x == "z"                      { @include __info_z;               }
 	@if $x == "font_stacks"            { @include __info_font_stacks;     }
-	@if $x == "font_weight"            { @include __info_font_weight;     }
 	@if $x == "when_is"                { @include __info_when_is;         }
 	@if $x == "at_root"                { @include __info_at_root;         }
 	@if $x == "placeholder"            { @include __info_placeholder;     }
@@ -94,7 +93,6 @@
 	@if $x == "zindex_utility_classes"       { @include __info_zindex_utility_classes;       }
 	@if $x == "dev_color_utility_classes"    { @include __info_dev_color_utility_classes;    }
 	@if $x == "font_stacks_utility_classes"  { @include __info_font_stacks_utility_classes;  }
-	@if $x == "font_weights_utility_classes" { @include __info_font_weights_utility_classes; }
 	@if $x == "clearfix_utility_class"       { @include __info_clearfix_utility_class;       }
 	@if $x == "centerblock_utility_class"    { @include __info_centerblock_utility_class;    }
 	@if $x == "pull_utility_classes"         { @include __info_pull_utility_classes;         }

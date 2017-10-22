@@ -57,7 +57,7 @@ $dev_colors: (
 		Don\'t forget to remove the `dev_colors` (`dev_cl` - alias) mixin from
 		the output before final production so things aren\'t jacked up!";
 	}
-	@if $color == "info" { 
+	@if $color == "info" {
 		@include __info_dev_color;
 	}
 	@else {
@@ -140,7 +140,7 @@ $utility_class_prefix: 'u_' !default;
 // -------------------------------------
 
 // Output based on config file
-@if $output_dev_utility_classes {
+@if $output_dev_color_classes {
 	@include dev_color_utility_classes;
 }
 

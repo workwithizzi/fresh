@@ -1,5 +1,5 @@
-// Lus v0.0.1
-// 
+// Lus v0.0.2
+//
 // Clearfix mixin used to clear floats
 //
 // sass-lint:disable no-css-comments
@@ -30,16 +30,10 @@
 
 
 // Mixin
-@mixin clearfix($tip: null) {
-	@if $tip == "info" {
-		@include __info_clearfix;
-	}
+@mixin clearfix($info: null) {
+	@if $info { @include __info_clearfix; }
+
 	@else {
-		@if $tip != "quiet" {
-			@debug '[TIP]
-			Instead of using the `clearfix` mixin, it might be cleaner to
-			extend the clearfix placeholder.';
-		}
 		*zoom: 1;
 		&:before,
 		&:after {
@@ -54,7 +48,7 @@
 
 // Placeholder
 %clearfix {
-	@include clearfix(quiet);
+	@include clearfix;
 }
 
 // -------------------------------------------------------------------

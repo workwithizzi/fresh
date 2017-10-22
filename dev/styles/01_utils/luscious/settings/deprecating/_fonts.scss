@@ -33,3 +33,13 @@ $font_stack_mono: (
 	'Lucida Typewriter',
 	monospace,
 ) !default;
+
+
+// Default Font Weights
+// -------------------------------------
+$font_weights: (
+	light: 300,
+	normal: 400,
+	medium: 500,
+	bold: 700,
+) !default;

@@ -41,7 +41,6 @@
 	@if         $x == "zindex"          { @include __test_zindex;         }
 	@if $all or $x == "z"               { @include __test_z;              }
 	@if $all or $x == "font_stacks"     { @include __test_font_stacks;    }
-	@if $all or $x == "font_weight"     { @include __test_font_weight;    }
 	@if $all or $x == "pesticide"       { @include __test_pesticide;      }
 	@if         $x == "dev_color"       { @include __test_dev_color;      }
 	@if $all or $x == "dev_cl"          { @include __test_dev_cl;         }
@@ -126,7 +125,6 @@
 	@if $x == "zindex_utility_classes"       { @include __test_zindex_utility_classes;       }
 	@if $x == "dev_color_utility_classes"    { @include __test_dev_color_utility_classes;    }
 	@if $x == "font_stacks_utility_classes"  { @include __test_font_stacks_utility_classes;  }
-	@if $x == "font_weights_utility_classes" { @include __test_font_weights_utility_classes; }
 	@if $x == "clearfix_utility_class"       { @include __test_clearfix_utility_class;       }
 	@if $x == "centerblock_utility_class"    { @include __test_centerblock_utility_class;    }
 	@if $x == "pull_utility_classes"         { @include __test_pull_utility_classes;         }
@@ -137,7 +135,6 @@
 		@include __test_zindex_utility_classes;
 		@include __test_dev_color_utility_classes;
 		@include __test_font_stacks_utility_classes;
-		@include __test_font_weights_utility_classes;
 		@include __test_clearfix_utility_class;
 		@include __test_centerblock_utility_class;
 		@include __test_pull_utility_classes;

@@ -18,5 +18,9 @@ Good luck :)
 
 
 ## Changelog
+- v0.0.2
+	- Removed 'tip' output from clearfix mixin
+	- Cleaned up color variables
+	- Refactored breakpoint mixins
 - v0.0.1
 	- Added initial task files

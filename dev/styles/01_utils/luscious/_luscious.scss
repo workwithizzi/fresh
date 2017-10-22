@@ -3,17 +3,18 @@
 // ===================================================================
 
 // Luscious Current Version
-$lus_current_version: "v0.0.1 alpha";
+$lus_current_version: "v0.0.2 alpha";
 // Output a notification of a test to the console
-$output_test_message:         false !default;
+$output_test_message: false !default;
 // Warn user of a deprecated function/mixin
 $output_deprecation_warnings: true !default;
-
+// Output warnings for pesticide and dev_colors during production
+$production_mode: false !default;
 
 // -------------------------------------
 
 // Settings
-@import "settings/index";
+@import "settings";
 
 // Helpers
 @import

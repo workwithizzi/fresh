@@ -1,4 +1,4 @@
-// Lus v0.0.1
+// Lus v0.0.2
 //
 // Default environment configs for Luscious
 //
@@ -6,7 +6,7 @@
 // ===================================================================
 
 // Lus-Core Config
-$production_mode:            false !default;
+
 $pesticide_debug_outlines:   false !default;
 $pesticide_debug_depth:      false !default;
-$output_dev_utility_classes: false !default;
+$output_dev_color_classes: false !default;

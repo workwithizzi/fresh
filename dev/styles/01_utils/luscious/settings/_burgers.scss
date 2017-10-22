@@ -6,7 +6,6 @@
 
 
 // Sizes (in rem)
-// ==================================================
 $burger-padding-x                       : 1.5rem !default;
 $burger-padding-y                       : 1.5rem !default;
 $burger-layer-width                     : 4rem   !default;
@@ -15,7 +14,6 @@ $burger-layer-spacing                   : .6rem  !default;
 $burger-layer-border-radius             : .4rem  !default;
 
 // Settings
-// ==================================================
 $burger-layer-color                     : $cl_nav     !default;
 $burger-background-color                : transparent !default;
 $burger-hover-opacity                   : 0.7         !default;
@@ -29,7 +27,6 @@ $burger-hover-use-filter: false        !default;
 $burger-hover-filter    : opacity(50%) !default;
 
 // Base Utility Classes
-// ==================================================
 $burger-base-classes: (
 	// burger,
 	burger-box,
@@ -38,7 +35,6 @@ $burger-base-classes: (
 
 
 // Types (Remove or comment out what you don’t need)
-// ==================================================
 $burger-types: (
 	// 3dx,
 	// 3dx-r,

@@ -9,7 +9,7 @@
 
 @mixin __info_rem_calc {
 	@debug "[INFO]
-	The `rem_calc` function takes a unitless or px number and converts it to the rem equivalent based on `$html_font_size` (#{$html_font_size}).
+	The `rem_calc` function takes a unitless or px number and converts it to the rem equivalent based on `$root_font_size` (#{$root_font_size}).
 	Type  : Function
 	Params:
 	- $pxval: Required. Only accepts unitless or px numbers.
@@ -20,7 +20,7 @@
 @function rem_calc($pxval) {
 	@if unit($pxval) == "px" or unitless($pxval) {
 		// Get the rembase from font_size in 'settings/base'
-		$rembase: ($html_font_size / 100%) * 16;
+		$rembase: ($root_font_size / 100%) * 16;
 		// Remove units if they exist
 		$unitless: strip_unit($pxval);
 		// Do the math, output a rem
@@ -48,7 +48,7 @@
 
 @mixin __info_em_calc {
 	@debug "[INFO]
-	The `em_calc` function takes a unitless or px number and converts it to the em equivalent based on `$html_font_size` (#{$html_font_size}).
+	The `em_calc` function takes a unitless or px number and converts it to the em equivalent based on `$root_font_size` (#{$root_font_size}).
 	Type  : Function
 	Params:
 	- $pxval: Required. Only accepts unitless or px numbers.
@@ -59,7 +59,7 @@
 @function em_calc($pxval) {
 	@if unit($pxval) == "px" or unitless($pxval) {
 		// Get the embase from font_size in 'settings/base'
-		$embase: ($html_font_size / 100%) * 16;
+		$embase: ($root_font_size / 100%) * 16;
 		// Remove units if they exist
 		$unitless: strip_unit($pxval);
 		// Do the math, output an em

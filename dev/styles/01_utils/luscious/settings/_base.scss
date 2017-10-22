@@ -8,7 +8,7 @@
 
 // HTML Root Font Size (in percentages)
 // Applied to html element. Other element sizing is based on this
-$html_font_size: 62.5% !default; // root == 10px
+$root_font_size: 62.5% !default; // root == 10px
 // 62.5% is used to make rem math easier. Rem sizes are now divisible by 10.
 // Example: To get a 20px equivalent, you now use 2rem instead of 1.25rem.
 
@@ -17,13 +17,9 @@ $html_font_size: 62.5% !default; // root == 10px
 // Baseline Height
 // Used for vertical rhythm and baseline grids
 // Applied to html (root) or to body element
-// Don't forget to add your unit of measurement here too if you require it.
 $base_line_height: 1.5 !default;
 
 // -------------------------------------
 
 // Base Font-Size
-// This would start at your body element.
-// I suggest using rem units so that it works off of your html
-// font-size but you can use whatever unit you wish.
 $base_font_size: 1.6rem !default;
