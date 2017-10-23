@@ -4,18 +4,17 @@
 // ===================================================================
 
 // Contents
-// 1. Developement
-// 2. Base
-// 3. Colors
-// 4. Font Stacks
-// 5. Utility Classes
-// 6. Breakpoints
-// 7. Z-index Map
-// 8. Asset Paths
-// 9. Icons
-// 10. Grid
-// 11. Buttons
-// 12. Hamburger Menus
+//  1. Developement
+//  2. Base
+//  3. Colors
+//  4. Font Stacks
+//  5. Breakpoints
+//  6. Z-index Map
+//  7. Asset Paths
+//  8. Icons
+//  9. Grid
+// 10. Buttons
+// 11. Hamburger Menus
 
 // -------------------------------------------------------------------
 
@@ -93,25 +92,11 @@ $font_stack_body: (
 	$font_stack_sans,
 ) !default;
 
-$font_stack_mono: $font_stack_code !default;
+$font_stack_code: $font_stack_mono !default;
 
 
 // -------------------------------------
-// 5. Utility Classes
-// -------------------------------------
-
-// Output Luscious utility classes
-$utility_classes: (
-	// buttons,
-	// clearfix,
-	// centerblock,
-	// pull_classes,
-	// visibility_classes,
-	)	!default;
-
-
-// -------------------------------------
-// 6. Breakpoints
+// 5. Breakpoints
 // -------------------------------------
 
 $breakpoints: (
@@ -124,7 +109,7 @@ $breakpoints: (
 
 
 // -------------------------------------
-// 7. Z-index Map
+// 6. Z-index Map
 // -------------------------------------
 
 $z_index: (
@@ -142,7 +127,7 @@ $z_index: (
 
 
 // -------------------------------------
-// 8. Asset Paths
+// 7. Asset Paths
 // -------------------------------------
 
 // Path to the root images & fonts folders
@@ -151,7 +136,7 @@ $font_base_path: '../fonts' !default;
 
 
 // -------------------------------------
-// 9. Icons
+// 8. Icons
 // -------------------------------------
 
 // Font-Awesome
@@ -165,7 +150,7 @@ $fa-li-width:         (30em / 14)      !default;
 
 
 // -------------------------------------
-// 10. Grid
+// 9. Grid
 // -------------------------------------
 $susy: (
 	flow: ltr,
@@ -196,7 +181,7 @@ $susy: (
 
 
 // -------------------------------------
-// 11. Buttons
+// 10. Buttons
 // -------------------------------------
 
 // Decide if buttons are solid or hollow by defualt
@@ -258,7 +243,7 @@ $button_styles: (
 
 
 // -------------------------------------
-// 12. Hamburger Menus
+// 11. Hamburger Menus
 // -------------------------------------
 
 // Sizes (in rem)

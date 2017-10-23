@@ -26,7 +26,7 @@
 
 @mixin __info_centerblock {
 	@debug "[INFO]
-	The `centerblock` mixin sets `display: block;`, and left 
+	The `centerblock` mixin sets `display: block;`, and left
 	and right margins to auto.
 	Type  : Included Mixin
 	Params: none
@@ -37,44 +37,12 @@
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	
+
 	@if $info {
 		@include __info_centerblock;
 	}
 }
 
-
-// -------------------------------------------------------------------
-// Utility Class
-// -------------------------------------------------------------------
-// Global Utility Class Prefix
-$utility_class_prefix: 'u_' !default;
-
-@mixin __info_centerblock_utility_class {
-	@debug "[INFO]
-	The `centerblock_utility_class` mixin creates a utility
-	class from the `centerblock` mixin (.#{$utility_class_prefix}centerblock).
-	Utility classes can also be turned on from `settings/utility_classes`.
-	Type  : Standalone Mixin
-	Params: none
-	";
-}
-
-@mixin centerblock_utility_class($info: null) {
-	@if $info {
-		@include __info_centerblock_utility_class;
-	}
-	@else {
-		.#{$utility_class_prefix}centerblock {
-			@include centerblock;
-		}
-	}
-}
-
-// Output from Luscious Config
-@if index($utility_classes, centerblock) {
-	@include centerblock_utility_class;
-}
 
 
 // ===================================================================

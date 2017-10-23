@@ -53,8 +53,6 @@
 	@if $all or $x == "hocus"           { @include __test_hocus;          }
 	@if $all or $x == "size"            { @include __test_size;           }
 	@if $all or $x == "square"          { @include __test_square;         }
-	@if $all or $x == "reset_list"      { @include __test_reset_list;     }
-	@if $all or $x == "reset_nav_list"  { @include __test_reset_nav_list; }
 	@if $all or $x == "pull"            { @include __test_pull;           }
 	@if         $x == "when_is"         { @include __test_when_is;        }
 	@if $all or $x == "at_root"         { @include __test_at_root;        }
@@ -124,7 +122,6 @@
 	// Utility Classes
 	@if $x == "dev_color_utility_classes"    { @include __test_dev_color_utility_classes;    }
 	@if $x == "clearfix_utility_class"       { @include __test_clearfix_utility_class;       }
-	@if $x == "centerblock_utility_class"    { @include __test_centerblock_utility_class;    }
 	@if $x == "pull_utility_classes"         { @include __test_pull_utility_classes;         }
 	@if $x == "btn_utility_classes"          { @include __test_btn_utility_classes;          }
 	@if $x == "button_utility_classes"       { @include __test_button_utility_classes;       }

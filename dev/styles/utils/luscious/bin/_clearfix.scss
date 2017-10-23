@@ -76,10 +76,6 @@ $utility_class_prefix: 'u_' !default;
 	}
 }
 
-// Output from Luscious Config
-@if index($utility_classes, clearfix) {
-	@include clearfix_utility_class;
-}
 
 
 // ===================================================================

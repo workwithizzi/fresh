@@ -278,12 +278,6 @@ $utility_class_prefix: 'u_' !default;
 }
 
 
-// Output Util Classes based on Luscious Config
-@if index($utility_classes, buttons) {
-	@include btn_utility_classes;
-}
-
-
 
 // ===================================================================
 // Tests

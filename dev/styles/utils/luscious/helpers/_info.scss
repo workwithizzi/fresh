@@ -54,8 +54,6 @@
 	@if $x == "hocus"                  { @include __info_hocus;           }
 	@if $x == "size"                   { @include __info_size;            }
 	@if $x == "square"                 { @include __info_square;          }
-	@if $x == "reset_list"             { @include __info_reset_list;      }
-	@if $x == "reset_nav_list"         { @include __info_reset_nav_list;  }
 	@if $x == "pull"                   { @include __info_pull;            }
 	@if $x == "rem_calc"               { @include __info_rem_calc;        }
 	@if $x == "rem"                    { @include __info_rem;             }
@@ -92,7 +90,6 @@
 	// Utility Classes
 	@if $x == "dev_color_utility_classes"    { @include __info_dev_color_utility_classes;    }
 	@if $x == "clearfix_utility_class"       { @include __info_clearfix_utility_class;       }
-	@if $x == "centerblock_utility_class"    { @include __info_centerblock_utility_class;    }
 	@if $x == "pull_utility_classes"         { @include __info_pull_utility_classes;         }
 	@if $x == "btn_utility_classes"          { @include __info_btn_utility_classes;          }
 	@if $x == "button_utility_classes"       { @include __info_button_utility_classes;       }

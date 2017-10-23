@@ -26,7 +26,7 @@
 		@if $val == "left"  { float: left;  }
 		@if $val == "right" { float: right; }
 	}
-	
+
 }
 
 
@@ -58,10 +58,6 @@ $utility_class_prefix: 'u_' !default;
 	}
 }
 
-// Output from Luscious Config
-@if index($utility_classes, pull_classes) {
-	@include pull_utility_classes;
-}
 
 
 // ===================================================================

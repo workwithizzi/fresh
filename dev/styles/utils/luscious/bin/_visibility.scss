@@ -37,7 +37,7 @@
 
 @mixin hide_text($info: null) {
 	@if $info { @include __info_hide_text; }
-	
+
 	@else {
 		overflow: hidden;
 		text-indent: 101%;
@@ -61,7 +61,7 @@
 
 @mixin visuallyhidden($info: null) {
 	@if $info { @include __info_vissuallyhidden; }
-	
+
 	@else {
 		border: 0;
 		clip: rect(0 0 0 0);
@@ -87,7 +87,7 @@
 			}
 		}
 	}
-	
+
 }
 
 // Alias
@@ -105,14 +105,14 @@
 // Hide visually and from screenreaders, but maintains layout
 @mixin __info_invisible {
 	@debug "[INFO]
-	The `invisible` mixin hides the element visually 
+	The `invisible` mixin hides the element visually
 	and from screenreaders, but maintains layout.
 	Type  : Included Mixin
 	Params: none
 	";
 }
 
-@mixin invisible($info: null) { 
+@mixin invisible($info: null) {
 	@if $info { @include __info_invisible; }
 	@else {
 		visibility: hidden;
@@ -132,7 +132,7 @@
 
 @mixin show($info: null) {
 	@if $info { @include __info_show; }
-	
+
 	@else {
 		display: block !important;
 	}
@@ -147,7 +147,7 @@ $utility_class_prefix: 'u_' !default;
 
 @mixin __info_visibility_utility_classes {
 	@debug "[INFO]
-	
+
 	";
 }
 
@@ -163,10 +163,6 @@ $utility_class_prefix: 'u_' !default;
 	}
 }
 
-// Output Utility Classes from Luscious Config
-@if index($utility_classes, visibility_classes) {
-	@include visibility_utility_classes;
-}
 
 
 // ===================================================================
