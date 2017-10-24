@@ -117,7 +117,7 @@ Running `gulp deploy` will, by default, copy everything from `./build` to be pub
 	- Added a 'hack' to the install script to check for the existence of the `README_fresh.md` file before trying to rename `README.md`. This should temporarily keep the installer from exiting with an error.
 	- Updated dependency versions:
 		- Luscious V0.0.2
-		- Gulpy v0.0.2 
+		- Gulpy v0.0.2
 		- Fresh-Scaffold v0.0.3
 - v2.0.5
 	- Removed the 'tabify' task from gulp.
