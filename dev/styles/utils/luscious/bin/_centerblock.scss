@@ -62,14 +62,3 @@
 	}
 	/* End `centerblock` ---------------- */
 }
-
-
-@mixin __test_centerblock_utility_class {
-	@if $output_test_message { @debug "[TESTING] `centerblock_utility_class`"; }
-	/* `centerblock_utility_class` ------ */
-	/*
-	@include centerblock_utility_class;
-	*/
-	@include centerblock_utility_class;
-	/* End `centerblock_utility_class` -- */
-}

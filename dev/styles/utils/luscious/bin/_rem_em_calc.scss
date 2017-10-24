@@ -158,3 +158,8 @@
 	}
 	/* End `em_calc` -------------------- */
 }
+
+// Alias
+@mixin __test_em {
+	@include __test_em_calc;
+}

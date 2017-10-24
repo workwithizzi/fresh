@@ -64,7 +64,7 @@
 
 // Alias mixin
 @mixin bp($size, $query: 'min-width', $map: $breakpoints) {
-	@include breakpoints($size, $query, $map) {
+	@include breakpoint($size, $query, $map) {
 		@content;
 	}
 }

@@ -8,19 +8,19 @@
 
 // Bootstrap style quick float mixins and utility classes
 
-@mixin __info_pull {
+@mixin __info_move {
 	@debug "[INFO]
-	The `pull` mixin simply declares `float: left or right` Like
-	Bootstrap `https://goo.gl/KbpwNs` but without `!important`
+	The `move` mixin simply declares `float: left or right` Like
+	Bootstrap`s `pull` `https://goo.gl/KbpwNs` but without `!important`
 	Type  : Included Mixin
 	Params:
 	$direction: Required. Accepts either `left` or `right`
 	";
 }
 
-@mixin pull($val) {
+@mixin move($val) {
 	@if $val == "info" {
-		@include __info_pull;
+		@include __info_move;
 	}
 	@else {
 		@if $val == "left"  { float: left;  }
@@ -37,24 +37,24 @@
 $utility_class_prefix: 'u_' !default;
 
 // Output Utility classes with a mixin
-@mixin __info_pull_utility_classes {
+@mixin __info_move_utility_classes {
 	@debug "[INFO]
-	The `pull_utility_classes` mixin creates `.#{$utility_class_prefix}left`
+	The `move_utility_classes` mixin creates `.#{$utility_class_prefix}left`
 	and `.#{$utility_class_prefix}right` utility classes
-	using the `pull` mixin.
+	using the `move` mixin.
 	Utility classes can also be turned on from `settings/utility_classes`.
 	Type  : Standalone Mixin
 	Params: none
 	";
 }
 
-@mixin pull_utility_classes($info: null) {
+@mixin move_utility_classes($info: null) {
 	@if $info {
-		@include __info_pull_utility_classes;
+		@include __info_move_utility_classes;
 	}
 	@else {
-		.#{$utility_class_prefix}left  { @include pull(left);  }
-		.#{$utility_class_prefix}right { @include pull(right); }
+		.#{$utility_class_prefix}left  { @include move(left);  }
+		.#{$utility_class_prefix}right { @include move(right); }
 	}
 }
 
@@ -64,35 +64,35 @@ $utility_class_prefix: 'u_' !default;
 // Tests
 // ===================================================================
 
-@mixin __test_pull {
-	@if $output_test_message { @debug "[TESTING] `pull`"; }
-	/* `pull` --------------------------- */
+@mixin __test_move {
+	@if $output_test_message { @debug "[TESTING] `move`"; }
+	/* `move` --------------------------- */
 	/*
-	.test.pull_left {
-		@include pull(left);
+	.test.move_left {
+		@include move(left);
 	}
 	*/
-	.test.pull_left {
-		@include pull(left);
+	.test.move_left {
+		@include move(left);
 	}
 	/*
-	.test.pull_right {
-		@include pull(right);
+	.test.move_right {
+		@include move(right);
 	}
 	*/
-	.test.pull_right {
-		@include pull(right);
+	.test.move_right {
+		@include move(right);
 	}
-	/* End `pull` ----------------------- */
+	/* End `move` ----------------------- */
 }
 
 
-@mixin __test_pull_utility_classes {
-	@if $output_test_message { @debug "[TESTING] `pull_utility_classes`"; }
-	/* `pull_utility_classes` ----------- */
+@mixin __test_move_utility_classes {
+	@if $output_test_message { @debug "[TESTING] `move_utility_classes`"; }
+	/* `move_utility_classes` ----------- */
 	/*
-	@include pull_utility_classes;
+	@include move_utility_classes;
 	*/
-	@include pull_utility_classes;
-	/* End `pull_utility_classes` ------- */
+	@include move_utility_classes;
+	/* End `move_utility_classes` ------- */
 }
