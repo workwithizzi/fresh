@@ -124,7 +124,7 @@ fs.copy( node.scaffoldD + '/rootfiles', './', {
 // Goal: Create a symlink from './node_modules/luscious-sass' to './dev/styles/01_utils/luscious'.
 // Wondering the same thing about this one that I was for #3 with the Gulp tasks.
 
-fs.ensureSymlink(node.lusciousD, './dev/styles/01_utils/luscious', err => {
+fs.ensureSymlink(node.lusciousD, './dev/styles/utils/luscious', err => {
 	if (err) return console.error(err)
 })
 

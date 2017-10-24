@@ -2022,9 +2022,9 @@ formidable@1.0.x:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.0.17.tgz#ef5491490f9433b705faa77249c99029ae348559"
 
-"fresh-scaffold@https://github.com/yisraelgrimes/fresh-scaffold#v0.0.1":
-  version "0.0.0"
-  resolved "https://github.com/yisraelgrimes/fresh-scaffold#5abd87d440b005bb8c3c3e0aec109fe4499bf737"
+"fresh-scaffold@https://github.com/yisraelgrimes/fresh-scaffold#v0.0.3":
+  version "0.0.3"
+  resolved "https://github.com/yisraelgrimes/fresh-scaffold#8f578357485933eb86cc08bd9b9f1ddce0125b3b"
 
 fresh@0.5.0:
   version "0.5.0"
@@ -2812,9 +2812,9 @@ gulplog@^1.0.0:
   dependencies:
     glogg "^1.0.0"
 
-"gulpy@https://github.com/yisraelgrimes/gulpy#v0.0.1":
-  version "0.0.1"
-  resolved "https://github.com/yisraelgrimes/gulpy#d995f5bc8b811eb144046850881387cc752afc98"
+"gulpy@https://github.com/yisraelgrimes/gulpy#v0.0.2":
+  version "0.0.2"
+  resolved "https://github.com/yisraelgrimes/gulpy#7a47766e21c26ab4fdbee71497e06c0e4e953b2d"
   dependencies:
     archy "^1.0.0"
     browser-sync "^2.18.12"
@@ -4026,9 +4026,9 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
-"luscious-sass@https://gitlab.com/yisraelgrimes/luscious-sass#feature/test-fresh":
+"luscious-sass@https://github.com/yisraelgrimes/luscious-sass#v0.0.2":
   version "0.0.0"
-  resolved "https://gitlab.com/yisraelgrimes/luscious-sass#edd7dbd8c788b116184b73a2c84c982b44dd2962"
+  resolved "https://github.com/yisraelgrimes/luscious-sass#3eb632aae7560c48bc95fde21f8d97e212cc3202"
 
 macaddress@^0.2.8:
   version "0.2.8"
