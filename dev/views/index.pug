@@ -4,17 +4,48 @@ extends partials/_base
 
 block content
 
-	h1 WooooHoooo!
+	//- h1 WooooHoooo!
+	//-
+	//- p.
+	//- 	Welcome to #{project}!!
+	//- //- If you're not using gulp-data, This variable will not render.
+	//-
+	//- h2 What's involved?
+	//- img(src='images/npm-logo.png', alt='Gulp Logo')
+	//-
+	//- img(src='images/gulp-logo.png', alt='Gulp Logo')
+	//-
+	//- img(src='images/sass-logo.png', alt='Gulp Logo')
+	//-
+	//- img(src='images/pug-logo.png', alt='Gulp Logo')
 
-	p.
-		Welcome to #{project}!!
-	//- If you're not using gulp-data, This variable will not render.
+	.container
+		h1 The 10 column complex nested grid AG test
+		.ag.ag1
+			h2 AG 1
+		// /ag1
 
-	h2 What's involved?
-	img(src='images/npm-logo.png', alt='Gulp Logo')
-
-	img(src='images/gulp-logo.png', alt='Gulp Logo')
-
-	img(src='images/sass-logo.png', alt='Gulp Logo')
-
-	img(src='images/pug-logo.png', alt='Gulp Logo')
+		// ag4 to ag7 are nested within ag2.
+		.ag.ag2
+			h2 AG 2
+			.ag.ag4
+				h2 AG 4
+			.ag.ag5
+				h2 AG 5
+			.ag.ag6
+				h2 AG 6
+			// ag8, ag9 and ag10 are nested within ag7
+			.ag.ag7
+				h2 AG 7
+				.ag.ag8
+					h2 AG 8
+				.ag.ag9
+					h2 AG 9
+				.ag.ag10
+					h2 AG 10
+			// /ag7
+		// /ag2
+		.ag.ag3
+			h2 AG 3
+		// /ag3
+	// /container

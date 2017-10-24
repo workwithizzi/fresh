@@ -30,7 +30,6 @@ $output_dev_color_classes: false !default;
 // -------------------------------------
 // 2. Base
 // -------------------------------------
-
 // HTML Root Font Size (in percentages)
 // Set's up your $rembase. 62.5% == 10px, 100% == 16px
 $root_font_size: 62.5% !default;
@@ -47,7 +46,6 @@ $base_font_size: 1.6rem !default;
 // -------------------------------------
 // 3. Colors
 // -------------------------------------
-
 // Base Colors (other colors are built on top of these)
 $cl_primary   : #546e7a !default;
 $cl_secondary : #00b8d4 !default;
@@ -72,7 +70,6 @@ $cl_nav_hover  : darken($cl_nav, 15% )        !default;
 // -------------------------------------
 // 4. Font Stacks
 // -------------------------------------
-
 // Sans-Serif Font Stack
 $font_stack_sans: ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif,) !default;
 
@@ -98,7 +95,6 @@ $font_stack_code: $font_stack_mono !default;
 // -------------------------------------
 // 5. Breakpoints
 // -------------------------------------
-
 $breakpoints: (
 	xs : 37.437em, // 599px
 	sm : 37.5em ,  // 600px
@@ -111,7 +107,6 @@ $breakpoints: (
 // -------------------------------------
 // 6. Z-index Map
 // -------------------------------------
-
 $z_index: (
 	nosebleed    : 9999,
 	tooltip      : 600,
@@ -129,7 +124,6 @@ $z_index: (
 // -------------------------------------
 // 7. Asset Paths
 // -------------------------------------
-
 // Path to the root images & fonts folders
 $img_base_path: '../images' !default;
 $font_base_path: '../fonts' !default;
@@ -138,7 +132,6 @@ $font_base_path: '../fonts' !default;
 // -------------------------------------
 // 8. Icons
 // -------------------------------------
-
 // Font-Awesome
 $fa-font-path:        $font_base_path  !default;
 $fa-font-size-base:   1.4rem           !default;
@@ -153,37 +146,19 @@ $fa-li-width:         (30em / 14)      !default;
 // 9. Grid
 // -------------------------------------
 $susy: (
-	flow: ltr,
-	math: fluid,
-	output: float,
 	gutter-position: after,
 	container: auto,
 	container-position: center,
 	columns: 12,
 	gutters: .25,
-	column-width: false,
-	global-box-sizing: content-box,
+	global-box-sizing: border-box,
 	last-flow: to,
-	debug: (
-		image: hide,
-		color: rgba(#66f, .25),
-		output: background,
-		toggle: top right,
-	),
-	use-custom: (
-		background-image: true,
-		background-options: false,
-		box-sizing: true,
-		clearfix: false,
-		rem: true,
-	)
 ) !default;
 
 
 // -------------------------------------
 // 10. Buttons
 // -------------------------------------
-
 // Decide if buttons are solid or hollow by defualt
 $button_fill: solid !default;
 
@@ -245,7 +220,6 @@ $button_styles: (
 // -------------------------------------
 // 11. Hamburger Menus
 // -------------------------------------
-
 // Sizes (in rem)
 $burger-padding-x                       : 1.5rem !default;
 $burger-padding-y                       : 1.5rem !default;

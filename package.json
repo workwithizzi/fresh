@@ -20,9 +20,9 @@
 		"install": "node install.js"
 	},
 	"dependencies": {
-		"fresh-scaffold": "https://github.com/yisraelgrimes/fresh-scaffold#v0.0.3",
+		"fresh-scaffold": "https://github.com/yisraelgrimes/fresh-scaffold#v0.0.2",
 		"fs-extra": "^4.0.2",
-		"gulpy": "https://github.com/yisraelgrimes/gulpy#v0.0.2",
-		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.2"
+		"gulpy": "https://github.com/yisraelgrimes/gulpy#v0.0.1",
+		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.1"
 	}
 }

@@ -6,4 +6,38 @@
 // ===================================================================
 
 
-@import "susy/susy";
+// Susy Global Defaults for reference. Add/Override these in settings.
+
+// $susy: (
+// 	flow: ltr,
+// 	math: fluid,
+// 	output: float,
+// 	gutter-position: after,
+// 	container: auto,
+// 	container-position: center,
+// 	columns: 4,
+// 	gutters: .25,
+// 	column-width: false,
+// 	global-box-sizing: content-box,
+// 	debug: (
+// 		image: hide,
+// 		color: rgba(#66f, .25),
+// 		output: background,
+// 		toggle: top right,
+// 	),
+// 	use-custom: (
+// 		background-image: true,
+// 		background-options: false,
+// 		box-sizing: true,
+// 		clearfix: false,
+// 		rem: true,
+// 	)
+// ) !default;
+
+
+
+
+// @import "susy/susy";
+@import "susy2.2.12/susy";
+// @import "susy2.2.11/susy";
+// @import "susy2.2.2/susy";
