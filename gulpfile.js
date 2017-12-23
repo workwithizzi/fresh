@@ -37,12 +37,45 @@ var gulpOptions = '../../../../../gulp.options';
 // 3. Project Paths
 // ------------------------------------
 // TEMP: Use this global var until all the old ones are converted
-global.nwPth = {
-	serveFrom:   './staging'
+global.pthNew = {
+	options:  gulpOptions, // TEMP until options are set as global
 
-
+	serveFrom: './staging',   // for BrowserSync server.
+	buildD:    './build',     // Production Dir
+	stagingD:  './staging',   // Staging Dir
+	views: {
+		dir:         './dev/views',
+		srcAll:      './dev/views/**/*', // Glob all src files
+		srcHtml:     './dev/views/**/*.html',
+		srcPug:      './dev/views/**/*.pug',
+		srcPugPartials: './dev/views/**/_*.pug',
+		stagingHtml: './staging/**/*.html',
+		buildHtml:   './build/**/*.html',
+	},
+	styles: {
+		srcAll:    './dev/styles/**/*.+(sass|scss)',
+		buildCss:  './build/css/*.css',
+		buildDest: './build/css',
+		stagingDest: './staging/css'
+	},
+	scripts: {
+		srcAll: './dev/scripts/**/*.js',
+		stagingDest: './staging/js'
+	},
+	fonts: {
+		srcAll: './dev/fonts/**/*',
+		stagingDest: './staging/fonts',
+		buildDest: './staging/fonts'
+	},
+	images: {
+		srcAll: './dev/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
+		stagingDest: './staging/images',
+		buildDest: './build/images',
+		srcRootAll: './dev/images/rootimg/**/*.+(png|jpg|jpeg|gif|svg|ico)'
+	}
 
 }; //paths
+
 
 global.pth = {
 	options:  gulpOptions,
