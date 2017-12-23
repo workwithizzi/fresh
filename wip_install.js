@@ -28,11 +28,11 @@ var gulpy = {
 
 // Luscious Sass
 var luscious = {
-	src: './dependencies/luscious-sass',
+	src: './dependencies/luscious_sass',
 	// dest: './dependencies/luscious_sass',
 	overwrite: true,
 	scaffold: {
-		src: './dependencies/luscious-sass/__rsc__/styles_scaffold',
+		src: './dependencies/luscious_sass/__rsc__/styles_scaffold',
 		dest: './dev/styles'
 	}
 }
