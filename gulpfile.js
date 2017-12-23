@@ -1,20 +1,49 @@
-// Gulpy v0.0.1
+// Gulpy
+// @since v0.0.3
 //
-// Sets up global path vars and requires all the gulp tasks in `./gulp`
-// -------------------------------------------------------------------
+// 1. Plugins
+// 2. Get tasks from tasks directory
+// 3. Project Paths
+// 4. Project Options
+// ------------------------------------------------------------------
 
 
-// Gulp tasks directory
-var tasksD = './gulp';
+// ------------------------------------
+// 1. Plugins
+// ------------------------------------
+var g            = require( 'gulp'              );
+var runSequence  = require( 'run-sequence'      );
+var requireDir   = require( 'require-dir'       );
 
+
+// ------------------------------------
+// 2. Get tasks from tasks directory
+// ------------------------------------
+// Point this path to the location of the gulp tasks directory
+requireDir( './dependencies/gulpy/gulp' );
+
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// TEMP: Use this until Gulp variables are finished updating
 // Gulp config file. Default is setup for using Gulpy from node_modules.
 // Remove `../../` from the path if using Gulpy on it's own
 var gulpOptions = '../../../gulp.options';
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
 
-// -------------------------------------
+
+// ------------------------------------
+// 3. Project Paths
+// ------------------------------------
+// TEMP: Use this global var until all the old ones are converted
+global.nwPth = {
+	serveFrom:   './staging'
 
 
-// Set up Global Path Variables
+
+}; //paths
+
 global.pth = {
 	options:  gulpOptions,
 
@@ -58,9 +87,3 @@ global.pth = {
 	imagesAll:    '/**/*.+(png|jpg|jpeg|gif|svg|ico)',
 	fontsD:       '/fonts',
 };
-
-// -------------------------------------
-
-// Require All the tasks in tasks directory (defaults to `./gulp`)
-var requireDir  = require( 'require-dir' );
-requireDir( tasksD );
