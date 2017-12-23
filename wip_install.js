@@ -16,23 +16,23 @@ var rsc = './__rsc__'
 
 // Fresh Scaffold
 var scaffold = {
-	src: './node_modules_wip/fresh-scaffold'
+	src: './dependencies/fresh-scaffold'
 }
 
 // Gulpy
 var gulpy = {
-	src: './node_modules_wip/gulpy',
+	src: './dependencies/gulpy',
 	dest: './dependencies/gulpy',
 	overwrite: true
 }
 
 // Luscious Sass
 var luscious = {
-	src: './node_modules_wip/luscious-sass',
-	dest: './dependencies/luscious_sass',
+	src: './dependencies/luscious-sass',
+	// dest: './dependencies/luscious_sass',
 	overwrite: true,
 	scaffold: {
-		src: './node_modules_wip/luscious-sass/__rsc__/styles_scaffold',
+		src: './dependencies/luscious-sass/__rsc__/styles_scaffold',
 		dest: './dev/styles'
 	}
 }
@@ -71,12 +71,12 @@ fs.copy( gulpy.src + '/gulp.options.js', './gulp.options.js', {
 })
 
 // Copy Gulpy tasks
-fs.copy( gulpy.src + '/gulp', gulpy.dest, {
-	overwrite: gulpy.overwrite,
-	preserveTimestamps: true
-	}, err => {
-	if (err) return console.error(err)
-})
+// fs.copy( gulpy.src + '/gulp', gulpy.dest, {
+// 	overwrite: gulpy.overwrite,
+// 	preserveTimestamps: true
+// 	}, err => {
+// 	if (err) return console.error(err)
+// })
 
 
 // ------------------------------------
@@ -146,12 +146,12 @@ fs.readdir( scaffold.src +'/rootfiles', (err, files) => {
 // ------------------------------------
 
 // Luscious Core
-fs.copy( luscious.src, luscious.dest, {
-	overwrite: luscious.overwrite,
-	preserveTimestamps: true
-	}, err => {
-	if (err) return console.error(err)
-})
+// fs.copy( luscious.src, luscious.dest, {
+// 	overwrite: luscious.overwrite,
+// 	preserveTimestamps: true
+// 	}, err => {
+// 	if (err) return console.error(err)
+// })
 
 // Styles Scaffold
 fs.copy( luscious.scaffold.src, luscious.scaffold.dest, {
