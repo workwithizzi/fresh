@@ -20,7 +20,7 @@ var requireDir   = require( 'require-dir'       );
 // 2. Get tasks from tasks directory
 // ------------------------------------
 // Point this path to the location of the gulp tasks directory
-requireDir( './dependencies/gulpy/gulp' );
+requireDir( './dependencies/gulpy' );
 
 
 // ------------------------------------------------------------------
@@ -28,7 +28,7 @@ requireDir( './dependencies/gulpy/gulp' );
 // TEMP: Use this until Gulp variables are finished updating
 // Gulp config file. Default is setup for using Gulpy from node_modules.
 // Remove `../../` from the path if using Gulpy on it's own
-var gulpOptions = '../../../gulp.options';
+var gulpOptions = '../../../../../gulp.options';
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
 
