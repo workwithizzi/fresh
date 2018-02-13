@@ -1,9 +1,11 @@
-####################
-### Fresh v3.0.2 ###
-####################
+#####################
+### Fresh         ###
+### @since v3.0.2 ###
+#####################
 
+build/
+.atomignore
 
-.publish
 
 
 # Created by https://www.gitignore.io/api/node,sass,macos,windows,sublimetext
