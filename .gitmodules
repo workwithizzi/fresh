@@ -4,6 +4,3 @@
 [submodule "dependencies/gulpy"]
 	path = dependencies/gulpy
 	url = https://gitlab.com/yisraelgrimes/gulpy
-[submodule "dependencies/fresh-scaffold"]
-	path = dependencies/fresh-scaffold
-	url = https://gitlab.com/yisraelgrimes/fresh-scaffold
