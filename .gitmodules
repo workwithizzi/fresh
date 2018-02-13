@@ -1,6 +1,3 @@
 [submodule "dependencies/luscious_sass"]
 	path = dependencies/luscious_sass
 	url = https://gitlab.com/yisraelgrimes/luscious-sass
-[submodule "dependencies/gulpy"]
-	path = dependencies/gulpy
-	url = https://gitlab.com/yisraelgrimes/gulpy
