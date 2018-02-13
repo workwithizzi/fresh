@@ -1,88 +1,140 @@
 // Fresh
 // @since v3.0.2
 //
-// Automates project dev setup with Fresh-Scaffold
-// -------------------------------------------------------------------
+// Automates project setup with dependencies
+// ------------------------------------------------------------------
 
 const fs = require('fs-extra')
 
-// -------------------------------------
 
-// Dependency variables
-var node = {
-	gulpyD: './node_modules/gulpy',
-	scaffoldD: './node_modules/fresh-scaffold',
-	lusciousD: './node_modules/luscious-sass'
+// ------------------------------------
+// Dependency Paths
+// ------------------------------------
+
+// Project Resources
+var rsc = './__rsc__'
+
+// Luscious Sass
+var luscious = {
+	src: './dependencies/luscious_sass',
+	// dest: './dependencies/luscious_sass',
+	overwrite: true,
+	scaffold: {
+		src: './dependencies/luscious_sass/__rsc__/styles_scaffold',
+		dest: './dev/styles'
+	}
 }
 
-// -------------------------------------
-
-// Setup Gulpy
-
-// Copy gulpfile.js
-fs.copy(node.gulpyD + '/gulpfile.js', './gulpfile.js', {
-	overwrite: false,
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
-
-// ----------------
-// Setup Project Scaffold
-
-// Dev files
-fs.copy(node.scaffoldD + '/src', './src', {
-	overwrite: false,
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
+// Normalize CSS/SASS
+var normalize = {
+	src: './node_modules/normalize.css/normalize.css',
+	dest: './dependencies/normalize_sass/_normalize.scss',
+	overwrite: true,
+	// CSS version
+	css: {
+		dest: './dependencies/normalize_sass/normalize.css'
+	}
+}
 
 
-// Rename the cloned readme
-// fs.move('./README.md', './README_fresh.md', {
-// 	overwrite: false
+// ------------------------------------
+// Setup Files
+// ------------------------------------
+
+// // Dev files
+// fs.copy( scaffold.src + '/dev', './dev', {
+// 	overwrite: false,
+// 	preserveTimestamps: true
 // 	}, err => {
 // 	if (err) return console.error(err)
 // })
-
-// HACK: Just to make it work without errors.
-fs.stat('./README_fresh.md', function(err, stat) {
-	if (err == null) {
-		// If file exists: do nothing
-	} else {
-		// If file doesn't exist
-		fs.renameSync('./README.md', './README_fresh.md')
-		fs.copy(node.scaffoldD + '/rootfiles/README.md', './README.md', {
-			overwrite: false,
-			preserveTimestamps: true
-		}, err => {
-			if (err) return console.error(err)
-		})
-	}
-});
-
-
-// Copy dev files templates into the project
-fs.copy(node.scaffoldD + '/rootfiles', './', {
-	overwrite: false,
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
-
-
-// ----------------
-// Setup Luscious
-
-// Setup Luscious-sass
-// fs.ensureSymlink(node.lusciousD, './dev/styles/utils/luscious', err => {
+//
+// // Rename/move/copy the Readme
+// let copyReadme = false;
+// // Create resources directory if doesn't exist
+// fs.stat( rsc, function(err, stat) {
+// 	if(err == null) {
+// 		// If dir exists: do nothing
+// 	} else {
+// 		// If dir doesn't exist: create dir
+// 		fs.ensureDir( rsc, err => {
+// 			// console.log(err) // => null
+// 		})
+// 	}
+// 	// Do the readme stuff
+// 	fs.stat( rsc + '/README_fresh.md', function(err, stat) {
+// 		if(err == null) {
+// 			// If file exists: do nothing
+// 		} else {
+// 			// If file doesn't exist
+// 			fs.renameSync('./README.md', rsc + '/README_fresh.md')
+// 			fs.copy( scaffold.src + '/rootfiles/README.md', './README.md', {
+// 				overwrite: false,
+// 				preserveTimestamps: true
+// 				}, err => {
+// 					if (err) return console.error(err)
+// 					copyReadme = true; // It will set to true after 'copyReadme' completed successfuly
+// 			})
+// 		}
+// 	})
+// }) // end: readme task
+//
+// // Copy Rootfiles
+// fs.readdir( scaffold.src +'/rootfiles', (err, files) => {
+// 	if(err) return console.error(err)
+// 	files.forEach( file => {
+// 		// If file is README.md then check completion of 'copyReadme'
+// 		if(file === 'README.md'){
+// 			if(!copyReadme){
+// 				return;
+// 			}
+// 		}
+// 		fs.copy( scaffold.src +'/rootfiles/'+file, './'+file, {
+// 		overwrite: false,
+// 		preserveTimestamps: true,
+// 		}, err => {
+// 			if (err) return console.error(err)
+// 		})
+// 	} )
+// });
+//
+//
+// // ------------------------------------
+// // Setup Luscious
+// // ------------------------------------
+//
+// // Luscious Core
+// // fs.copy( luscious.src, luscious.dest, {
+// // 	overwrite: luscious.overwrite,
+// // 	preserveTimestamps: true
+// // 	}, err => {
+// // 	if (err) return console.error(err)
+// // })
+//
+// // Styles Scaffold
+// fs.copy( luscious.scaffold.src, luscious.scaffold.dest, {
+// 	overwrite: false,
+// 	preserveTimestamps: true
+// 	}, err => {
 // 	if (err) return console.error(err)
 // })
-
-// Temporary--Copying instead of Symlinking
-// fs.copy( node.lusciousD, './dev/styles/01_utils/luscious', {
-// 	overwrite: false,
+//
+//
+// // ------------------------------------
+// // Normalize
+// // ------------------------------------
+//
+// // Create SASS Version
+// fs.copy( normalize.src, normalize.dest, {
+// 	overwrite: normalize.overwrite,
+// 	preserveTimestamps: true
+// 	}, err => {
+// 	if (err) return console.error(err)
+// })
+//
+// // Copy CSS Version
+// fs.copy( normalize.src, normalize.css.dest, {
+// 	overwrite: normalize.overwrite,
 // 	preserveTimestamps: true
 // 	}, err => {
 // 	if (err) return console.error(err)
