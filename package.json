@@ -13,7 +13,7 @@
 		"gulp"
 	],
 	"scripts": {
-		"x-install": "node wip_install.js"
+		"install": "node install.js"
 	},
 	"devDependencies": {
 		"archy": "^1.0.0",

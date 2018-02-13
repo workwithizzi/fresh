@@ -38,6 +38,28 @@ var normalize = {
 
 
 // ------------------------------------
+// Setup Luscious
+// ------------------------------------
+
+// Luscious Core
+// fs.copy( luscious.src, luscious.dest, {
+// 	overwrite: luscious.overwrite,
+// 	preserveTimestamps: true
+// 	}, err => {
+// 	if (err) return console.error(err)
+// })
+
+// Styles Scaffold
+fs.copy( luscious.scaffold.src, luscious.scaffold.dest, {
+	overwrite: false,
+	preserveTimestamps: true
+	}, err => {
+	if (err) return console.error(err)
+})
+
+
+
+// ------------------------------------
 // Setup Files
 // ------------------------------------
 
@@ -91,24 +113,3 @@ fs.copy( normalize.src, normalize.css.dest, {
 	}, err => {
 	if (err) return console.error(err)
 })
-
-
-// ------------------------------------
-// Setup Luscious
-// ------------------------------------
-
-// // Luscious Core
-// // fs.copy( luscious.src, luscious.dest, {
-// // 	overwrite: luscious.overwrite,
-// // 	preserveTimestamps: true
-// // 	}, err => {
-// // 	if (err) return console.error(err)
-// // })
-//
-// // Styles Scaffold
-// fs.copy( luscious.scaffold.src, luscious.scaffold.dest, {
-// 	overwrite: false,
-// 	preserveTimestamps: true
-// 	}, err => {
-// 	if (err) return console.error(err)
-// })
