@@ -3,6 +3,12 @@
 //
 // Automates project setup with dependencies
 // ------------------------------------------------------------------
+// TODO: Add/Get path variables from gulpfile.js
+// TODO: Move luscious to public repo and it in package.json
+// TODO: (maybe) move install script to '__rsc__' and create a 'production or build' script
+// TODO: Change the name of 'dependencies' or maybe include it in the '__rsc__' directory
+// TODO: Possibly remove '__rsc__' completely and just move the necessary files to the root
+// TODO: Change name/version number of luscious scaffold files stuff
 
 const fs = require('fs-extra')
 
@@ -16,12 +22,12 @@ var rsc = './__rsc__'
 
 // Luscious Sass
 var luscious = {
-	src: './dependencies/luscious_sass',
-	// dest: './dependencies/luscious_sass',
+	src: './node_modules/luscious-sass',
+	dest: './dependencies/luscious_sass',
 	overwrite: true,
 	scaffold: {
-		src: './dependencies/luscious_sass/__rsc__/styles_scaffold',
-		dest: './dev/styles'
+		src: './dependencies/luscious_sass/__rsc__/styles_scaffold', //TODO Change name to just 'scaffold'
+		dest: './src/sass'
 	}
 }
 
@@ -42,12 +48,12 @@ var normalize = {
 // ------------------------------------
 
 // Luscious Core
-// fs.copy( luscious.src, luscious.dest, {
-// 	overwrite: luscious.overwrite,
-// 	preserveTimestamps: true
-// 	}, err => {
-// 	if (err) return console.error(err)
-// })
+fs.copy( luscious.src, luscious.dest, {
+	overwrite: luscious.overwrite,
+	preserveTimestamps: true
+	}, err => {
+	if (err) return console.error(err)
+})
 
 // Styles Scaffold
 fs.copy( luscious.scaffold.src, luscious.scaffold.dest, {
@@ -58,9 +64,29 @@ fs.copy( luscious.scaffold.src, luscious.scaffold.dest, {
 })
 
 
+// ------------------------------------
+// Normalize
+// ------------------------------------
+
+// Create SASS Version
+fs.copy( normalize.src, normalize.dest, {
+	overwrite: normalize.overwrite,
+	preserveTimestamps: true
+	}, err => {
+	if (err) return console.error(err)
+})
+
+// Copy CSS Version
+fs.copy( normalize.src, normalize.css.dest, {
+	overwrite: normalize.overwrite,
+	preserveTimestamps: true
+	}, err => {
+	if (err) return console.error(err)
+})
+
 
 // ------------------------------------
-// Setup Files
+// Replace Readme with Template
 // ------------------------------------
 
 // Rename/move/copy the Readme
@@ -92,24 +118,3 @@ fs.stat( rsc, function(err, stat) {
 		}
 	})
 }) // end: readme task
-
-
-// ------------------------------------
-// Normalize
-// ------------------------------------
-
-// Create SASS Version
-fs.copy( normalize.src, normalize.dest, {
-	overwrite: normalize.overwrite,
-	preserveTimestamps: true
-	}, err => {
-	if (err) return console.error(err)
-})
-
-// Copy CSS Version
-fs.copy( normalize.src, normalize.css.dest, {
-	overwrite: normalize.overwrite,
-	preserveTimestamps: true
-	}, err => {
-	if (err) return console.error(err)
-})
