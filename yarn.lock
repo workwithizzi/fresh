@@ -4079,7 +4079,7 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
-"luscious-sass@file:/Users/yis/Git/cookbook/luscious-sass":
+"luscious-sass@file:../luscious-sass":
   version "0.0.3"
 
 macaddress@^0.2.8:
@@ -4422,6 +4422,10 @@ normalize-url@^1.4.0:
     prepend-http "^1.0.0"
     query-string "^4.1.0"
     sort-keys "^1.0.0"
+
+normalize.css@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.0.tgz#14ac5e461612538a4ce9be90a7da23f86e718493"
 
 now-and-later@^2.0.0:
   version "2.0.0"
