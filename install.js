@@ -1,4 +1,5 @@
-// Fresh v3.0.1
+// Fresh
+// @since v3.0.2
 //
 // Automates project dev setup with Fresh-Scaffold
 // -------------------------------------------------------------------
