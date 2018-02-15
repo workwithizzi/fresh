@@ -4079,7 +4079,7 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
-"luscious-sass@file:../luscious-sass":
+"luscious-sass@file:../../luscious-sass":
   version "0.0.3"
 
 macaddress@^0.2.8:

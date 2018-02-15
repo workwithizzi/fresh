@@ -119,6 +119,7 @@ Running `gulp deploy` will, by default, copy everything from `./build` to be pub
 
 ## Changelog
 - v3.0.2
+	- Removed `main.sass` starter file.
 	- Merged the Gulpy repo into Fresh
 	- Removed `__rsc__` directory. Removed `humans.txt` and `robot.txt` from repo.
 	- Moved `README-template.md` to project root.
