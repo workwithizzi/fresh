@@ -67,23 +67,22 @@ cd your-fresh-project && npm install
 
 3. Initiate your project:
 
-   ```sh
-   gulp init
-   ```
+	 ```sh
+	 gulp init
+	 ```
 
 4. Run the default Gulp task to start working:
 
-   ```sh
-   gulp
-   ```
+	 ```sh
+	 gulp
+	 ```
 
 
 ---
 
 ## Changelog
-
-- v1.0.0
-  - Initial Release
+- v0.0.1
+	- Init Project
 
 ## Meta
 
