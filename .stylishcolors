@@ -1,0 +1,9 @@
+{
+	"about": "for-use-with-jshint-stylish-ex-plugin",
+	"color-options-just-for-info": [ "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "gray"],
+	"meta": "gray",
+	"reason": "yellow",
+	"verbose": "gray",
+	"error": "red",
+	"noproblem": "green"
+}

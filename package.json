@@ -1,16 +1,12 @@
 {
 	"name": "fresh",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "A starter kit for static or cms based websites. Built with Yarn, Gulp, Pug, and SASS.",
-	"repository": "https://github.com/yisraelgrimes/fresh.git",
-	"author": {
-		"name": "Yisrael Grimes",
-		"url": "yisraelgrimes.com"
-	},
+	"repository": "https://gitlab.com/ignitecreative/cookbook/fresh",
+	"author": "Yisrael Grimes <yisrael@ignitehere.com>",
 	"license": "MIT",
 	"private": true,
 	"keywords": [
-		"boilerplate",
 		"sass",
 		"scss",
 		"pug",
@@ -19,10 +15,42 @@
 	"scripts": {
 		"install": "node install.js"
 	},
-	"dependencies": {
-		"fresh-scaffold": "https://github.com/yisraelgrimes/fresh-scaffold#v0.0.3",
-		"fs-extra": "^4.0.2",
-		"gulpy": "https://github.com/yisraelgrimes/gulpy#v0.0.2",
-		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.2"
+	"devDependencies": {
+		"archy": "^1.0.0",
+		"browser-sync": "^2.21.0",
+		"del": "^3.0.0",
+		"fs-extra": "^5.0.0",
+		"gulp": "^3.9.1",
+		"gulp-autoprefixer": "^4.0.0",
+		"gulp-beautify": "^2.0.1",
+		"gulp-cache": "^1.0.1",
+		"gulp-cssnano": "^2.1.2",
+		"gulp-data": "^1.2.1",
+		"gulp-environments": "^0.1.2",
+		"gulp-ex-replace": "^0.5.8",
+		"gulp-filetree": "^0.0.3",
+		"gulp-help-doc": "^1.1.0",
+		"gulp-html2pug": "^1.1.0",
+		"gulp-htmlmin": "^4.0.0",
+		"gulp-if": "^2.0.2",
+		"gulp-imagemin": "^4.0.0",
+		"gulp-jshint": "^2.0.4",
+		"gulp-map": "^0.0.2",
+		"gulp-pug": "^3.3.0",
+		"gulp-pug-beautify": "^0.0.1",
+		"gulp-pug-lint": "^0.1.6",
+		"gulp-remove-code": "^1.0.2",
+		"gulp-rename": "^1.2.2",
+		"gulp-sass": "^3.1.0",
+		"gulp-sass-lint": "^1.3.4",
+		"gulp-sourcemaps": "^2.6.2",
+		"gulp-todo": "^5.4.0",
+		"gulp-uglify": "^3.0.0",
+		"gulp-useref": "^3.1.3",
+		"jshint": "^2.9.5",
+		"jshint-stylish-ex": "^0.2.0",
+		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.3",
+		"normalize.css": "^8.0.0",
+		"run-sequence": "^2.2.0"
 	}
 }
