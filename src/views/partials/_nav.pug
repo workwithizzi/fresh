@@ -1,0 +1,15 @@
+//- Primary Navigation Component
+//- -----------------------------------------------------------------
+
+nav.c-nav.js-nav(role="navigation")
+	.c-nav__toggle
+		button.nav__toggle#js-toggle-menu(type="button" aria-expanded="false" aria-controls="main-menu")
+			span.u_visuallyhidden Menu
+			i.fa.fa-bars(aria-hidden="true")
+
+	.logo--nav
+		include /../images/fresh.svg
+
+	ul#main-menu
+		each item in NAV.menu
+			li: a(href=item.path target='_blank') #{item.title}
