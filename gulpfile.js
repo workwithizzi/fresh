@@ -1,5 +1,5 @@
 // Fresh
-// @since v3.0.2
+// @since v3.0.3
 //
 // ------------------------------------------------------------------
 
@@ -43,12 +43,15 @@ var uglify = require('gulp-uglify');
 var beautify = require('gulp-beautify');
 // Scipts & Styles
 var sourcemaps = require('gulp-sourcemaps');
-// Views- Pug
+// Views - Pug
 var html2pug = require('gulp-html2pug');
 var prettyPug = require('gulp-pug-beautify');
 var puglint = require('gulp-pug-lint');
 var pug = require('gulp-pug');
+// Views - Pug Data
 var data = require('gulp-data');
+var path = require('path');
+var merge = require('gulp-merge-json');
 // Views
 var htmlmin = require('gulp-htmlmin');
 // Images
@@ -78,10 +81,20 @@ var pth = {
 		input: base.src + '/sass/**/*.{scss,sass}',
 		output: base.build + '/css'
 	},
+	normalize: {
+		cssInput: './dependencies/normalize_sass/normalize.css',
+		output: base.build + '/css'
+	},
 	scripts: {
 		input: base.src + '/js/**/*.js',
 		output: base.build + '/js',
 		beautifyOutput: base.src + '/js'
+	},
+	data: {
+		input: base.src + '/views/data/**/*.json',
+		output: base.src + '/views',
+		fileName: 'data.json',
+		file: base.src + '/views/data.json'
 	},
 	pug: {
 		input: base.src + '/views/**/*.pug',
@@ -137,6 +150,7 @@ var opt = {
 		tunnel: false // external tunnel (example.tunnel.me).
 	}, //browserSync ----------------
 	watch: {
+		data: pth.data.input,
 		views: pth.pug.input,
 		styles: pth.styles.input,
 		scripts: pth.scripts.input,
@@ -174,13 +188,15 @@ var opt = {
 	}, //scripts ----------------
 	pug: {
 		useData: true,
-		dataPath: pth.srcD + '/views/data.json',
+		// dataPath: pth.srcD + '/views/data.json',
 		lint: true,
 		outputDev: {
-			pretty: '	'
+			pretty: '	',
+			basedir: './src/views'
 		},
 		outputPro: {
-			pretty: ''
+			pretty: '',
+			basedir: './src/views'
 		},
 		prettyPug: {
 			omit_empty_lines: true,
@@ -223,7 +239,9 @@ var opt = {
  * @group {Main}
  * @order {1}
  */
-g.task('default', ['compile', 'serve']);
+g.task('default', function(callback) {
+	runSequence('compile', 'normalize:css', 'snippets', ['serve'], callback)
+});
 
 
 /**
@@ -298,7 +316,7 @@ g.task('cms', function(callback) {
  * Auto-prefixes based on configs |
  * Creates sourcemaps in dev environment |
  * Options:
- *   Lints SASS, 
+ *   Lints SASS,
  *   Outputs CSS style based on dev/production environment
  * @task  {styles}
  * @group {Main}
@@ -327,6 +345,17 @@ g.task('styles:lint', function() {
 	return g.src(pth.styles.input)
 		.pipe(sassLint(opt.styles.linterOpts))
 		.pipe(sassLint.format())
+});
+
+
+/**
+ * Copies normalize.css from ./dependencies to ./build
+ * @task  {normalize.css}
+ * @group {Utilities}
+ */
+g.task('normalize:css', function() {
+	return g.src(pth.normalize.cssInput)
+		.pipe(g.dest(pth.normalize.output));
 });
 
 
@@ -387,15 +416,39 @@ g.task('scripts:beautify', function() {
  * @group {Main}
  * @order {4}
  */
-g.task('pug', function() {
+g.task('pug', ['data'], function() {
 	return g.src([pth.pug.input, '!' + pth.pug.partials])
 		.pipe(gulpif(opt.pug.useData, data(function(file) {
-			return JSON.parse(fs.readFileSync(opt.pug.dataPath));
+			return JSON.parse(fs.readFileSync(pth.data.file));
 		})))
 		.pipe(gulpif(opt.pug.lint, puglint()))
 		.pipe(env.development(pug(opt.pug.outputDev)))
 		.pipe(env.production(pug(opt.pug.outputPro)))
 		.pipe(g.dest(pth.pug.output));
+});
+
+
+/**
+ * Gets data from the json data files and compiles them into data.json to be processed by `gulp pug`
+ * @task  {data}
+ * @group {Main}
+ * @order {5}
+ */
+g.task('data', function() {
+	return g.src(pth.data.input)
+		.pipe(merge({
+			fileName: pth.data.fileName,
+			edit: (json, file) => {
+				// Extract the filename and strip the extension
+				var filename = path.basename(file.path),
+					primaryKey = filename.replace(path.extname(filename), '');
+				// Set the filename as the primary key for our JSON data
+				var data = {};
+				data[primaryKey.toUpperCase()] = json;
+				return data;
+			}
+		}))
+		.pipe(g.dest(pth.data.output));
 });
 
 
@@ -518,6 +571,7 @@ g.task('serve', function() {
 	if (opt.watch.styles) { g.watch(opt.watch.styles, ['styles']); }
 	if (opt.watch.scripts) { g.watch(opt.watch.scripts, ['scripts']); }
 	if (opt.watch.views) { g.watch(opt.watch.views, ['pug']); }
+	if (opt.watch.data) { g.watch(opt.watch.data, ['pug']); }
 	if (opt.watch.reload) {
 		g.watch(opt.watch.reload).on('change', browserSync.reload);
 	}
