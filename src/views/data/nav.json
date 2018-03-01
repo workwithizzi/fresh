@@ -1,0 +1,18 @@
+{
+	"menu": [{
+		"title": "Home",
+		"path": "./"
+	}, {
+		"title": "Navigations",
+		"path": "./snippets/nav/nav01/index.html"
+	}, {
+		"title": "Item",
+		"path": "./"
+	}, {
+		"title": "Item",
+		"path": "./"
+	}, {
+		"title": "External Item",
+		"path": "https://www.google.com/"
+	}]
+}
