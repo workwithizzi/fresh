@@ -53,7 +53,6 @@
 		"jshint-stylish-ex": "^0.2.0",
 		"jstransformer-markdown-it": "^2.0.0",
 		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.3",
-		"normalize-sass": "^1.0.0",
 		"normalize.css": "^8.0.0",
 		"path": "^0.12.7",
 		"run-sequence": "^2.2.0"
