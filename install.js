@@ -17,7 +17,7 @@ const fs = require('fs-extra')
 var luscious = {
 	src: './node_modules/luscious-sass',
 	dest: './dependencies/luscious-sass',
-	overwrite: true
+	overwrite: false
 }
 
 var scaffold = {
@@ -34,6 +34,13 @@ var normalize = {
 	css: {
 		dest: './dependencies/normalize_sass/normalize.css'
 	}
+}
+
+// Font Awesome
+var fontAwesome = {
+	src: './node_modules/font-awesome',
+	dest: './src/fonts',
+	overwrite: true
 }
 
 
@@ -73,6 +80,20 @@ fs.copy(normalize.src, normalize.dest, {
 // Copy CSS Version
 fs.copy(normalize.src, normalize.css.dest, {
 	overwrite: normalize.overwrite,
+	preserveTimestamps: true
+}, err => {
+	if (err) return console.error(err)
+})
+
+
+
+// ------------------------------------
+// Setup Luscious
+// ------------------------------------
+
+// Core
+fs.copy(fontAwesome.src + '/fonts', fontAwesome.dest, {
+	overwrite: fontAwesome.overwrite,
 	preserveTimestamps: true
 }, err => {
 	if (err) return console.error(err)
