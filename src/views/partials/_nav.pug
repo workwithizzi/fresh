@@ -7,9 +7,6 @@ nav.c-nav.js-nav(role="navigation")
 			span.u_visuallyhidden Menu
 			i.fa.fa-bars(aria-hidden="true")
 
-	.logo--nav
-		include /../images/fresh.svg
-
 	ul#main-menu
 		each item in NAV.menu
-			li: a(href=item.path target='_blank') #{item.title}
+			<li><a href=#{item.path} target='_blank'>#{item.title}</a></li>

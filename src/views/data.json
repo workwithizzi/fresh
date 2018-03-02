@@ -6,19 +6,19 @@
 				"path": "./"
 			},
 			{
-				"title": "Navigations",
-				"path": "./snippets/nav/nav01/index.html"
-			},
-			{
-				"title": "Item",
+				"title": "About",
 				"path": "./"
 			},
 			{
-				"title": "Item",
+				"title": "Work",
 				"path": "./"
 			},
 			{
-				"title": "External Item",
+				"title": "Contact",
+				"path": "./"
+			},
+			{
+				"title": "External",
 				"path": "https://www.google.com/"
 			}
 		]

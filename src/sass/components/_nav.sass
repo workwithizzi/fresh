@@ -5,23 +5,63 @@
 // ------------------------------------------------------------------
 
 
+.c-nav
+
+	ul a
+		background: #03A9F4
+		+h(padding, 1rem)
+
+// ------------------------------------
+
+// Mixin Alias
+@mixin nav-bp
+	+bp(xs)
+		@content
+
+$nav-height: 5rem
+
+// ------------------------------------
+
+
+.c-nav
+	height: $nav-height
+	background: $cl_nav_bg
+
+	ul > li
+		display: inline-block
+
+	ul a
+		text-decoration: none
+		line-height: $nav-height
+		color: $cl_nav
+		display: block
+
+.nav__toggle
+	background: transparent
+
++nav-bp
+	.c-nav__toggle
+		display: none
+
+
 // .c-nav
-// 	height: 100%
-// 	position: fixed
-// 	overflow-y: auto
-// 	width: 20rem
 //
+// 	ul > li
+// 		display: inline-block
+//
+// 	ul a
+// 		text-decoration: none
+// 		// display: block
+//
+
+
+
+
 // 	.nav__toggle
 // 		font-size: 2.4rem
 // 		padding: 2rem
 // 		color: $cl_nav
 // 		background: $cl_nav_bg
-//
-// 	.logo--nav
-// 		width: 10rem
-// 		margin: auto
-// 		display: none
-// 		padding-top: 2rem
 //
 // 	ul
 // 		padding-top: 2rem
@@ -56,10 +96,6 @@
 // 	.c-nav
 // 		background-color: $cl_nav_bg
 // 		transition: $base_transition
-//
-// 		.nav__toggle
-// 			display: none
-// 			transition: $base_transition
 //
 // 		.logo--nav, ul
 // 			display: inherit
