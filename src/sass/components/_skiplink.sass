@@ -9,26 +9,26 @@
 
 .c-skiplink
 	background: transparent
-	border: darken(red, 5%)
-	color: #ffffff
+	border: $a11y_attention
+	color: $a11y_light
 	display: inline-block
 	left: -101%
 	list-style: none
 	opacity: 1
 	padding: 0.8rem
 	line-height: 1
-	font-size: 18px
+	font-size: 1.8rem
 	pointer-events: none
 	position: fixed
 	text-decoration: underline
 	top: 0
 	transition: left 1s ease-out, background 1s linear
-	z-index: 99999
+	z-index: $a11y_zindex
 	text-transform: capitalize
 
 .c-skiplink:focus, .c-skiplink:active
-	color: #ffffff
-	background-color: darken(red, 5%)
+	color: $a11y_light
+	background-color: $a11y_attention
 	transition: left .5s ease-in-out, background .2s linear
 	opacity: 1
 	top: 0

@@ -15,7 +15,8 @@
 //  8. Icons
 //  9. Grid
 // 10. Buttons
-// 11. Hamburger Menus
+// 11. Accessibility
+// 12. Hamburger Menus
 
 // -------------------------------------------------------------------
 
@@ -135,7 +136,7 @@ $font_base_path: '../fonts' !default;
 // -------------------------------------
 // Font-Awesome
 $fa-font-path:        $font_base_path  !default;
-$fa-font-size-base:   1.4rem           !default;
+$fa-font-size-base:   4.4rem           !default;
 $fa-line-height-base: 1                !default;
 $fa-css-prefix:       fa               !default;
 $fa-border-color:     $cl_white        !default;
@@ -218,8 +219,18 @@ $button_styles: (
 ) !default;
 
 
+// ------------------------------------
+// 11. Accessibility
+// ------------------------------------
+// Colors
+$a11y_attention: darken(red, 5%)                  !default;
+$a11y_light: #ffffff                              !default;
+// Z-index
+$a11y_zindex: map-get($z_index, nosebleed) + 1000 !default;
+
+
 // -------------------------------------
-// 11. Hamburger Menus
+// 12. Hamburger Menus
 // -------------------------------------
 // Sizes (in rem)
 $burger-padding-x                       : 1.5rem !default;

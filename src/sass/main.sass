@@ -10,39 +10,46 @@
 /*! ========================================================= */
 
 
-// Normalize is being processed with gulp as separate css file
-// and will be concated into the main.css with gulp during the final build.
-// It is also available in Luscious but isn't imported by default.
-// @import 01_utils/luscious/snippets/_normalize.scss
-
+// Normalize is added as a separate file and will be concated into the minified main.css by gulp during the production build.
 
 // Project Settings
 @import settings
 
+
 // Utilities/Vendors/Tools
 @import ../../dependencies/luscious-sass/luscious
+// @import utils/your-partial
+
 
 // Import Font Awesome Sass
 // @import ../../node_modules/font-awesome/scss/font-awesome
 
+
 // Base Styles
-@import base/resets
 @import base/utility_classes
 @import base/base
 @import base/typography
+@import base/forms-reset
+@import base/media-reset
+
 
 // Objects
 @import objects/buttons
 @import objects/burger
 
+
 // Components
 @import components/nav
+@import components/skiplink
+
 
 // Pages
 @import pages/home
 
+
 // Themes
 @import themes/default
+
 
 // Shame
 @import shame

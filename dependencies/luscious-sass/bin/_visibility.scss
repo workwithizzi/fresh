@@ -1,7 +1,5 @@
 // Luscious
-// @since v0.0.1
-//
-// Description
+// @since v0.0.4
 //
 // sass-lint:disable no-css-comments, no-duplicate-properties
 // ===================================================================
@@ -56,7 +54,7 @@
 	but keeps it accessible to screen readers.
 	Type  : Included Mixin
 	Params: none
-	Alias: `sr_only`
+	Alias : `sr_only`
 	";
 }
 
@@ -148,7 +146,19 @@ $utility_class_prefix: 'u_' !default;
 
 @mixin __info_visibility_utility_classes {
 	@debug "[INFO]
+	Adds utilitiy classes:
+	- .#{$utility_class_prefix}hidden         (mixin: +hidden)
+	- .#{$utility_class_prefix}hide_text      (mixin: +hide_text)
+	- .#{$utility_class_prefix}visuallyhidden (mixin: +visuallyhidden)
+	- .#{$utility_class_prefix}sr_only        (mixin: +sr_only)
+	- .#{$utility_class_prefix}invisible      (mixin: +invisible)
+	- .#{$utility_class_prefix}show           (mixin: +show)
 
+	Pass the `__info` mixin with one of these as the
+	parameter to see what it specifically does.
+
+	Example:
+	+__info(hidden)
 	";
 }
 

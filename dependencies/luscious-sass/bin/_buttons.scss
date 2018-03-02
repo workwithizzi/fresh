@@ -5,7 +5,7 @@
 //
 // sass-lint:disable class-name-format
 // ===================================================================
-
+// 2DO-LUS: REVIEW The implementation of all this.
 
 // Reset button styles created by most browsers
 
@@ -208,7 +208,6 @@ $utility_class_prefix: 'u_' !default;
 	@debug "[INFO]
 	The `btn_utility_classes` makes it so that you can output
 	button utility classes from anywhere in the project.
-	You can turn also on utility classes from `settings/utility_classes`.
 	Type  : Standalone Mixin
 	Params:
 	- $prefix : Optional. Defaults to `btn` but can be any prefix you want.
