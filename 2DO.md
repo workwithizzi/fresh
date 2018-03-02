@@ -10,8 +10,8 @@
 - [x] Add basic navigation to pug/js
 - [x] Add skiplink component to pug
 - [x] Add dummy-filler content to Fresh views scaffold
-- [ ] Add Optimized svgs from `Recipes`
-- [ ] Add/optimize svg logo for fresh
+- [x] Add Optimized svgs from `Recipes`
+- [x] Add/optimize svg logo for fresh
 - [ ] Add modernizr with png fallback for svgs
 - [ ] Break up test content so that it is in smaller segments
 
