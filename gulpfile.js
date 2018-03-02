@@ -4,17 +4,60 @@
 // ------------------------------------------------------------------
 
 // ------------------------------------
-// Tasks
+// Task Runners
 // ------------------------------------
-// - styles
-// - styles:lint
-// - scripts
-// - scripts:lint
-// - scripts:beautify
-// - production (sets environment to production)
 // - Runners
 //   - default
+//     - compile
+//     - normalize:css
+//     - serve
 //   - build
+//     - compile
+//     - concat
+//     - tree
+//   - compile
+//     - styles
+//     - scripts
+//     - pug
+//     - images
+//     - fonts
+//   - clean
+//     - images:clean:cache -- Removes image cache
+//     - clean:build -- Removes './build' directory
+//   - cms -- Prepares a static, production-ready site, to use in a php-based CMS.
+//     - convert:404
+//     - convert:html
+//       - convert:html:start
+//     - convert:css
+//     - touch:index
+//     - tree
+
+// ------------------------------------
+// Individual Tasks
+// ------------------------------------
+// - styles -- Compiles SASS into CSS
+// - styles:lint -- Lints SASS even if linting is off in config
+// - normalize:css -- Copies normalize.css from ./dependencies to ./build
+// - scripts -- Copies JS from ./src to ./build
+// - scripts:lint -- Lints JS even if linting is off in config
+// - scripts:beautify -- Makes minifies JS pretty and readible
+// - pug -- Compiles Pug into HTML
+// - data -- Compiles data from json files into data.json to be used by 'gulp pug'
+// - pug:lint -- Lints Pug even if linting is off in config
+// - html2pug -- Converts HTML files to Pug
+// - clean:html -- Deletes HTML files from ./src
+// - fonts -- Copies fonts to from ./src to ./build
+// - clean: build -- Deletes ./build directory
+// - production -- Sets environment to Production.
+// - images -- Copies, optimizes, & caches images from ./src to ./build directory
+// - images:clean:cache -- Clears out the image cache created with 'gulp images'
+// - serve -- Starts BrowserSync Server on localhost
+// - help -- Prints info about each gulp task to the CLI
+// - tree -- Prints file tree of the ./build directory to the CLI
+// - todo -- Creates a 'todo.md' file based on configured tags
+// - todo:clean -- Removes the 'todo.md' file created with 'gulp todo'
+// - concat -- Concats CSS & JS
+// - concat:help -- Prints usage info about 'gulp concat'
 
 
 // ------------------------------------
@@ -230,7 +273,7 @@ var opt = {
 
 
 // ------------------------------------
-// Combined Tasks
+// Task Runners
 // ------------------------------------
 
 /**
@@ -240,7 +283,7 @@ var opt = {
  * @order {1}
  */
 g.task('default', function(callback) {
-	runSequence('compile', 'normalize:css', 'snippets', ['serve'], callback)
+	runSequence('compile', 'normalize:css', ['serve'], callback)
 });
 
 
@@ -429,7 +472,7 @@ g.task('pug', ['data'], function() {
 
 
 /**
- * Gets data from the json data files and compiles them into data.json to be processed by `gulp pug`
+ * Gets data from the json data files and compiles them into data.json to be used by `gulp pug`
  * @task  {data}
  * @group {Main}
  * @order {5}
