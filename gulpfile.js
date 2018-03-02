@@ -47,6 +47,7 @@
 // - html2pug -- Converts HTML files to Pug
 // - clean:html -- Deletes HTML files from ./src
 // - fonts -- Copies fonts to from ./src to ./build
+// - fontawesome -- Copies fonts to from the font-awesome node_modules to ./build
 // - clean: build -- Deletes ./build directory
 // - production -- Sets environment to Production.
 // - images -- Copies, optimizes, & caches images from ./src to ./build directory
@@ -117,15 +118,37 @@ var base = {
 	build: './build' // Processed Code for staging/distribution
 }
 
+var luscious = {
+	src: './node_modules/luscious-sass',
+	dest: './dependencies/luscious-sass',
+	overwrite: false
+}
+
+var scaffold = {
+	src: luscious.src + '/scaffold',
+	dest: './src/sass'
+}
+
 var pth = {
 	srcD: base.src,
 	buildD: base.build,
+	luscious: {
+		core: {
+			input: './node_modules/luscious-sass',
+			output: './dependencies/luscious-sass'
+		},
+		scaffold: {
+			input: './node_modules/luscious-sass/scaffold',
+			output: base.src + '/sass'
+		}
+	},
 	styles: {
 		input: base.src + '/sass/**/*.{scss,sass}',
 		output: base.build + '/css'
 	},
 	normalize: {
-		cssInput: './dependencies/normalize_sass/normalize.css',
+		// cssInput: './dependencies/normalize_sass/normalize.css',
+		cssInput: './node_modules/normalize.css/normalize.css',
 		output: base.build + '/css'
 	},
 	scripts: {
@@ -155,7 +178,8 @@ var pth = {
 	},
 	fonts: {
 		input: base.src + '/fonts/**/*',
-		output: base.build + '/fonts/'
+		output: base.build + '/fonts/',
+		fontawesome: './node_modules/font-awesome/fonts/**/*'
 	},
 	images: {
 		dir: base.src + '/images/',
@@ -199,6 +223,9 @@ var opt = {
 		scripts: pth.scripts.input,
 		reload: pth.html.output + '**/*.html'
 	}, //watch ----------------
+	luscious: {
+		overwrite: false,
+	},
 	styles: {
 		outputDev: {
 			errLogToConsole: true,
@@ -298,7 +325,8 @@ g.task('compile', [
 	'scripts',
 	'pug',
 	'images',
-	'fonts'
+	'fonts',
+	'fontawesome'
 ]);
 
 
@@ -353,6 +381,34 @@ g.task('cms', function(callback) {
 // ------------------------------------
 // Individual Tasks
 // ------------------------------------
+
+
+/**
+ * Get's Luscious from node_modules and adds it to the project's dependencies.
+ * Brings in Luscious Scaffold to the SASS directory
+ * @task  {styles}
+ * @group {Main}
+ * @order {3}
+ */
+g.task('luscious', () => {
+	// Core
+	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
+		overwrite: opt.luscious.overwrite,
+		preserveTimestamps: true
+	}, err => {
+		if (err) return console.error(err)
+	})
+
+	// Scaffold
+	fs.copy(pth.luscious.scaffold.input, pth.luscious.scaffold.output, {
+		overwrite: false,
+		preserveTimestamps: true
+	}, err => {
+		if (err) return console.error(err)
+	})
+
+})
+
 
 /**
  * Compiles SASS into CSS |
@@ -539,6 +595,18 @@ g.task('clean:html', function() {
  */
 g.task('fonts', function() {
 	return g.src(pth.fonts.input)
+		.pipe(g.dest(pth.fonts.output));
+});
+
+
+/**
+ * Copies fonts to from the font-awesome node_modules to ./build
+ * @task  {fontawesome}
+ * @group {Main}
+ * @order {7}
+ */
+g.task('fontawesome', function() {
+	return g.src(pth.fonts.fontawesome)
 		.pipe(g.dest(pth.fonts.output));
 });
 

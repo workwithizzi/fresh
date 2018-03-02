@@ -14,34 +14,34 @@ const fs = require('fs-extra')
 // ------------------------------------
 
 // Luscious Sass
-var luscious = {
-	src: './node_modules/luscious-sass',
-	dest: './dependencies/luscious-sass',
-	overwrite: false
-}
-
-var scaffold = {
-	src: luscious.src + '/scaffold',
-	dest: './src/sass'
-}
+// var luscious = {
+// 	src: './node_modules/luscious-sass',
+// 	dest: './dependencies/luscious-sass',
+// 	overwrite: false
+// }
+//
+// var scaffold = {
+// 	src: luscious.src + '/scaffold',
+// 	dest: './src/sass'
+// }
 
 // Normalize CSS/SASS
-var normalize = {
-	src: './node_modules/normalize.css/normalize.css',
-	dest: './dependencies/normalize_sass/_normalize.scss',
-	overwrite: true,
-	// CSS version
-	css: {
-		dest: './dependencies/normalize_sass/normalize.css'
-	}
-}
+// var normalize = {
+// 	src: './node_modules/normalize.css/normalize.css',
+// 	dest: './dependencies/normalize_sass/_normalize.scss',
+// 	overwrite: true,
+// 	// CSS version
+// 	css: {
+// 		dest: './dependencies/normalize_sass/normalize.css'
+// 	}
+// }
 
 // Font Awesome
-var fontAwesome = {
-	src: './node_modules/font-awesome',
-	dest: './src/fonts',
-	overwrite: true
-}
+// var fontAwesome = {
+// 	src: './node_modules/font-awesome',
+// 	dest: './src/fonts',
+// 	overwrite: true
+// }
 
 
 // ------------------------------------
@@ -49,20 +49,20 @@ var fontAwesome = {
 // ------------------------------------
 
 // Core
-fs.copy(luscious.src, luscious.dest, {
-	overwrite: luscious.overwrite,
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
-
-// Scaffold
-fs.copy(scaffold.src, scaffold.dest, {
-	overwrite: false, // TODO: figure out how to overwrite only on initial install
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
+// fs.copy(luscious.src, luscious.dest, {
+// 	overwrite: luscious.overwrite,
+// 	preserveTimestamps: true
+// }, err => {
+// 	if (err) return console.error(err)
+// })
+//
+// // Scaffold
+// fs.copy(scaffold.src, scaffold.dest, {
+// 	overwrite: false, // TODO: figure out how to overwrite only on initial install
+// 	preserveTimestamps: true
+// }, err => {
+// 	if (err) return console.error(err)
+// })
 
 
 // ------------------------------------
@@ -70,20 +70,20 @@ fs.copy(scaffold.src, scaffold.dest, {
 // ------------------------------------
 
 // Create SASS Version
-fs.copy(normalize.src, normalize.dest, {
-	overwrite: normalize.overwrite,
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
-
-// Copy CSS Version
-fs.copy(normalize.src, normalize.css.dest, {
-	overwrite: normalize.overwrite,
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
+// fs.copy(normalize.src, normalize.dest, {
+// 	overwrite: normalize.overwrite,
+// 	preserveTimestamps: true
+// }, err => {
+// 	if (err) return console.error(err)
+// })
+//
+// // Copy CSS Version
+// fs.copy(normalize.src, normalize.css.dest, {
+// 	overwrite: normalize.overwrite,
+// 	preserveTimestamps: true
+// }, err => {
+// 	if (err) return console.error(err)
+// })
 
 
 
@@ -92,9 +92,9 @@ fs.copy(normalize.src, normalize.css.dest, {
 // ------------------------------------
 
 // Core
-fs.copy(fontAwesome.src + '/fonts', fontAwesome.dest, {
-	overwrite: fontAwesome.overwrite,
-	preserveTimestamps: true
-}, err => {
-	if (err) return console.error(err)
-})
+// fs.copy(fontAwesome.src + '/fonts', fontAwesome.dest, {
+// 	overwrite: fontAwesome.overwrite,
+// 	preserveTimestamps: true
+// }, err => {
+// 	if (err) return console.error(err)
+// })
