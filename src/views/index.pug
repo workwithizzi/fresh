@@ -1,17 +1,29 @@
-//- Home
+//- Site Home Page
+//- -----------------------------------------------------------------
 
-extends partials/_base
+extends /partials/_base
+
+block title
+	title !{PGHOME.meta.title} | !{PGHOME.title}
+
+block vars
+	//- 'bodyClass' is optional. Remove this var if you don't
+	//- want to output a bodyclass.
+	- var bodyClass = 'page--home';
 
 block content
 
-	h1 WooooHoooo!
+	//- Feel free to remove everything below this
+	//- and start doing your own thing.
+
+	h1 #{SITE.project}!
+		//- If you're not using gulp-data, You can remove these variables
+
+	h2.
+		A modern way to create responsive, accessible, and maintainable front-end web projects.
 
 	p.
-		Welcome to #{project}!
-	//- If you're not using gulp-data, This variable will not render.
-
-	h2 What's involved?
-	// @@ img(src='images/npm-logo.png', alt='Gulp Logo') @@
+		Built using Pug, SASS (with Luscious), and Javascript. Compiled with Gulp and pulled together with Yarn.
 
 	img(src='images/gulp.svg', alt='Gulp Logo')
 
@@ -20,3 +32,10 @@ block content
 	img(src='images/pug.svg', alt='Pug Logo')
 
 	img(src='images/yarn.svg', alt='Yarn Logo')
+
+	hr
+
+	h2.
+		Here's some filler content to use for testing
+
+	include /partials/demo/_test-content

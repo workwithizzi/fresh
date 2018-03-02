@@ -1,0 +1,80 @@
+// Luscious
+// @since v0.0.1
+//
+// Mixin for background image
+//
+// sass-lint:disable no-css-comments
+// ===================================================================
+
+
+// @link http://www.w3schools.com/css/css_background.asp
+// @link http://www.w3schools.com/cssref/css3_pr_background-size.asp
+
+// -------------------------------------
+
+// # Background Image Mixin/Placeholder
+//
+// Simple mixin that can be used when you want to make an image
+// fill it's parent container. Also has a placeholder version.
+//
+// @example SCSS
+//   .element {
+//     @include bg-image;
+//   }
+//
+//   // CSS Output
+//   .element {
+//     background-repeat: no-repeat;
+//     background-attachment: fixed;
+//     background-position: center center;
+//     background-size: cover;
+//   }
+//
+
+@mixin __info_bg_image {
+	@debug "[INFO]
+	The `bg_image` mixin creates a background-image in an element.
+	Type  : Included Mixin
+	Params:
+	- $attachment: Optional. Defaults to `fixed`.
+	-              Will also accept: scroll, local, initial, and inherit.
+	Outputs:
+	- background-repeat: no-repeat;
+	- background-attachment: $attachment;
+	- background-position: center center;
+	- background-size: cover;
+	Alias:  none.
+	";
+}
+
+
+@mixin bg_image($attachment: fixed) {
+	@if $attachment == "info" {
+		@include __info_bg_image;
+	}
+	@else {
+		background-repeat: no-repeat;
+		background-attachment: $attachment;
+		background-position: center center;
+		background-size: cover;
+	}
+}
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_bg_image {
+	@if $output_test_message { @debug "[TESTING] `bg_image`"; }
+	/* `bg_image` ----------------------- */
+	/*
+	.test.bg_image {
+		@include bg_image;
+	}
+	*/
+	.test.bg_image {
+		@include bg_image;
+	}
+	/* End `bg_image` ------------------- */
+}

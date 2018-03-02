@@ -1,6 +1,6 @@
 {
 	"name": "fresh",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"description": "A starter kit for static or cms based websites. Built with Yarn, Gulp, Pug, and SASS.",
 	"repository": "https://gitlab.com/ignitecreative/cookbook/fresh",
 	"author": "Yisrael Grimes <yisrael@ignitehere.com>",
@@ -13,7 +13,7 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "node install.js"
+		"install": "node install.js && gulp normalize:css"
 	},
 	"devDependencies": {
 		"archy": "^1.0.0",
@@ -36,6 +36,7 @@
 		"gulp-imagemin": "^4.0.0",
 		"gulp-jshint": "^2.0.4",
 		"gulp-map": "^0.0.2",
+		"gulp-merge-json": "^1.2.1",
 		"gulp-pug": "^3.3.0",
 		"gulp-pug-beautify": "^0.0.1",
 		"gulp-pug-lint": "^0.1.6",
@@ -49,8 +50,10 @@
 		"gulp-useref": "^3.1.3",
 		"jshint": "^2.9.5",
 		"jshint-stylish-ex": "^0.2.0",
+		"jstransformer-markdown-it": "^2.0.0",
 		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.3",
 		"normalize.css": "^8.0.0",
+		"path": "^0.12.7",
 		"run-sequence": "^2.2.0"
 	}
 }

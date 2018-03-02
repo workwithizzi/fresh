@@ -1,0 +1,117 @@
+// Luscious
+// @since v0.0.2
+//
+// Clearfix mixin used to clear floats
+//
+// sass-lint:disable no-css-comments
+// ===================================================================
+
+// # Clearfix Placeholder
+//
+// The clearfix hack generates pseudo-elements and sets their
+// display to table. The :before element pseudo-element prevents
+// top-margin collapse. The :after pseudo-element is used to clear
+// the floats. As a result, there is no need to hide any generated
+// content and the total amount of code needed is reduced.
+//
+// @author Nicolas Gallagher
+// @link http://nicolasgallagher.com/micro-clearfix-hack/
+// @link https://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+
+@mixin __info_clearfix {
+	@debug "[INFO]
+	Add the `clearfix` mixin to any element that contains floated elements.
+	More Info: `https://goo.gl/uJGpG`
+	Type  : Included Mixin
+	Params:
+	- $tip : Optional. Defaults to outputting a helpful message.
+	-        Pass `quiet` to turn it off.
+	Alias: %clearfix placeholder";
+}
+
+
+// Mixin
+@mixin clearfix($info: null) {
+	@if $info { @include __info_clearfix; }
+
+	@else {
+		*zoom: 1;
+		&:before,
+		&:after {
+			content: '';
+			display: table;
+		}
+		&:after { clear: both; }
+	}
+}
+
+// -------------------------------------
+
+// Placeholder
+%clearfix {
+	@include clearfix;
+}
+
+// -------------------------------------------------------------------
+// Utility Class
+// -------------------------------------------------------------------
+
+// Global Utility Class Prefix
+$utility_class_prefix: 'u_' !default;
+
+@mixin __info_clearfix_utility_class {
+	@debug "[INFO]
+	The `clearfix_utility_class` mixin creates a utility
+	class for clearfix (`.#{$utility_class_prefix}clearfix`)
+	";
+}
+
+@mixin clearfix_utility_class($info: null) {
+	@if $info {
+		@include __info_clearfix_utility_class;
+	}
+		@else {
+		.#{$utility_class_prefix}clearfix {
+			@extend %clearfix;
+		}
+	}
+}
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_clearfix {
+	@if $output_test_message { @debug "[TESTING] `clearfix`"; }
+	/* `clearfix` ----------------------- */
+	/*
+	.test.clearfix {
+		@include clearfix;
+	}
+	*/
+	.test.clearfix {
+		@include clearfix;
+	}
+	/*
+	.test.clearfix_placeholder {
+		@extend %clearfix;
+	}
+	*/
+	.test.clearfix_placeholder {
+		@extend %clearfix;
+	}
+	/* End `clearfix` ------------------- */
+}
+
+
+@mixin __test_clearfix_utility_class {
+	@if $output_test_message { @debug "[TESTING] `clearfix_utility_class`"; }
+	/* `clearfix_utility_class` --------- */
+	/*
+	@include clearfix_utility_class;
+	*/
+	@include clearfix_utility_class;
+	/* End `clearfix_utility_class` ----- */
+}

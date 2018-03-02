@@ -2,7 +2,7 @@
 
 ---
 
-**v3.0.1**
+**v3.0.3**
 
 # Fresh Starter Kit
 
@@ -118,6 +118,8 @@ Running `gulp deploy` will, by default, copy everything from `./build` to be pub
 ---
 
 ## Changelog
+- v3.0.3
+	- 
 - v3.0.2
 	- Removed `main.sass` starter file.
 	- Merged the Gulpy repo into Fresh

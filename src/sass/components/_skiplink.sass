@@ -1,0 +1,35 @@
+// "Skip Navigation" for Accessibility
+//
+// Used for screen readers and keyboard-only users
+// sass-lint:disable no-ids
+// ------------------------------------------------------------------
+
+// @see: http://webaim.org/techniques/skipnav/#maincontent
+// @see: http://webaim.org/techniques/css/invisiblecontent/
+
+.c-skiplink
+	background: transparent
+	border: darken(red, 5%)
+	color: #ffffff
+	display: inline-block
+	left: -101%
+	list-style: none
+	opacity: 1
+	padding: 0.8rem
+	line-height: 1
+	font-size: 18px
+	pointer-events: none
+	position: fixed
+	text-decoration: underline
+	top: 0
+	transition: left 1s ease-out, background 1s linear
+	z-index: 99999
+	text-transform: capitalize
+
+.c-skiplink:focus, .c-skiplink:active
+	color: #ffffff
+	background-color: darken(red, 5%)
+	transition: left .5s ease-in-out, background .2s linear
+	opacity: 1
+	top: 0
+	left: 0
