@@ -1,7 +1,9 @@
-//- Contains the html that is reused on almost every page
+//- Contains the html that is reused on most pages
+//- -----------------------------------------------------------------
+
 doctype html
 
-html
+html.no-js(lang='en')
 
 	block head
 		head
@@ -10,25 +12,45 @@ html
 			meta(name='viewport', content='width=device-width,initial-scale=1')
 
 			block title
+				title #{SITE.meta.title}
 
-				title Fresh Starter
+			meta(name='description', content=SITE.meta.description)
+			meta(name='keywords', content=SITE.meta.keywords)
+			link(rel='apple-touch-icon', href='apple-touch-icon.png')
 
-			//- link(rel='apple-touch-icon', href='apple-touch-icon.png')
-			//- // Place favicon.ico in the root directory
-
-			// build:css css/main.min.css
-			//- link(rel='stylesheet', href='css/normalize.css')
-			link(rel='stylesheet', href='css/main.css')
+			// build:css /css/main.min.css
+			block styles
+				link(rel='stylesheet', href='/css/normalize.css')
+				link(rel='stylesheet', href='/css/main.css')
 			// endbuild
 
-	body
+			//- Import Font Awesome from CDN instead of local
+			//- link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
 
-		block content
-		//- Page content goes here
+	block vars
+	body(class=bodyClass)
+
+		//- Skips to #main
+		include _skiplink
+
+		//- Site Nav
+		include _nav
+
+		//- '#main' Used for Skiplink
+		main#main(role='main')
+
+			block content
+			//- Page content goes here
 
 
-	block bottom
+	block bottom-scripts-link
+		//- Jquery from CDN. To use locally jquery, remove this script and uncomment the one in the 'scripts-local' section below.
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
 
-		//build:js js/main.min.js
-		script(src='js/main.js')
-		// endbuild
+	// build:js /js/main.min.js
+	block bottom-scripts-local
+		//- Jquery local
+		//- script(src='js/vendors/jquery-3.2.1.min.js')
+
+		script(src='/js/nav.js')
+	// endbuild

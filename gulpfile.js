@@ -1,20 +1,64 @@
 // Fresh
-// @since v3.0.2
+// @since v3.0.3
 //
 // ------------------------------------------------------------------
 
 // ------------------------------------
-// Tasks
+// Task Runners
 // ------------------------------------
-// - styles
-// - styles:lint
-// - scripts
-// - scripts:lint
-// - scripts:beautify
-// - production (sets environment to production)
 // - Runners
 //   - default
+//     - compile
+//     - normalize:css
+//     - serve
 //   - build
+//     - compile
+//     - concat
+//     - tree
+//   - compile
+//     - styles
+//     - scripts
+//     - pug
+//     - images
+//     - fonts
+//   - clean
+//     - images:clean:cache -- Removes image cache
+//     - clean:build -- Removes './build' directory
+//   - cms -- Prepares a static, production-ready site, to use in a php-based CMS.
+//     - convert:404
+//     - convert:html
+//       - convert:html:start
+//     - convert:css
+//     - touch:index
+//     - tree
+
+// ------------------------------------
+// Individual Tasks
+// ------------------------------------
+// - styles -- Compiles SASS into CSS
+// - styles:lint -- Lints SASS even if linting is off in config
+// - normalize:css -- Copies normalize.css from ./dependencies to ./build
+// - scripts -- Copies JS from ./src to ./build
+// - scripts:lint -- Lints JS even if linting is off in config
+// - scripts:beautify -- Makes minifies JS pretty and readible
+// - pug -- Compiles Pug into HTML
+// - data -- Compiles data from json files into data.json to be used by 'gulp pug'
+// - pug:lint -- Lints Pug even if linting is off in config
+// - html2pug -- Converts HTML files to Pug
+// - clean:html -- Deletes HTML files from ./src
+// - fonts -- Copies fonts to from ./src to ./build
+// - fontawesome -- Copies fonts to from the font-awesome node_modules to ./build
+// - clean: build -- Deletes ./build directory
+// - production -- Sets environment to Production.
+// - images -- Copies, optimizes, & caches images from ./src to ./build directory
+// - images:clean:cache -- Clears out the image cache created with 'gulp images'
+// - serve -- Starts BrowserSync Server on localhost
+// - help -- Prints info about each gulp task to the CLI
+// - tree -- Prints file tree of the ./build directory to the CLI
+// - todo -- Creates a 'todo.md' file based on configured tags
+// - todo:clean -- Removes the 'todo.md' file created with 'gulp todo'
+// - concat -- Concats CSS & JS
+// - concat:help -- Prints usage info about 'gulp concat'
 
 
 // ------------------------------------
@@ -43,12 +87,15 @@ var uglify = require('gulp-uglify');
 var beautify = require('gulp-beautify');
 // Scipts & Styles
 var sourcemaps = require('gulp-sourcemaps');
-// Views- Pug
+// Views - Pug
 var html2pug = require('gulp-html2pug');
 var prettyPug = require('gulp-pug-beautify');
 var puglint = require('gulp-pug-lint');
 var pug = require('gulp-pug');
+// Views - Pug Data
 var data = require('gulp-data');
+var path = require('path');
+var merge = require('gulp-merge-json');
 // Views
 var htmlmin = require('gulp-htmlmin');
 // Images
@@ -71,17 +118,39 @@ var base = {
 	build: './build' // Processed Code for staging/distribution
 }
 
+
 var pth = {
 	srcD: base.src,
 	buildD: base.build,
+	luscious: {
+		core: {
+			input: './node_modules/luscious-sass',
+			output: './dependencies/luscious-sass'
+		},
+		scaffold: {
+			input: './node_modules/luscious-sass/scaffold',
+			output: base.src + '/sass'
+		}
+	},
 	styles: {
 		input: base.src + '/sass/**/*.{scss,sass}',
+		output: base.build + '/css'
+	},
+	normalize: {
+		// cssInput: './dependencies/normalize_sass/normalize.css',
+		cssInput: './node_modules/normalize.css/normalize.css',
 		output: base.build + '/css'
 	},
 	scripts: {
 		input: base.src + '/js/**/*.js',
 		output: base.build + '/js',
 		beautifyOutput: base.src + '/js'
+	},
+	data: {
+		input: base.src + '/views/data/**/*.json',
+		output: base.src + '/views',
+		fileName: 'data.json',
+		file: base.src + '/views/data.json'
 	},
 	pug: {
 		input: base.src + '/views/**/*.pug',
@@ -99,7 +168,8 @@ var pth = {
 	},
 	fonts: {
 		input: base.src + '/fonts/**/*',
-		output: base.build + '/fonts/'
+		output: base.build + '/fonts/',
+		fontawesome: './node_modules/font-awesome/fonts/**/*'
 	},
 	images: {
 		dir: base.src + '/images/',
@@ -137,11 +207,15 @@ var opt = {
 		tunnel: false // external tunnel (example.tunnel.me).
 	}, //browserSync ----------------
 	watch: {
+		data: pth.data.input,
 		views: pth.pug.input,
 		styles: pth.styles.input,
 		scripts: pth.scripts.input,
 		reload: pth.html.output + '**/*.html'
 	}, //watch ----------------
+	luscious: {
+		overwrite: false,
+	},
 	styles: {
 		outputDev: {
 			errLogToConsole: true,
@@ -174,13 +248,15 @@ var opt = {
 	}, //scripts ----------------
 	pug: {
 		useData: true,
-		dataPath: pth.srcD + '/views/data.json',
+		// dataPath: pth.srcD + '/views/data.json',
 		lint: true,
 		outputDev: {
-			pretty: '	'
+			pretty: '	',
+			basedir: './src/views'
 		},
 		outputPro: {
-			pretty: ''
+			pretty: '',
+			basedir: './src/views'
 		},
 		prettyPug: {
 			omit_empty_lines: true,
@@ -214,7 +290,7 @@ var opt = {
 
 
 // ------------------------------------
-// Combined Tasks
+// Task Runners
 // ------------------------------------
 
 /**
@@ -223,7 +299,9 @@ var opt = {
  * @group {Main}
  * @order {1}
  */
-g.task('default', ['compile', 'serve']);
+g.task('default', function(callback) {
+	runSequence('compile', 'normalize:css', ['serve'], callback)
+});
 
 
 /**
@@ -237,7 +315,8 @@ g.task('compile', [
 	'scripts',
 	'pug',
 	'images',
-	'fonts'
+	'fonts',
+	'fontawesome'
 ]);
 
 
@@ -293,12 +372,45 @@ g.task('cms', function(callback) {
 // Individual Tasks
 // ------------------------------------
 
+
+/**
+ * Copies Luscious from node_modules and adds it to the project's dependencies.
+ * @task  {luscious}
+ * @group {Main}
+ * @order {3}
+ */
+g.task('luscious', () => {
+	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
+		overwrite: opt.luscious.overwrite,
+		preserveTimestamps: true
+	}, err => {
+		if (err) return console.error(err)
+	})
+})
+
+
+/**
+ * Copies Luscious-Scaffold to the SASS directory
+ * @task  {scaffold}
+ * @group {Main}
+ * @order {4}
+ */
+g.task('scaffold', () => {
+	fs.copy(pth.luscious.scaffold.input, pth.luscious.scaffold.output, {
+		overwrite: false,
+		preserveTimestamps: true
+	}, err => {
+		if (err) return console.error(err)
+	})
+})
+
+
 /**
  * Compiles SASS into CSS |
  * Auto-prefixes based on configs |
  * Creates sourcemaps in dev environment |
  * Options:
- *   Lints SASS, 
+ *   Lints SASS,
  *   Outputs CSS style based on dev/production environment
  * @task  {styles}
  * @group {Main}
@@ -327,6 +439,17 @@ g.task('styles:lint', function() {
 	return g.src(pth.styles.input)
 		.pipe(sassLint(opt.styles.linterOpts))
 		.pipe(sassLint.format())
+});
+
+
+/**
+ * Copies normalize.css from ./dependencies to ./build
+ * @task  {normalize.css}
+ * @group {Utilities}
+ */
+g.task('normalize:css', function() {
+	return g.src(pth.normalize.cssInput)
+		.pipe(g.dest(pth.normalize.output));
 });
 
 
@@ -387,15 +510,39 @@ g.task('scripts:beautify', function() {
  * @group {Main}
  * @order {4}
  */
-g.task('pug', function() {
+g.task('pug', ['data'], function() {
 	return g.src([pth.pug.input, '!' + pth.pug.partials])
 		.pipe(gulpif(opt.pug.useData, data(function(file) {
-			return JSON.parse(fs.readFileSync(opt.pug.dataPath));
+			return JSON.parse(fs.readFileSync(pth.data.file));
 		})))
 		.pipe(gulpif(opt.pug.lint, puglint()))
 		.pipe(env.development(pug(opt.pug.outputDev)))
 		.pipe(env.production(pug(opt.pug.outputPro)))
 		.pipe(g.dest(pth.pug.output));
+});
+
+
+/**
+ * Gets data from the json data files and compiles them into data.json to be used by `gulp pug`
+ * @task  {data}
+ * @group {Main}
+ * @order {5}
+ */
+g.task('data', function() {
+	return g.src(pth.data.input)
+		.pipe(merge({
+			fileName: pth.data.fileName,
+			edit: (json, file) => {
+				// Extract the filename and strip the extension
+				var filename = path.basename(file.path),
+					primaryKey = filename.replace(path.extname(filename), '');
+				// Set the filename as the primary key for our JSON data
+				var data = {};
+				data[primaryKey.toUpperCase()] = json;
+				return data;
+			}
+		}))
+		.pipe(g.dest(pth.data.output));
 });
 
 
@@ -443,6 +590,18 @@ g.task('clean:html', function() {
  */
 g.task('fonts', function() {
 	return g.src(pth.fonts.input)
+		.pipe(g.dest(pth.fonts.output));
+});
+
+
+/**
+ * Copies fonts to from the font-awesome node_modules to ./build
+ * @task  {fontawesome}
+ * @group {Main}
+ * @order {7}
+ */
+g.task('fontawesome', function() {
+	return g.src(pth.fonts.fontawesome)
 		.pipe(g.dest(pth.fonts.output));
 });
 
@@ -518,6 +677,7 @@ g.task('serve', function() {
 	if (opt.watch.styles) { g.watch(opt.watch.styles, ['styles']); }
 	if (opt.watch.scripts) { g.watch(opt.watch.scripts, ['scripts']); }
 	if (opt.watch.views) { g.watch(opt.watch.views, ['pug']); }
+	if (opt.watch.data) { g.watch(opt.watch.data, ['pug']); }
 	if (opt.watch.reload) {
 		g.watch(opt.watch.reload).on('change', browserSync.reload);
 	}

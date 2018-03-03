@@ -1,0 +1,83 @@
+// Luscious
+// @since v0.0.1
+//
+// Helper Mixins for font maps, function for font weights maps, utility classes
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+// Info for font_weight function
+@mixin __info_font_weight {
+	@debug "[INFO]
+	The `font_weight` function is used to make it easier to get the
+	font-weight keys form the map `$font_weights`.
+	Params:
+	- $key: A key from the map
+	Alias : `fw`
+	Type  : Function
+	";
+}
+
+
+// Function to get font weights from map
+// 2DO-LUS: Fix error handling for unavailable keys
+@function font_weight($key) {
+	@return map_get_check($font_weights, $key);
+}
+// Alias
+@function fw($key) {
+	@return font_weight($key);
+}
+
+// -------------------------------------
+
+// Font Weights
+
+@mixin __info_font_weights_utility_classes {
+	@debug "[INFO]
+	The `font_weights_utility_classes` mixin makes it so that
+	you can output font-weight utility classes from
+	anywhere in the project. Weights are determined by the
+	map `$font_weights` in `settings/fonts`.
+	You can also turn on utility classes from `settings/utility_classes`.
+	Type   : Standalone Mixin
+	Params : none
+	";
+}
+
+@mixin font_weights_utility_classes($info: null) {
+	@if $info {
+		@include __info_font_weights_utility_classes;
+	}
+	@else {
+		@if variable-exists(font_weights) {
+			@each $key, $value in $font_weights {
+				.#{$utility_class_prefix}font_#{$key} { font-weight: fw($key); }
+			}
+		} @else {
+			@warn "The map `$font_weights` isn’t defined or isn't found.";
+		}
+	}
+}
+
+// Output Utility Classes from Luscious Config
+@if index($utility_classes, font_weights) {
+	@include font_weights_utility_classes;
+}
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_font_weights_utility_classes {
+	@if $output_test_message { @debug "[TESTING] `font_weights_utility_classes`"; }
+	/* `font_weights_utility_classes` ---------- */
+	/*
+	@include font_weights_utility_classes;
+	*/
+	@include font_weights_utility_classes;
+	/* End `font_weights_utility_classes` ------ */
+}

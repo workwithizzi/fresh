@@ -2,7 +2,7 @@
 
 ---
 
-**v3.0.1**
+**v3.0.3**
 
 # Fresh Starter Kit
 
@@ -117,7 +117,26 @@ Running `gulp deploy` will, by default, copy everything from `./build` to be pub
 
 ---
 
+
+## TODO
+- Add modernizr for png fallback for svgs and JS detection.
+- Break up test/filler content into smaller partials for easier testing.
+
 ## Changelog
+- v3.0.3
+	- Updated Gulp tasks.
+		- Added Run-Sequence to `gulp default` task so that gulp finishes before browser window loads.
+		- Added Gulp-data to merge multiple data files into a single file for use with Pug.
+		- Added data files to `gulp watch`.
+		- Added `gulp normalize:css` task.
+		- Added `basedir` option to pug task so that the `basedir` is set to `./src/views`.
+		- Moved install.js scripts to a gulp task as `gulp luscious` and `gulp scaffold`.
+		- Added `gulp fontawesome` task to move fonts from `node_modules` to `./build`.
+	- Added basic navigation to Pug and JS. SASS styles are added through Luscious.
+	- Added skiplink to Pug and JS. SASS styles are added through Luscious.
+	- Added filler content as a Pug partial.
+	- Optimized svgs included in Fresh.
+	
 - v3.0.2
 	- Removed `main.sass` starter file.
 	- Merged the Gulpy repo into Fresh
