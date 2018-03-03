@@ -2,10 +2,15 @@
 //- -----------------------------------------------------------------
 
 nav.c-nav.js-nav(role="navigation")
-	.c-nav__toggle
+	.l-nav__toggle
+		//- .nav__toggle#js-toggle-menu(aria-expanded="false" aria-controls="main-menu")
 		button.nav__toggle#js-toggle-menu(type="button" aria-expanded="false" aria-controls="main-menu")
-			span.u_visuallyhidden Menu
-			i.fa.fa-bars(aria-hidden="true")
+			.nav__toggle--open
+				span.u_visuallyhidden Open Menu
+				i.fa.fa-bars(aria-hidden="true")
+			.nav__toggle--close
+				span.u_visuallyhidden Close Menu
+				i.fa.fa-times(aria-hidden="true")
 
 	ul#main-menu
 		each item in NAV.menu

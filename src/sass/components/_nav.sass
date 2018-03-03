@@ -5,23 +5,55 @@
 // ------------------------------------------------------------------
 
 
-.c-nav
-
-	ul a
-		background: #03A9F4
-		+h(padding, 1rem)
-
+// ------------------------------------
+// Nav-specific Utilities
 // ------------------------------------
 
-// Mixin Alias
+// Breakpoint Mixin Alias
 @mixin nav-bp
 	+bp(xs)
 		@content
 
+// Navigation Height
 $nav-height: 5rem
 
+
+// ------------------------------------
+// Responsive Nav Stuff
 // ------------------------------------
 
+// Show button below breakpoint
+.l-nav__toggle
+	display: inline
+	+nav-bp
+		display: none
+
+// Show Open button until button is clicked
+.nav__toggle--open
+	display: inline
+	.is-active &
+		display: none
+
+// Show Close button when Open button is clicked
+.nav__toggle--close
+	display: none
+	.is-active &
+		display: inline
+
+// Hide menu below breakpoint
+.c-nav ul
+	display: none
+	+nav-bp
+		display: inline
+
+// Show menu when button is clicked
+.c-nav.is-active ul
+	display: inline
+
+
+// ------------------------------------
+// Navigation Styling
+// ------------------------------------
 
 .c-nav
 	height: $nav-height
@@ -31,72 +63,17 @@ $nav-height: 5rem
 		display: inline-block
 
 	ul a
-		text-decoration: none
-		line-height: $nav-height
-		color: $cl_nav
+		+h(padding, 1rem)
 		display: block
+		line-height: $nav-height
+		text-decoration: none
+		color: $cl_nav
+		transition: $base_animation
+		&:hover
+			background: darken($cl_nav_bg, 5%)
 
 .nav__toggle
+	padding: 0 1.8rem
+	line-height: $nav_height
+	color: $cl_nav
 	background: transparent
-
-+nav-bp
-	.c-nav__toggle
-		display: none
-
-
-// .c-nav
-//
-// 	ul > li
-// 		display: inline-block
-//
-// 	ul a
-// 		text-decoration: none
-// 		// display: block
-//
-
-
-
-
-// 	.nav__toggle
-// 		font-size: 2.4rem
-// 		padding: 2rem
-// 		color: $cl_nav
-// 		background: $cl_nav_bg
-//
-// 	ul
-// 		padding-top: 2rem
-// 		// background: $cl_nav_bg
-// 		list-style-type: none
-// 		display: none
-//
-// 		a
-// 			display: block
-// 			line-height: 3rem
-// 			padding-left: 5rem
-// 			padding-right: 2rem
-// 			color: $cl_nav
-// 			text-decoration: none
-// 			transition: $base_transition
-// 			&:hover
-// 				color: $cl_nav_hover
-// 				transition: $base_transition
-//
-//
-// // When .nav__toggle is clicked
-// .c-nav.is-active
-// 	background-color: $cl_nav_bg
-// 	transition: $base_transition
-//
-// 	.logo--nav, ul
-// 		display: inherit
-// 		transition: $base_transition
-//
-// // For larger screen sizes
-// +above-nav-bp
-// 	.c-nav
-// 		background-color: $cl_nav_bg
-// 		transition: $base_transition
-//
-// 		.logo--nav, ul
-// 			display: inherit
-// 			transition: $base_transition

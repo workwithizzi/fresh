@@ -21,10 +21,11 @@
 # Updating Luscious
 
 - [x] Add settings variables for accessibility
-- [ ] Add skiplink to scaffold
-- [ ] Add basic nav to scaffold
+- [x] Add skiplink to scaffold
+- [x] Add basic nav to scaffold
 - [ ] Add Font Files for Font-awesome to Luscious. Maybe add a task to import them into the src directory?
 - [ ] Add Font Files for Font-awesome to Luscious.
 - [ ] Maybe add font-awesome from npm instead of integrated directly in luscious
 - [ ] Figure out bug with Hamburgers
 - [x] Updated docs for scaffold directories
+- [x] Add default animation settings
