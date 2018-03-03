@@ -135,11 +135,13 @@ var pth = {
 	luscious: {
 		core: {
 			input: './node_modules/luscious-sass',
-			output: './dependencies/luscious-sass'
+			// output: './dependencies/luscious-sass'
+			output: './test-deps/luscious-sass'
 		},
 		scaffold: {
 			input: './node_modules/luscious-sass/scaffold',
-			output: base.src + '/sass'
+			// output: base.src + '/sass'
+			output: './test-src/sass'
 		}
 	},
 	styles: {
@@ -392,6 +394,13 @@ g.task('cms', function(callback) {
  */
 g.task('luscious', () => {
 	// Core
+	// fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
+	// 	overwrite: opt.luscious.overwrite,
+	// 	preserveTimestamps: true
+	// }, err => {
+	// 	if (err) return console.error(err)
+	// })
+
 	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
 		overwrite: opt.luscious.overwrite,
 		preserveTimestamps: true
