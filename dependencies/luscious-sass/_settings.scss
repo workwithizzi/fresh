@@ -1,21 +1,23 @@
 // Luscious
-// @since v0.0.2
+// @since v0.0.4
 //
 // Luscious Settings
 // ===================================================================
 
 // Contents
-//  1. Developement
-//  2. Base
-//  3. Colors
-//  4. Font Stacks
-//  5. Breakpoints
-//  6. Z-index Map
-//  7. Asset Paths
-//  8. Icons
-//  9. Grid
-// 10. Buttons
-// 11. Hamburger Menus
+// 1. Developement
+// 2. Base
+// 3. Colors
+// 4. Animation
+// 5. Font Stacks
+// 6. Breakpoints
+// 7. Z-index Map
+// 8. Asset Paths
+// 9. Icons
+// 10. Grid
+// 11. Buttons
+// 12. Accessibility
+// 13. Hamburger Menus
 
 // -------------------------------------------------------------------
 
@@ -68,8 +70,22 @@ $cl_nav_active : $cl_secondary                !default;
 $cl_nav_hover  : darken($cl_nav, 15% )        !default;
 
 
+// ------------------------------------
+// 4. Animation
+// ------------------------------------
+
+// Default Timing Function
+$base_timing: ease-in-out !default;
+
+// Default Delay Time
+$base_delay: 250ms !default;
+
+// Default Animation Combined
+$base_animation: all $base_delay $base_timing !default;
+
+
 // -------------------------------------
-// 4. Font Stacks
+// 5. Font Stacks
 // -------------------------------------
 // Sans-Serif Font Stack
 $font_stack_sans: ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif,) !default;
@@ -94,7 +110,7 @@ $font_stack_code: $font_stack_mono !default;
 
 
 // -------------------------------------
-// 5. Breakpoints
+// 6. Breakpoints
 // -------------------------------------
 $breakpoints: (
 	xs : 37.437em, // 599px
@@ -106,7 +122,7 @@ $breakpoints: (
 
 
 // -------------------------------------
-// 6. Z-index Map
+// 7. Z-index Map
 // -------------------------------------
 $z_index: (
 	nosebleed    : 9999,
@@ -123,7 +139,7 @@ $z_index: (
 
 
 // -------------------------------------
-// 7. Asset Paths
+// 8. Asset Paths
 // -------------------------------------
 // Path to the root images & fonts folders
 $img_base_path: '../images' !default;
@@ -131,7 +147,7 @@ $font_base_path: '../fonts' !default;
 
 
 // -------------------------------------
-// 8. Icons
+// 9. Icons
 // -------------------------------------
 // Font-Awesome
 $fa-font-path:        $font_base_path  !default;
@@ -144,7 +160,7 @@ $fa-li-width:         (30em / 14)      !default;
 
 
 // -------------------------------------
-// 9. Grid
+// 10. Grid
 // -------------------------------------
 $susy: (
 	gutter-position: after,
@@ -158,7 +174,7 @@ $susy: (
 
 
 // -------------------------------------
-// 10. Buttons
+// 11. Buttons
 // -------------------------------------
 // Decide if buttons are solid or hollow by defualt
 $button_fill: solid !default;
@@ -218,8 +234,18 @@ $button_styles: (
 ) !default;
 
 
+// ------------------------------------
+// 12. Accessibility
+// ------------------------------------
+// Colors
+$a11y_attention: darken(red, 5%)                  !default;
+$a11y_light: #ffffff                              !default;
+// Z-index
+$a11y_zindex: map-get($z_index, nosebleed) + 1000 !default;
+
+
 // -------------------------------------
-// 11. Hamburger Menus
+// 13. Hamburger Menus
 // -------------------------------------
 // Sizes (in rem)
 $burger-padding-x                       : 1.5rem !default;
