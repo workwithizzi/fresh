@@ -118,16 +118,6 @@ var base = {
 	build: './build' // Processed Code for staging/distribution
 }
 
-var luscious = {
-	src: './node_modules/luscious-sass',
-	dest: './dependencies/luscious-sass',
-	overwrite: false
-}
-
-var scaffold = {
-	src: luscious.src + '/scaffold',
-	dest: './src/sass'
-}
 
 var pth = {
 	srcD: base.src,
@@ -135,13 +125,11 @@ var pth = {
 	luscious: {
 		core: {
 			input: './node_modules/luscious-sass',
-			// output: './dependencies/luscious-sass'
-			output: './test-deps/luscious-sass'
+			output: './dependencies/luscious-sass'
 		},
 		scaffold: {
 			input: './node_modules/luscious-sass/scaffold',
-			// output: base.src + '/sass'
-			output: './test-src/sass'
+			output: base.src + '/sass'
 		}
 	},
 	styles: {
@@ -386,36 +374,34 @@ g.task('cms', function(callback) {
 
 
 /**
- * Get's Luscious from node_modules and adds it to the project's dependencies.
- * Brings in Luscious Scaffold to the SASS directory
- * @task  {styles}
+ * Copies Luscious from node_modules and adds it to the project's dependencies.
+ * @task  {luscious}
  * @group {Main}
  * @order {3}
  */
 g.task('luscious', () => {
-	// Core
-	// fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
-	// 	overwrite: opt.luscious.overwrite,
-	// 	preserveTimestamps: true
-	// }, err => {
-	// 	if (err) return console.error(err)
-	// })
-
 	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
 		overwrite: opt.luscious.overwrite,
 		preserveTimestamps: true
 	}, err => {
 		if (err) return console.error(err)
 	})
+})
 
-	// Scaffold
+
+/**
+ * Copies Luscious-Scaffold to the SASS directory
+ * @task  {scaffold}
+ * @group {Main}
+ * @order {4}
+ */
+g.task('scaffold', () => {
 	fs.copy(pth.luscious.scaffold.input, pth.luscious.scaffold.output, {
 		overwrite: false,
 		preserveTimestamps: true
 	}, err => {
 		if (err) return console.error(err)
 	})
-
 })
 
 
