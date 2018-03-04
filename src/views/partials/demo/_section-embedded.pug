@@ -1,0 +1,92 @@
+//- HTML5 Content used for testing basic elements
+//- Embedded Content Section
+//- -----------------------------------------------------------------
+
+section#embedded
+	header
+		h1 Embedded content
+	article#embedded__images
+		header
+			h2 Images
+		div
+			h3
+				| No
+				code <figure>
+				|  element
+			p
+				img(src="http://placekitten.com/480/480" alt="Image alt text")
+			h3
+				| Wrapped in a
+				code <figure>
+				|  element, no
+				code <figcaption>
+			figure
+				img(src="http://placekitten.com/420/420" alt="Image alt text")
+			h3
+				| Wrapped in a
+				code <figure>
+				|  element, with a
+				code <figcaption>
+			figure
+				img(src="http://placekitten.com/420/420" alt="Image alt text")
+				figcaption Here is a caption for this image.
+		footer
+			p
+				a(href="#top") [Top]
+	article#embedded__audio
+		header
+			h2 Audio
+		div
+			audio(controls="") audio
+		footer
+			p
+				a(href="#top") [Top]
+	article#embedded__video
+		header
+			h2 Video
+		div
+			video(controls="") video
+		footer
+			p
+				a(href="#top") [Top]
+	article#embedded__canvas
+		header
+			h2 Canvas
+		div
+			canvas canvas
+		footer
+			p
+				a(href="#top") [Top]
+	article#embedded__meter
+		header
+			h2 Meter
+		div
+			meter(value="2" min="0" max="10") 2 out of 10
+		footer
+			p
+				a(href="#top") [Top]
+	article#embedded__progress
+		header
+			h2 Progress
+		div
+			progress progress
+		footer
+			p
+				a(href="#top") [Top]
+	article#embedded__svg
+		header
+			h2 Inline SVG
+		div
+			svg(width="100px" height="100px")
+				circle(cx="100" cy="100" r="100" fill="#1fa3ec")
+		footer
+			p
+				a(href="#top") [Top]
+	article#embedded__iframe
+		header
+			h2 IFrame
+		div
+			iframe(src="index.html" height="300")
+		footer
+			p
+				a(href="#top") [Top]

@@ -1,0 +1,133 @@
+//- HTML5 Content used for testing basic elements
+//- Forms Section
+//- -----------------------------------------------------------------
+
+section#forms
+	header
+		h1 Form elements
+	form
+		fieldset#forms__input
+			legend Input fields
+			p
+				label(for="input__text") Text Input
+				input#input__text(type="text" placeholder="Text Input")
+			p
+				label(for="input__password") Password
+				input#input__password(type="password" placeholder="Type your Password")
+			p
+				label(for="input__webaddress") Web Address
+				input#input__webaddress(type="url" placeholder="http://yoursite.com")
+			p
+				label(for="input__emailaddress") Email Address
+				input#input__emailaddress(type="email" placeholder="name@email.com")
+			p
+				label(for="input__phone") Phone Number
+				input#input__phone(type="tel" placeholder="(999) 999-9999")
+			p
+				label(for="input__search") Search
+				input#input__search(type="search" placeholder="Enter Search Term")
+			p
+				label(for="input__text2") Number Input
+				input#input__text2(type="number" placeholder="Enter a Number")
+			p
+				label.error(for="input__text3") Error
+				input#input__text3.is-error(type="text" placeholder="Text Input")
+			p
+				label.valid(for="input__text4") Valid
+				input#input__text4.is-valid(type="text" placeholder="Text Input")
+		p
+			a(href="#top") [Top]
+		fieldset#forms__select
+			legend Select menus
+			p
+				label(for="select") Select
+				select#select
+					optgroup(label="Option Group")
+						option Option One
+						option Option Two
+						option Option Three
+		p
+			a(href="#top") [Top]
+		fieldset#forms__checkbox
+			legend Checkboxes
+			ul.list.list--bare
+				li
+					label(for="checkbox1")
+						input#checkbox1(name="checkbox" type="checkbox" checked="checked")
+						|  Choice A
+				li
+					label(for="checkbox2")
+						input#checkbox2(name="checkbox" type="checkbox")
+						|  Choice B
+				li
+					label(for="checkbox3")
+						input#checkbox3(name="checkbox" type="checkbox")
+						|  Choice C
+		p
+			a(href="#top") [Top]
+		fieldset#forms__radio
+			legend Radio buttons
+			ul.list.list--bare
+				li
+					label(for="radio1")
+						input#radio1.radio(name="radio" type="radio" checked="checked")
+						|  Option 1
+				li
+					label(for="radio2")
+						input#radio2.radio(name="radio" type="radio")
+						|  Option 2
+				li
+					label(for="radio3")
+						input#radio3.radio(name="radio" type="radio")
+						|  Option 3
+		p
+			a(href="#top") [Top]
+		fieldset#forms__textareas
+			legend Textareas
+			p
+				label(for="textarea") Textarea
+				textarea#textarea(rows="8" cols="48" placeholder="Enter your message here")
+		p
+			a(href="#top") [Top]
+		fieldset#forms__html5
+			legend HTML5 inputs
+			p
+				label(for="ic") Color input
+				input#ic(type="color" value="#000000")
+			p
+				label(for="in") Number input
+				input#in(type="number" min="0" max="10" value="5")
+			p
+				label(for="ir") Range input
+				input#ir(type="range" value="10")
+			p
+				label(for="idd") Date input
+				input#idd(type="date" value="1970-01-01")
+			p
+				label(for="idm") Month input
+				input#idm(type="month" value="1970-01")
+			p
+				label(for="idw") Week input
+				input#idw(type="week" value="1970-W01")
+			p
+				label(for="idt") Datetime input
+				input#idt(type="datetime" value="1970-01-01T00:00:00Z")
+			p
+				label(for="idtl") Datetime-local input
+				input#idtl(type="datetime-local" value="1970-01-01T00:00")
+		p
+			a(href="#top") [Top]
+		fieldset#forms__action
+			legend Action buttons
+			p
+				input(type="submit" value="<input type=submit>")
+				input(type="button" value="<input type=button>")
+				input(type="reset" value="<input type=reset>")
+				input(type="submit" value="<input disabled>" disabled="")
+			p
+				button(type="submit") <button type=submit>
+				button(type="button") <button type=button>
+				button(type="reset") <button type=reset>
+				button(type="button" disabled="") <button disabled>
+		p
+			a(href="#top") [Top]

@@ -2,7 +2,7 @@
 
 ---
 
-**v3.0.3**
+**v3.0.4**
 
 # Fresh Starter Kit
 
@@ -123,6 +123,9 @@ Running `gulp deploy` will, by default, copy everything from `./build` to be pub
 - Break up test/filler content into smaller partials for easier testing.
 
 ## Changelog
+- v3.0.4
+	- Updated Luscious dependency to v0.0.5.
+	- Separated Pug dummy content into slightly smaller section files.
 - v3.0.3
 	- Updated Gulp tasks.
 		- Added Run-Sequence to `gulp default` task so that gulp finishes before browser window loads.
