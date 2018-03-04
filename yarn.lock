@@ -4118,9 +4118,9 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
-"luscious-sass@https://github.com/yisraelgrimes/luscious-sass#v0.0.3":
-  version "0.0.3"
-  resolved "https://github.com/yisraelgrimes/luscious-sass#606a49946c370fa0c6a629649638c635cc56b3a1"
+"luscious-sass@https://github.com/yisraelgrimes/luscious-sass#v0.0.4":
+  version "0.0.4"
+  resolved "https://github.com/yisraelgrimes/luscious-sass#2061ba8f2e07e6f9db5fad86c3094810d2256465"
 
 macaddress@^0.2.8:
   version "0.2.8"
