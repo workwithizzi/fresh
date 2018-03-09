@@ -1,5 +1,5 @@
 // Fresh
-// @since v3.0.3
+// @since v3.0.5
 //
 // ------------------------------------------------------------------
 
@@ -35,6 +35,7 @@
 // ------------------------------------
 // Individual Tasks
 // ------------------------------------
+// - initial:help -- Gives user info on initial project setup.
 // - styles -- Compiles SASS into CSS
 // - styles:lint -- Lints SASS even if linting is off in config
 // - normalize:css -- Copies normalize.css from ./dependencies to ./build
@@ -403,6 +404,16 @@ g.task('scaffold', () => {
 		if (err) return console.error(err)
 	})
 })
+
+
+/**
+ * Gives user info on initial project setup.
+ * @task  {initial:help}
+ * @group {Utilities}
+ */
+g.task('initial:help', () => {
+	console.log('If you\'re installing Fresh for the first time with this project and want to use Luscious with your SASS, run `gulp scaffold` to set up some basic SASS files to get you started.')
+});
 
 
 /**
@@ -840,4 +851,61 @@ g.task('convert:css', function() {
 // goo.gl/nGvcyC
 g.task('touch:index', function() {
 	fs.closeSync(fs.openSync(pth.buildD + '/index.html', 'w'));
+});
+
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
+g.task('pug', ['data'], function() {
+	return g.src([pth.pug.input, '!' + pth.pug.partials])
+		.pipe(gulpif(opt.pug.useData, data(function(file) {
+			return JSON.parse(fs.readFileSync(pth.data.file));
+		})))
+		.pipe(gulpif(opt.pug.lint, puglint()))
+		.pipe(env.development(pug(opt.pug.outputDev)))
+		.pipe(env.production(pug(opt.pug.outputPro)))
+		.pipe(g.dest(pth.pug.output));
+});
+
+
+var metalsmith = require('gulp-metalsmith');
+// var metalsmith = require('metalsmith');
+var markdown = require('metalsmith-markdown');
+var layouts = require('metalsmith-layouts');
+
+
+g.task('ms', function() {
+	// g.src(['./src/views/**/*.jade', './src/content/**/*.md']).pipe(metalsmith({
+	return g.src('./src/**').pipe(metalsmith({
+		// Metalsmith's root directory, for example for locating templates, defaults to CWD
+		root: __dirname,
+		// Files to exclude from the build
+		ignore: ['src/*.tmp'],
+		// Parsing frontmatter, defaults to true
+		frontmatter: true,
+		// Metalsmith plugins to use:
+		use: [
+			markdown(),
+			// layouts({ engine: 'jade' })
+		],
+		// Initial Metalsmith metadata, defaults to {}
+		metadata: {
+			site_title: 'Sample static site'
+		},
+		// List of JSON files that contain page definitions
+		// true means "all JSON files", see the section below
+		// json: ['src/pages.json']
+	}));
+
+	// .pipe(g.dest('build'));
+});
+
+
+
+g.task('metalsmith', function() {
+	return g.src(['./src/views/**/*.pug', './src/content/**/*.md'])
+		.pipe(metalsmith())
+		.pipe(g.dest('build'));
 });
