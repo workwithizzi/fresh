@@ -1,0 +1,37 @@
+// Base styles for html and body
+// <html> : yis.li/html-html
+// *      : yis.li/html-wildcard
+// <body> : yis.li/html-body
+// ------------------------------------------------------------------
+
+// 1. Correct the line height in all browsers.
+// 2. Prevent adjustments of font size after orientation changes in iOS.
+
+html
+	line-height: $base_line_height  /* 1 */
+	-webkit-text-size-adjust: 100%  /* 2 */
+	font-size: $root_font_size
+	height: 100%
+	margin: 0
+	padding: 0
+	// Use border-box for everything
+	box-sizing: border-box
+
+
+// ----------------
+// Wildcard
+
+*,
+*:before,
+*:after
+	box-sizing: inherit
+
+
+// ----------------
+// Body
+// 1. Remove the margin in all browsers.
+
+body
+	margin: 0
+	padding: 0
+	height: 100%
