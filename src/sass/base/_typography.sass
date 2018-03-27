@@ -1,19 +1,35 @@
-// Global Typography Styles
+// Base Typography Styles
 //
-// Import fonts/set up defaults/create type mixins/etc.
+// <pre>        : yis.li/html-pre
+// <blockquote> : yis.li/html-blockquote
+// <ul>         : yis.li/html-ul
+// <li>         : yis.li/html-li
+// <p>          : yis.li/html-p
+// <h1> - <h6>  : yis.li/html-h
+// abbr[title]  : yis.li/html-abbr-title
+// <b>          : yis.li/html-b
+// <strong>     : yis.li/html-strong
+// <code>       : yis.li/html-code
+// <kbd>        : yis.li/html-kbd
+// <samp>       : yis.li/html-samp
+// <small>      : yis.li/html-small
+// <sub>        : yis.li/html-sub
+// <sup>        : yis.li/html-sup
 // ------------------------------------------------------------------
 
 
 body
 	font-size: $base_font_size
 
-// 1. Correct the inheritance and scaling of font size in all browsers.
-// 2. Correct the odd `em` font sizing in all browsers.
+// ----------------
+
 pre
-	font-family: monospace, monospace  /* 1 */
-	font-size: 1em                     /* 2 */
+	// 1. Correct the inheritance and scaling of font size in all browsers.
+	font-family: monospace, monospace
+	// 2. Correct the odd `em` font sizing in all browsers.
+	font-size: 1em
 
-
+// ----------------
 
 // Reset basic typography elements
 h2,
@@ -28,62 +44,71 @@ blockquote
 	margin: 0
 	padding: 0
 
+// ----------------
 
-// 1. Correct the font size and margin on `h1` elements within `section` and
-// `article` contexts in Chrome, Firefox, and Safari.
 h1
+	// 1. Correct the font size and margin on `h1` elements within `section`
+	// and `article` contexts in Chrome, Firefox, and Safari.
 	font-size: 2em
 	margin: 0.67em 0
 	padding: 0
 
+// ----------------
 
-// Text-level semantics
-// ------------------------------------------------------------------
-
-// Remove the gray background on active links in IE 10.
 a
+	// Remove the gray background on active links in IE 10.
 	background-color: transparent
 
+// ----------------
 
-// 1. Remove the bottom border in Chrome 57-
-// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
 abbr[title]
-	border-bottom: none                /* 1 */
-	text-decoration: underline         /* 2 */
-	text-decoration: underline dotted  /* 2 */
+	// 1. Remove the bottom border in Chrome 57-
+	border-bottom: none
+	// 2. Add the correct text decoration in
+	// Chrome, Edge, IE, Opera, and Safari. ---
+	text-decoration: underline
+	text-decoration: underline dotted
 
+// ----------------
 
-// Add the correct font weight in Chrome, Edge, and Safari.
 b,
 strong
+	// Add the correct font weight in Chrome, Edge, and Safari.
 	font-weight: bolder
 
+// ----------------
 
-// 1. Correct the inheritance and scaling of font size in all browsers.
-// 2. Correct the odd `em` font sizing in all browsers.
 code,
 kbd,
 samp
+	// 1. Correct the inheritance and scaling of font size in all browsers.
 	font-family: monospace, monospace  /* 1 */
+	// 2. Correct the odd `em` font sizing in all browsers.
 	font-size: 1em                     /* 2 */
 
+// ----------------
 
-// Add the correct font size in all browsers.
 small
+	// 1. Add the correct font size in all browsers.
 	font-size: 80%
 
+// ----------------
 
-// Prevent `sub` and `sup` elements from affecting the line height in
-// all browsers.
 sub,
 sup
 	font-size: 75%
+	// Prevent `sub` and `sup` elements from affecting
+	// the line height in all browsers.
 	line-height: 0
 	position: relative
 	vertical-align: baseline
 
+// ----------------
+
 sub
 	bottom: -0.25em
+
+// ----------------
 
 sup
 	top: -0.5em
