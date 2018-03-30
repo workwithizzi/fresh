@@ -3,9 +3,7 @@
 // ------------------------------------------------------------------
 
 
-// ------------------------------------
-// Button Reset
-// ------------------------------------
+// 2DO-YG: REVIEW: Opinionated Reset
 button
 	border: 0
 	border-radius: 0
@@ -17,51 +15,50 @@ button
 	&:focus
 		outline: none
 
+// ----------------
 
-// 1. Change the font styles in all browsers.
-// 2. Remove the margin in Firefox and Safari.
 button
-	font-family: inherit  /* 1 */
-	font-size: 100%       /* 1 */
-	line-height: 1.15     /* 1 */
-	margin: 0             /* 2 */
-
-// 1. Show the overflow in Edge.
-button
+	// Remove the margin in Firefox and Safari.
+	margin: 0
+	// Change the font styles in all browsers. ---
+	font-family: inherit
+	font-size: 100%
+	line-height: $base_line_height
+	// Show the overflow in Edge.
 	overflow: visible
-
-// Remove the inheritance of text transform in Edge, Firefox, and IE.
-// 1. Remove the inheritance of text transform in Firefox.
-button
+	// Remove the inheritance of text transform in Edge, Firefox, and IE.
 	text-transform: none
 
-// Correct the inability to style clickable types in iOS and Safari.
+// ----------------
+
+button,
+// Prevent a WebKit bug where (2) destroys native
+// `audio` and `video` controls in Android 4.
+html [type="button"],
+[type="reset"],
+[type="submit"]
+	// Correct the inability to style clickable types in iOS and Safari.
+	-webkit-appearance: button
+
+// ----------------
+
 button,
 [type="button"],
 [type="reset"],
 [type="submit"]
-	-webkit-appearance: button
+	// Remove the inner border and padding in Firefox.
+	&::-moz-focus-inner
+		border-style: none
+		padding: 0
 
+	// Restore the focus styles unset by the previous rule.
+	&:-moz-focusring
+		outline: 1px dotted ButtonText
 
-// Remove the inner border and padding in Firefox.
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner
-	border-style: none
-	padding: 0
+// ----------------
 
-
-// Restore the focus styles unset by the previous rule.
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring
-	outline: 1px dotted ButtonText
-
-
-// 1. Correct the inability to style clickable types in iOS and Safari.
-// 2. Change font properties to `inherit` in Safari.
 ::-webkit-file-upload-button
-	-webkit-appearance: button  /* 1 */
-	font: inherit               /* 2 */
+	// Correct the inability to style clickable types in iOS and Safari.
+	-webkit-appearance: button
+	// Change font properties to `inherit` in Safari.
+	font: inherit

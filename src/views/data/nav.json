@@ -3,14 +3,14 @@
 		"title": "Home",
 		"path": "./"
 	}, {
-		"title": "About",
-		"path": "./"
+		"title": "Text",
+		"path": "#text"
 	}, {
-		"title": "Work",
-		"path": "./"
+		"title": "Embedded",
+		"path": "#embedded"
 	}, {
-		"title": "Contact",
-		"path": "./"
+		"title": "Forms",
+		"path": "#forms"
 	}, {
 		"title": "External",
 		"path": "https://www.google.com/"

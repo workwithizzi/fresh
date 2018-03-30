@@ -17,14 +17,15 @@
 // <sup>        : yis.li/html-sup
 // <dd>         : yis.li/html-dd
 // <ol>         : yis.li/html-ol
+// <dfn>        : yis.li/html-dfn
 // ------------------------------------------------------------------
 
 html
 	font-family: $font_stack_body
 	font-size: $root_font_size
-	// 1. Correct the line height in all browsers.
+	// Correct the line height in all browsers.
 	line-height: $base_line_height
-	// 2. Prevent adjustments of font size after orientation changes in iOS.
+	// Prevent adjustments of font size after orientation changes in iOS.
 	-webkit-text-size-adjust: 100%
 	-ms-text-size-adjust: 100%
 
@@ -34,9 +35,9 @@ body
 // ----------------
 
 pre
-	// 1. Correct the inheritance and scaling of font size in all browsers.
+	// Correct the inheritance and scaling of font size in all browsers.
 	font-family: monospace, monospace
-	// 2. Correct the odd `em` font sizing in all browsers.
+	// Correct the odd `em` font sizing in all browsers.
 	font-size: 1em
 
 // ----------------
@@ -72,11 +73,13 @@ h1
 a
 	// Remove the gray background on active links in IE 10.
 	background-color: transparent
+	// Remove gaps in links underline in iOS 8+ and Safari 8+.
+	-webkit-text-decoration-skip: objects
 
 // ----------------
 
 abbr[title]
-	// Remove the bottom border in Chrome 57-
+	// Remove the bottom border in Chrome 57- and Firefox 39-.
 	border-bottom: none
 	// Add the correct text decoration in
 	// Chrome, Edge, IE, Opera, and Safari. ---
@@ -102,8 +105,21 @@ samp
 
 // ----------------
 
+dfn
+	// Add the correct font style in Android 4.3-.
+	font-style: italic
+
+// ----------------
+
+mark
+	// Add the correct background and color in IE 9-.
+	background-color: $cl_highlight
+	color: $cl_body
+
+// ----------------
+
 small
-	// 1. Add the correct font size in all browsers.
+	// Add the correct font size in all browsers.
 	font-size: 80%
 
 // ----------------
@@ -112,7 +128,7 @@ sub,
 sup
 	font-size: 75%
 	// Prevent `sub` and `sup` elements from affecting
-	// the line height in all browsers.
+	// the line height in all browsers. ---
 	line-height: 0
 	position: relative
 	vertical-align: baseline
@@ -132,13 +148,11 @@ sup
 // Turn off margins on nested lists.
 ol,
 ul
+	padding: 0 0 0 $indent-amount
+
 	ol,
 	ul
 		margin: 0
 
 dd
 	margin: 0 0 0 $indent-amount
-
-ol,
-ul
-	padding: 0 0 0 $indent-amount

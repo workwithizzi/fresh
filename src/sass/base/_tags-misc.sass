@@ -1,26 +1,33 @@
 // Miscellaneous HTML5 Tags
 //
 // <hr>       : yis.li/html-hr
+// <canvas>   : yis.li/html-canvas
 // <template> : yis.li/html-template
 // [hidden]   : yis.li/html-hidden
 // ------------------------------------------------------------------
 
 
 hr
-	// 2. Show the overflow in Edge and IE.
+	// Show the overflow in Edge and IE.
 	overflow: visible
-	// 1. Add the correct box sizing in Firefox. ---
+	// Add the correct box sizing in Firefox. ---
 	box-sizing: content-box
 	height: 0
 
 // ----------------
 
+canvas
+	// Add the correct display in IE 9-.
+	display: inline-block
+
+// ----------------
+
 template
-	// 1. Add the correct display in IE 10+.
+	// Add the correct display in IE 10+.
 	display: none
 
 // ----------------
 
 [hidden]
-	// 1. Add the correct display in IE 10.
+	// Add the correct display in IE 10.
 	display: none

@@ -7,6 +7,8 @@
 // <video>      : yis.li/html-video
 // <figure>     : yis.li/html-figure
 // <figcaption> : yis.li/html-figcaption
+// <svg>        : yis.li/html-svg
+// <audio>      : yis.li/html-audio
 // ------------------------------------------------------------------
 
 
@@ -25,7 +27,32 @@ video
 
 // ----------------
 
+audio,
+video
+	// Add the correct display in IE 9-.
+	display: inline-block
+
+// ----------------
+
+audio:not([controls])
+	// Add the correct display in iOS 4-7.
+	display: none
+	height: 0
+
+// ----------------
+
+svg:not(:root)
+	// Hide the overflow in IE.
+	overflow: hidden
+
+// ----------------
+
 figcaption,
 figure
 	// Add the correct display in IE 9-.
 	display: block
+
+
+// Add the correct margin in IE 8.
+figure
+	margin: 1em $indent-amount

@@ -10,11 +10,11 @@
 // <progress>        : yis.li/html-progress
 // <details>         : yis.li/html-details
 // <summary>         : yis.li/html-summary
+// <menu>            : yis.li/html-menu
 // [type="checkbox"] : yis.li/html-type-checkbox
 // [type="radio"]    : yis.li/html-type-radio
 // [type="number"]   : yis.li/html-type-number
 // [type="search"]   : yis.li/html-type-search
-// Feel free to move these to a 'forms' partial when it's created
 // ------------------------------------------------------------------
 
 
@@ -37,23 +37,23 @@ input,
 optgroup,
 select,
 textarea
-	// 2. Remove the margin in Firefox and Safari.
+	// Remove the margin in Firefox and Safari.
 	margin: 0
-	// 1. Change the font styles in all browsers. ---
+	// Change the font styles in all browsers. ---
 	font-family: inherit
 	font-size: 100%
-	line-height: 1.15
+	line-height: $base_line_height
 
 // ----------------
 
 input
-	// 1. Show the overflow in Edge.
+	// Show the overflow in Edge.
 	overflow: visible
 
 // ----------------
 
 select
-	// 1. Remove the inheritance of text transform in Firefox.
+	// Remove the inheritance of text transform in Firefox.
 	text-transform: none
 
 // ----------------
@@ -65,20 +65,23 @@ fieldset
 // ----------------
 
 legend
-	// 2. Correct the color inheritance from `fieldset` elements in IE.
+	// Correct the color inheritance from `fieldset` elements in IE.
 	color: inherit
-	// 3. Remove the padding so developers are not caught out when
+	// Remove the padding so developers are not caught out when
 	// they zero out `fieldset` elements in all browsers.
 	padding: 0
-	// 1. Correct the text wrapping in Edge and IE. ---
+	// Correct the text wrapping in Edge and IE. ---
 	box-sizing: border-box
 	display: table
 	max-width: 100%
 	white-space: normal
+	// ---
 
 // ----------------
 
 progress
+	// Add the correct display in IE 9-.
+	display: inline-block
 	// Add the correct vertical alignment in Chrome, Firefox, and Opera.
 	vertical-align: baseline
 
@@ -92,34 +95,35 @@ textarea
 
 [type="checkbox"],
 [type="radio"]
-	// 1. Add the correct box sizing in IE 10.
+	// Add the correct box sizing in IE 10.
 	box-sizing: border-box
-	// 2. Remove the padding in IE 10.
+	// Remove the padding in IE 10.
 	padding: 0
 
 // ----------------
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button
-	// Correct the cursor style of increment and decrement buttons in Chrome.
+	// Correct cursor style of increment/decrement buttons in Chrome.
 	height: auto
 
 // ----------------
 
 [type="search"]
-	// 1. Correct the odd appearance in Chrome and Safari.
+	// Correct the odd appearance in Chrome and Safari.
 	-webkit-appearance: textfield
-	// 2. Correct the outline style in Safari.
+	// Correct the outline style in Safari.
 	outline-offset: -2px
 
+	&::-webkit-search-cancel-button,
 	&::-webkit-search-decoration
-		// Remove the inner padding in Chrome and Safari on macOS.
+		// Remove inner padding & cancel buttons in Chrome & Safari on macOS.
 		-webkit-appearance: none
 
 // ----------------
 
 details
-	// Add the correct display in Edge, IE 10+, and Firefox.
+	// Add the correct display in Edge, IE, and Firefox.
 	display: block
 
 // ----------------
@@ -127,3 +131,9 @@ details
 summary
 	// Add the correct display in all browsers.
 	display: list-item
+
+// ----------------
+
+menu
+	// Add the correct display in IE 9-.
+	display: block
