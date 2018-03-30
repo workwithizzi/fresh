@@ -1,17 +1,20 @@
 // Basic media/object tags and opinionated reset
 //
-// <embed>  : yis.li/html-embed
-// <iframe> : yis.li/html-iframe
-// <img>    : yis.li/html-img
-// <object> : yis.li/html-object
-// <video>  : yis.li/html-video
+// <embed>      : yis.li/html-embed
+// <iframe>     : yis.li/html-iframe
+// <img>        : yis.li/html-img
+// <object>     : yis.li/html-object
+// <video>      : yis.li/html-video
+// <figure>     : yis.li/html-figure
+// <figcaption> : yis.li/html-figcaption
 // ------------------------------------------------------------------
 
 
 img
-	// 1. Remove the border on images inside links in IE 10.
+	// Remove the border on images inside links in IE 10.
 	border-style: none
 
+// ----------------
 
 embed,
 iframe,
@@ -19,3 +22,10 @@ img,
 object,
 video
 	max-width: 100%
+
+// ----------------
+
+figcaption,
+figure
+	// Add the correct display in IE 9-.
+	display: block

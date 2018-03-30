@@ -15,8 +15,18 @@
 // <small>      : yis.li/html-small
 // <sub>        : yis.li/html-sub
 // <sup>        : yis.li/html-sup
+// <dd>         : yis.li/html-dd
+// <ol>         : yis.li/html-ol
 // ------------------------------------------------------------------
 
+html
+	font-family: $font_stack_body
+	font-size: $root_font_size
+	// 1. Correct the line height in all browsers.
+	line-height: $base_line_height
+	// 2. Prevent adjustments of font size after orientation changes in iOS.
+	-webkit-text-size-adjust: 100%
+	-ms-text-size-adjust: 100%
 
 body
 	font-size: $base_font_size
@@ -39,15 +49,19 @@ h5,
 h6,
 ul,
 li,
-p,
-blockquote
+p
 	margin: 0
 	padding: 0
 
 // ----------------
 
+// blockquote
+// 	margin: 1 $indent-amount
+
+
+
 h1
-	// 1. Correct the font size and margin on `h1` elements within `section`
+	// Correct the font size and margin on `h1` elements within `section`
 	// and `article` contexts in Chrome, Firefox, and Safari.
 	font-size: 2em
 	margin: 0.67em 0
@@ -62,9 +76,9 @@ a
 // ----------------
 
 abbr[title]
-	// 1. Remove the bottom border in Chrome 57-
+	// Remove the bottom border in Chrome 57-
 	border-bottom: none
-	// 2. Add the correct text decoration in
+	// Add the correct text decoration in
 	// Chrome, Edge, IE, Opera, and Safari. ---
 	text-decoration: underline
 	text-decoration: underline dotted
@@ -81,10 +95,10 @@ strong
 code,
 kbd,
 samp
-	// 1. Correct the inheritance and scaling of font size in all browsers.
-	font-family: monospace, monospace  /* 1 */
-	// 2. Correct the odd `em` font sizing in all browsers.
-	font-size: 1em                     /* 2 */
+	// Correct the inheritance and scaling of font size in all browsers.
+	font-family: monospace, monospace
+	// Correct the odd `em` font sizing in all browsers.
+	font-size: 1em
 
 // ----------------
 
@@ -112,3 +126,19 @@ sub
 
 sup
 	top: -0.5em
+
+// ----------------
+
+// Turn off margins on nested lists.
+ol,
+ul
+	ol,
+	ul
+		margin: 0
+
+dd
+	margin: 0 0 0 $indent-amount
+
+ol,
+ul
+	padding: 0 0 0 $indent-amount
