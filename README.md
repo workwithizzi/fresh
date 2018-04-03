@@ -125,6 +125,7 @@ Running `gulp deploy` will, by default, copy everything from `./build` to be pub
 ## Changelog
 - v3.0.7 *Upcoming*
 	- Moved main navigation data to the `site.json` file.
+	- Removed the `_skiplink.pug` file and placed the skiplink code directly in `_base.pug`.
 - v3.0.6
 	- Hotfix to remove metalsmith tasks/dependencies that were accidentally merged into the production release.
 - v3.0.5
