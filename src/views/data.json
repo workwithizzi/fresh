@@ -1,6 +1,20 @@
 {
-	"NAV": {
-		"menu": [
+	"PGHOME": {
+		"meta": {
+			"title": "Fresh",
+			"keywords": "keywords, pug, sass, gulp, yarn",
+			"description": "This is a site description."
+		},
+		"title": "Home"
+	},
+	"SITE": {
+		"project": "Fresh",
+		"meta": {
+			"title": "Fresh",
+			"keywords": "keywords, pug, sass, gulp, yarn",
+			"description": "This is a site description."
+		},
+		"navMain": [
 			{
 				"title": "Home",
 				"path": "./"
@@ -22,21 +36,5 @@
 				"path": "https://www.google.com/"
 			}
 		]
-	},
-	"PGHOME": {
-		"meta": {
-			"title": "Fresh",
-			"keywords": "keywords, pug, sass, gulp, yarn",
-			"description": "This is a site description."
-		},
-		"title": "Home"
-	},
-	"SITE": {
-		"project": "Fresh",
-		"meta": {
-			"title": "Fresh",
-			"keywords": "keywords, pug, sass, gulp, yarn",
-			"description": "This is a site description."
-		}
 	}
 }
