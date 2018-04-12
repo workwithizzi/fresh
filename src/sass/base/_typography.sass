@@ -23,9 +23,10 @@
 html
 	font-family: $font_stack_body
 	font-size: $root_font_size
-	// Correct the line height in all browsers.
+	// @normalize: Correct the line height in all browsers.
 	line-height: $base_line_height
-	// Prevent adjustments of font size after orientation changes in iOS.
+	// @normalize: Prevent adjustments of font size
+	// after orientation changes in iOS.
 	-webkit-text-size-adjust: 100%
 	-ms-text-size-adjust: 100%
 
@@ -43,6 +44,7 @@ pre
 // ----------------
 
 // Reset basic typography elements
+h1,
 h2,
 h3,
 h4,
@@ -62,11 +64,10 @@ p
 
 
 h1
-	// Correct the font size and margin on `h1` elements within `section`
+	// Correct the font size on <h1> elements within `section`
 	// and `article` contexts in Chrome, Firefox, and Safari.
 	font-size: 2em
-	margin: 0.67em 0
-	padding: 0
+
 
 // ----------------
 
