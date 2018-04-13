@@ -7,19 +7,20 @@
 
 
 html
-	// 2DO: REVIEW
+	// Sets the font-size for the DOM (use % unit)
+	font-size: $document_font_size
+	// Make sure the height covers the window
 	height: 100%
-	margin: 0
-	padding: 0
-	// Use border-box for everything
+	// Use a decent box model on the root element
 	box-sizing: border-box
 
 // ----------------
-// Wildcard
 
+// Make all elements from the DOM inherit from the parent box-sizing
+// Since `*` has a specificity of 0, it does not override the `html` value
 *,
-*:before,
-*:after
+*::before,
+*::after
 	box-sizing: inherit
 
 // ----------------

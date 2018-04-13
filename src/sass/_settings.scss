@@ -35,7 +35,7 @@ $output_dev_color_classes: false !default;
 // -------------------------------------
 // HTML Root Font Size (in percentages)
 // Set's up your $rembase. 62.5% == 10px, 100% == 16px
-$root_font_size: 62.5% !default;
+$document_font_size: 62.5% !default;
 $rembase: 10 !default;
 
 // Baseline Height
@@ -46,7 +46,7 @@ $base_line_height: 1.15 !default;
 $base_font_size: 1.6rem !default;
 
 // The amount lists and blockquotes are indented.
-$indent-amount: 4rem !default;
+$base_indent_amount: 4rem !default;
 
 // -------------------------------------
 // 3. Colors
@@ -99,7 +99,9 @@ $font_stack_serif: ('Georgia', 'Times', 'Times New Roman', serif,) !default;
 // Monospace Font Stack
 $font_stack_mono: ('Courier New', 'Courier', 'Lucida Typewriter', monospace,) !default;
 
+
 // ----------------
+
 // UI Font-Stacks
 $font_stack_heading: (
 	$font_stack_sans,
@@ -110,6 +112,14 @@ $font_stack_body: (
 ) !default;
 
 $font_stack_code: $font_stack_mono !default;
+
+// ----------------
+
+// Font Weight
+$fw_light  : 300 !default;
+$fw_normal : 400 !default;
+$fw_medium : 500 !default;
+$fw_bold   : 700 !default;
 
 
 // -------------------------------------

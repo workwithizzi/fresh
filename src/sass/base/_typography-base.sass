@@ -5,7 +5,6 @@
 // <ul>         : yis.li/html-ul
 // <li>         : yis.li/html-li
 // <p>          : yis.li/html-p
-// <h1> - <h6>  : yis.li/html-h
 // abbr[title]  : yis.li/html-abbr-title
 // <b>          : yis.li/html-b
 // <strong>     : yis.li/html-strong
@@ -21,8 +20,8 @@
 // ------------------------------------------------------------------
 
 html
+	// @normalize: Change the default font family in all browsers (opinionated).
 	font-family: $font_stack_body
-	font-size: $root_font_size
 	// @normalize: Correct the line height in all browsers.
 	line-height: $base_line_height
 	// @normalize: Prevent adjustments of font size
@@ -30,130 +29,103 @@ html
 	-webkit-text-size-adjust: 100%
 	-ms-text-size-adjust: 100%
 
+// ----------------
+
 body
 	font-size: $base_font_size
 
 // ----------------
 
-pre
-	// Correct the inheritance and scaling of font size in all browsers.
-	font-family: monospace, monospace
-	// Correct the odd `em` font sizing in all browsers.
-	font-size: 1em
-
-// ----------------
-
-// Reset basic typography elements
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-li,
-p
-	margin: 0
-	padding: 0
-
-// ----------------
-
-// blockquote
-// 	margin: 1 $indent-amount
-
-
-
-h1
-	// Correct the font size on <h1> elements within `section`
-	// and `article` contexts in Chrome, Firefox, and Safari.
-	font-size: 2em
-
+blockquote
+	margin: 1em $base_indent_amount
+// REVIEW:
 
 // ----------------
 
 a
-	// Remove the gray background on active links in IE 10.
+	// @normalize: Remove the gray background on active links in IE 10.
 	background-color: transparent
-	// Remove gaps in links underline in iOS 8+ and Safari 8+.
+	// @normalize: Remove gaps in links underline in iOS 8+ and Safari 8+.
 	-webkit-text-decoration-skip: objects
+	color: $cl_link
+
+	&:hover
+		color: $cl_link_hover
 
 // ----------------
 
 abbr[title]
-	// Remove the bottom border in Chrome 57- and Firefox 39-.
+	// @normalize: Remove the bottom border in Chrome 57- and Firefox 39-.
 	border-bottom: none
-	// Add the correct text decoration in
+	// @normalize: Add the correct text decoration in
 	// Chrome, Edge, IE, Opera, and Safari. ---
-	text-decoration: underline
 	text-decoration: underline dotted
 
 // ----------------
 
 b,
 strong
-	// Add the correct font weight in Chrome, Edge, and Safari.
-	font-weight: bolder
+	// @normalize: Add the correct font weight in Chrome, Edge, and Safari.
+	font-weight: $fw_bold
 
 // ----------------
 
+pre,
 code,
 kbd,
 samp
-	// Correct the inheritance and scaling of font size in all browsers.
-	font-family: monospace, monospace
-	// Correct the odd `em` font sizing in all browsers.
-	font-size: 1em
+	// @normalize: Correct the inheritance and scaling of font size in all browsers.
+	font-family: $font_stack_code
+	// @normalize: Correct the odd `em` font sizing in all browsers.
+	font-size: $base_font_size
 
 // ----------------
 
 dfn
-	// Add the correct font style in Android 4.3-.
+	// @normalize: Add the correct font style in Android 4.3-.
 	font-style: italic
 
 // ----------------
 
 mark
-	// Add the correct background and color in IE 9-.
+	// @normalize: Add the correct background and color in IE 9-.
 	background-color: $cl_highlight
 	color: $cl_body
 
 // ----------------
 
 small
-	// Add the correct font size in all browsers.
+	// @normalize: Add the correct font size in all browsers.
 	font-size: 80%
 
 // ----------------
 
 sub,
 sup
-	font-size: 75%
-	// Prevent `sub` and `sup` elements from affecting
-	// the line height in all browsers. ---
+	// @normalize: Prevent elements from affecting
+	// the line height in all browsers.
 	line-height: 0
+	font-size: 75%
 	position: relative
 	vertical-align: baseline
-
-// ----------------
 
 sub
 	bottom: -0.25em
 
-// ----------------
-
 sup
 	top: -0.5em
+// REVIEW: Test spacing with 'em' units
 
 // ----------------
 
 // Turn off margins on nested lists.
 ol,
 ul
-	padding: 0 0 0 $indent-amount
+	padding: 0 0 0 $base_indent_amount
 
 	ol,
 	ul
 		margin: 0
 
 dd
-	margin: 0 0 0 $indent-amount
+	margin: 0 0 0 $base_indent_amount

@@ -37,9 +37,9 @@ input,
 optgroup,
 select,
 textarea
-	// Remove the margin in Firefox and Safari.
+	// @normalize: Remove the margin in Firefox and Safari.
 	margin: 0
-	// Change the font styles in all browsers. ---
+	// @normalize: Change the font styles in all browsers. ---
 	font-family: inherit
 	font-size: 100%
 	line-height: $base_line_height
@@ -47,30 +47,37 @@ textarea
 // ----------------
 
 input
-	// Show the overflow in Edge.
+	// @normalize: Show the overflow in Edge.
 	overflow: visible
 
 // ----------------
 
 select
-	// Remove the inheritance of text transform in Firefox.
+	// @normalize: Remove the inheritance of text transform in Firefox.
 	text-transform: none
 
 // ----------------
 
+textarea
+	// @normalize: Remove the default vertical scrollbar in IE 10+.
+	overflow: auto
+
+// ----------------
+
 fieldset
-	// Correct the padding in Firefox.
+	// @normalize: Correct the padding in Firefox.
 	padding: 0.35em 0.75em 0.625em
+	// REVIEW:
 
 // ----------------
 
 legend
-	// Correct the color inheritance from `fieldset` elements in IE.
+	// @normalize: Correct the color inheritance from `fieldset` elements in IE.
 	color: inherit
-	// Remove the padding so developers are not caught out when
+	// @normalize: Remove the padding so developers are not caught out when
 	// they zero out `fieldset` elements in all browsers.
 	padding: 0
-	// Correct the text wrapping in Edge and IE. ---
+	// @normalize: Correct the text wrapping in Edge and IE. ---
 	box-sizing: border-box
 	display: table
 	max-width: 100%
@@ -80,60 +87,54 @@ legend
 // ----------------
 
 progress
-	// Add the correct display in IE 9-.
+	// @normalize: Add the correct display in IE 9-.
 	display: inline-block
-	// Add the correct vertical alignment in Chrome, Firefox, and Opera.
+	// @normalize: Add the correct vertical alignment in Chrome, Firefox, and Opera.
 	vertical-align: baseline
 
 // ----------------
 
-textarea
-	// Remove the default vertical scrollbar in IE 10+.
-	overflow: auto
+details
+	// @normalize: Add the correct display in Edge, IE, and Firefox.
+	display: block
+
+// ----------------
+
+summary
+	// @normalize: Add the correct display in all browsers.
+	display: list-item
+
+// ----------------
+
+menu
+	// @normalize: Add the correct display in IE 9-.
+	display: block
 
 // ----------------
 
 [type="checkbox"],
 [type="radio"]
-	// Add the correct box sizing in IE 10.
+	// @normalize: Add the correct box sizing in IE 10.
 	box-sizing: border-box
-	// Remove the padding in IE 10.
+	// @normalize: Remove the padding in IE 10.
 	padding: 0
 
 // ----------------
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button
-	// Correct cursor style of increment/decrement buttons in Chrome.
+	// @normalize: Correct cursor style of increment/decrement buttons in Chrome.
 	height: auto
 
 // ----------------
 
 [type="search"]
-	// Correct the odd appearance in Chrome and Safari.
+	// @normalize: Correct the odd appearance in Chrome and Safari.
 	-webkit-appearance: textfield
-	// Correct the outline style in Safari.
+	// @normalize: Correct the outline style in Safari.
 	outline-offset: -2px
 
 	&::-webkit-search-cancel-button,
 	&::-webkit-search-decoration
-		// Remove inner padding & cancel buttons in Chrome & Safari on macOS.
+		// @normalize: Remove inner padding & cancel buttons in Chrome & Safari on macOS.
 		-webkit-appearance: none
-
-// ----------------
-
-details
-	// Add the correct display in Edge, IE, and Firefox.
-	display: block
-
-// ----------------
-
-summary
-	// Add the correct display in all browsers.
-	display: list-item
-
-// ----------------
-
-menu
-	// Add the correct display in IE 9-.
-	display: block
