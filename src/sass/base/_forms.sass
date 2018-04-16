@@ -1,20 +1,5 @@
 // Base Forms Styles
 //
-// <input>           : yis.li/html-input
-// <textarea>        : yis.li/html-textarea
-// <button>          : yis.li/html-button
-// <optgroup>        : yis.li/html-optgroup
-// <select>          : yis.li/html-select
-// <fieldset>        : yis.li/html-fieldset
-// <legend>          : yis.li/html-legend
-// <progress>        : yis.li/html-progress
-// <details>         : yis.li/html-details
-// <summary>         : yis.li/html-summary
-// <menu>            : yis.li/html-menu
-// [type="checkbox"] : yis.li/html-type-checkbox
-// [type="radio"]    : yis.li/html-type-radio
-// [type="number"]   : yis.li/html-type-number
-// [type="search"]   : yis.li/html-type-search
 // ------------------------------------------------------------------
 
 
@@ -37,9 +22,9 @@ input,
 optgroup,
 select,
 textarea
-	// @normalize: Remove the margin in Firefox and Safari.
+	// @nrml: Remove the margin in Firefox and Safari.
 	margin: 0
-	// @normalize: Change the font styles in all browsers. ---
+	// @nrml: Change the font styles in all browsers. ---
 	font-family: inherit
 	font-size: 100%
 	line-height: $base_line_height
@@ -47,37 +32,37 @@ textarea
 // ----------------
 
 input
-	// @normalize: Show the overflow in Edge.
+	// @nrml: Show the overflow in Edge.
 	overflow: visible
 
 // ----------------
 
 select
-	// @normalize: Remove the inheritance of text transform in Firefox.
+	// @nrml: Remove the inheritance of text transform in Firefox.
 	text-transform: none
 
 // ----------------
 
 textarea
-	// @normalize: Remove the default vertical scrollbar in IE 10+.
+	// @nrml: Remove the default vertical scrollbar in IE 10+.
 	overflow: auto
 
 // ----------------
 
 fieldset
-	// @normalize: Correct the padding in Firefox.
+	// @nrml: Correct the padding in Firefox.
 	padding: 0.35em 0.75em 0.625em
 	// REVIEW:
 
 // ----------------
 
 legend
-	// @normalize: Correct the color inheritance from `fieldset` elements in IE.
+	// @nrml: Correct the color inheritance from `fieldset` elements in IE.
 	color: inherit
-	// @normalize: Remove the padding so developers are not caught out when
+	// @nrml: Remove the padding so developers are not caught out when
 	// they zero out `fieldset` elements in all browsers.
 	padding: 0
-	// @normalize: Correct the text wrapping in Edge and IE. ---
+	// @nrml: Correct the text wrapping in Edge and IE. ---
 	box-sizing: border-box
 	display: table
 	max-width: 100%
@@ -87,54 +72,55 @@ legend
 // ----------------
 
 progress
-	// @normalize: Add the correct display in IE 9-.
+	// @nrml: Add the correct display in IE 9-.
 	display: inline-block
-	// @normalize: Add the correct vertical alignment in Chrome, Firefox, and Opera.
+	// @nrml: Add the correct vertical alignment in Chrome, Firefox, and Opera.
 	vertical-align: baseline
 
 // ----------------
 
 details
-	// @normalize: Add the correct display in Edge, IE, and Firefox.
+	// @nrml: Add the correct display in Edge, IE, and Firefox.
 	display: block
 
 // ----------------
 
 summary
-	// @normalize: Add the correct display in all browsers.
+	// @nrml: Add the correct display in all browsers.
 	display: list-item
 
 // ----------------
 
 menu
-	// @normalize: Add the correct display in IE 9-.
+	// @nrml: Add the correct display in IE 9-.
 	display: block
 
 // ----------------
 
 [type="checkbox"],
 [type="radio"]
-	// @normalize: Add the correct box sizing in IE 10.
+	// @nrml: Add the correct box sizing in IE 10.
 	box-sizing: border-box
-	// @normalize: Remove the padding in IE 10.
+	// @nrml: Remove the padding in IE 10.
 	padding: 0
 
 // ----------------
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button
-	// @normalize: Correct cursor style of increment/decrement buttons in Chrome.
+	// @nrml: Correct cursor style of increment/decrement buttons in Chrome.
 	height: auto
 
 // ----------------
 
 [type="search"]
-	// @normalize: Correct the odd appearance in Chrome and Safari.
+	// @nrml: Correct the odd appearance in Chrome and Safari.
 	-webkit-appearance: textfield
-	// @normalize: Correct the outline style in Safari.
-	outline-offset: -2px
+	// @nrml: Correct the outline style in Safari.
+	outline-offset: r(-2px)
+	// REVIEW:
 
 	&::-webkit-search-cancel-button,
 	&::-webkit-search-decoration
-		// @normalize: Remove inner padding & cancel buttons in Chrome & Safari on macOS.
+		// @nrml: Remove inner padding & cancel buttons in Chrome & Safari on macOS.
 		-webkit-appearance: none

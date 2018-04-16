@@ -1,0 +1,183 @@
+//- Test Content Page
+//- -----------------------------------------------------------------
+
+extends /partials/_base
+
+block vars
+	- var metaDescription = PGCONTENT.meta.description;
+	- var metaKeywords = PGCONTENT.meta.keywords;
+	//- - var bodyClass = 'page--internal';
+
+block title
+	title !{SITE.meta.title} | !{PGCONTENT.title}
+
+block content
+
+	article
+		header
+			h1 This is The Page Title Element
+
+			p.o-intro.
+				This is an intro paragraph for the page content. It should look similar to the regular paragraphs but maybe just a little set apart. This could be done with a slightly different color or larger text. Maybe a little larger line-height and more top/bottom margin.
+
+		//- -----------------------------------
+		//- Headings and Paragraphs
+		//- -----------------------------------
+		section
+			h2 Here's What the Different Headings Look Like When We Follow With Paragraphs
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are #[a(href='https://goo.gl/gk10Yq') block-level elements].
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are #[a(href='https://goo.gl/gk10Yq') block-level elements].
+
+			h2 This is a Sub-Heading
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from developer.mozilla.org The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements. Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are #[a(href='https://goo.gl/gk10Yq') block-level elements].
+
+			h3 This is a Third Sub-Heading
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are #[a(href='https://goo.gl/gk10Yq') block-level elements].
+
+			h4 This is a Fourth Sub-Heading
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are #[a(href='https://goo.gl/gk10Yq') block-level elements].
+
+			h4 This is a Fourth Sub-Heading
+
+			p.
+				Here's what a regular text paragraph looks like.
+
+			h5 This is a Fifth Sub-Heading
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are #[a(href='https://goo.gl/gk10Yq') block-level elements].
+
+			h6 This is a Sixth Sub-Heading
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are #[a(href='https://goo.gl/gk10Yq') block-level elements].
+
+		//- -----------------------------------
+		//- Blockquotes
+		//- -----------------------------------
+		section
+			h2 Let's look at a Blockquote Styles
+
+			h3 With a cite element
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text.
+
+			blockquote(cite='http://yis.li/html-blockquote')
+				p.
+					The HTML #{'<blockquote>'} Element (or HTML Block Quotation Element) indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation (see #[a(href='http://yis.li/html-blockquote') Notes] for how to change it). A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using the #{'<cite>'} element.
+
+				p: cite - #[a(href='http://yis.li/html-blockquote') Developer.Mozilla]
+
+			h3 Without a cite element
+
+			p.
+				Here's what a regular text paragraph looks like. Let's give it some filler text to make it a little longer. This is from #[a(href='http://yis.li/html-p') developer.mozilla.org] The HTML #{'<p>'} element represents a paragraph of text.
+
+			blockquote(cite='http://yis.li/html-blockquote').
+				The HTML #{'<blockquote>'} Element (or HTML Block Quotation Element) indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation (see #[a(href='http://yis.li/html-blockquote') Notes] for how to change it). A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using the #{'<cite>'} element.
+
+		//- -----------------------------------
+		//- Lists
+		//- -----------------------------------
+		section
+			h2 Lists
+
+			h3 Unordered List
+			ul
+				li List Item 1
+				li List Item 2
+				li List Item 3: The HTML #{'<ul>'} element represents an #[a(href='http://yis.li/html-ul') unordered list] of items, typically rendered as a bulleted list. This is a long list item. It's good for testing line-heights in the list.
+				li List Item 4
+
+			h3 Ordered List
+			ol
+				li List Item 1
+				li List Item 2: The HTML #{'<ol>'} element represents an #[a(href='http://yis.li/html-ol') ordered list] of items, typically rendered as a numbered list. This is a long list item. It's good for testing line-heights in the list.
+				li List Item 3
+				li List Item 4
+
+			h3 Description List
+			dl
+				dt.
+					Basic Description Term
+				dd.
+					The HTML #{'<dl>'} element represents a #[a(href='http://yis.li/html-dl') description list]. The element encloses a list of groups of terms (specified using the #{'<dt>'} element) and descriptions (provided by #{'<dd>'} elements). Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
+
+			dl
+				dt Multiple List Terms
+				dt Another Term
+				dt 3rd Term
+				dd.
+					A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.
+
+			dl
+				dt Multiple List Descriptions
+				dd.
+					The HTML #{'<dl>'} element represents a description list. The element encloses a list of groups of terms (specified using the #{'<dt>'} element) and descriptions (provided by #{'<dd>'} elements).
+				dd.
+					Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
+
+
+		//- -----------------------------------
+		//- Preformatted Text
+		//- -----------------------------------
+		section
+			h2 Preformatted Text
+
+			p.
+				The HTML #{'<pre>'} element represents #[a(href='http://yis.li/html-pre') preformatted text] which is to be presented exactly as written in the HTML file. The text is typically rendered using a non-proportional ("monospace") font. Whitespace inside this element is displayed as written.
+
+			pre: code.
+				/* Some example CSS code */
+
+				body {
+					color:red;
+					padding: 0 2rem;
+				}
+
+		//- -----------------------------------
+		//- Alignment
+		//- -----------------------------------
+		section
+			h2 Text Alignment
+
+			h4 Default Paragraph Alignment
+			p.
+				These alignment classes are not standard html tags but should be accounted for in a design system. This one is the default paragraph alignment. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
+
+			h4 Left Paragraph Alignment
+			p.alignleft.
+				These alignment classes are not standard html tags but should be accounted for in a design system. This one is a paragraph with text aligned-left using the #[code alignleft] class. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
+
+			h4 Right Paragraph Alignment
+			p.alignleft.
+				These alignment classes are not standard html tags but should be accounted for in a design system. This one is a paragraph with text aligned-right using the #[code alignright] class. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
+
+			h4 Center Paragraph Alignment
+			p.aligncenter.
+				These alignment classes are not standard html tags but should be accounted for in a design system. This one is a paragraph with text aligned-center using the #[code aligncenter] class. Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
+
+
+		//- -----------------------------------
+		//- Inline Elements
+		//- -----------------------------------
+		section
+			h2 Inline Elements
+
+			p.
+				This is #[b bold] text which is stylistically different from normal text, without any special importance. Strong is used to indicate #[strong strong importance]. You can use #[i italic] text to offset from the normal text. Or you can use #[em emphasized] text to give something emphasis.
+			p.
+				The #[u u element] is text with an unarticulated, though explicitly rendered, non-textual annotation. #[del This text is deleted] and #[ins This text is inserted]. #[s This text has a strikethrough]. #[small This small text is small for for fine print, etc]. Here is an abbreviation #[abbr(title="HyperText Markup Language") HTML]. #[q(cite='http://yis.li/html-q') This text is a short inline quotation.] #[cite This is a citation.]
+			p.
+				The #[dfn dfn element] indicates a definition. The #[mark mark element] indicates a highlight. The #[var variable element], such as #[var x] = #[var y]. This is #[sup superscript] text and this is #[sub subscript] text. This is a time element: #[time(datetime="2013-04-06T12:32+00:00") 2 weeks ago]. This is code: #[code for (;;) { #{'...'} }]. Finally, this is a #[a(href='#' link) link].

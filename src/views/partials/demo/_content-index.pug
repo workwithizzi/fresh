@@ -1,6 +1,49 @@
 //- HTML5 Content used for testing basic elements
 //- -----------------------------------------------------------------
 
+mixin link(href, name)
+	li: a(href='#' + href)= name
+
+
+nav#top: ul
+	li
+		a(href='#text') Text
+		ul
+			+link('text__headings', 'Headings')
+			+link('text__paragraphs', 'Paragraphs')
+			+link('text__blockquotes', 'Blockquotes')
+			+link('text__lists', 'Lists')
+			+link('text__hr', 'Horizontal rules')
+			+link('text__tables', 'Tabular data')
+			+link('text__code', 'Code')
+			+link('text__inline', 'Inline elements')
+
+	li
+		a(href='#embedded') Embedded
+		ul
+			+link('embedded__images', 'Images')
+			+link('embedded__audio', 'Audio')
+			+link('embedded__video', 'Video')
+			+link('embedded__canvas', 'Canvas')
+			+link('embedded__meter', 'Meter')
+			+link('embedded__progress', 'Progress')
+			+link('embedded__svg', 'Inline SVG')
+			+link('embedded__iframe', 'IFrame')
+
+	li
+		a(href='#forms') Forms
+		ul
+			+link('forms__input', 'Input fields')
+			+link('forms__select', 'Select menus')
+			+link('forms__checkbox', 'Checkboxes')
+			+link('forms__radio', 'Radio buttons')
+			+link('forms__textareas', 'Textareas')
+			+link('forms__textareas', 'Textareas')
+			+link('forms__html5', 'HTML5 inputs')
+			+link('forms__action', 'Action buttons')
+
+hr
+hr
 
 include _section-text
 

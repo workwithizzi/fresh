@@ -3,20 +3,23 @@
 
 extends /partials/_base
 
-block title
-	title !{PGHOME.meta.title} | !{PGHOME.title}
-
 block vars
-	//- 'bodyClass' is optional. Remove this var if you don't
-	//- want to output a bodyclass.
+	- var metaDescription = PGHOME.meta.description;
+	- var metaKeywords = PGHOME.meta.keywords;
 	- var bodyClass = 'page--home';
 
+block title
+	title !{SITE.meta.title} | !{PGHOME.title}
+
 block content
+	//- -----------------------------------
+	//- Page Main Content
+	//- -----------------------------------
 
 	//- Feel free to remove everything below this
 	//- and start doing your own thing.
 
-	h1 #{SITE.project}!
+	h1 #{SITE.meta.title}!
 		//- If you're not using gulp-data, You can remove these variables
 
 	h2.

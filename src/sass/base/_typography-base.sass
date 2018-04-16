@@ -1,30 +1,13 @@
 // Base Typography Styles
 //
-// <pre>        : yis.li/html-pre
-// <blockquote> : yis.li/html-blockquote
-// <ul>         : yis.li/html-ul
-// <li>         : yis.li/html-li
-// <p>          : yis.li/html-p
-// abbr[title]  : yis.li/html-abbr-title
-// <b>          : yis.li/html-b
-// <strong>     : yis.li/html-strong
-// <code>       : yis.li/html-code
-// <kbd>        : yis.li/html-kbd
-// <samp>       : yis.li/html-samp
-// <small>      : yis.li/html-small
-// <sub>        : yis.li/html-sub
-// <sup>        : yis.li/html-sup
-// <dd>         : yis.li/html-dd
-// <ol>         : yis.li/html-ol
-// <dfn>        : yis.li/html-dfn
 // ------------------------------------------------------------------
 
 html
-	// @normalize: Change the default font family in all browsers (opinionated).
+	// @nrml: Change the default font family in all browsers (opinionated).
 	font-family: $font_stack_body
-	// @normalize: Correct the line height in all browsers.
+	// @nrml: Correct the line height in all browsers.
 	line-height: $base_line_height
-	// @normalize: Prevent adjustments of font size
+	// @nrml: Prevent adjustments of font size
 	// after orientation changes in iOS.
 	-webkit-text-size-adjust: 100%
 	-ms-text-size-adjust: 100%
@@ -43,9 +26,9 @@ blockquote
 // ----------------
 
 a
-	// @normalize: Remove the gray background on active links in IE 10.
+	// @nrml: Remove the gray background on active links in IE 10.
 	background-color: transparent
-	// @normalize: Remove gaps in links underline in iOS 8+ and Safari 8+.
+	// @nrml: Remove gaps in links underline in iOS 8+ and Safari 8+.
 	-webkit-text-decoration-skip: objects
 	color: $cl_link
 
@@ -55,9 +38,9 @@ a
 // ----------------
 
 abbr[title]
-	// @normalize: Remove the bottom border in Chrome 57- and Firefox 39-.
+	// @nrml: Remove the bottom border in Chrome 57- and Firefox 39-.
 	border-bottom: none
-	// @normalize: Add the correct text decoration in
+	// @nrml: Add the correct text decoration in
 	// Chrome, Edge, IE, Opera, and Safari. ---
 	text-decoration: underline dotted
 
@@ -65,7 +48,7 @@ abbr[title]
 
 b,
 strong
-	// @normalize: Add the correct font weight in Chrome, Edge, and Safari.
+	// @nrml: Add the correct font weight in Chrome, Edge, and Safari.
 	font-weight: $fw_bold
 
 // ----------------
@@ -74,35 +57,35 @@ pre,
 code,
 kbd,
 samp
-	// @normalize: Correct the inheritance and scaling of font size in all browsers.
+	// @nrml: Correct the inheritance and scaling of font size in all browsers.
 	font-family: $font_stack_code
-	// @normalize: Correct the odd `em` font sizing in all browsers.
+	// @nrml: Correct the odd `em` font sizing in all browsers.
 	font-size: $base_font_size
 
 // ----------------
 
 dfn
-	// @normalize: Add the correct font style in Android 4.3-.
+	// @nrml: Add the correct font style in Android 4.3-.
 	font-style: italic
 
 // ----------------
 
 mark
-	// @normalize: Add the correct background and color in IE 9-.
+	// @nrml: Add the correct background and color in IE 9-.
 	background-color: $cl_highlight
 	color: $cl_body
 
 // ----------------
 
 small
-	// @normalize: Add the correct font size in all browsers.
+	// @nrml: Add the correct font size in all browsers.
 	font-size: 80%
 
 // ----------------
 
 sub,
 sup
-	// @normalize: Prevent elements from affecting
+	// @nrml: Prevent elements from affecting
 	// the line height in all browsers.
 	line-height: 0
 	font-size: 75%
