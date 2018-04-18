@@ -24,13 +24,16 @@
 		@content
 
 
-=info_layout_element($val, $position: 'before')
+=info_layout_element($val, $border: null, $position: 'before')
+	@if $border
+		outline: 1px solid transparentize(red, .1)
 	&::#{$position}
 		content: $val
 		color: transparentize(white, .1)
 		background: transparentize(red, .1)
 		position: absolute
 		@content
+
 
 
 // ------------------------------------
@@ -54,7 +57,11 @@ h6
 
 p
 	+info_text_element('<p>')
+p.o-intro
+	+info_text_element('<p class="o-intro">')
 
+caption
+	+info_text_element('<caption>')
 
 // ------------------------------------
 // Layout Elements
@@ -75,3 +82,11 @@ blockquote
 	+info_layout_element('<blockquote>')
 footer
 	+info_layout_element('<footer>')
+table
+	+info_layout_element('<table>')
+
+// ------------------------------------
+// Media Elements
+// ------------------------------------
+figure
+	+info_layout_element('<figure>')
