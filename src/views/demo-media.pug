@@ -4,16 +4,20 @@
 extends /partials/_base
 
 block vars
-	- var metaDescription = PGCONTENT.meta.description;
-	- var metaKeywords = PGCONTENT.meta.keywords;
+	- var metaDescription = "This is the meta description for the Demo Media Content page.";
+	- var metaKeywords = SITE.meta.keywords;
 	//- - var bodyClass = 'page--internal';
 
 block title
-	title !{SITE.meta.title} | !{PGCONTENT.title}
+	title !{SITE.meta.title} | Demo Media Content
 
 block append styles
 	link(rel='stylesheet', href='/css/info.css')
 
+
+//- -----------------------------------
+//- Page Main-Content Starts Here
+//- -----------------------------------
 block content
 
 	article
@@ -23,100 +27,8 @@ block content
 			p.o-intro.
 				This is an intro paragraph for the page content. It should look similar to the regular paragraphs but maybe just a little set apart. This could be done with a slightly different color or larger text. Maybe a little larger line-height and more top/bottom margin.
 
-		//- -----------------------------------
-		//- Basic Images
-		//- -----------------------------------
-		section
-			h2 Basic Images
-
-			h4 A Simple #{'<img>'}
-
-			img(src="http://via.placeholder.com/350x100" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 350 X 100")
-
-			h4 A Simple #{'<img>'} Inside a #{'<p>'}
-
-			p
-				img(src="http://via.placeholder.com/350x100" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 350 X 100")
 
 
-			h4 An #{'<img>'} Inside a #{'<figure>'}
-
-			figure
-				img(src="http://via.placeholder.com/350x100" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 350 X 100")
-
-
-			h4 An #{'<img>'} Inside a #{'<figure>'} with a #{'<figcaption>'} After
-
-			figure
-				img(src="http://via.placeholder.com/350x100" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 350 X 100")
-
-				figcaption This is a caption for the related image. They're related because they are both inside the #{'<figure>'} element.
-
-
-			h4 An #{'<img>'} Inside a #{'<figure>'} with a #{'<figcaption>'} Before
-
-			figure
-				figcaption This is a caption for the related image. They're related because they are both inside the #{'<figure>'} element.
-
-				img(src="http://via.placeholder.com/350x100" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 350 X 100")
-
-
-			h4 Multiple #{'<img>'} Inside a #{'<figure>'} and a #{'<figcaption>'}
-
-			figure
-
-				img(src="http://via.placeholder.com/100x100" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 100 X 100")
-
-				img(src="http://via.placeholder.com/200x110" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 200 X 110")
-
-				img(src="http://via.placeholder.com/150x120" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 150 X 120")
-
-				figcaption This is a caption for the multiple related images. They're related because they are both inside the #{'<figure>'} element.
-
-		//- -----------------------------------
-		//- Image Alignment
-		//- -----------------------------------
-		section
-			h2 Image Alignment with Utility Classes
-			//- alignleft
-			//- alignright
-			//- aligncenter
-
-			h4 Image Without Alignment
-
-			p
-				| These alignment classes are not standard html tags but should be accounted for in a design system. This one is a paragraph with an image that is has no specified alignment.
-
-				img(src="http://via.placeholder.com/200x110" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 200 X 110")
-
-				| Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
-
-
-			h4 Image Aligned-Left
-
-			p
-				| These alignment classes are not standard html tags but should be accounted for in a design system. This one is a paragraph with an image that is aligned-left using the #[code alignleft] class.
-
-				img.alignleft(src="http://via.placeholder.com/200x110" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 200 X 110")
-
-				| Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
-
-
-			h4 Image Aligned-Right
-
-			p
-				| These alignment classes are not standard html tags but should be accounted for in a design system. This one is a paragraph with an image that is aligned-right using the #[code alignright] class.
-
-				img.alignright(src="http://via.placeholder.com/200x110" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 200 X 110")
-
-				| Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
-
-
-			h4 Image Aligned-Center
-
-			p
-				| These alignment classes are not standard html tags but should be accounted for in a design system. This one is a paragraph with an image that is aligned-center using the #[code aligncenter] class.
-
-				img.aligncenter(src="http://via.placeholder.com/200x110" alt="Placeholder image consisting of a light grey background with medium grey text in the center that reads 200 X 110")
-
-				| Paragraphs are usually represented in visual media as blocks of text that are separated from adjacent blocks by vertical blank space and/or first-line indentation. Paragraphs are block-level elements.
+		include partials/demo/_media-images_basic
+		include partials/demo/_media-image_alignment
+		include partials/demo/_media-audio

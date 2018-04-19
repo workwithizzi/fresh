@@ -1,12 +1,4 @@
 {
-	"PGCONTENT": {
-		"meta": {
-			"title": "General Content Page",
-			"keywords": "content page keywords, pug, sass, gulp, yarn",
-			"description": "This is a meta description for the content page."
-		},
-		"title": "General Content Page"
-	},
 	"PGHOME": {
 		"meta": {
 			"title": "Home",

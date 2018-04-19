@@ -26,32 +26,59 @@
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
 
-main
-	+clearfix
 
-img.alignleft
+
+
+// ------------------------------------
+// Intro <p> class
+// ------------------------------------
+// .o-intro
+	// 2DO-YG: Add some basic style for this. Maybe add a condition so that the `o-intro` class isn't even needed? Like: p:first-child or something.
+
+
+// ------------------------------------
+// Text Alignment Classes
+// ------------------------------------
+// Left & Left Justify
+.text_left
+	text-align: left
+	&--justify
+		text-align: justify
+		direction: ltr
+
+// Right & Right Justify
+.text_right
+	text-align: right
+	&--justify
+		text-align: justify
+		direction: rtl
+
+// Center & Center Justify
+.text_center
+	text-align: center
+	&--justify
+		text-align: justify
+		text-align-last: center
+		// 2DO-LUS: Check on browser support
+
+
+// ------------------------------------
+// Image Alignment
+// ------------------------------------
+main
+	+container
+
+// ------------------------------------
+// Image Alignment
+// ------------------------------------
+.img_left
 	float: left
 	margin-right: r(10)
 
-img.alignright
+.img_right
 	float: right
 	margin-left: r(10)
 
-img.aligncenter
+.img_center
 	display: block
 	+h(margin, auto)
-
-
-.alignleft
-	text-align: left
-
-.alignright
-	text-align: right
-
-.aligncenter
-	text-align: center
-
-.alignjustify
-	text-align: justify
-
-// Add justify left/right classes
