@@ -1,10 +1,12 @@
 //- Audio Elements
 //- -----------------------------------------------------------------
 
+-var demoAudio="https://gitlab.com/ignitecreative/cdn/blob/master/audio/fresh_player-demo-1/soundclip";
+
 
 section
-	h2 Audio Elements
+	h2 Audio Player
 
-
-	div
-		audio(controls="") audio
+	audio(id="audio1" controls="")
+		source(src=demoAudio + ".mp3" type="audio/mp3")
+		source(src=demoAudio + ".ogg" type="audio/ogg")

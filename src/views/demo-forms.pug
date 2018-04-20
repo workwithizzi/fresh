@@ -1,0 +1,64 @@
+//- Test Content Page
+//- -----------------------------------------------------------------
+
+extends /partials/_base
+
+block vars
+	- var metaDescription = "This is the meta description for the Demo Forms Content page.";
+	- var metaKeywords = SITE.meta.keywords;
+	//- - var bodyClass = 'page--internal';
+
+block title
+	title !{SITE.meta.title} | Demo Forms Content
+
+block append styles
+	link(rel='stylesheet', href='/css/info.css')
+
+
+//- -----------------------------------
+//- Page Main-Content Starts Here
+//- -----------------------------------
+block content
+
+	article
+		header
+			h1 HTML5 Form Elements
+
+			p.o-intro.
+				This is an intro paragraph for the page content. It should look similar to the regular paragraphs but maybe just a little set apart. This could be done with a slightly different color or larger text. Maybe a little larger line-height and more top/bottom margin.
+
+
+
+		//- include partials/demo/_media-svg
+
+		//- -----------------------------------
+		//- Meter
+		//- -----------------------------------
+		section
+			h2 Meter
+
+			p The HTML <code>#{'<meter>'}</code> element represents either a scalar value within a known range or a fractional value. By default, the meter is presented as an inline-block.
+
+			h3 Basic and Percentage Meter
+			meter(value="2" min="0" max="10") 2 out of 10
+			meter(value="0.6") 60%
+
+			h3 High and Low Range Example
+			meter(low="69" high="80" max="100" value="84") You get a B!
+
+		//- -----------------------------------
+		//- Progress
+		//- -----------------------------------
+		section
+			h2 Progress
+
+			p The HTML <code>#{'<progress>'}</code> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar. By default, the meter is presented as an inline-block.
+
+			h3 Indeterminate Progress
+			progress Indeterminate
+			progress(max="10") Indeterminate
+
+			h3 70% Progress. If 'max' Attribute is Omitted, Then Default is 1
+			progress(value="7" max="10") 70%
+
+			progress(value=".7") 70%
