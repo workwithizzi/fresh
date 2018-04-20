@@ -9,7 +9,7 @@ block vars
 	//- - var bodyClass = 'page--internal';
 
 block title
-	title !{SITE.meta.title} | Demo Forms Content
+	title !{SITE.meta.title} | Forms Demo
 
 block append styles
 	link(rel='stylesheet', href='/css/info.css')
@@ -29,36 +29,44 @@ block content
 
 
 
-		//- include partials/demo/_media-svg
+		include partials/demo/_forms-meter_progress
+		include partials/demo/_forms-input_fields
+
 
 		//- -----------------------------------
-		//- Meter
+		//- Forms
 		//- -----------------------------------
-		section
-			h2 Meter
 
-			p The HTML <code>#{'<meter>'}</code> element represents either a scalar value within a known range or a fractional value. By default, the meter is presented as an inline-block.
 
-			h3 Basic and Percentage Meter
-			meter(value="2" min="0" max="10") 2 out of 10
-			meter(value="0.6") 60%
 
-			h3 High and Low Range Example
-			meter(low="69" high="80" max="100" value="84") You get a B!
 
-		//- -----------------------------------
-		//- Progress
-		//- -----------------------------------
-		section
-			h2 Progress
 
-			p The HTML <code>#{'<progress>'}</code> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar. By default, the meter is presented as an inline-block.
 
-			h3 Indeterminate Progress
-			progress Indeterminate
-			progress(max="10") Indeterminate
+			form
+				fieldset
+					legend Group of Input Fields
+					label(for='fm-name1') Name: #[abbr(title='required') *]
+						input#fm-name1(type='text', name='fm-name1', size='30' placeholder='Hugh Gaskins')
+					//- br
+					label(for='fm-email1') Email: #[abbr(title='required') *]
+						input#fm-email1(type='text', name='fm-email1', size='30' placeholder='hugh@example.com')
+					//- br
+					label(for='fm-date1') Birth Date:
+						input#fm-date1(type='text', name='fm-date1', size='10' placeholder='01/11/1969')
 
-			h3 70% Progress. If 'max' Attribute is Omitted, Then Default is 1
-			progress(value="7" max="10") 70%
 
-			progress(value=".7") 70%
+
+		//- .c-contact-form#nav-contact
+			h4 #{SITE.footer.colThird}
+			p.form-desc Required fields are followed by #[abbr(title='required') *]
+
+			form#contact_form
+				.l-input-wrap
+					label(for='name') Name: #[abbr(title='required') *]
+						input#name(type='text', name='name', placeholder='Amelia Earhart')
+					label(for='email') Email: #[abbr(title='required') *]
+						input#email(type="text", name='email', placeholder="amelia@gmail.com")
+				label.message-input(for='textarea') Message: #[abbr(title='required') *]
+					textarea#textarea(name="textarea", cols="30", rows="10" placeholder='Write something here.' required)
+
+				button(type="submit") Submit
