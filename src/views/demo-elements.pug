@@ -1,0 +1,41 @@
+//- Test Content Page
+//- -----------------------------------------------------------------
+
+extends /partials/_base
+
+block vars
+	- var metaDescription = "This is the meta description for the Elements Style Guide page.";
+	- var metaKeywords = SITE.meta.keywords;
+	//- - var bodyClass = 'page--internal';
+
+block title
+	title !{SITE.meta.title} | Elements
+
+block append styles
+	link(rel='stylesheet', href='/css/info.css')
+
+
+//- -----------------------------------
+//- Page Main-Content Starts Here
+//- -----------------------------------
+block content
+	article
+		header
+			h1 Element Style Guide
+
+			p.o-intro
+				| This page is good place to quickly reference the main style elements used within the project. This is what an intro paragraph looks like using the <code>#{'.o-intro'}</code> class.
+
+		hr
+
+		//- -----------------------------------
+		//- Text Styles
+		//- -----------------------------------
+		section
+			h2.sg Section Title
+
+			section
+				//- header: h3.sg Headings
+				//- include /partials/demo/_text-headings
+
+			hr

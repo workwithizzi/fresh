@@ -1,41 +1,39 @@
-//- Lists
+//- Text - Lists
 //- -----------------------------------------------------------------
 
 
-section
-	h2 Lists
+h4 Unordered List
+ul
+	li List Item 1
+	li List Item 2
+	li List Item 3: The HTML #{'<ul>'} element represents an unordered list of items, typically rendered as a bulleted list. This is a long list item. It's good for testing line-heights in the list.
+	li List Item 4
 
-	h3 Unordered List
-	ul
-		li List Item 1
-		li List Item 2
-		li List Item 3: The HTML #{'<ul>'} element represents an #[a(href='http://yis.li/html-ul') unordered list] of items, typically rendered as a bulleted list. This is a long list item. It's good for testing line-heights in the list.
-		li List Item 4
 
-	h3 Ordered List
-	ol
-		li List Item 1
-		li List Item 2: The HTML #{'<ol>'} element represents an #[a(href='http://yis.li/html-ol') ordered list] of items, typically rendered as a numbered list. This is a long list item. It's good for testing line-heights in the list.
-		li List Item 3
-		li List Item 4
+h4 Ordered List
+ol
+	li List Item 1
+	li List Item 2: The HTML #{'<ol>'} element represents an ordered list of items, typically rendered as a numbered list. This is a long list item. It's good for testing line-heights in the list.
+	li List Item 3
+	li List Item 4
 
-	h3 Description List
-	dl
-		dt.
-			Basic Description Term
-		dd.
-			The HTML #{'<dl>'} element represents a #[a(href='http://yis.li/html-dl') description list]. The element encloses a list of groups of terms (specified using the #{'<dt>'} element) and descriptions (provided by #{'<dd>'} elements). Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
 
-	dl
-		dt Multiple List Terms
-		dt Another Term
-		dt 3rd Term
-		dd.
-			A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.
+h4 Description List
+dl
+	dt Basic Description Term
+	dd
+		| The HTML #{'<dl>'} element represents a description list. The element encloses a list of groups of terms (specified using the #{'<dt>'} element) and descriptions (provided by #{'<dd>'} elements). Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
 
-	dl
-		dt Multiple List Descriptions
-		dd.
-			The HTML #{'<dl>'} element represents a description list. The element encloses a list of groups of terms (specified using the #{'<dt>'} element) and descriptions (provided by #{'<dd>'} elements).
-		dd.
-			Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
+dl
+	dt Multiple List Terms
+	dt Another Term
+	dt 3rd Term
+	dd
+		| A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.
+
+dl
+	dt Multiple List Descriptions
+	dd
+		| The HTML #{'<dl>'} element represents a description list. The element encloses a list of groups of terms (specified using the #{'<dt>'} element) and descriptions (provided by #{'<dd>'} elements).
+	dd
+		| Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).

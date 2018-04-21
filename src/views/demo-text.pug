@@ -12,33 +12,70 @@ block title
 	title !{SITE.meta.title} | Text Demo
 
 block append styles
-	link(rel='stylesheet', href='/css/info.css')
+	//- link(rel='stylesheet', href='/css/info.css')
 
 
 //- -----------------------------------
 //- Page Main-Content Starts Here
 //- -----------------------------------
 block content
-
 	article
 		header
-			h1 This is The Page Title Element
+			h1 Demo Text Elements
 
-			p.o-intro.
-				This is an intro paragraph for the page content. It should look similar to the regular paragraphs but maybe just a little set apart. This could be done with a slightly different color or larger text. Maybe a little larger line-height and more top/bottom margin.
+			p.o-intro
+				| This page is good place to quickly reference the text style elements used within the project. This is what an intro paragraph looks like using the <code>#{'.o-intro'}</code> class.
 
+		hr
 
-		.space100
-		include partials/demo/_text-headings_paragraphs
-		.space100
-		include partials/demo/_text-blockquotes
-		.space100
-		include partials/demo/_text-lists
-		.space100
-		include partials/demo/_text-preformatted
-		.space100
-		include partials/demo/_text-alignment
-		.space100
-		include partials/demo/_text-inline_elements
-		.space100
-		include partials/demo/_text-tables
+		//- -----------------------------------
+		//- Text Styles
+		//- -----------------------------------
+		section
+			h2.sg Text
+
+			section
+				header: h3.sg Headings
+				include /partials/demo/_text-headings
+
+			hr
+
+			section
+				header: h3.sg Inline Elements
+				include /partials/demo/_text-inline_elements
+
+			hr
+
+			section
+				header: h3.sg Headings Follow By Paragraphs
+				include /partials/demo/_text-headings_paragraphs
+
+			hr
+
+			section
+				header: h3.sg Alignment Styles
+				include /partials/demo/_text-alignment
+
+			hr
+
+			section
+				header: h3.sg Blockquotes
+				include /partials/demo/_text-blockquotes
+
+			hr
+
+			section
+				header: h3.sg Lists
+				include /partials/demo/_text-lists
+
+			hr
+
+			section
+				header: h3.sg Preformatted Text
+				include /partials/demo/_text-preformatted
+
+			hr
+
+			section
+				header: h3.sg Table Data
+				include /partials/demo/_text-tables
