@@ -1,0 +1,24 @@
+//- Form Input Buttons
+//- -----------------------------------------------------------------
+mixin br
+	br
+//- -----------------------------------
+
+
+section
+	h2 Buttons
+
+	p The <code>#{'<textarea>'}</code> tag defines a multi-line text input control.
+
+	fieldset#forms__action
+		legend Action buttons
+		p
+			input(type="submit" value="<input type=submit>")
+			input(type="button" value="<input type=button>")
+			input(type="reset" value="<input type=reset>")
+			input(type="submit" value="<input disabled>" disabled="")
+		p
+			button(type="submit") Submit Button
+			button(type="button") Button Button
+			button(type="reset") Reset Button
+			button(type="button" disabled="") Disabled Button
