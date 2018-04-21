@@ -1,18 +1,20 @@
 //- Input Field Elements
 //- -----------------------------------------------------------------
-
 mixin br
 	br
+//- -----------------------------------
+
 
 
 section
-	h2 Form Input Fields
+	h2 Text Input Fields
 
-	p The HTML <code>#{'<legend>'}</code> represents a caption for the content of its parent <code>#{'<fieldset>'}</code>. The <code>#{'<legend>'}</code> element is only used within a parent <code>#{'<fieldset>'}</code> and must be the first child.
+
+	p The <code>#{'<input>'}</code> element is the most important form element. It can be displayed in many ways, depending on the type attribute that is given.
 
 	form
 		fieldset
-			legend Group of Input Field Types
+			legend Input Field Types
 
 			label(for='fm-text1') Text Input: #[abbr(title='required') *]
 				input#fm-text1(type='text', name='fm-text1' placeholder='Text Input' required)
@@ -47,8 +49,29 @@ section
 			label(for='fm-datetime1') Datetime Input:
 				input#fm-datetime1(type='datetime-local' name='fm-datetime1')
 			+br
+			label(for='fm-time1') Time Input:
+				input#fm-time1(type='time' name='fm-time1')
+			+br
+			label(for='fm-week1') Week Input:
+				input#fm-week1(type='week' name='fm-week1')
+			+br
 			label(for='fm-month1') Month and Year Input:
 				input#fm-month1(type='month' name='fm-month1')
-			//- +br
-			//- label(for='fm-') Input:
-			//- 	input#fm-(type='' name='fm-')
+			+br
+			label(for='fm-range1') Range Input:
+				input#fm-range1(type='range' name='fm-range1' min='0' max='10')
+
+
+	//- -----------------------------------
+	//- Restricted Field Types
+	//- -----------------------------------
+	form
+		fieldset
+			legend Restricted Input Field Types
+
+			label(for='fm-distext2') Disabled Text Input:
+				input#fm-distext2(type='text', name='fm-distext2' placeholder='Text Input' disabled)
+			+br
+
+			label(for='fm-rotext2') Readonly Text Input:
+				input#fm-rotext2(type='text', name='fm-rotext2' placeholder='Text Input' readonly)

@@ -1,0 +1,56 @@
+//- Form Select
+//- -----------------------------------------------------------------
+mixin br
+	br
+//- -----------------------------------
+
+
+section
+	h2 Form Select Element
+
+	p The <code>#{'<select>'}</code> element is used in a form to create a drop-down list. Use <code>#{'<option>'}</code> tags inside the <code>#{'<select>'}</code> element define the available options in the list.
+
+
+	//- -----------------------------------
+	//- Basic
+	//- -----------------------------------
+	h3 Basic #{'<select>'}
+
+	p The HTML <code>#{'<optgroup>'}</code> element creates a grouping of options within a <code>#{'<select>'}</code> element. If used, then make sure to also include the 'label' attribute.
+
+	label(for='fm-select1') Basic Select:
+		select#fm-select1(name='fm-select1')
+			optgroup(label='Templating Engines')
+				option(value='mustache') Mustache
+				option(value='handlebars') Handlebars
+				option(value='pug') Pug
+				option(value='ejs') Embedded JS
+
+
+	//- -----------------------------------
+	//- With Default Selected
+	//- -----------------------------------
+	h3 #{'<select>'} with Option 2 as Default
+
+	label(for='fm-select2') Pre-Select Option:
+		select#fm-select2(name='fm-select2')
+			optgroup(label='JS Preprocessors')
+				option(value='coffeescript') Coffeescript
+				option(value='typescript' selected) Typescript
+				option(value='livescript') Livescript
+				option(value='babel') Babel
+
+
+	//- -----------------------------------
+	//- With Multiple-Select
+	//- -----------------------------------
+	h3 #{'<select>'} with Multiple Option Selection
+	p Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.
+
+	label(for='fm-select3') Multiple-Select Option:
+		select#fm-select3(name='fm-select3' multiple)
+			optgroup(label='CSS Preprocessors')
+				option(value='sass') SASS
+				option(value='less') LESS
+				option(value='stylus') Stylus
+				option(value='postcss') PostCSS

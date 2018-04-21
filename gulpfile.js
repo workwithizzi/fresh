@@ -199,7 +199,7 @@ var opt = {
 	browserSync: {
 		// proxy: 'fresh.dev',     // proxy used in local server
 		server: pth.buildD + '/', // directory used for localhost source
-		open: true, // open a new browser window to localhost port
+		open: false, // open a new browser window to localhost port
 		injectChanges: true, // inject css changes without reloading browser
 		port: 3000, // define the localhost port (default == 3000)
 		ui: {
