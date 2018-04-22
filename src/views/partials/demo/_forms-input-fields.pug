@@ -1,77 +1,63 @@
-//- Input Field Elements
+//- Forms - Input Fields
 //- -----------------------------------------------------------------
-mixin br
-	br
-//- -----------------------------------
 
 
+p
+	| The #{'<input>'} element is the most important form element. It can be displayed in many ways, depending on the type attribute that is given.
 
-section
-	h2 Text Input Fields
+//- ---------------
 
+form
+	fieldset
+		legend Input Field Types
 
-	p The <code>#{'<input>'}</code> element is the most important form element. It can be displayed in many ways, depending on the type attribute that is given.
-
-	form
-		fieldset
-			legend Input Field Types
-
-			label(for='fm-text1') Text Input: #[abbr(title='required') *]
-				input#fm-text1(type='text', name='fm-text1' placeholder='Text Input' required)
-			+br
-			label(for='fm-password1') Password: #[abbr(title='required') *]
-				input#fm-password1(type='password' name='fm-password1' placeholder='Type your Password' required)
-			+br
-			label(for='fm-url1') Web Address:
-				input#fm-url1(type='url' name='fm-url1' placeholder='yoursite.com')
-			+br
-			label(for='fm-email1') Email Address:
-				input#fm-email1(type='email' name='fm-email1' placeholder='name@hotmail.com')
-			+br
-			label(for='fm-tel1') Phone Number:
-				input#fm-tel1(type='tel' name='fm-tel1' placeholder='555-867-5309')
-			+br
-			label(for='fm-search1') Search:
-				input#fm-search1(type='search' name='fm-search1' placeholder='Enter Search Term')
-			+br
-			label(for='fm-num1') Number Input:
-				input#fm-num1(type='number' name='fm-num1' placeholder='Enter a Number')
-			+br
-			label(for='fm-mmnum1') Min/Max Number (5-10):
-				input#fm-mmnum1(type='number' name='fm-mmnum1' min='5' max='10')
-			+br
-			label(for='fm-color1') Color Input:
-				input#fm-color1(type='color' name='fm-color1' value='#ff0000')
-			+br
-			label(for='fm-date1') Date Input:
-				input#fm-date1(type='date' name='fm-date1')
-			+br
-			label(for='fm-datetime1') Datetime Input:
-				input#fm-datetime1(type='datetime-local' name='fm-datetime1')
-			+br
-			label(for='fm-time1') Time Input:
-				input#fm-time1(type='time' name='fm-time1')
-			+br
-			label(for='fm-week1') Week Input:
-				input#fm-week1(type='week' name='fm-week1')
-			+br
-			label(for='fm-month1') Month and Year Input:
-				input#fm-month1(type='month' name='fm-month1')
-			+br
-			label(for='fm-range1') Range Input:
-				input#fm-range1(type='range' name='fm-range1' min='0' max='10')
-
-
-	//- -----------------------------------
-	//- Restricted Field Types
-	//- -----------------------------------
-	form
-		fieldset
-			legend Restricted Input Field Types
-
-			label(for='fm-distext2') Disabled Text Input:
-				input#fm-distext2(type='text', name='fm-distext2' placeholder='Text Input' disabled)
-			+br
-
-			label(for='fm-rotext2') Readonly Text Input:
-				input#fm-rotext2(type='text', name='fm-rotext2' placeholder='Text Input' readonly)
+		label(for='fm-txt5') Text Input:
+			input#fm-txt5(type='text', name='fm-txt5' placeholder='Text Input')
+		br
+		label(for='fm-pswd5') Password:
+			input#fm-pswd5(type='password' name='fm-pswd5' placeholder='Password')
+		br
+		label(for='fm-url1') Web Address:
+			input#fm-url1(type='url' name='fm-url1' placeholder='yoursite.com')
+		br
+		label(for='fm-email1') Email Address:
+			input#fm-email1(type='email' name='fm-email1' placeholder='name@hotmail.com')
+		br
+		label(for='fm-tel1') Phone Number:
+			input#fm-tel1(type='tel' name='fm-tel1' placeholder='555-867-5309')
+		br
+		label(for='fm-search1') Search:
+			input#fm-search1(type='search' name='fm-search1' placeholder='Enter Search')
+		br
+		label(for='fm-num1') Number Input:
+			input#fm-num1(type='number' name='fm-num1' placeholder='Enter a Number')
+		br
+		label(for='fm-mmnum1') Min/Max Number (5-10):
+			input#fm-mmnum1(type='number' name='fm-mmnum1' min='5' max='10')
+		br
+		label(for='fm-color1') Color Input:
+			input#fm-color1(type='color' name='fm-color1' value='#ff0000')
+		br
+		label(for='fm-date1') Date Input:
+			input#fm-date1(type='date' name='fm-date1')
+		br
+		label(for='fm-datetime1') Datetime Input:
+			input#fm-datetime1(type='datetime-local' name='fm-datetime1')
+		br
+		label(for='fm-time1') Time Input:
+			input#fm-time1(type='time' name='fm-time1')
+		br
+		label(for='fm-week1') Week Input:
+			input#fm-week1(type='week' name='fm-week1')
+		br
+		label(for='fm-month1') Month and Year Input:
+			input#fm-month1(type='month' name='fm-month1')
+		br
+		label(for='fm-range1') Range Input:
+			input#fm-range1(type='range' name='fm-range1' min='0' max='10')
+		br
+		label(for='fm-dstxt2') Disabled Text Input:
+			input#fm-dstxt2(type='text', name='fm-dstxt2' placeholder='Text Input' disabled)
+		br
+		label(for='fm-rotxt2') Readonly Text Input:
+			input#fm-rotxt2(type='text', name='fm-rotxt2' placeholder='Text Input' readonly)

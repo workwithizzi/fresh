@@ -1,4 +1,4 @@
-//- Test Content Page
+//- Forms Content Page
 //- -----------------------------------------------------------------
 
 extends /partials/_base
@@ -12,39 +12,70 @@ block title
 	title !{SITE.meta.title} | Forms Demo
 
 block append styles
-	link(rel='stylesheet', href='/css/info.css')
+	//- link(rel='stylesheet', href='/css/info.css')
 
 
 //- -----------------------------------
 //- Page Main-Content Starts Here
 //- -----------------------------------
 block content
-
 	article
 		header
-			h1 HTML5 Form Elements
+			h1 Element Style Guide
 
-			p.o-intro.
-				This is an intro paragraph for the page content. It should look similar to the regular paragraphs but maybe just a little set apart. This could be done with a slightly different color or larger text. Maybe a little larger line-height and more top/bottom margin.
+			p.o-intro
+				| This page is good place to quickly reference the main style elements used within the project. This is what an intro paragraph looks like using the <code>#{'.o-intro'}</code> class.
 
+		hr
 
-		.space100
-		include partials/demo/_forms-meter_progress
-		.space100
-		include partials/demo/_forms-fieldset
-		.space100
-		include partials/demo/_forms-input-fields
-		.space100
-		include partials/demo/_forms-input-select
-		.space100
-		include partials/demo/_forms-input-checkbox
-		.space100
-		include partials/demo/_forms-input-radio
-		.space100
-		include partials/demo/_forms-input-textareas
-		.space100
-		include partials/demo/_forms-input-buttons
-		.space100
+		section
+			h2.sg Forms
+
+			section
+				header: h3.sg Meters & Progress
+				include /partials/demo/_forms-meter_progress
+
+			hr
+
+			section
+				header: h3.sg Fieldset & Legend
+				include /partials/demo/_forms-fieldset_legend
+
+			hr
+
+			section
+				header: h3.sg Inputs Fields
+				include /partials/demo/_forms-input-fields
+
+			hr
+
+			section
+				header: h3.sg Select
+				include /partials/demo/_forms-input-select
+
+			hr
+
+			section
+				header: h3.sg Checkboxes
+				include /partials/demo/_forms-input-checkbox
+
+			hr
+
+			section
+				header: h3.sg Radio Inputs
+				include partials/demo/_forms-input-radio
+
+			hr
+
+			section
+				header: h3.sg Textareas
+				include partials/demo/_forms-input-textareas
+
+			hr
+
+			section
+				header: h3.sg Buttons
+				include partials/demo/_forms-input-buttons
 
 
 

@@ -1,35 +1,36 @@
-//- Meter and Progress Elements
+//- Forms - Meter & Progress Elements
 //- -----------------------------------------------------------------
 
 
-//- -----------------------------------
-//- Meter
-//- -----------------------------------
-section
-	h2 Meter
+p
+	| The HTML #{'<meter>'} element represents either a scalar value within a known range or a fractional value. By default, the meter is presented as an inline-block.
 
-	p The HTML <code>#{'<meter>'}</code> element represents either a scalar value within a known range or a fractional value. By default, the meter is presented as an inline-block.
+p
+	| The HTML <code>#{'<progress>'}</code> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar. By default, the meter is presented as an inline-block.
 
-	h3 Basic and Percentage Meter
-	meter(value="2" min="0" max="10") 2 out of 10
-	meter(value="0.6") 60%
+//- ---------------
 
-	h3 High and Low Range Example
-	meter(low="69" high="80" max="100" value="84") You get a B!
+h4 Meter - Basic & Percentage
 
-//- -----------------------------------
-//- Progress
-//- -----------------------------------
-section
-	h2 Progress
+meter(value="2" min="0" max="10") 2 out of 10
+meter(value="0.6") 60%
 
-	p The HTML <code>#{'<progress>'}</code> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar. By default, the meter is presented as an inline-block.
+//- ---------------
 
-	h3 Indeterminate Progress
-	progress Indeterminate
-	progress(max="10") Indeterminate
+h4 Meter - High & Low Range
 
-	h3 70% Progress. If 'max' Attribute is Omitted, Then Default is 1
-	progress(value="7" max="10") 70%
+meter(low="69" high="80" max="100" value="84") You get a B!
 
-	progress(value=".7") 70%
+//- ---------------
+
+h4 Progress - Indeterminate
+
+progress Indeterminate
+progress(max="10") Indeterminate
+
+//- ---------------
+
+h3 Progress - 70%. If 'max' Attribute is Omitted, Then Default is 1
+
+progress(value="7" max="10") 70%
+progress(value=".7") 70%

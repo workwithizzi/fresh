@@ -1,0 +1,43 @@
+//- Forms - Fieldset & Legend
+//- -----------------------------------------------------------------
+
+
+p
+	| You can use #{'<fieldset>'} to group related elements in a form. By default, this tag draws a box around it's child elements. Use the #{'<legend>'} to define a caption for the #{'<fieldset>'} element. #{'<legend>'} is not required, but can only be used within the #{'<fieldset>'} and has to be it's first-child.
+
+//- ---------------
+
+h4 With Fieldset & Legend
+
+form
+	fieldset
+		legend This is a Legend
+
+		label(for='fm-tx1') Text Input: #[abbr(title='required') *]
+			input#fm-tx1(type='text', name='fm-tx1' placeholder='Text Input' required)
+		br
+		label(for='fm-pswd1') Password: #[abbr(title='required') *]
+			input#fm-pswd1(type='password' name='fm-pswd1' placeholder='Password' required)
+
+//- ---------------
+
+h4 With Just Fieldset
+
+form
+	fieldset
+		label(for='fm-txt2') Text Input:
+			input#fm-txt2(type='text', name='fm-txt2' placeholder='Text Input')
+		br
+		label(for='fm-pswd2') Password:
+			input#fm-pswd2(type='password' name='fm-pswd2' placeholder='Password')
+
+//- ---------------
+
+h4 Without Fieldset or Legend
+
+form
+	label(for='fm-txt3') Text Input:
+		input#fm-txt3(type='text', name='fm-txt3' placeholder='Text Input')
+	br
+	label(for='fm-pswd3') Password:
+		input#fm-pswd3(type='password' name='fm-pswd3' placeholder='Password')

@@ -1,20 +1,18 @@
-//- Video Elements
+//- Media - Video
 //- -----------------------------------------------------------------
 
 
 -var demoVideo="https://gitlab.com/ignitecreative/cdn/raw/master/video/fresh_player-demo-1/cars";
 //- -var demoVideo="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD";
 
+//- ---------------
 
-section
-	h2 Video Player
+video(poster=demoVideo + ".png" id="player" playsinline="" controls="")
+	source(src=demoVideo + ".mp4" type="video/mp4")
+	source(src=demoVideo + ".webm" type="video/webm")
 
-	video(poster=demoVideo + ".png" id="player" playsinline="" controls="")
-		source(src=demoVideo + ".mp4" type="video/mp4")
-		source(src=demoVideo + ".webm" type="video/webm")
+	//- Captions are optional
+	track(kind="captions" label="English captions" srclang="en" src=demoVideo + ".vtt" default="")
 
-		// Captions are optional
-		track(kind="captions" label="English captions" srclang="en" src=demoVideo + ".vtt" default="")
-
-		// Fallback for browsers that don't support the <video> element
-		a(href=demoVideo + ".mp4" download="") Download
+	//- Fallback for browsers that don't support the <video> element
+	a(href=demoVideo + ".mp4" download="") Download
