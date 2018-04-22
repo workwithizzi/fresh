@@ -1,15 +1,15 @@
-//- Test Content Page
+//- Media Content Page
 //- -----------------------------------------------------------------
 
 extends /partials/_base
 
 block vars
-	- var metaDescription = "This is the meta description for the Elements Style Guide page.";
+	- var metaDescription = "This is the meta description for the Demo Media Content page.";
 	- var metaKeywords = SITE.meta.keywords;
 	//- - var bodyClass = 'page--internal';
 
 block title
-	title !{SITE.meta.title} | Elements
+	title !{SITE.meta.title} | Media Demo
 
 block append styles
 	link(rel='stylesheet', href='/css/info.css')
@@ -28,14 +28,33 @@ block content
 
 		hr
 
-		//- -----------------------------------
-		//- Text Styles
-		//- -----------------------------------
 		section
-			h2.sg Section Title
+			h2.sg Forms
 
 			section
-				//- header: h3.sg Headings
-				//- include /partials/demo/_text-headings
+				header: h3.sg SVG Images
+				include /partials/demo/_media-svg
 
 			hr
+
+			section
+				header: h3.sg Basic, Linked, & Broken Images
+				include /partials/demo/_media-images_basic
+
+			hr
+
+			section
+				header: h3.sg Image Alignment
+				include /partials/demo/_media-image_alignment
+
+			hr
+
+			section
+				header: h3.sg Audio Player
+				include /partials/demo/_media-audio
+
+			hr
+
+			section
+				header: h3.sg Video Player
+				include /partials/demo/_media-video
