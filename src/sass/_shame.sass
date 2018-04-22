@@ -1,0 +1,85 @@
+// Quick and dirty hacks, because hacks happen.
+//
+// Rules for hacks:
+// 1. put all hacks/quick fixes here if possible.
+// 2. Document the hack and what other parts of the code it might relate to.
+// 3. If you're not the only person working on the project,
+//    add your name or initials and date to the hack.
+// 4. Try to clean out this file and integrate the code when you can.
+//
+// ===================================================================
+
+.space100
+	height: 4px
+	border-top: 1px solid lightseagreen
+	border-bottom: 1px solid lightseagreen
+	+v(margin, 50px)
+
+
+
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
+
+
+
+// ------------------------------------
+// Intro <p> class
+// ------------------------------------
+// .o-intro
+	// 2DO-YG: Add some basic style for this. Maybe add a condition so that the `o-intro` class isn't even needed? Like: p:first-child or something.
+
+
+// ------------------------------------
+// Text Alignment Classes
+// ------------------------------------
+// Left & Left Justify
+.text_left
+	text-align: left
+	&--justify
+		text-align: justify
+		direction: ltr
+
+// Right & Right Justify
+.text_right
+	text-align: right
+	&--justify
+		text-align: justify
+		direction: rtl
+
+// Center & Center Justify
+.text_center
+	text-align: center
+	&--justify
+		text-align: justify
+		text-align-last: center
+		// 2DO-LUS: Check on browser support
+
+
+// ------------------------------------
+// Image Alignment
+// ------------------------------------
+main
+	+container
+
+// ------------------------------------
+// Image Alignment
+// ------------------------------------
+.img_left
+	float: left
+	margin-right: r(10)
+
+.img_right
+	float: right
+	margin-left: r(10)
+
+.img_center
+	display: block
+	+h(margin, auto)
+
+
+
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------

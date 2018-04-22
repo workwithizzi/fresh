@@ -1,0 +1,18 @@
+//- Text - Blockquotes
+//- -----------------------------------------------------------------
+
+
+h4 With a Cite Element
+p Here's what a regular text paragraph looks like. We'll use this to act as a buffer for the blockquote. You might not be thinking it but spiders is the most tremendous natterboxes. Some is scrumdiddlyumptious and some is uckyslush. It's impossible to make your eyes twinkle if you aren't feeling twinkly yourself.
+
+blockquote(cite='http://yis.li/html-blockquote')
+	p The HTML #{'<blockquote>'} Element (or HTML Block Quotation Element) indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation. A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using the #{'<cite>'} element.
+	p: cite - #[a(href='http://yis.li/html-blockquote') Developer.Mozilla]
+
+//- ---------------
+
+h4 Without a Cite Element
+p Here's what a regular text paragraph looks like. We'll use this to act as a buffer for the blockquote. You might not be thinking it but spiders is the most tremendous natterboxes. Some is scrumdiddlyumptious and some is uckyslush. It's impossible to make your eyes twinkle if you aren't feeling twinkly yourself.
+
+blockquote(cite='http://yis.li/html-blockquote')
+	| The HTML #{'<blockquote>'} Element (or HTML Block Quotation Element) indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation. A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using the #{'<cite>'} element.

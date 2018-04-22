@@ -2,55 +2,78 @@
 //- -----------------------------------------------------------------
 
 doctype html
-
 html.no-js(lang='en')
 
+	//- -----------------------------------
+	//- Page Variables
+	//- -----------------------------------
+	block vars
+		- var metaDescription = SITE.meta.description;
+		- var metaKeywords = SITE.meta.keywords;
+
+	//- -----------------------------------
+	//- Site Head
+	//- -----------------------------------
 	block head
 		head
 			meta(charset='utf-8')
 			meta(http-equiv='x-ua-compatible', content='ie=edge')
 			meta(name='viewport', content='width=device-width,initial-scale=1')
 
+			//- -----------------------------------
+			//- Site/Page Meta Title
+			//- -----------------------------------
 			block title
 				title #{SITE.meta.title}
 
-			meta(name='description', content=SITE.meta.description)
-			meta(name='keywords', content=SITE.meta.keywords)
+			meta(name='description', content=metaDescription)
+			meta(name='keywords', content=metaKeywords)
 			link(rel='apple-touch-icon', href='apple-touch-icon.png')
 
+			//- -----------------------------------
+			//- Stylesheets
+			//- -----------------------------------
 			// build:css /css/main.min.css
 			block styles
-				link(rel='stylesheet', href='/css/normalize.css')
+				//- link(rel='stylesheet', href='/css/normalize.css')
 				link(rel='stylesheet', href='/css/main.css')
 			// endbuild
+			//
 
-			//- Import Font Awesome from CDN instead of local
-			//- link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-
-	block vars
 	body(class=bodyClass)
 
-		//- Skips to #main
-		include _skiplink
+		//- -----------------------------------
+		//- Accessibility Skiplink
+		//- -----------------------------------
+		a.c-skiplink(href='#nav-main') Jump to main content.
 
-		//- Site Nav
-		include _nav
+		//- -----------------------------------
+		//- Site Header/Nav
+		//- -----------------------------------
+		block header
+			include _header
 
-		//- '#main' Used for Skiplink
-		main#main(role='main')
+		main#nav-main(role='main')
 
+			//- -----------------------------------
+			//- Page Content
+			//- -----------------------------------
 			block content
-			//- Page content goes here
 
+		//- -----------------------------------
+		//- Site Footer
+		//- -----------------------------------
+		block footer
+			include _footer
 
-	block bottom-scripts-link
-		//- Jquery from CDN. To use locally jquery, remove this script and uncomment the one in the 'scripts-local' section below.
-		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+		//- -----------------------------------
+		//- Scripts
+		//- -----------------------------------
+		block bottom-scripts-link
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script><script>window.jQuery || document.write('<script src="js/vendors/jquery-3.2.1.min.js"><\/script>')</script>
 
-	// build:js /js/main.min.js
-	block bottom-scripts-local
-		//- Jquery local
-		//- script(src='js/vendors/jquery-3.2.1.min.js')
-
-		script(src='/js/nav.js')
-	// endbuild
+		// build:js /js/main.min.js
+		block bottom-scripts-local
+			script(src='/js/nav.js')
+		// endbuild
+		//

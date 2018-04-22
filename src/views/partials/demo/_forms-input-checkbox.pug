@@ -1,0 +1,73 @@
+//- Forms - Input Checkboxes
+//- -----------------------------------------------------------------
+
+
+p
+	| #{'<input>'} elements of type checkbox are rendered by default as square boxes that are checked (ticked) when activated, like you might see in an official government paper form. They allow you to select single values for submission in a form (or not).
+
+p
+	| Make sure to include a #{'value'} attribute with your checkbox if you need something other than the value of 'on' to be sumbitted with the checkbox's name to the server. 'on' is the default value when the #{'value'} attribute is omitted.
+
+//- ---------------
+
+h4 Basic Checkbox
+
+form
+	label(for='fm-basicchk1') Checkbox:
+		input#fm-basicchk1(type='checkbox', name='fm-basicchk1' value='isChecked')
+	br
+	button(type='submit') Submit
+
+//- ---------------
+
+h4 Basic Checkbox with Default
+
+form
+	fieldset
+		legend Default Checkbox
+		label(for='fm-defchk1') Checkbox:
+			input#fm-defchk1(type='checkbox', name='fm-defchk1' value='isChecked' checked)
+		br
+		label(for='fm-defchk2') Checkbox:
+			input#fm-defchk2(type='checkbox', name='fm-defchk2' value='isChecked')
+		br
+		button(type='submit') Submit
+
+//- ---------------
+
+h4 Multiple Checkboxes
+
+form
+	fieldset
+		legend Choose your interests
+		label(for='fm-chk1') Coding:
+			input#fm-chk1(type='checkbox', name='interest' value='coding')
+		br
+		label(for='fm-chk2') Music:
+			input#fm-chk2(type='checkbox', name='interest' value='music')
+		br
+		label(for='fm-chk3') Art:
+			input#fm-chk3(type='checkbox', name='interest' value='art')
+		br
+		label(for='fm-chk4') Other:
+			input#fm-chk4(type='checkbox', name='interest' value='other')
+		input#fm-chk4Other(type='text' name='other')
+		br
+		button(type='submit') Submit Form
+
+
+//- Script used to hide/show 'other' text field in the last example above
+//- See: goo.gl/waTwkE
+block append bottom-scripts-local
+script.
+	var otherCheckbox = document.querySelector('input[value="other"]');
+	var otherText = document.querySelector('input[id="fm-chk4Other"]');
+	otherText.style.visibility = 'hidden';
+	otherCheckbox.onchange = function() {
+		if(otherCheckbox.checked) {
+			otherText.style.visibility = 'visible';
+			otherText.value = '';
+		} else {
+			otherText.style.visibility = 'hidden';
+		}
+	};

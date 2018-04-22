@@ -1,0 +1,43 @@
+//- Form - Select
+//- -----------------------------------------------------------------
+
+
+p
+	| The #{'<select>'} element is used in a form to create a drop-down list. Use #{'<option>'} tags inside the #{'<select>'} element define the available options in the list. The HTML #{'<optgroup>'} element creates a grouping of options within a #{'<select>'} element. If used, then make sure to also include the 'label' attribute.
+
+//- ---------------
+
+h4 Basic #{'<select>'}
+
+label(for='fm-select1') Basic Select:
+	select#fm-select1(name='fm-select1')
+		optgroup(label='Templating Engines')
+			option(value='mustache') Mustache
+			option(value='handlebars') Handlebars
+			option(value='pug') Pug
+			option(value='ejs') Embedded JS
+
+//- ---------------
+
+h4 #{'<select>'} With Default Option Selected
+
+label(for='fm-select2') Pre-Selected Option:
+	select#fm-select2(name='fm-select2')
+		optgroup(label='JS Preprocessors')
+			option(value='coffeescript') Coffeescript
+			option(value='typescript' selected) Typescript
+			option(value='livescript') Livescript
+			option(value='babel') Babel
+
+//- ---------------
+
+h4 #{'<select>'} With Multiple-Select Option
+p Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.
+
+label(for='fm-select3') Multiple-Select Option:
+	select#fm-select3(name='fm-select3' multiple)
+		optgroup(label='CSS Preprocessors')
+			option(value='sass') SASS
+			option(value='less') LESS
+			option(value='stylus') Stylus
+			option(value='postcss') PostCSS
