@@ -1,5 +1,5 @@
 // Fresh
-// @since v3.0.6
+// @since v3.0.7
 //
 // ------------------------------------------------------------------
 
@@ -298,7 +298,6 @@ var opt = {
  * Runs compile tasks and starts the localhost server
  * @task  {default}
  * @group {Main}
- * @order {1}
  */
 g.task('default', function(callback) {
 	runSequence('compile', 'normalize:css', ['serve'], callback)
@@ -309,7 +308,6 @@ g.task('default', function(callback) {
  * Runs tasks: styles, scripts, pug, images, and fonts
  * @task  {compile}
  * @group {Main}
- * @order {2}
  */
 g.task('compile', [
 	'styles',
@@ -325,7 +323,6 @@ g.task('compile', [
  * Runs tasks: compile, concat, and tree
  * @task  {build}
  * @group {Production}
- * @order {1}
  */
 g.task('build', function(callback) {
 	env.current(env.production);
@@ -356,7 +353,6 @@ g.task('clean', [
  * Prints final file tree to the cli |
  * @task  {cms}
  * @group {Production}
- * @order {3}
  */
 g.task('cms', function(callback) {
 	runSequence(
@@ -378,7 +374,6 @@ g.task('cms', function(callback) {
  * Copies Luscious from node_modules and adds it to the project's dependencies.
  * @task  {luscious}
  * @group {Main}
- * @order {3}
  */
 g.task('luscious', () => {
 	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
@@ -394,7 +389,6 @@ g.task('luscious', () => {
  * Copies Luscious-Scaffold to the SASS directory
  * @task  {scaffold}
  * @group {Main}
- * @order {4}
  */
 g.task('scaffold', () => {
 	fs.copy(pth.luscious.scaffold.input, pth.luscious.scaffold.output, {
@@ -425,7 +419,6 @@ g.task('initial:help', () => {
  *   Outputs CSS style based on dev/production environment
  * @task  {styles}
  * @group {Main}
- * @order {3}
  */
 g.task('styles', function() {
 	return g.src(pth.styles.input)
@@ -471,7 +464,6 @@ g.task('normalize:css', function() {
  * Options: Lints JS
  * @task  {scripts}
  * @group {Main}
- * @order {5}
  */
 g.task('scripts', function() {
 	return g.src(pth.scripts.input)
@@ -519,7 +511,6 @@ g.task('scripts:beautify', function() {
  *   Outputs HTML style based on dev/production environment
  * @task  {pug}
  * @group {Main}
- * @order {4}
  */
 g.task('pug', ['data'], function() {
 	return g.src([pth.pug.input, '!' + pth.pug.partials])
@@ -537,7 +528,6 @@ g.task('pug', ['data'], function() {
  * Gets data from the json data files and compiles them into data.json to be used by `gulp pug`
  * @task  {data}
  * @group {Main}
- * @order {5}
  */
 g.task('data', function() {
 	return g.src(pth.data.input)
@@ -597,7 +587,6 @@ g.task('clean:html', function() {
  * Copies fonts to from ./src to ./build
  * @task  {fonts}
  * @group {Main}
- * @order {6}
  */
 g.task('fonts', function() {
 	return g.src(pth.fonts.input)
@@ -609,7 +598,6 @@ g.task('fonts', function() {
  * Copies fonts to from the font-awesome node_modules to ./build
  * @task  {fontawesome}
  * @group {Main}
- * @order {7}
  */
 g.task('fontawesome', function() {
 	return g.src(pth.fonts.fontawesome)
@@ -648,7 +636,6 @@ g.task('P', ['production']);
  *   (Use 'images:clean:cache' to remove cached files)
  * @task  {images}
  * @group {Main}
- * @order {7}
  */
 g.task('images', function() {
 	g.src(pth.images.input)
@@ -680,7 +667,6 @@ g.task('images:clean:cache', function(done) {
  *   Watch files: Default watches pug, sass, and js.
  * @task  {serve}
  * @group {Main}
- * @order {8}
  */
 g.task('serve', function() {
 	browserSync.init(opt.browserSync);
@@ -770,7 +756,6 @@ g.task('todo:clean', function() {
  * Options: Minifies HTML
  * @task  {concat}
  * @group {Production}
- * @order {2}
  */
 g.task('concat', function() {
 	return g.src(pth.html.buildFiles)
