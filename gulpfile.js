@@ -9,7 +9,6 @@
 // - Runners
 //   - default
 //     - compile
-//     - normalize:css
 //     - serve
 //   - build
 //     - compile
@@ -38,7 +37,6 @@
 // - initial:help -- Gives user info on initial project setup.
 // - styles -- Compiles SASS into CSS
 // - styles:lint -- Lints SASS even if linting is off in config
-// - normalize:css -- Copies normalize.css from ./dependencies to ./build
 // - scripts -- Copies JS from ./src to ./build
 // - scripts:lint -- Lints JS even if linting is off in config
 // - scripts:beautify -- Makes minifies JS pretty and readible
@@ -50,7 +48,6 @@
 // - fonts -- Copies fonts to from ./src to ./build
 // - fontawesome -- Copies fonts to from the font-awesome node_modules to ./build
 // - clean: build -- Deletes ./build directory
-// - production -- Sets environment to Production.
 // - images -- Copies, optimizes, & caches images from ./src to ./build directory
 // - images:clean:cache -- Clears out the image cache created with 'gulp images'
 // - serve -- Starts BrowserSync Server on localhost
@@ -71,7 +68,6 @@ var fs = require('fs-extra');
 var gulpif = require('gulp-if');
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
-var env = require('gulp-environments');
 var rename = require('gulp-rename');
 var del = require('del');
 var usage = require('gulp-help-doc');
@@ -116,13 +112,13 @@ var replace = require('gulp-ex-replace');
 // ------------------------------------
 var base = {
 	src: './src', // Source Code
-	build: './build' // Processed Code for staging/distribution
+	build: './build', // Processed Code for staging/distribution
+	buildCss: './build/css',
+	buildJs: './build/js'
 }
 
 
-var pth = {
-	srcD: base.src,
-	buildD: base.build,
+var vendors = {
 	luscious: {
 		core: {
 			input: './node_modules/luscious-sass',
@@ -133,13 +129,38 @@ var pth = {
 			output: base.src + '/sass'
 		}
 	},
+	normalize: {
+		input: './node_modules/normalize.css/normalize.css',
+		output: base.buildCss
+	},
+	fontAwesome: {
+		styles: {
+			input: './node_modules/font-awesome/css/font-awesome.css',
+			output: base.buildCss
+		},
+		fonts: {
+			input: './node_modules/font-awesome/fonts/**/*',
+			output: base.build + '/fonts/'
+		}
+	},
+	owlCarousel: {
+		styles: {
+			input: './node_modules/owl.carousel/dist/assets/owl.carousel.css',
+			output: base.buildCss
+		},
+		scripts: {
+			input: './node_modules/owl.carousel/dist/owl.carousel.js',
+			output: base.buildJs
+		}
+	}
+}
+
+
+var pth = {
+	srcD: base.src,
+	buildD: base.build,
 	styles: {
 		input: base.src + '/sass/**/*.{scss,sass}',
-		output: base.build + '/css'
-	},
-	normalize: {
-		// cssInput: './dependencies/normalize_sass/normalize.css',
-		cssInput: './node_modules/normalize.css/normalize.css',
 		output: base.build + '/css'
 	},
 	scripts: {
@@ -195,7 +216,6 @@ var pth = {
 // Options -- CONFIGURE THESE
 // ------------------------------------
 var opt = {
-	minifyHtml: true,
 	browserSync: {
 		// proxy: 'fresh.dev',     // proxy used in local server
 		server: pth.buildD + '/', // directory used for localhost source
@@ -218,16 +238,12 @@ var opt = {
 		overwrite: false,
 	},
 	styles: {
-		outputDev: {
+		output: {
 			errLogToConsole: true,
 			outputStyle: 'expanded',
 			sourceComments: 'true',
 			indentType: 'tab',
 			indentWidth: '1'
-		},
-		outputPro: {
-			errLogToConsole: true,
-			outputStyle: 'compressed',
 		},
 		prefixer: [
 			'last 2 versions',
@@ -251,12 +267,8 @@ var opt = {
 		useData: true,
 		// dataPath: pth.srcD + '/views/data.json',
 		lint: true,
-		outputDev: {
+		output: {
 			pretty: '	',
-			basedir: './src/views'
-		},
-		outputPro: {
-			pretty: '',
 			basedir: './src/views'
 		},
 		prettyPug: {
@@ -266,6 +278,12 @@ var opt = {
 			// tab_size: 2   // Only used with 'fill_tab' == false
 		}
 	}, //pug ----------------
+	minifyHtml: {
+		collapseWhitespace: true,
+		removeComments: true,
+		minifyCSS: true,
+		minifyJS: true
+	},
 	images: {
 		output: {
 			interlaced: true
@@ -300,7 +318,7 @@ var opt = {
  * @group {Main}
  */
 g.task('default', function(callback) {
-	runSequence('compile', 'normalize:css', ['serve'], callback)
+	runSequence('compile', ['serve'], callback)
 });
 
 
@@ -315,7 +333,6 @@ g.task('compile', [
 	'pug',
 	'images',
 	'fonts',
-	'fontawesome'
 ]);
 
 
@@ -325,8 +342,14 @@ g.task('compile', [
  * @group {Production}
  */
 g.task('build', function(callback) {
-	env.current(env.production);
-	runSequence('compile', 'concat', 'tree', callback)
+	runSequence(
+		'clean:build',
+		'compile',
+		'concat',
+		'minify',
+		'tree',
+		callback
+	)
 });
 
 
@@ -366,7 +389,7 @@ g.task('cms', function(callback) {
 
 
 // ------------------------------------
-// Individual Tasks
+// Get Dependencies
 // ------------------------------------
 
 
@@ -375,14 +398,14 @@ g.task('cms', function(callback) {
  * @task  {luscious}
  * @group {Main}
  */
-g.task('luscious', () => {
-	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
-		overwrite: opt.luscious.overwrite,
-		preserveTimestamps: true
-	}, err => {
-		if (err) return console.error(err)
-	})
-})
+// g.task('luscious', () => {
+// 	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
+// 		overwrite: opt.luscious.overwrite,
+// 		preserveTimestamps: true
+// 	}, err => {
+// 		if (err) return console.error(err)
+// 	})
+// })
 
 
 /**
@@ -390,14 +413,14 @@ g.task('luscious', () => {
  * @task  {scaffold}
  * @group {Main}
  */
-g.task('scaffold', () => {
-	fs.copy(pth.luscious.scaffold.input, pth.luscious.scaffold.output, {
-		overwrite: false,
-		preserveTimestamps: true
-	}, err => {
-		if (err) return console.error(err)
-	})
-})
+// g.task('scaffold', () => {
+// 	fs.copy(pth.luscious.scaffold.input, pth.luscious.scaffold.output, {
+// 		overwrite: false,
+// 		preserveTimestamps: true
+// 	}, err => {
+// 		if (err) return console.error(err)
+// 	})
+// })
 
 
 /**
@@ -410,13 +433,59 @@ g.task('initial:help', () => {
 });
 
 
+
+// Copies normalize.css from `node_modules` to `./build` & creates sourcemaps
+g.task('get:normalize', function() {
+	return g.src(pth.normalize.cssInput)
+		.pipe(sourcemaps.init())
+		.pipe(sass(opt.styles.output).on('error', sass.logError))
+		.pipe(sourcemaps.write({ includeContent: false }))
+		.pipe(g.dest(pth.normalize.output));
+});
+
+
+// Copies font-awesome from `node_modules` to `./build` & creates sourcemaps
+g.task('get:fontawesome', function() {
+	return g.src(pth.fontAwesome.input)
+		.pipe(sourcemaps.init())
+		.pipe(sass(opt.styles.output).on('error', sass.logError))
+		.pipe(sourcemaps.write({ includeContent: false }))
+		.pipe(g.dest(pth.fontAwesome.output));
+});
+
+
+// Copies owl css from `node_modules` to `./build` & creates sourcemaps
+g.task('get:owl:css', function() {
+	return g.src(pth.owlStyles.cssInput)
+		.pipe(sourcemaps.init())
+		.pipe(sass(opt.styles.output).on('error', sass.logError))
+		.pipe(sourcemaps.write({ includeContent: false }))
+		.pipe(g.dest(pth.owlStyles.output));
+});
+
+
+// Copies owl JS from `node_modules` to `./build`, creates sourcemaps, & lints
+g.task('get:owl:js', function() {
+	return g.src(pth.owlScript.input)
+		.pipe(gulpif(opt.scripts.lint, jshint()))
+		.pipe(gulpif(opt.scripts.lint, jshint.reporter('jshint-stylish-ex')))
+		.pipe(sourcemaps.init())
+		.pipe(sourcemaps.write({ includeContent: false }))
+		.pipe(g.dest(pth.owlScript.output))
+		.pipe(browserSync.reload({ stream: true }));
+});
+
+
+// ------------------------------------
+// Individual Tasks
+// ------------------------------------
 /**
  * Compiles SASS into CSS |
  * Auto-prefixes based on configs |
- * Creates sourcemaps in dev environment |
+ * Creates sourcemaps
  * Options:
  *   Lints SASS,
- *   Outputs CSS style based on dev/production environment
+ *   Outputs CSS style
  * @task  {styles}
  * @group {Main}
  */
@@ -424,11 +493,10 @@ g.task('styles', function() {
 	return g.src(pth.styles.input)
 		.pipe(gulpif(opt.styles.lint, sassLint(opt.styles.linterOpts)))
 		.pipe(gulpif(opt.styles.lint, sassLint.format()))
-		.pipe(env.development(sourcemaps.init()))
-		.pipe(env.development(sass(opt.styles.outputDev).on('error', sass.logError)))
-		.pipe(env.production(sass(opt.styles.outputPro).on('error', sass.logError)))
+		.pipe(sourcemaps.init())
+		.pipe(sass(opt.styles.output).on('error', sass.logError))
 		.pipe(prefix(opt.styles.prefixer))
-		.pipe(env.development(sourcemaps.write({ includeContent: false })))
+		.pipe(sourcemaps.write({ includeContent: false }))
 		.pipe(g.dest(pth.styles.output))
 		.pipe(browserSync.reload({ stream: true }));
 });
@@ -447,20 +515,8 @@ g.task('styles:lint', function() {
 
 
 /**
- * Copies normalize.css from ./dependencies to ./build
- * @task  {normalize.css}
- * @group {Utilities}
- */
-g.task('normalize:css', function() {
-	return g.src(pth.normalize.cssInput)
-		.pipe(g.dest(pth.normalize.output));
-});
-
-
-/**
  * Copies JS from ./src to ./build |
- * Creates sourcemaps in dev environment |
- * Minifies JS in production environment |
+ * Creates sourcemaps and copies to `./build`
  * Options: Lints JS
  * @task  {scripts}
  * @group {Main}
@@ -469,9 +525,8 @@ g.task('scripts', function() {
 	return g.src(pth.scripts.input)
 		.pipe(gulpif(opt.scripts.lint, jshint()))
 		.pipe(gulpif(opt.scripts.lint, jshint.reporter('jshint-stylish-ex')))
-		.pipe(env.development(sourcemaps.init()))
-		.pipe(env.development(sourcemaps.write({ includeContent: false })))
-		.pipe(env.production(uglify()))
+		.pipe(sourcemaps.init())
+		.pipe(sourcemaps.write({ includeContent: false }))
 		.pipe(g.dest(pth.scripts.output))
 		.pipe(browserSync.reload({ stream: true }));
 });
@@ -508,7 +563,7 @@ g.task('scripts:beautify', function() {
  * Options:
  *   Uses data from data.json,
  *   Lints Pug,
- *   Outputs HTML style based on dev/production environment
+ *   Outputs HTML style
  * @task  {pug}
  * @group {Main}
  */
@@ -518,8 +573,7 @@ g.task('pug', ['data'], function() {
 			return JSON.parse(fs.readFileSync(pth.data.file));
 		})))
 		.pipe(gulpif(opt.pug.lint, puglint()))
-		.pipe(env.development(pug(opt.pug.outputDev)))
-		.pipe(env.production(pug(opt.pug.outputPro)))
+		.pipe(pug(opt.pug.output))
 		.pipe(g.dest(pth.pug.output));
 });
 
@@ -610,25 +664,12 @@ g.task('fontawesome', function() {
  * @task  {clean:build}
  * @group {Utilities}
  */
-g.task('clean:build', function() {
+g.task('clean:build', function(callback) {
 	fs.remove(pth.buildD, err => {
 		if (err) return console.error(err)
+		callback();
 	})
 });
-
-
-/**
- * Sets environment to Production.
- *  (Environment is set to 'development' by default) |
- *  [Alias] : `P`
- * @task  {production}
- * @group {Utilities}
- */
-g.task('production', function() {
-	env.current(env.production);
-});
-
-g.task('P', ['production']);
 
 
 /**
@@ -744,16 +785,16 @@ g.task('todo', function() {
  * @task  {todo:clean}
  * @group {Utilities}
  */
-g.task('todo:clean', function() {
+g.task('todo:clean', function(callback) {
 	fs.remove(pth.todo.file, err => {
 		if (err) return console.error(err)
+		callback();
 	})
 });
 
 
 /**
- * Concats CSS & JS |
- * Options: Minifies HTML
+ * Concats and Minifys CSS & JS
  * @task  {concat}
  * @group {Production}
  */
@@ -762,9 +803,18 @@ g.task('concat', function() {
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify()))
 		.pipe(gulpif('*.css', cssnano()))
-		.pipe(gulpif(opt.minifyHtml, htmlmin({
-			collapseWhitespace: true,
-		})))
+		.pipe(g.dest(pth.buildD + '/'));
+});
+
+
+/**
+ * Minifys HTML. Options: Remove comments, minify inline CSS/JS.
+ * @task  {minify}
+ * @group {Production}
+ */
+g.task('minify', function() {
+	return g.src(pth.html.buildFiles)
+		.pipe(htmlmin(opt.minifyHtml))
 		.pipe(g.dest(pth.buildD + '/'));
 });
 

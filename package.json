@@ -27,7 +27,6 @@
 		"gulp-cache": "^1.0.1",
 		"gulp-cssnano": "^2.1.2",
 		"gulp-data": "^1.2.1",
-		"gulp-environments": "^0.1.2",
 		"gulp-ex-replace": "^0.5.8",
 		"gulp-filetree": "^0.0.3",
 		"gulp-help-doc": "^1.1.0",
@@ -54,6 +53,7 @@
 		"jstransformer-markdown-it": "^2.0.0",
 		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.5",
 		"normalize.css": "^8.0.0",
+		"owl.carousel": "^2.3.4",
 		"path": "^0.12.7",
 		"run-sequence": "^2.2.0"
 	}
