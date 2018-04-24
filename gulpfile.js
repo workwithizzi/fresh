@@ -18,7 +18,6 @@ var runSequence = require('run-sequence');
 var rename = require('gulp-rename');
 var del = require('del');
 var usage = require('gulp-help-doc');
-var todo = require('gulp-todo');
 var useref = require('gulp-useref');
 // Styles
 var sass = require('gulp-sass');
@@ -138,8 +137,7 @@ var pth = {
 	},
 	fonts: {
 		input: base.src + '/fonts/**/*',
-		output: base.build + '/fonts/',
-		fontawesome: './node_modules/font-awesome/fonts/**/*'
+		output: base.build + '/fonts/'
 	},
 	images: {
 		dir: base.src + '/images/',
@@ -151,11 +149,6 @@ var pth = {
 		output: base.build + '/images/',
 		rootimgsInput: base.src + '/images/**/*(favicon.ico|apple-touch-icon.png)',
 		rootimgsOutput: base.build + '/'
-	},
-	todo: {
-		input: base.src + '/**/*.+(html|css|js|sass|scss|pug)',
-		output: './',
-		file: './TODO.md'
 	}
 }
 
@@ -213,7 +206,6 @@ var opt = {
 	}, //scripts ----------------
 	pug: {
 		useData: true,
-		// dataPath: pth.srcD + '/views/data.json',
 		lint: true,
 		output: {
 			pretty: '	',
@@ -236,17 +228,7 @@ var opt = {
 		output: {
 			interlaced: true
 		}
-	}, //images ----------------
-	todoTags: [
-		'HOTFIX',
-		'REVIEW',
-		'2DO-CH',
-		'2DO-YG',
-		// '2DO-FRESH',
-		'2DO-FRESH',
-		'POSTLAUNCH',
-		'2DO-LATER',
-	]
+	} //images ----------------
 } //opt
 
 
@@ -276,6 +258,7 @@ g.task('default', function(callback) {
  * @group {Main}
  */
 g.task('compile', [
+	'vendors',
 	'styles',
 	'scripts',
 	'pug',
@@ -570,17 +553,6 @@ g.task('fonts', function() {
 
 
 /**
- * Copies fonts to from the font-awesome node_modules to ./build
- * @task  {fontawesome}
- * @group {Main}
- */
-g.task('fontawesome', function() {
-	return g.src(pth.fonts.fontawesome)
-		.pipe(g.dest(pth.fonts.output));
-});
-
-
-/**
  * Deletes ./build directory
  * @task  {clean:build}
  * @group {Utilities}
@@ -671,46 +643,6 @@ g.task('tree', function() {
 			}
 			return file;
 		}))
-});
-
-
-/**
- * Creates a 'todo.md' file |
- * (use 'gulp clean:todo' to remove the file) |
- * Configurable options:
- *   Files used to get todo notes,
- *   Todo Tags,
- *   Output directory (default is project root)
- * @task  {todo}
- * @group {Utilities}
- */
-g.task('todo', function() {
-	return g.src(pth.todo.input)
-		.pipe(todo({
-			customTags: opt.todoTags,
-			// Modifies output header
-			transformHeader: function(kind) {
-				return [
-					'### ' + kind,
-					'| Filename | line # | ' + kind,
-					'|:------|:------:|:------'
-				]
-			}
-		}))
-		.pipe(g.dest(pth.todo.output));
-});
-
-
-/**
- * Removes the 'todo.md' file created with 'gulp todo'
- * @task  {todo:clean}
- * @group {Utilities}
- */
-g.task('todo:clean', function(callback) {
-	fs.remove(pth.todo.file, err => {
-		if (err) return console.error(err)
-		callback();
-	})
 });
 
 
