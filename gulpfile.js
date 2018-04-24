@@ -152,7 +152,11 @@ var vendors = {
 			input: './node_modules/owl.carousel/dist/owl.carousel.js',
 			output: base.buildJs
 		}
-	}
+	},
+	jquery: {
+		input: './node_modules/jquery/dist/jquery.js',
+		output: base.buildJs
+	},
 }
 
 
@@ -436,42 +440,50 @@ g.task('initial:help', () => {
 
 // Copies normalize.css from `node_modules` to `./build` & creates sourcemaps
 g.task('get:normalize', function() {
-	return g.src(pth.normalize.cssInput)
+	return g.src(vendors.normalize.input)
 		.pipe(sourcemaps.init())
 		.pipe(sass(opt.styles.output).on('error', sass.logError))
 		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(pth.normalize.output));
+		.pipe(g.dest(vendors.normalize.output));
 });
 
 
 // Copies font-awesome from `node_modules` to `./build` & creates sourcemaps
 g.task('get:fontawesome', function() {
-	return g.src(pth.fontAwesome.input)
+	return g.src(vendors.fontAwesome.styles.input)
 		.pipe(sourcemaps.init())
 		.pipe(sass(opt.styles.output).on('error', sass.logError))
 		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(pth.fontAwesome.output));
+		.pipe(g.dest(vendors.fontAwesome.styles.output));
 });
 
 
 // Copies owl css from `node_modules` to `./build` & creates sourcemaps
 g.task('get:owl:css', function() {
-	return g.src(pth.owlStyles.cssInput)
+	return g.src(vendors.owlCarousel.styles.input)
 		.pipe(sourcemaps.init())
 		.pipe(sass(opt.styles.output).on('error', sass.logError))
 		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(pth.owlStyles.output));
+		.pipe(g.dest(vendors.owlCarousel.styles.output));
 });
 
 
 // Copies owl JS from `node_modules` to `./build`, creates sourcemaps, & lints
 g.task('get:owl:js', function() {
-	return g.src(pth.owlScript.input)
-		.pipe(gulpif(opt.scripts.lint, jshint()))
-		.pipe(gulpif(opt.scripts.lint, jshint.reporter('jshint-stylish-ex')))
+	return g.src(vendors.owlCarousel.scripts.input)
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(pth.owlScript.output))
+		.pipe(g.dest(vendors.owlCarousel.scripts.output))
+		.pipe(browserSync.reload({ stream: true }));
+});
+
+
+// Copies owl JS from `node_modules` to `./build`, creates sourcemaps, & lints
+g.task('get:jquery', function() {
+	return g.src(vendors.jquery.input)
+		.pipe(sourcemaps.init())
+		.pipe(sourcemaps.write({ includeContent: false }))
+		.pipe(g.dest(vendors.jquery.output))
 		.pipe(browserSync.reload({ stream: true }));
 });
 
