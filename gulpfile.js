@@ -3,60 +3,7 @@
 //
 // ------------------------------------------------------------------
 
-// ------------------------------------
-// Task Runners
-// ------------------------------------
-// - Runners
-//   - default
-//     - compile
-//     - serve
-//   - build
-//     - compile
-//     - concat
-//     - tree
-//   - compile
-//     - styles
-//     - scripts
-//     - pug
-//     - images
-//     - fonts
-//   - clean
-//     - images:clean:cache -- Removes image cache
-//     - clean:build -- Removes './build' directory
-//   - cms -- Prepares a static, production-ready site, to use in a php-based CMS.
-//     - convert:404
-//     - convert:html
-//       - convert:html:start
-//     - convert:css
-//     - touch:index
-//     - tree
 
-// ------------------------------------
-// Individual Tasks
-// ------------------------------------
-// - initial:help -- Gives user info on initial project setup.
-// - styles -- Compiles SASS into CSS
-// - styles:lint -- Lints SASS even if linting is off in config
-// - scripts -- Copies JS from ./src to ./build
-// - scripts:lint -- Lints JS even if linting is off in config
-// - scripts:beautify -- Makes minifies JS pretty and readible
-// - pug -- Compiles Pug into HTML
-// - data -- Compiles data from json files into data.json to be used by 'gulp pug'
-// - pug:lint -- Lints Pug even if linting is off in config
-// - html2pug -- Converts HTML files to Pug
-// - clean:html -- Deletes HTML files from ./src
-// - fonts -- Copies fonts to from ./src to ./build
-// - fontawesome -- Copies fonts to from the font-awesome node_modules to ./build
-// - clean: build -- Deletes ./build directory
-// - images -- Copies, optimizes, & caches images from ./src to ./build directory
-// - images:clean:cache -- Clears out the image cache created with 'gulp images'
-// - serve -- Starts BrowserSync Server on localhost
-// - help -- Prints info about each gulp task to the CLI
-// - tree -- Prints file tree of the ./build directory to the CLI
-// - todo -- Creates a 'todo.md' file based on configured tags
-// - todo:clean -- Removes the 'todo.md' file created with 'gulp todo'
-// - concat -- Concats CSS & JS
-// - concat:help -- Prints usage info about 'gulp concat'
 
 
 // ------------------------------------
@@ -118,7 +65,7 @@ var base = {
 }
 
 
-var vendors = {
+var dependencies = {
 	luscious: {
 		core: {
 			input: './node_modules/luscious-sass',
@@ -129,35 +76,32 @@ var vendors = {
 			output: base.src + '/sass'
 		}
 	},
-	normalize: {
-		input: './node_modules/normalize.css/normalize.css',
-		output: base.buildCss
-	},
-	fontAwesome: {
-		styles: {
-			input: './node_modules/font-awesome/css/font-awesome.css',
-			output: base.buildCss
-		},
-		fonts: {
-			input: './node_modules/font-awesome/fonts/**/*',
-			output: base.build + '/fonts/'
-		}
-	},
-	owlCarousel: {
-		styles: {
-			input: './node_modules/owl.carousel/dist/assets/owl.carousel.css',
-			output: base.buildCss
-		},
-		scripts: {
-			input: './node_modules/owl.carousel/dist/owl.carousel.js',
-			output: base.buildJs
-		}
-	},
-	jquery: {
-		input: './node_modules/jquery/dist/jquery.js',
-		output: base.buildJs
-	},
-}
+	"vendors": [{
+	// 	// Normalize - CSS
+	// 	"input": "./node_modules/normalize.css/normalize.css",
+	// 	"output": base.buildCss
+	// }, {
+	// 	// Font Awesome - CSS
+	// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
+	// 	"output": base.buildCss
+	// }, {
+	// 	// Font Awesome - Fonts
+	// 	"input": "./node_modules/font-awesome/fonts/**/*",
+	// 	"output": base.build + '/fonts'
+	// }, {
+	// 	// Owl Carousel - CSS
+	// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
+	// 	"output": base.buildCss
+	// }, {
+	// 	// Owl Carousel - JS
+	// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
+	// 	"output": base.buildJs
+	// }, {
+		// Jquery
+		"input": "./node_modules/jquery/dist/jquery.js",
+		"output": base.buildJs
+	}]
+};
 
 
 var pth = {
@@ -438,59 +382,24 @@ g.task('initial:help', () => {
 
 
 
-// Copies normalize.css from `node_modules` to `./build` & creates sourcemaps
-g.task('get:normalize', function() {
-	return g.src(vendors.normalize.input)
-		.pipe(sourcemaps.init())
-		.pipe(sass(opt.styles.output).on('error', sass.logError))
-		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(vendors.normalize.output));
-});
-
-
-// Copies font-awesome from `node_modules` to `./build` & creates sourcemaps
-g.task('get:fontawesome', function() {
-	return g.src(vendors.fontAwesome.styles.input)
-		.pipe(sourcemaps.init())
-		.pipe(sass(opt.styles.output).on('error', sass.logError))
-		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(vendors.fontAwesome.styles.output));
-});
-
-
-// Copies owl css from `node_modules` to `./build` & creates sourcemaps
-g.task('get:owl:css', function() {
-	return g.src(vendors.owlCarousel.styles.input)
-		.pipe(sourcemaps.init())
-		.pipe(sass(opt.styles.output).on('error', sass.logError))
-		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(vendors.owlCarousel.styles.output));
-});
-
-
-// Copies owl JS from `node_modules` to `./build`, creates sourcemaps, & lints
-g.task('get:owl:js', function() {
-	return g.src(vendors.owlCarousel.scripts.input)
-		.pipe(sourcemaps.init())
-		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(vendors.owlCarousel.scripts.output))
-		.pipe(browserSync.reload({ stream: true }));
-});
-
-
-// Copies owl JS from `node_modules` to `./build`, creates sourcemaps, & lints
-g.task('get:jquery', function() {
-	return g.src(vendors.jquery.input)
-		.pipe(sourcemaps.init())
-		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(vendors.jquery.output))
-		.pipe(browserSync.reload({ stream: true }));
-});
-
-
 // ------------------------------------
 // Individual Tasks
 // ------------------------------------
+
+/**
+ * Imports dependencies specified in the 'dependencies.vendors' array
+ * @task {vendors}
+ * @group {Utilities}
+ */
+g.task('vendors', function() {
+	for(var i = 0; i < dependencies.vendors.length; i++) {
+		var file = dependencies.vendors[i]
+		g.src(file.input)
+			.pipe(g.dest(file.output));
+	}
+});
+
+
 /**
  * Compiles SASS into CSS |
  * Auto-prefixes based on configs |
