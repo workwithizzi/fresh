@@ -40,35 +40,28 @@ var src = './src',
 		html = {
 			buildFiles: build + '/**/*.html',
 			input: src + '/views/**/*.html',
-			output: build + '/'
+			output: build
 		},
 
 		fonts = {
 			input: src + '/fonts/**/*',
-			output: build + '/fonts/'
+			output: build + '/fonts'
+		},
+
+		images = {
+			site: {
+				input: [
+					src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
+					'!/**/*(favicon.ico|apple-touch-icon.png)'
+				],
+				output: build + '/images'
+			},
+			root: {
+				input: src + '/images/**/*(favicon.ico|apple-touch-icon.png)',
+				output: build
+			}
 		};
 
-
-// ------------------------------------
-// Project Paths - CONFIGURE
-// ------------------------------------
-var pth = {
-	fonts: {
-		input: src + '/fonts/**/*',
-		output: build + '/fonts/'
-	},
-	images: {
-		dir: src + '/images/',
-		inputAll: src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
-		input: [
-			src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
-			'!/**/*(favicon.ico|apple-touch-icon.png)'
-		],
-		output: build + '/images/',
-		rootimgsInput: src + '/images/**/*(favicon.ico|apple-touch-icon.png)',
-		rootimgsOutput: build + '/'
-	}
-}
 
 
 // ------------------------------------
@@ -592,12 +585,12 @@ g.task('fonts', function() {
  * @group {Main}
  */
 g.task('images', function() {
-	g.src(pth.images.input)
+	g.src(images.site.input)
 		.pipe(cache(imagemin(opt.images.output)))
-		.pipe(g.dest(pth.images.output));
-	g.src(pth.images.rootimgsInput)
+		.pipe(g.dest(images.site.output));
+	g.src(images.root.input)
 		.pipe(cache(imagemin(opt.images.output)))
-		.pipe(g.dest(pth.images.rootimgsOutput));
+		.pipe(g.dest(images.root.output));
 });
 
 
