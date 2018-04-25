@@ -461,7 +461,7 @@ g.task('pug:lint', function() {
  * @group {Utilities}
  */
 g.task('html2pug', function() {
-	g.src(html.input)
+	return g.src(html.input)
 		.pipe(html2pug())
 		// .pipe(rename({ dirname: '' }))
 		.pipe(prettyPug(opt.pug.prettyPug))
@@ -474,16 +474,25 @@ g.task('html2pug', function() {
 });
 
 g.task('move', function() {
-	g.src(html.input)
+	return g.src(html.input)
 		.pipe(g.dest(viewsPug.convertedHtml));
 });
 
 g.task('remove', function() {
-	return del.sync(html.input);
+	return del.sync([
+		// html.input,
+		// '!' + viewsPug.convertedHtml + '**/*.html'
+		'src/views/**/*.html',
+		'!src/views/original-html/**/*.html'
+	]);
 });
 
 g.task('test', function(callback) {
-	runSequence('html2pug', 'move', 'remove', callback)
+	runSequence(
+		'html2pug',
+		'move',
+		// 'remove',
+		callback)
 });
 
 
