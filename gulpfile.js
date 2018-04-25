@@ -48,9 +48,6 @@ var cache = require('gulp-cache');
 var archy = require('archy');
 var map = require('gulp-map');
 var filetree = require('gulp-filetree');
-// CMS
-var removeCode = require('gulp-remove-code');
-var replace = require('gulp-ex-replace');
 
 
 // ------------------------------------
@@ -160,7 +157,7 @@ var opt = {
 	browserSync: {
 		// proxy: 'fresh.dev',     // proxy used in local server
 		server: pth.buildD + '/', // directory used for localhost source
-		open: false, // open a new browser window to localhost port
+		open: true, // open a new browser window to localhost port
 		injectChanges: true, // inject css changes without reloading browser
 		port: 3000, // define the localhost port (default == 3000)
 		ui: {
@@ -296,27 +293,7 @@ g.task('clean', [
 ]);
 
 
-/**
- * Prepares a static, production-ready site, to be added into a php-based CMS. |
- * Converts `404` to `error.php` and other HTML into Php |
- * Removes any HTML code between the tags: `removeIf(cms)` and
- * `endRemoveIf(cms)`—used to remove static code |
- * Un-comments HTML between the tags: `<!-- @@` & `@@-->` (used to make cms
- * specific code active) |
- * Creates empty index.html |
- * Prints final file tree to the cli |
- * @task  {cms}
- * @group {Production}
- */
-g.task('cms', function(callback) {
-	runSequence(
-		'convert:404',
-		'convert:html',
-		'convert:css',
-		'touch:index',
-		'tree',
-		callback);
-});
+
 
 
 // ------------------------------------
@@ -685,58 +662,4 @@ g.task('concat:help', function() {
 	console.log('<link rel="stylesheet" href="css/normalize.css">')
 	console.log('<link rel="stylesheet" href="css/main.css">')
 	console.log('<!-- endbuild -->')
-});
-
-
-// ------------------------------------
-// CMS Tasks
-// ------------------------------------
-// TODO: Figure out how to glob files with fs-extra and replace 'del' module with 'fs-extra'
-
-// Converts '404.html' to 'error.php'
-g.task('convert:404', function() {
-	fs.rename(pth.buildD + '/404.html', pth.buildD + '/error.php', err => {
-		if (err) return console.log('No `404.html` file to rename.')
-	});
-});
-
-
-// Converts all HTML files to php,
-// Removes any code between the remove-tags,
-// Removes any special comments so that inactive code is active
-g.task('convert:html', ['convert:html:start'], function() {
-	return del.sync(pth.html.buildFiles);
-});
-
-
-g.task('convert:html:start', function() {
-	return g.src(pth.html.buildFiles)
-		.pipe(removeCode({ cms: true }))
-		.pipe(replace('<!-- @@', ''))
-		.pipe(replace('<!--@@', ''))
-		.pipe(replace('@@-->', ''))
-		.pipe(replace('@@ -->', ''))
-		.pipe(rename({
-			extname: '.php'
-		}))
-		.pipe(g.dest(pth.buildD + '/'));
-});
-
-
-// Removes any code in css files that's between the remove-tags
-g.task('convert:css', function() {
-	return g.src(pth.buildD + '/**/*.css')
-		.pipe(removeCode({
-			cms: true,
-			commentStart: '/*!',
-			commentEnd: '*/',
-		}))
-		.pipe(g.dest(pth.buildD + '/'));
-});
-
-
-// Creates an empty 'index.html' file
-// goo.gl/nGvcyC
-g.task('touch:index', function() {
-	fs.closeSync(fs.openSync(pth.buildD + '/index.html', 'w'));
 });
