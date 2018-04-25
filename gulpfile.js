@@ -271,7 +271,7 @@ g.task('compile', [
  */
 g.task('build', function(callback) {
 	runSequence(
-		'clean:build',
+		'clean',
 		'compile',
 		'concat',
 		'minify',
@@ -279,20 +279,6 @@ g.task('build', function(callback) {
 		callback
 	)
 });
-
-
-/**
- * Deletes image cache with 'images:clean:cache' |
- * Deletes ./build directory
- * @task  {clean}
- * @group {Utilities}
- */
-g.task('clean', [
-	'images:clean:cache',
-	'clean:build'
-]);
-
-
 
 
 
@@ -529,18 +515,6 @@ g.task('fonts', function() {
 });
 
 
-/**
- * Deletes ./build directory
- * @task  {clean:build}
- * @group {Utilities}
- */
-g.task('clean:build', function(callback) {
-	fs.remove(pth.buildD, err => {
-		if (err) return console.error(err)
-		callback();
-	})
-});
-
 
 /**
  * Copies/optimizes/caches images from ./src to ./build directory
@@ -558,13 +532,21 @@ g.task('images', function() {
 });
 
 
+
 /**
- * Clears out the image cache created with `gulp images`
- * @task  {images:clean:cache}
+ * Deletes ./build directory and clears out the image cache created with `gulp images`
+ * @task  {clean}
  * @group {Utilities}
  */
-g.task('images:clean:cache', function(done) {
-	cache.clearAll(done)
+g.task('clean', function(callback) {
+	// Clear out image cache
+	cache.clearAll()
+
+	// Delete ./build directory
+	fs.remove(pth.buildD, err => {
+		if (err) return console.error(err)
+		callback();
+	})
 });
 
 
