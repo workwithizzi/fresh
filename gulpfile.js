@@ -30,6 +30,17 @@ var src = './src',
 			output: src + '/views',
 			fileName: 'data.json',
 			file: src + '/views/data.json'
+		},
+
+		convertHtml = {
+			input: src + '/views/**/*.html',
+			output: src + '/views'
+		},
+
+		html = {
+			buildFiles: build + '/**/*.html',
+			input: src + '/views/**/*.html',
+			output: build + '/'
 		};
 
 
@@ -37,15 +48,6 @@ var src = './src',
 // Project Paths - CONFIGURE
 // ------------------------------------
 var pth = {
-	html2pug: {
-		input: src + '/views/**/*.html',
-		output: src + '/views/'
-	},
-	html: {
-		buildFiles: build + '/**/*.html',
-		input: src + '/views/**/*.html',
-		output: build + '/'
-	},
 	fonts: {
 		input: src + '/fonts/**/*',
 		output: build + '/fonts/'
@@ -90,7 +92,7 @@ var opt = {
 		views: viewsPug.input,
 		styles: styles.input,
 		scripts: scripts.input,
-		reload: pth.html.output + '**/*.html'
+		reload: html.output + '**/*.html'
 	},
 	luscious: {
 		overwrite: false,
@@ -466,11 +468,11 @@ g.task('pug:lint', function() {
  * @group {Utilities}
  */
 g.task('html2pug', function() {
-	return g.src(pth.html2pug.input)
+	return g.src(convertHtml.input)
 		.pipe(html2pug())
 		.pipe(rename({ dirname: '' }))
 		.pipe(prettyPug(opt.pug.prettyPug))
-		.pipe(g.dest(pth.html2pug.output));
+		.pipe(g.dest(convertHtml.output));
 });
 
 
@@ -483,7 +485,7 @@ g.task('html2pug', function() {
  * @group {Production}
  */
 g.task('concat', function() {
-	return g.src(pth.html.buildFiles)
+	return g.src(html.buildFiles)
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify()))
 		.pipe(gulpif('*.css', cssnano()))
@@ -497,7 +499,7 @@ g.task('concat', function() {
  * @group {Production}
  */
 g.task('minify', function() {
-	return g.src(pth.html.buildFiles)
+	return g.src(html.buildFiles)
 		.pipe(htmlmin(opt.minifyHtml))
 		.pipe(g.dest(build + '/'));
 });
@@ -563,7 +565,7 @@ g.task('vendors', function() {
  * @group {Utilities}
  */
 g.task('clean:html', function() {
-	return del.sync(pth.html.input);
+	return del.sync(html.input);
 });
 
 
