@@ -3,20 +3,14 @@
 // ------------------------------------------------------------------
 
 
-var src = 'src',
-		build = 'build',
-		buildCss = build + '/css',
-		buildJs = build + '/js';
-
-var styles = {
-	input: src + '/sass/**/*.{scss,sass}',
-	output: buildCss
-}
-
-var scripts = {
-	input: src + '/js/**/*.js',
-	output: buildJs,
-	beautifyOutput: src + '/js'
+// ------------------------------------
+// Base Paths - CONFIGURE
+// ------------------------------------
+var base = {
+	src: './src', // Source Code
+	build: './build', // Processed Code for staging/distribution
+	buildCss: './build/css',
+	buildJs: './build/js'
 }
 
 
@@ -31,33 +25,33 @@ var dependencies = {
 		},
 		scaffold: {
 			input: './node_modules/luscious-sass/scaffold',
-			output: src + '/sass'
+			output: base.src + '/sass'
 		}
 	},
 	"vendors": [{
 	// 	// Normalize - CSS
 	// 	"input": "./node_modules/normalize.css/normalize.css",
-	// 	"output": buildCss
+	// 	"output": base.buildCss
 	// }, {
 	// 	// Font Awesome - CSS
 	// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
-	// 	"output": buildCss
+	// 	"output": base.buildCss
 	// }, {
 	// 	// Font Awesome - Fonts
 	// 	"input": "./node_modules/font-awesome/fonts/**/*",
-	// 	"output": build + '/fonts'
+	// 	"output": base.build + '/fonts'
 	// }, {
 	// 	// Owl Carousel - CSS
 	// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
-	// 	"output": buildCss
+	// 	"output": base.buildCss
 	// }, {
 	// 	// Owl Carousel - JS
 	// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
-	// 	"output": buildJs
+	// 	"output": base.buildJs
 	// }, {
 		// Jquery
 		"input": "./node_modules/jquery/dist/jquery.js",
-		"output": buildJs
+		"output": base.buildJs
 	}]
 };
 
@@ -66,40 +60,51 @@ var dependencies = {
 // Project Paths - CONFIGURE
 // ------------------------------------
 var pth = {
+	srcD: base.src,
+	buildD: base.build,
+	styles: {
+		input: base.src + '/sass/**/*.{scss,sass}',
+		output: base.build + '/css'
+	},
+	scripts: {
+		input: base.src + '/js/**/*.js',
+		output: base.build + '/js',
+		beautifyOutput: base.src + '/js'
+	},
 	data: {
-		input: src + '/views/data/**/*.json',
-		output: src + '/views',
+		input: base.src + '/views/data/**/*.json',
+		output: base.src + '/views',
 		fileName: 'data.json',
-		file: src + '/views/data.json'
+		file: base.src + '/views/data.json'
 	},
 	pug: {
-		input: src + '/views/**/*.pug',
-		partials: src + '/views/**/_*.pug',
-		output: build + '/'
+		input: base.src + '/views/**/*.pug',
+		partials: base.src + '/views/**/_*.pug',
+		output: base.build + '/'
 	},
 	html2pug: {
-		input: src + '/views/**/*.html',
-		output: src + '/views/'
+		input: base.src + '/views/**/*.html',
+		output: base.src + '/views/'
 	},
 	html: {
-		buildFiles: build + '/**/*.html',
-		input: src + '/views/**/*.html',
-		output: build + '/'
+		buildFiles: base.build + '/**/*.html',
+		input: base.src + '/views/**/*.html',
+		output: base.build + '/'
 	},
 	fonts: {
-		input: src + '/fonts/**/*',
-		output: build + '/fonts/'
+		input: base.src + '/fonts/**/*',
+		output: base.build + '/fonts/'
 	},
 	images: {
-		dir: src + '/images/',
-		inputAll: src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
+		dir: base.src + '/images/',
+		inputAll: base.src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
 		input: [
-			src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
+			base.src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
 			'!/**/*(favicon.ico|apple-touch-icon.png)'
 		],
-		output: build + '/images/',
-		rootimgsInput: src + '/images/**/*(favicon.ico|apple-touch-icon.png)',
-		rootimgsOutput: build + '/'
+		output: base.build + '/images/',
+		rootimgsInput: base.src + '/images/**/*(favicon.ico|apple-touch-icon.png)',
+		rootimgsOutput: base.build + '/'
 	}
 }
 
@@ -111,7 +116,7 @@ var opt = {
 	// browserSync ----------------
 	browserSync: {
 		// proxy: 'fresh.dev',     // proxy used in local server
-		server: build + '/', // directory used for localhost source
+		server: pth.buildD + '/', // directory used for localhost source
 		open: false, // open a new browser window to localhost port
 		injectChanges: true, // inject css changes without reloading browser
 		notify: false, // don't show notifications in browser
@@ -122,14 +127,14 @@ var opt = {
 		tunnel: false // external tunnel (example.tunnel.me).
 	},
 	openfile: [
-		build + '/index.html'
+		pth.buildD + '/index.html'
 	],
 	// watch files ----------------
 	watch: {
 		data: pth.data.input,
 		views: pth.pug.input,
-		styles: styles.input,
-		scripts: scripts.input,
+		styles: pth.styles.input,
+		scripts: pth.scripts.input,
 		reload: pth.html.output + '**/*.html'
 	},
 	luscious: {
@@ -336,14 +341,14 @@ g.task('initial:help', () => {
  * @group {Main}
  */
 g.task('styles', function() {
-	return g.src(styles.input)
+	return g.src(pth.styles.input)
 		.pipe(gulpif(opt.styles.lint, sassLint(opt.styles.linterOpts)))
 		.pipe(gulpif(opt.styles.lint, sassLint.format()))
 		.pipe(sourcemaps.init())
 		.pipe(sass(opt.styles.output).on('error', sass.logError))
 		.pipe(prefix(opt.styles.prefixer))
 		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(styles.output))
+		.pipe(g.dest(pth.styles.output))
 		.pipe(browserSync.reload({ stream: true }));
 });
 
@@ -354,7 +359,7 @@ g.task('styles', function() {
  * @group {Utilities}
  */
 g.task('styles:lint', function() {
-	return g.src(styles.input)
+	return g.src(pth.styles.input)
 		.pipe(sassLint(opt.styles.linterOpts))
 		.pipe(sassLint.format())
 });
@@ -369,12 +374,12 @@ g.task('styles:lint', function() {
  * @group {Main}
  */
 g.task('scripts', function() {
-	return g.src(scripts.input)
+	return g.src(pth.scripts.input)
 		.pipe(gulpif(opt.scripts.lint, jshint()))
 		.pipe(gulpif(opt.scripts.lint, jshint.reporter('jshint-stylish-ex')))
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write({ includeContent: false }))
-		.pipe(g.dest(scripts.output))
+		.pipe(g.dest(pth.scripts.output))
 		.pipe(browserSync.reload({ stream: true }));
 });
 
@@ -385,7 +390,7 @@ g.task('scripts', function() {
  * @group {Utilities}
  */
 g.task('scripts:lint', function() {
-	return g.src(scripts.input)
+	return g.src(pth.scripts.input)
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish-ex'))
 });
@@ -397,9 +402,9 @@ g.task('scripts:lint', function() {
  * @group {Utilities}
  */
 g.task('scripts:beautify', function() {
-	return g.src(scripts.input)
+	return g.src(pth.scripts.input)
 		.pipe(beautify(opt.scripts.beautify))
-		.pipe(g.dest(scripts.beautifyOutput))
+		.pipe(g.dest(pth.scripts.beautifyOutput))
 });
 // REVIEW: May be able to use uglify to replace beautify
 
@@ -484,7 +489,7 @@ g.task('concat', function() {
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify()))
 		.pipe(gulpif('*.css', cssnano()))
-		.pipe(g.dest(build + '/'));
+		.pipe(g.dest(pth.buildD + '/'));
 });
 
 
@@ -496,7 +501,7 @@ g.task('concat', function() {
 g.task('minify', function() {
 	return g.src(pth.html.buildFiles)
 		.pipe(htmlmin(opt.minifyHtml))
-		.pipe(g.dest(build + '/'));
+		.pipe(g.dest(pth.buildD + '/'));
 });
 
 
@@ -507,9 +512,9 @@ g.task('minify', function() {
  */
 g.task('tree', function() {
 	var once = true; // lalz0r
-	g.src(build + '/**')
+	g.src(pth.buildD + '/**')
 		.pipe(map(function(file) {
-			if (file.path.match(build))
+			if (file.path.match(pth.buildD))
 				return file
 		}))
 		.pipe(filetree({ cwdRelative: true }))
@@ -601,7 +606,7 @@ g.task('clean', function(callback) {
 	cache.clearAll()
 
 	// Delete ./build directory
-	fs.remove(build, err => {
+	fs.remove(pth.buildD, err => {
 		if (err) return console.error(err)
 		callback();
 	})
