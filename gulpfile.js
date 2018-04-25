@@ -421,8 +421,6 @@ g.task('pug', ['data'], function() {
 });
 
 
-
-
 /**
  * Gets data from the json data files and compiles them into data.json to be used by `gulp pug`
  * @task  {data}
@@ -465,9 +463,9 @@ g.task('pug:lint', function() {
 g.task('html2pug', function() {
 	g.src(html.input)
 		.pipe(html2pug())
-		.pipe(rename({ dirname: '' }))
+		// .pipe(rename({ dirname: '' }))
 		.pipe(prettyPug(opt.pug.prettyPug))
-		.pipe(g.dest(srcViews + '/'));
+		.pipe(g.dest(srcViews));
 
 	g.src(html.input)
 		.pipe(g.dest(viewsPug.convertedHtml));
