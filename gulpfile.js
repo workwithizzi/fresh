@@ -19,10 +19,10 @@ var src = './src',
 			beautifyOutput: src + '/js'
 		},
 
-		pug = {
+		viewsPug = {
 			input: src + '/views/**/*.pug',
 			partials: src + '/views/**/_*.pug',
-			output: build + '/'
+			output: build
 		},
 
 		db = {
@@ -37,17 +37,6 @@ var src = './src',
 // Project Paths - CONFIGURE
 // ------------------------------------
 var pth = {
-	data: {
-		input: src + '/views/data/**/*.json',
-		output: src + '/views',
-		fileName: 'data.json',
-		file: src + '/views/data.json'
-	},
-	pug: {
-		input: src + '/views/**/*.pug',
-		partials: src + '/views/**/_*.pug',
-		output: build + '/'
-	},
 	html2pug: {
 		input: src + '/views/**/*.html',
 		output: src + '/views/'
@@ -98,7 +87,7 @@ var opt = {
 	// watch files ----------------
 	watch: {
 		data: db.input,
-		views: pth.pug.input,
+		views: viewsPug.input,
 		styles: styles.input,
 		scripts: scripts.input,
 		reload: pth.html.output + '**/*.html'
@@ -425,14 +414,16 @@ g.task('scripts:beautify', function() {
  * @group {Main}
  */
 g.task('pug', ['data'], function() {
-	return g.src([pth.pug.input, '!' + pth.pug.partials])
+	return g.src([viewsPug.input, '!' + viewsPug.partials])
 		.pipe(gulpif(opt.pug.useData, data(function(file) {
 			return JSON.parse(fs.readFileSync(db.file));
 		})))
 		.pipe(gulpif(opt.pug.lint, puglint()))
 		.pipe(pug(opt.pug.output))
-		.pipe(g.dest(pth.pug.output));
+		.pipe(g.dest(viewsPug.output));
 });
+
+
 
 
 /**
@@ -464,7 +455,7 @@ g.task('data', function() {
  * @group {Utilities}
  */
 g.task('pug:lint', function() {
-	return g.src([pth.pug.input, pth.pug.partials])
+	return g.src([viewsPug.input, viewsPug.partials])
 		.pipe(puglint())
 });
 
