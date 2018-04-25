@@ -37,6 +37,7 @@
 		"gulp-jshint": "^2.0.4",
 		"gulp-map": "^0.0.2",
 		"gulp-merge-json": "^1.2.1",
+		"gulp-open": "^3.0.1",
 		"gulp-pug": "^3.3.0",
 		"gulp-pug-beautify": "^0.0.1",
 		"gulp-pug-lint": "^0.1.6",

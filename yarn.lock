@@ -896,6 +896,10 @@ colormin@^1.0.5:
     css-color-names "0.0.4"
     has "^1.0.1"
 
+colors@^1.1.2:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-1.2.1.tgz#f4a3d302976aaf042356ba1ade3b1a2c62d9d794"
+
 colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -2614,6 +2618,15 @@ gulp-merge-json@^1.2.1:
     through "^2.3.8"
     vinyl "^2.1.0"
 
+gulp-open@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-open/-/gulp-open-3.0.1.tgz#a2f747b4aa31abec9399b527158b0368c57e2102"
+  dependencies:
+    colors "^1.1.2"
+    opn "5.2.0"
+    plugin-log "^0.1.0"
+    through2 "^2.0.1"
+
 gulp-pug-beautify@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/gulp-pug-beautify/-/gulp-pug-beautify-0.0.1.tgz#5ca8e19f40c8c16cb31ce087e6d45ba43c493c86"
@@ -3571,6 +3584,10 @@ is-windows@^0.2.0:
 is-windows@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.1.tgz#310db70f742d259a16a369202b51af84233310d9"
+
+is-wsl@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
 
 is-zip@^1.0.0:
   version "1.0.0"
@@ -4640,6 +4657,12 @@ opn@4.0.2:
     object-assign "^4.0.1"
     pinkie-promise "^2.0.0"
 
+opn@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/opn/-/opn-5.2.0.tgz#71fdf934d6827d676cecbea1531f95d354641225"
+  dependencies:
+    is-wsl "^1.1.0"
+
 optionator@^0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/optionator/-/optionator-0.8.2.tgz#364c5e409d3f4d6301d6c0b4c05bba50180aeb64"
@@ -4919,6 +4942,13 @@ plugin-error@^0.1.2:
     arr-diff "^1.0.1"
     arr-union "^2.0.1"
     extend-shallow "^1.1.2"
+
+plugin-log@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/plugin-log/-/plugin-log-0.1.0.tgz#86049cf6ab10833398a931f3689cbaee7b5e1333"
+  dependencies:
+    chalk "^1.1.1"
+    dateformat "^1.0.11"
 
 plur@^2.1.2:
   version "2.1.2"

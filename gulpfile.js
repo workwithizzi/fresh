@@ -1,57 +1,10 @@
 // Fresh
 // @since v3.0.7
-//
 // ------------------------------------------------------------------
 
 
-
-
 // ------------------------------------
-// Plugins
-// ------------------------------------
-// General
-var g = require('gulp');
-var fs = require('fs-extra');
-var gulpif = require('gulp-if');
-var browserSync = require('browser-sync');
-var runSequence = require('run-sequence');
-var rename = require('gulp-rename');
-var del = require('del');
-var usage = require('gulp-help-doc');
-var useref = require('gulp-useref');
-// Styles
-var sass = require('gulp-sass');
-var prefix = require('gulp-autoprefixer');
-var sassLint = require('gulp-sass-lint');
-var cssnano = require('gulp-cssnano');
-// Scripts
-var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify');
-var beautify = require('gulp-beautify');
-// Scipts & Styles
-var sourcemaps = require('gulp-sourcemaps');
-// Views - Pug
-var html2pug = require('gulp-html2pug');
-var prettyPug = require('gulp-pug-beautify');
-var puglint = require('gulp-pug-lint');
-var pug = require('gulp-pug');
-// Views - Pug Data
-var data = require('gulp-data');
-var path = require('path');
-var merge = require('gulp-merge-json');
-// Views
-var htmlmin = require('gulp-htmlmin');
-// Images
-var imagemin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-// Tree
-var archy = require('archy');
-var map = require('gulp-map');
-var filetree = require('gulp-filetree');
-
-
-// ------------------------------------
-// Paths -- CONFIGURE THESE
+// Base Paths - CONFIGURE
 // ------------------------------------
 var base = {
 	src: './src', // Source Code
@@ -61,6 +14,9 @@ var base = {
 }
 
 
+// ------------------------------------
+// Project Dependencies - CONFIGURE
+// ------------------------------------
 var dependencies = {
 	luscious: {
 		core: {
@@ -100,6 +56,9 @@ var dependencies = {
 };
 
 
+// ------------------------------------
+// Project Paths - CONFIGURE
+// ------------------------------------
 var pth = {
 	srcD: base.src,
 	buildD: base.build,
@@ -151,30 +110,37 @@ var pth = {
 
 
 // ------------------------------------
-// Options -- CONFIGURE THESE
+// Options - CONFIGURE
 // ------------------------------------
 var opt = {
+	// browserSync ----------------
 	browserSync: {
 		// proxy: 'fresh.dev',     // proxy used in local server
 		server: pth.buildD + '/', // directory used for localhost source
-		open: true, // open a new browser window to localhost port
+		open: false, // open a new browser window to localhost port
 		injectChanges: true, // inject css changes without reloading browser
+		notify: false, // don't show notifications in browser
 		port: 3000, // define the localhost port (default == 3000)
 		ui: {
 			port: 8080 // Port for configuring browserSync UI options
 		},
 		tunnel: false // external tunnel (example.tunnel.me).
-	}, //browserSync ----------------
+	},
+	openfile: [
+		pth.buildD + '/index.html'
+	],
+	// watch files ----------------
 	watch: {
 		data: pth.data.input,
 		views: pth.pug.input,
 		styles: pth.styles.input,
 		scripts: pth.scripts.input,
 		reload: pth.html.output + '**/*.html'
-	}, //watch ----------------
+	},
 	luscious: {
 		overwrite: false,
 	},
+	// styles ----------------
 	styles: {
 		output: {
 			errLogToConsole: true,
@@ -193,14 +159,16 @@ var opt = {
 			files: { ignore: '**/*normalize.scss' },
 			configFile: './.sass-lint.yml'
 		}
-	}, //styles ----------------
+	},
+	// scripts ----------------
 	scripts: {
 		lint: false,
 		beautify: { // Options: git.io/vVyYB
 			indent_size: 2,
 			indent_with_tabs: true
 		}
-	}, //scripts ----------------
+	},
+	// pug ----------------
 	pug: {
 		useData: true,
 		lint: true,
@@ -214,30 +182,64 @@ var opt = {
 			omit_div: true,
 			// tab_size: 2   // Only used with 'fill_tab' == false
 		}
-	}, //pug ----------------
+	},
 	minifyHtml: {
 		collapseWhitespace: true,
 		removeComments: true,
 		minifyCSS: true,
 		minifyJS: true
 	},
+	// images ----------------
 	images: {
 		output: {
 			interlaced: true
 		}
-	} //images ----------------
-} //opt
+	}
+}
+
+
+
+// ------------------------------------
+// Plugins
+// ------------------------------------
+var g = require('gulp');
+		sass = require('gulp-sass'),
+		prefix = require('gulp-autoprefixer'),
+		sassLint = require('gulp-sass-lint'),
+		cssnano = require('gulp-cssnano'),
+		jshint = require('gulp-jshint'),
+		uglify = require('gulp-uglify'),
+		beautify = require('gulp-beautify'),
+		sourcemaps = require('gulp-sourcemaps'),
+		htmlmin = require('gulp-htmlmin'),
+		html2pug = require('gulp-html2pug'),
+		prettyPug = require('gulp-pug-beautify'),
+		puglint = require('gulp-pug-lint'),
+		pug = require('gulp-pug'),
+		data = require('gulp-data'),
+		path = require('path'),
+		merge = require('gulp-merge-json'),
+		imagemin = require('gulp-imagemin'),
+		cache = require('gulp-cache'),
+		fs = require('fs-extra'),
+		useref = require('gulp-useref'),
+		gulpif = require('gulp-if'),
+		browserSync = require('browser-sync'),
+		runSequence = require('run-sequence'),
+		rename = require('gulp-rename'),
+		del = require('del'),
+		usage = require('gulp-help-doc'),
+		open = require('gulp-open'),
+		// Tree
+		archy = require('archy'),
+		map = require('gulp-map'),
+		filetree = require('gulp-filetree');
 
 
 
 // ------------------------------------------------------------------
 // Tasks
 // ------------------------------------------------------------------
-
-
-// ------------------------------------
-// Task Runners
-// ------------------------------------
 
 /**
  * Runs compile tasks and starts the localhost server
@@ -247,6 +249,9 @@ var opt = {
 g.task('default', function(callback) {
 	runSequence('compile', ['serve'], callback)
 });
+
+// Alias Task
+g.task('d', ['default']);
 
 
 /**
@@ -281,7 +286,6 @@ g.task('build', function(callback) {
 });
 
 
-
 // ------------------------------------
 // Get Dependencies
 // ------------------------------------
@@ -292,14 +296,14 @@ g.task('build', function(callback) {
  * @task  {luscious}
  * @group {Main}
  */
-// g.task('luscious', () => {
-// 	fs.copy(pth.luscious.core.input, pth.luscious.core.output, {
-// 		overwrite: opt.luscious.overwrite,
-// 		preserveTimestamps: true
-// 	}, err => {
-// 		if (err) return console.error(err)
-// 	})
-// })
+g.task('luscious', () => {
+	fs.copy(dependencies.luscious.core.input, dependencies.luscious.core.output, {
+		overwrite: opt.luscious.overwrite,
+		preserveTimestamps: true
+	}, err => {
+		if (err) return console.error(err)
+	})
+})
 
 
 /**
@@ -307,14 +311,14 @@ g.task('build', function(callback) {
  * @task  {scaffold}
  * @group {Main}
  */
-// g.task('scaffold', () => {
-// 	fs.copy(pth.luscious.scaffold.input, pth.luscious.scaffold.output, {
-// 		overwrite: false,
-// 		preserveTimestamps: true
-// 	}, err => {
-// 		if (err) return console.error(err)
-// 	})
-// })
+g.task('scaffold', () => {
+	fs.copy(dependencies.luscious.scaffold.input, dependencies.luscious.scaffold.output, {
+		overwrite: false,
+		preserveTimestamps: true
+	}, err => {
+		if (err) return console.error(err)
+	})
+})
 
 
 /**
@@ -329,30 +333,10 @@ g.task('initial:help', () => {
 
 
 // ------------------------------------
-// Individual Tasks
+// Styles
 // ------------------------------------
-
 /**
- * Imports dependencies specified in the 'dependencies.vendors' array
- * @task {vendors}
- * @group {Utilities}
- */
-g.task('vendors', function() {
-	for(var i = 0; i < dependencies.vendors.length; i++) {
-		var file = dependencies.vendors[i]
-		g.src(file.input)
-			.pipe(g.dest(file.output));
-	}
-});
-
-
-/**
- * Compiles SASS into CSS |
- * Auto-prefixes based on configs |
- * Creates sourcemaps
- * Options:
- *   Lints SASS,
- *   Outputs CSS style
+ * Compiles SASS into CSS, auto-prefixes, creates sourcemaps, lints
  * @task  {styles}
  * @group {Main}
  */
@@ -381,10 +365,11 @@ g.task('styles:lint', function() {
 });
 
 
+// ------------------------------------
+// Scripts
+// ------------------------------------
 /**
- * Copies JS from ./src to ./build |
- * Creates sourcemaps and copies to `./build`
- * Options: Lints JS
+ * Copies JS from ./src to ./build, creates sourcemaps, lints
  * @task  {scripts}
  * @group {Main}
  */
@@ -412,8 +397,7 @@ g.task('scripts:lint', function() {
 
 
 /**
- * Makes JS files pretty and readible. Helpful when you
- * need to dig through a file that's been minified
+ * Makes JS files pretty and readible. Helpful when you need to dig through a file that's been minified
  * @task  {scripts:beautify}
  * @group {Utilities}
  */
@@ -425,12 +409,11 @@ g.task('scripts:beautify', function() {
 // REVIEW: May be able to use uglify to replace beautify
 
 
+// ------------------------------------
+// Pug/HTML/Views
+// ------------------------------------
 /**
- * Compiles Pug into HTML |
- * Options:
- *   Uses data from data.json,
- *   Lints Pug,
- *   Outputs HTML style
+ * Compiles Pug into HTML, uses data from data.json, lints
  * @task  {pug}
  * @group {Main}
  */
@@ -480,8 +463,7 @@ g.task('pug:lint', function() {
 
 
 /**
- * Converts HTML files to Pug
- *  (Run `clean:html` after to remove original files)
+ * Converts HTML files to Pug. (Run `clean:html` after to remove original files)
  * @task  {html2pug}
  * @group {Utilities}
  */
@@ -491,6 +473,89 @@ g.task('html2pug', function() {
 		.pipe(rename({ dirname: '' }))
 		.pipe(prettyPug(opt.pug.prettyPug))
 		.pipe(g.dest(pth.html2pug.output));
+});
+
+
+// ------------------------------------
+// Production
+// ------------------------------------
+/**
+ * Concats and Minifys CSS & JS
+ * @task  {concat}
+ * @group {Production}
+ */
+g.task('concat', function() {
+	return g.src(pth.html.buildFiles)
+		.pipe(useref())
+		.pipe(gulpif('*.js', uglify()))
+		.pipe(gulpif('*.css', cssnano()))
+		.pipe(g.dest(pth.buildD + '/'));
+});
+
+
+/**
+ * Minifys HTML. Options: Remove comments, minify inline CSS/JS.
+ * @task  {minify}
+ * @group {Production}
+ */
+g.task('minify', function() {
+	return g.src(pth.html.buildFiles)
+		.pipe(htmlmin(opt.minifyHtml))
+		.pipe(g.dest(pth.buildD + '/'));
+});
+
+
+/**
+ * Prints file tree of the ./build directory to the CLI
+ * @task  {tree}
+ * @group {Utilities}
+ */
+g.task('tree', function() {
+	var once = true; // lalz0r
+	g.src(pth.buildD + '/**')
+		.pipe(map(function(file) {
+			if (file.path.match(pth.buildD))
+				return file
+		}))
+		.pipe(filetree({ cwdRelative: true }))
+		.pipe(map(function(file) {
+			if (once) {
+				console.log(archy(file.tree));
+				once = !once;
+			}
+			return file;
+		}))
+});
+
+
+// ------------------------------------
+// Utilities/Misc
+// ------------------------------------
+/**
+ * Opens browser to the specified file
+ * @task {open}
+ * @group {Utilities}
+ */
+g.task('open', function(){
+	g.src(opt.openfile)
+	.pipe(open());
+});
+
+// Alias Task
+g.task('o', ['open']);
+
+
+/**
+ * Imports dependencies specified in the 'dependencies.vendors' array
+ * @task {vendors}
+ * @group {Utilities}
+ */
+g.task('vendors', function() {
+	for(var i = 0; i < dependencies.vendors.length; i++) {
+		var file = dependencies.vendors[i]
+		g.src(file.input)
+			.pipe(g.dest(file.output));
+	}
 });
 
 
@@ -515,7 +580,6 @@ g.task('fonts', function() {
 });
 
 
-
 /**
  * Copies/optimizes/caches images from ./src to ./build directory
  *   (Use 'images:clean:cache' to remove cached files)
@@ -530,7 +594,6 @@ g.task('images', function() {
 		.pipe(cache(imagemin(opt.images.output)))
 		.pipe(g.dest(pth.images.rootimgsOutput));
 });
-
 
 
 /**
@@ -580,52 +643,3 @@ g.task('serve', function() {
  * @group {Utilities}
  */
 g.task('help', function() { return usage(g); });
-
-
-/**
- * Prints file tree of the ./build directory to the CLI
- * @task  {tree}
- * @group {Utilities}
- */
-g.task('tree', function() {
-	var once = true; // lalz0r
-	g.src(pth.buildD + '/**')
-		.pipe(map(function(file) {
-			if (file.path.match(pth.buildD))
-				return file
-		}))
-		.pipe(filetree({ cwdRelative: true }))
-		.pipe(map(function(file) {
-			if (once) {
-				console.log(archy(file.tree));
-				once = !once;
-			}
-			return file;
-		}))
-});
-
-
-/**
- * Concats and Minifys CSS & JS
- * @task  {concat}
- * @group {Production}
- */
-g.task('concat', function() {
-	return g.src(pth.html.buildFiles)
-		.pipe(useref())
-		.pipe(gulpif('*.js', uglify()))
-		.pipe(gulpif('*.css', cssnano()))
-		.pipe(g.dest(pth.buildD + '/'));
-});
-
-
-/**
- * Minifys HTML. Options: Remove comments, minify inline CSS/JS.
- * @task  {minify}
- * @group {Production}
- */
-g.task('minify', function() {
-	return g.src(pth.html.buildFiles)
-		.pipe(htmlmin(opt.minifyHtml))
-		.pipe(g.dest(pth.buildD + '/'));
-});
