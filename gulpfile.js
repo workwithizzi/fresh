@@ -4,6 +4,7 @@
 
 
 var src = './src',
+		srcViews = src + '/views'
 		build = './build',
 		buildCss = build + '/css',
 		buildJs = build + '/js'
@@ -22,7 +23,8 @@ var src = './src',
 		viewsPug = {
 			input: src + '/views/**/*.pug',
 			partials: src + '/views/**/_*.pug',
-			output: build
+			output: build,
+			convertedHtml: src + '/views/original-html'
 		},
 
 		db = {
@@ -30,11 +32,6 @@ var src = './src',
 			output: src + '/views',
 			fileName: 'data.json',
 			file: src + '/views/data.json'
-		},
-
-		convertHtml = {
-			input: src + '/views/**/*.html',
-			output: src + '/views'
 		},
 
 		html = {
@@ -90,7 +87,7 @@ var opt = {
 		views: viewsPug.input,
 		styles: styles.input,
 		scripts: scripts.input,
-		reload: html.output + '**/*.html'
+		reload: html.buildFiles
 	},
 	luscious: {
 		overwrite: false,
@@ -466,17 +463,31 @@ g.task('pug:lint', function() {
  * @group {Utilities}
  */
 g.task('html2pug', function() {
-	return g.src(convertHtml.input)
+	g.src(html.input)
 		.pipe(html2pug())
 		.pipe(rename({ dirname: '' }))
 		.pipe(prettyPug(opt.pug.prettyPug))
-		.pipe(g.dest(convertHtml.output));
+		.pipe(g.dest(srcViews + '/'));
+
+	g.src(html.input)
+		.pipe(g.dest(viewsPug.convertedHtml));
 });
 
 
 // ------------------------------------
 // Production
 // ------------------------------------
+/**
+ * Deletes HTML files from ./src
+ * @task  {clean:html}
+ * @group {Utilities}
+ */
+g.task('clean:html', function() {
+	// return del.sync(html.input);
+	return del.sync(viewsPug.convertedHtml);
+});
+
+
 /**
  * Concats and Minifys CSS & JS
  * @task  {concat}
@@ -487,7 +498,7 @@ g.task('concat', function() {
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify()))
 		.pipe(gulpif('*.css', cssnano()))
-		.pipe(g.dest(build + '/'));
+		.pipe(g.dest(build));
 });
 
 
@@ -557,14 +568,6 @@ g.task('vendors', function() {
 });
 
 
-/**
- * Deletes HTML files from ./src
- * @task  {clean:html}
- * @group {Utilities}
- */
-g.task('clean:html', function() {
-	return del.sync(html.input);
-});
 
 
 /**
