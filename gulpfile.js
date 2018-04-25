@@ -3,63 +3,34 @@
 // ------------------------------------------------------------------
 
 
-var src = 'src',
-		build = 'build',
+var src = './src',
+		build = './build',
 		buildCss = build + '/css',
-		buildJs = build + '/js';
+		buildJs = build + '/js'
 
-var styles = {
-	input: src + '/sass/**/*.{scss,sass}',
-	output: buildCss
-}
-
-var scripts = {
-	input: src + '/js/**/*.js',
-	output: buildJs,
-	beautifyOutput: src + '/js'
-}
-
-
-// ------------------------------------
-// Project Dependencies - CONFIGURE
-// ------------------------------------
-var dependencies = {
-	luscious: {
-		core: {
-			input: './node_modules/luscious-sass',
-			output: './dependencies/luscious-sass'
+		styles = {
+			input: src + '/sass/**/*.{scss,sass}',
+			output: buildCss
 		},
-		scaffold: {
-			input: './node_modules/luscious-sass/scaffold',
-			output: src + '/sass'
-		}
-	},
-	"vendors": [{
-	// 	// Normalize - CSS
-	// 	"input": "./node_modules/normalize.css/normalize.css",
-	// 	"output": buildCss
-	// }, {
-	// 	// Font Awesome - CSS
-	// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
-	// 	"output": buildCss
-	// }, {
-	// 	// Font Awesome - Fonts
-	// 	"input": "./node_modules/font-awesome/fonts/**/*",
-	// 	"output": build + '/fonts'
-	// }, {
-	// 	// Owl Carousel - CSS
-	// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
-	// 	"output": buildCss
-	// }, {
-	// 	// Owl Carousel - JS
-	// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
-	// 	"output": buildJs
-	// }, {
-		// Jquery
-		"input": "./node_modules/jquery/dist/jquery.js",
-		"output": buildJs
-	}]
-};
+
+		scripts = {
+			input: src + '/js/**/*.js',
+			output: buildJs,
+			beautifyOutput: src + '/js'
+		},
+
+		pug = {
+			input: src + '/views/**/*.pug',
+			partials: src + '/views/**/_*.pug',
+			output: build + '/'
+		},
+
+		db = {
+			input: src + '/views/data/**/*.json',
+			output: src + '/views',
+			fileName: 'data.json',
+			file: src + '/views/data.json'
+		};
 
 
 // ------------------------------------
@@ -126,7 +97,7 @@ var opt = {
 	],
 	// watch files ----------------
 	watch: {
-		data: pth.data.input,
+		data: db.input,
 		views: pth.pug.input,
 		styles: styles.input,
 		scripts: scripts.input,
@@ -192,6 +163,47 @@ var opt = {
 	}
 }
 
+
+// ------------------------------------
+// Project Dependencies - CONFIGURE
+// ------------------------------------
+var dependencies = {
+	luscious: {
+		core: {
+			input: './node_modules/luscious-sass',
+			output: './dependencies/luscious-sass'
+		},
+		scaffold: {
+			input: './node_modules/luscious-sass/scaffold',
+			output: src + '/sass'
+		}
+	},
+	"vendors": [{
+	// 	// Normalize - CSS
+	// 	"input": "./node_modules/normalize.css/normalize.css",
+	// 	"output": buildCss
+	// }, {
+	// 	// Font Awesome - CSS
+	// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
+	// 	"output": buildCss
+	// }, {
+	// 	// Font Awesome - Fonts
+	// 	"input": "./node_modules/font-awesome/fonts/**/*",
+	// 	"output": build + '/fonts'
+	// }, {
+	// 	// Owl Carousel - CSS
+	// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
+	// 	"output": buildCss
+	// }, {
+	// 	// Owl Carousel - JS
+	// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
+	// 	"output": buildJs
+	// }, {
+		// Jquery
+		"input": "./node_modules/jquery/dist/jquery.js",
+		"output": buildJs
+	}]
+};
 
 
 // ------------------------------------
@@ -415,7 +427,7 @@ g.task('scripts:beautify', function() {
 g.task('pug', ['data'], function() {
 	return g.src([pth.pug.input, '!' + pth.pug.partials])
 		.pipe(gulpif(opt.pug.useData, data(function(file) {
-			return JSON.parse(fs.readFileSync(pth.data.file));
+			return JSON.parse(fs.readFileSync(db.file));
 		})))
 		.pipe(gulpif(opt.pug.lint, puglint()))
 		.pipe(pug(opt.pug.output))
@@ -429,9 +441,9 @@ g.task('pug', ['data'], function() {
  * @group {Main}
  */
 g.task('data', function() {
-	return g.src(pth.data.input)
+	return g.src(db.input)
 		.pipe(merge({
-			fileName: pth.data.fileName,
+			fileName: db.fileName,
 			edit: (json, file) => {
 				// Extract the filename and strip the extension
 				var filename = path.basename(file.path),
@@ -442,7 +454,7 @@ g.task('data', function() {
 				return data;
 			}
 		}))
-		.pipe(g.dest(pth.data.output));
+		.pipe(g.dest(db.output));
 });
 
 
