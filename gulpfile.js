@@ -467,10 +467,30 @@ g.task('html2pug', function() {
 		.pipe(prettyPug(opt.pug.prettyPug))
 		.pipe(g.dest(srcViews));
 
+	// g.src(html.input)
+	// 	.pipe(g.dest(viewsPug.convertedHtml));
+	//
+	// del.sync(html.input);
+});
+
+g.task('move', function() {
 	g.src(html.input)
 		.pipe(g.dest(viewsPug.convertedHtml));
 });
 
+g.task('remove', function() {
+	return del.sync(html.input);
+});
+
+g.task('test', function(callback) {
+	runSequence('html2pug', 'move', 'remove', callback)
+});
+
+
+// gulp.task('move', function() {
+// 	gulp.src('src/views/test.html')
+// 		.pipe(gulp.dest('src/moved'));
+// });
 
 // ------------------------------------
 // Production
