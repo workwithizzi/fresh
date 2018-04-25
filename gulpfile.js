@@ -647,19 +647,3 @@ g.task('minify', function() {
 		.pipe(htmlmin(opt.minifyHtml))
 		.pipe(g.dest(pth.buildD + '/'));
 });
-
-
-/**
- * Prints usage info about `gulp concat`
- * @task  {concat:help}
- * @group {Utilities}
- */
-g.task('concat:help', function() {
-	console.log('To use `gulp concat`, start with a build tag,')
-	console.log('then the files to concat, then close with an endbuild tag.')
-	console.log('For example, an HTML file:')
-	console.log('<!-- build:css css/main.min.css -->')
-	console.log('<link rel="stylesheet" href="css/normalize.css">')
-	console.log('<link rel="stylesheet" href="css/main.css">')
-	console.log('<!-- endbuild -->')
-});
