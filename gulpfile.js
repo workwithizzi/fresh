@@ -41,6 +41,11 @@ var src = './src',
 			buildFiles: build + '/**/*.html',
 			input: src + '/views/**/*.html',
 			output: build + '/'
+		},
+
+		fonts = {
+			input: src + '/fonts/**/*',
+			output: build + '/fonts/'
 		};
 
 
@@ -575,8 +580,8 @@ g.task('clean:html', function() {
  * @group {Main}
  */
 g.task('fonts', function() {
-	return g.src(pth.fonts.input)
-		.pipe(g.dest(pth.fonts.output));
+	return g.src(fonts.input)
+		.pipe(g.dest(fonts.output));
 });
 
 
