@@ -3,59 +3,68 @@
 // ------------------------------------------------------------------
 
 
-var src = './src',
-		srcViews = src + '/views'
-		build = './build',
-		buildCss = build + '/css',
-		buildJs = build + '/js'
+
+var base = {
+			src:   './src',
+			build: './build'
+		},
+
+		srcViews    = base.src + '/views',
+		srcStyles   = base.src + '/sass',
+		srcScripts  = base.src + '/js',
+		srcFonts    = base.src + '/fonts',
+		srcImages   = base.src + '/images',
+		buildCss    = base.build + '/css',
+		buildJs     = base.build + '/js',
+		buildImages = base.build + '/images',
+		buildFonts  = base.build + '/fonts',
 
 		styles = {
-			input: src + '/sass/**/*.{scss,sass}',
+			input: srcStyles + '/**/*.{scss,sass}',
 			output: buildCss
 		},
 
 		scripts = {
-			input: src + '/js/**/*.js',
+			input: srcScripts + '/**/*.js',
 			output: buildJs,
-			beautifyOutput: src + '/js'
-		},
-
-		viewsPug = {
-			input: src + '/views/**/*.pug',
-			partials: src + '/views/**/_*.pug',
-			output: build,
-			convertedHtml: src + '/views/original-html'
-		},
-
-		db = {
-			input: src + '/views/data/**/*.json',
-			output: src + '/views',
-			fileName: 'data.json',
-			file: src + '/views/data.json'
+			beautifyOutput: srcScripts
 		},
 
 		html = {
-			buildFiles: build + '/**/*.html',
-			input: src + '/views/**/*.html',
-			output: build
+			srcFiles: srcViews + '/**/*.html',
+			productionFiles: base.build + '/**/*.html',
+			converted: srcViews + '/converted-html'
+		},
+
+		views = {
+			input: srcViews + '/**/*.pug',
+			partials: srcViews + '/**/_*.pug',
+			output: base.build
+		},
+
+		db = {
+			input: srcViews + '/data/**/*.json',
+			output: srcViews,
+			fileName: 'data.json',
+			fileDir: srcViews
 		},
 
 		fonts = {
-			input: src + '/fonts/**/*',
-			output: build + '/fonts'
+			input: srcFonts + '/**/*',
+			output: buildFonts
 		},
 
 		images = {
 			site: {
 				input: [
-					src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
+					srcImages + '/**/*.+(png|jpg|jpeg|gif|svg|ico)',
 					'!/**/*(favicon.ico|apple-touch-icon.png)'
 				],
-				output: build + '/images'
+				output: buildImages
 			},
 			root: {
-				input: src + '/images/**/*(favicon.ico|apple-touch-icon.png)',
-				output: build
+				input: srcImages + '/**/*(favicon.ico|apple-touch-icon.png)',
+				output: base.build
 			}
 		};
 
@@ -68,8 +77,8 @@ var opt = {
 	// browserSync ----------------
 	browserSync: {
 		// proxy: 'fresh.dev',     // proxy used in local server
-		server: build + '/', // directory used for localhost source
-		open: false, // open a new browser window to localhost port
+		server: base.build, // directory used for localhost source
+		open: true, // open a new browser window to localhost port
 		injectChanges: true, // inject css changes without reloading browser
 		notify: false, // don't show notifications in browser
 		port: 3000, // define the localhost port (default == 3000)
@@ -79,15 +88,16 @@ var opt = {
 		tunnel: false // external tunnel (example.tunnel.me).
 	},
 	openfile: [
-		build + '/index.html'
+		// build
+		base.build + '/index.html'
 	],
 	// watch files ----------------
 	watch: {
 		data: db.input,
-		views: viewsPug.input,
+		views: views.input,
 		styles: styles.input,
 		scripts: scripts.input,
-		reload: html.buildFiles
+		reload: html.productionFiles
 	},
 	luscious: {
 		overwrite: false,
@@ -126,7 +136,7 @@ var opt = {
 		lint: true,
 		output: {
 			pretty: '	',
-			basedir: './src/views'
+			basedir: srcViews
 		},
 		prettyPug: {
 			omit_empty_lines: true,
@@ -161,7 +171,7 @@ var dependencies = {
 		},
 		scaffold: {
 			input: './node_modules/luscious-sass/scaffold',
-			output: src + '/sass'
+			output: srcStyles
 		}
 	},
 	"vendors": [{
@@ -175,7 +185,7 @@ var dependencies = {
 	// }, {
 	// 	// Font Awesome - Fonts
 	// 	"input": "./node_modules/font-awesome/fonts/**/*",
-	// 	"output": build + '/fonts'
+	// 	"output": buildFonts
 	// }, {
 	// 	// Owl Carousel - CSS
 	// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
@@ -411,13 +421,13 @@ g.task('scripts:beautify', function() {
  * @group {Main}
  */
 g.task('pug', ['data'], function() {
-	return g.src([viewsPug.input, '!' + viewsPug.partials])
+	return g.src([views.input, '!' + views.partials])
 		.pipe(gulpif(opt.pug.useData, data(function(file) {
-			return JSON.parse(fs.readFileSync(db.file));
+			return JSON.parse(fs.readFileSync(db.fileDir + '/' + db.fileName));
 		})))
 		.pipe(gulpif(opt.pug.lint, puglint()))
 		.pipe(pug(opt.pug.output))
-		.pipe(g.dest(viewsPug.output));
+		.pipe(g.dest(views.output));
 });
 
 
@@ -450,82 +460,61 @@ g.task('data', function() {
  * @group {Utilities}
  */
 g.task('pug:lint', function() {
-	return g.src([viewsPug.input, viewsPug.partials])
+	return g.src([views.input, views.partials])
 		.pipe(puglint())
 });
 
 
 /**
- * Converts HTML files to Pug. (Run `clean:html` after to remove original files)
+ * Converts HTML to Pug and moves original files to a separate directory.
  * @task  {html2pug}
  * @group {Utilities}
  */
-g.task('html2pug', function() {
-	return g.src(html.input)
+g.task('html2pug', ['move:html'], function() {
+	return del.sync([
+		html.srcFiles,
+		'!' + html.converted + '/**/*.html'
+	]);
+});
+
+g.task('move:html', ['convert:html'], function() {
+	return g.src(html.srcFiles)
+		.pipe(g.dest(html.converted));
+});
+
+g.task('convert:html', function() {
+	return g.src(html.srcFiles)
 		.pipe(html2pug())
 		// .pipe(rename({ dirname: '' }))
 		.pipe(prettyPug(opt.pug.prettyPug))
 		.pipe(g.dest(srcViews));
-
-	// g.src(html.input)
-	// 	.pipe(g.dest(viewsPug.convertedHtml));
-	//
-	// del.sync(html.input);
-});
-
-g.task('move', function() {
-	return g.src(html.input)
-		.pipe(g.dest(viewsPug.convertedHtml));
-});
-
-g.task('remove', function() {
-	return del.sync([
-		// html.input,
-		// '!' + viewsPug.convertedHtml + '**/*.html'
-		'src/views/**/*.html',
-		'!src/views/original-html/**/*.html'
-	]);
-});
-
-g.task('test', function(callback) {
-	runSequence(
-		'html2pug',
-		'move',
-		// 'remove',
-		callback)
 });
 
 
-// gulp.task('move', function() {
-// 	gulp.src('src/views/test.html')
-// 		.pipe(gulp.dest('src/moved'));
-// });
-
-// ------------------------------------
-// Production
-// ------------------------------------
 /**
- * Deletes HTML files from ./src
+ * Deletes HTML files that were backed up during 'html2pug' task
  * @task  {clean:html}
  * @group {Utilities}
  */
 g.task('clean:html', function() {
-	// return del.sync(html.input);
-	return del.sync(viewsPug.convertedHtml);
+	return del.sync(html.converted);
 });
 
 
+// ------------------------------------
+// Production
+// ------------------------------------
 /**
  * Concats and Minifys CSS & JS
  * @task  {concat}
  * @group {Production}
  */
 g.task('concat', function() {
-	return g.src(html.buildFiles)
+	return g.src(html.productionFiles)
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify()))
 		.pipe(gulpif('*.css', cssnano()))
-		.pipe(g.dest(build));
+		.pipe(g.dest(base.build));
 });
 
 
@@ -535,9 +524,9 @@ g.task('concat', function() {
  * @group {Production}
  */
 g.task('minify', function() {
-	return g.src(html.buildFiles)
+	return g.src(html.productionFiles)
 		.pipe(htmlmin(opt.minifyHtml))
-		.pipe(g.dest(build + '/'));
+		.pipe(g.dest(base.build + '/'));
 });
 
 
@@ -548,9 +537,9 @@ g.task('minify', function() {
  */
 g.task('tree', function() {
 	var once = true; // lalz0r
-	g.src(build + '/**')
+	g.src(base.build + '/**')
 		.pipe(map(function(file) {
-			if (file.path.match(build))
+			if (file.path.match(base.build))
 				return file
 		}))
 		.pipe(filetree({ cwdRelative: true }))
@@ -634,7 +623,7 @@ g.task('clean', function(callback) {
 	cache.clearAll()
 
 	// Delete ./build directory
-	fs.remove(build, err => {
+	fs.remove(base.build, err => {
 		if (err) return console.error(err)
 		callback();
 	})
