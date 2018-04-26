@@ -168,7 +168,9 @@ var base = {
 var config = {
 	// Add files to the array to open them manually using 'gulp open'
 	openfile: [
-		base.build + '/index.html'
+		base.build + '/demo-forms.html',
+		base.build + '/demo-media.html',
+		base.build + '/demo-text.html'
 	],
 	// Configure browserSync settings
 	browserSync: {
