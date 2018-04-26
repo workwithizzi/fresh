@@ -1,6 +1,6 @@
 {
 	"name": "fresh",
-	"version": "3.0.6",
+	"version": "3.0.7",
 	"description": "A starter kit for static or cms based websites. Built with Yarn, Gulp, Pug, and SASS.",
 	"repository": "https://gitlab.com/ignitecreative/cookbook/fresh",
 	"author": "Yisrael Grimes <yisrael@ignitehere.com>",
@@ -27,7 +27,6 @@
 		"gulp-cache": "^1.0.1",
 		"gulp-cssnano": "^2.1.2",
 		"gulp-data": "^1.2.1",
-		"gulp-environments": "^0.1.2",
 		"gulp-ex-replace": "^0.5.8",
 		"gulp-filetree": "^0.0.3",
 		"gulp-help-doc": "^1.1.0",
@@ -38,6 +37,8 @@
 		"gulp-jshint": "^2.0.4",
 		"gulp-map": "^0.0.2",
 		"gulp-merge-json": "^1.2.1",
+		"gulp-open": "^3.0.1",
+		"gulp-plumber": "^1.2.0",
 		"gulp-pug": "^3.3.0",
 		"gulp-pug-beautify": "^0.0.1",
 		"gulp-pug-lint": "^0.1.6",
@@ -49,11 +50,13 @@
 		"gulp-todo": "^5.4.0",
 		"gulp-uglify": "^3.0.0",
 		"gulp-useref": "^3.1.3",
+		"jquery": "^3.3.1",
 		"jshint": "^2.9.5",
 		"jshint-stylish-ex": "^0.2.0",
 		"jstransformer-markdown-it": "^2.0.0",
 		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.5",
 		"normalize.css": "^8.0.0",
+		"owl.carousel": "^2.3.4",
 		"path": "^0.12.7",
 		"run-sequence": "^2.2.0"
 	}
