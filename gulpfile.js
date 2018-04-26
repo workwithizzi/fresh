@@ -3,6 +3,9 @@
 // ------------------------------------------------------------------
 
 
+// Open new browser window every time you run 'gulp'?
+var openBrowserWindow = true;
+
 
 var base = {
 			src:   './src',
@@ -19,27 +22,94 @@ var base = {
 		buildImages = base.build + '/images',
 		buildFonts  = base.build + '/fonts',
 
+		// ------------------------------------
+		// Styles
+		// ------------------------------------
 		styles = {
+			// Paths
 			input: srcStyles + '/**/*.{scss,sass}',
-			output: buildCss
+			output: buildCss,
+
+			// Config Options
+			opts: {
+				output: {
+					errLogToConsole: true,
+					outputStyle: 'expanded',
+					sourceComments: 'true',
+					indentType: 'tab',
+					indentWidth: '1'
+				},
+				prefixer: [
+					'last 2 versions',
+					'ie >= 9',
+					'and_chr >= 2.3'
+				],
+				lint: false,
+				lintConfig: {
+					files: { ignore: '**/*normalize.scss' },
+					configFile: './.sass-lint.yml'
+				}
+			}
 		},
 
+		// ------------------------------------
+		// Scripts
+		// ------------------------------------
 		scripts = {
+			// Paths
 			input: srcScripts + '/**/*.js',
 			output: buildJs,
-			beautifyOutput: srcScripts
+			beautifyOutput: srcScripts,
+
+			// Config Options
+			opts: {
+				lint: false,
+				beautify: { // Options: git.io/vVyYB
+					indent_size: 2,
+					indent_with_tabs: true
+				}
+			}
 		},
 
+		// ------------------------------------
+		// HTML/Views/Database
+		// ------------------------------------
 		html = {
+			// Paths
 			srcFiles: srcViews + '/**/*.html',
 			productionFiles: base.build + '/**/*.html',
-			converted: srcViews + '/converted-html'
+			converted: srcViews + '/converted-html',
+
+			// Config Options
+			opts: {
+				collapseWhitespace: true,
+				removeComments: true,
+				minifyCSS: true,
+				minifyJS: true
+			}
 		},
 
 		views = {
+			// Paths
 			input: srcViews + '/**/*.pug',
 			partials: srcViews + '/**/_*.pug',
-			output: base.build
+			output: base.build,
+
+			// Config Options
+			opts: {
+				useData: true,
+				lint: true,
+				output: {
+					pretty: '	',
+					basedir: srcViews
+				},
+				prettyPug: {
+					omit_empty_lines: true,
+					fill_tab: true,
+					omit_div: true,
+					// tab_size: 2   // Only used with 'fill_tab' == false
+				}
+			}
 		},
 
 		db = {
@@ -49,12 +119,16 @@ var base = {
 			fileDir: srcViews
 		},
 
+		// ------------------------------------
+		// Assets - Fonts/Images
+		// ------------------------------------
 		fonts = {
 			input: srcFonts + '/**/*',
 			output: buildFonts
 		},
 
 		images = {
+			// Paths
 			site: {
 				input: [
 					srcImages + '/**/*.+(png|jpg|jpeg|gif|svg|ico)',
@@ -65,103 +139,48 @@ var base = {
 			root: {
 				input: srcImages + '/**/*(favicon.ico|apple-touch-icon.png)',
 				output: base.build
+			},
+
+			// Config Options
+			opts: {
+				interlaced: true
 			}
 		};
 
 
-
 // ------------------------------------
-// Options - CONFIGURE
+// CONFIGURE - Developement
 // ------------------------------------
-var opt = {
-	// browserSync ----------------
-	browserSync: {
-		// proxy: 'fresh.dev',     // proxy used in local server
-		server: base.build, // directory used for localhost source
-		open: true, // open a new browser window to localhost port
-		injectChanges: true, // inject css changes without reloading browser
-		notify: false, // don't show notifications in browser
-		port: 3000, // define the localhost port (default == 3000)
-		ui: {
-			port: 8080 // Port for configuring browserSync UI options
-		},
-		tunnel: false // external tunnel (example.tunnel.me).
-	},
+var config = {
+	// Add files to the array to open them manually using 'gulp open'
 	openfile: [
-		// build
 		base.build + '/index.html'
 	],
-	// watch files ----------------
+	// Configure browserSync settings
+	browserSync: {
+		// proxy: 'yoursite.dev',
+		// tunnel: 'yoursite', // yoursite.localtunnel.me
+		server: base.build,
+		open: openBrowserWindow,
+		injectChanges: true,
+		notify: false,
+		port: 3000,
+		ui: { port: 8080 },
+	},
+	// Comment out anything in the array that you
+	// don't want to watch/trigger build on change.
 	watch: {
 		data: db.input,
 		views: views.input,
 		styles: styles.input,
 		scripts: scripts.input,
 		reload: html.productionFiles
-	},
-	luscious: {
-		overwrite: false,
-	},
-	// styles ----------------
-	styles: {
-		output: {
-			errLogToConsole: true,
-			outputStyle: 'expanded',
-			sourceComments: 'true',
-			indentType: 'tab',
-			indentWidth: '1'
-		},
-		prefixer: [
-			'last 2 versions',
-			'ie >= 9',
-			'and_chr >= 2.3'
-		],
-		lint: false,
-		linterOpts: {
-			files: { ignore: '**/*normalize.scss' },
-			configFile: './.sass-lint.yml'
-		}
-	},
-	// scripts ----------------
-	scripts: {
-		lint: false,
-		beautify: { // Options: git.io/vVyYB
-			indent_size: 2,
-			indent_with_tabs: true
-		}
-	},
-	// pug ----------------
-	pug: {
-		useData: true,
-		lint: true,
-		output: {
-			pretty: '	',
-			basedir: srcViews
-		},
-		prettyPug: {
-			omit_empty_lines: true,
-			fill_tab: true,
-			omit_div: true,
-			// tab_size: 2   // Only used with 'fill_tab' == false
-		}
-	},
-	minifyHtml: {
-		collapseWhitespace: true,
-		removeComments: true,
-		minifyCSS: true,
-		minifyJS: true
-	},
-	// images ----------------
-	images: {
-		output: {
-			interlaced: true
-		}
 	}
 }
 
 
 // ------------------------------------
-// Project Dependencies - CONFIGURE
+// CONFIGURE - Project Dependencies
 // ------------------------------------
 var dependencies = {
 	luscious: {
@@ -172,26 +191,34 @@ var dependencies = {
 		scaffold: {
 			input: './node_modules/luscious-sass/scaffold',
 			output: srcStyles
-		}
+		},
+		overwrite: false
 	},
+
+	// ------------------------------------
+	// CONFIGURE - Project Dependencies
+	// ------------------------------------
+	// Un-comment any of the dependencies below to include them in the project.
+	// You can also add any others to the list that you want to bring in.
+	// Just make sure to add them to the package.json.
 	"vendors": [{
-	// 	// Normalize - CSS
+		// Normalize - CSS
 	// 	"input": "./node_modules/normalize.css/normalize.css",
 	// 	"output": buildCss
 	// }, {
-	// 	// Font Awesome - CSS
+		// Font Awesome - CSS
 	// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
 	// 	"output": buildCss
 	// }, {
-	// 	// Font Awesome - Fonts
+		// Font Awesome - Fonts
 	// 	"input": "./node_modules/font-awesome/fonts/**/*",
 	// 	"output": buildFonts
 	// }, {
-	// 	// Owl Carousel - CSS
+		// Owl Carousel - CSS
 	// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
 	// 	"output": buildCss
 	// }, {
-	// 	// Owl Carousel - JS
+		// Owl Carousel - JS
 	// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
 	// 	"output": buildJs
 	// }, {
@@ -237,7 +264,6 @@ var g = require('gulp');
 		archy = require('archy'),
 		map = require('gulp-map'),
 		filetree = require('gulp-filetree');
-
 
 
 // ------------------------------------------------------------------
@@ -292,8 +318,6 @@ g.task('build', function(callback) {
 // ------------------------------------
 // Get Dependencies
 // ------------------------------------
-
-
 /**
  * Copies Luscious from node_modules and adds it to the project's dependencies.
  * @task  {luscious}
@@ -301,7 +325,7 @@ g.task('build', function(callback) {
  */
 g.task('luscious', () => {
 	fs.copy(dependencies.luscious.core.input, dependencies.luscious.core.output, {
-		overwrite: opt.luscious.overwrite,
+		overwrite: dependencies.luscious.overwrite,
 		preserveTimestamps: true
 	}, err => {
 		if (err) return console.error(err)
@@ -334,7 +358,6 @@ g.task('initial:help', () => {
 });
 
 
-
 // ------------------------------------
 // Styles
 // ------------------------------------
@@ -345,11 +368,11 @@ g.task('initial:help', () => {
  */
 g.task('styles', function() {
 	return g.src(styles.input)
-		.pipe(gulpif(opt.styles.lint, sassLint(opt.styles.linterOpts)))
-		.pipe(gulpif(opt.styles.lint, sassLint.format()))
+		.pipe(gulpif(styles.opts.lint, sassLint(styles.opts.lintConfig)))
+		.pipe(gulpif(styles.opts.lint, sassLint.format()))
 		.pipe(sourcemaps.init())
-		.pipe(sass(opt.styles.output).on('error', sass.logError))
-		.pipe(prefix(opt.styles.prefixer))
+		.pipe(sass(styles.opts.output).on('error', sass.logError))
+		.pipe(prefix(styles.opts.prefixer))
 		.pipe(sourcemaps.write({ includeContent: false }))
 		.pipe(g.dest(styles.output))
 		.pipe(browserSync.reload({ stream: true }));
@@ -363,7 +386,7 @@ g.task('styles', function() {
  */
 g.task('styles:lint', function() {
 	return g.src(styles.input)
-		.pipe(sassLint(opt.styles.linterOpts))
+		.pipe(sassLint(styles.opts.lintConfig))
 		.pipe(sassLint.format())
 });
 
@@ -378,8 +401,8 @@ g.task('styles:lint', function() {
  */
 g.task('scripts', function() {
 	return g.src(scripts.input)
-		.pipe(gulpif(opt.scripts.lint, jshint()))
-		.pipe(gulpif(opt.scripts.lint, jshint.reporter('jshint-stylish-ex')))
+		.pipe(gulpif(scripts.opts.lint, jshint()))
+		.pipe(gulpif(scripts.opts.lint, jshint.reporter('jshint-stylish-ex')))
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write({ includeContent: false }))
 		.pipe(g.dest(scripts.output))
@@ -406,7 +429,7 @@ g.task('scripts:lint', function() {
  */
 g.task('scripts:beautify', function() {
 	return g.src(scripts.input)
-		.pipe(beautify(opt.scripts.beautify))
+		.pipe(beautify(scripts.opts.beautify))
 		.pipe(g.dest(scripts.beautifyOutput))
 });
 // REVIEW: May be able to use uglify to replace beautify
@@ -422,11 +445,11 @@ g.task('scripts:beautify', function() {
  */
 g.task('pug', ['data'], function() {
 	return g.src([views.input, '!' + views.partials])
-		.pipe(gulpif(opt.pug.useData, data(function(file) {
+		.pipe(gulpif(views.opts.useData, data(function(file) {
 			return JSON.parse(fs.readFileSync(db.fileDir + '/' + db.fileName));
 		})))
-		.pipe(gulpif(opt.pug.lint, puglint()))
-		.pipe(pug(opt.pug.output))
+		.pipe(gulpif(views.opts.lint, puglint()))
+		.pipe(pug(views.opts.output))
 		.pipe(g.dest(views.output));
 });
 
@@ -486,7 +509,7 @@ g.task('convert:html', function() {
 	return g.src(html.srcFiles)
 		.pipe(html2pug())
 		// .pipe(rename({ dirname: '' }))
-		.pipe(prettyPug(opt.pug.prettyPug))
+		.pipe(prettyPug(views.opts.prettyPug))
 		.pipe(g.dest(srcViews));
 });
 
@@ -525,7 +548,7 @@ g.task('concat', function() {
  */
 g.task('minify', function() {
 	return g.src(html.productionFiles)
-		.pipe(htmlmin(opt.minifyHtml))
+		.pipe(htmlmin(html.opts))
 		.pipe(g.dest(base.build + '/'));
 });
 
@@ -562,7 +585,7 @@ g.task('tree', function() {
  * @group {Utilities}
  */
 g.task('open', function(){
-	g.src(opt.openfile)
+	g.src(config.openfile)
 	.pipe(open());
 });
 
@@ -584,8 +607,6 @@ g.task('vendors', function() {
 });
 
 
-
-
 /**
  * Copies fonts to from ./src to ./build
  * @task  {fonts}
@@ -605,10 +626,10 @@ g.task('fonts', function() {
  */
 g.task('images', function() {
 	g.src(images.site.input)
-		.pipe(cache(imagemin(opt.images.output)))
+		.pipe(cache(imagemin(images.opts)))
 		.pipe(g.dest(images.site.output));
 	g.src(images.root.input)
-		.pipe(cache(imagemin(opt.images.output)))
+		.pipe(cache(imagemin(images.opts)))
 		.pipe(g.dest(images.root.output));
 });
 
@@ -631,25 +652,20 @@ g.task('clean', function(callback) {
 
 
 /**
- * Starts BrowserSync Server on localhost |
- * Configurable Options:
- *   Open new browser,
- *   Port number,
- *   UI Admin port,
- *   Localtunnel,
- *   Watch files: Default watches pug, sass, and js.
+ * Starts BrowserSync Server on localhost, watches
+ * files for changes and triggers build
  * @task  {serve}
  * @group {Main}
  */
 g.task('serve', function() {
-	browserSync.init(opt.browserSync);
+	browserSync.init(config.browserSync);
 	// Watch
-	if (opt.watch.styles) { g.watch(opt.watch.styles, ['styles']); }
-	if (opt.watch.scripts) { g.watch(opt.watch.scripts, ['scripts']); }
-	if (opt.watch.views) { g.watch(opt.watch.views, ['pug']); }
-	if (opt.watch.data) { g.watch(opt.watch.data, ['pug']); }
-	if (opt.watch.reload) {
-		g.watch(opt.watch.reload).on('change', browserSync.reload);
+	if (config.watch.styles) { g.watch(config.watch.styles, ['styles']); }
+	if (config.watch.scripts) { g.watch(config.watch.scripts, ['scripts']); }
+	if (config.watch.views) { g.watch(config.watch.views, ['pug']); }
+	if (config.watch.data) { g.watch(config.watch.data, ['pug']); }
+	if (config.watch.reload) {
+		g.watch(config.watch.reload).on('change', browserSync.reload);
 	}
 });
 
