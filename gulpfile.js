@@ -145,8 +145,22 @@ var base = {
 			opts: {
 				interlaced: true
 			}
-		};
+		},
 
+		// ------------------------------------
+		// Luscious-Sass
+		// ------------------------------------
+		luscious = {
+			core: {
+				input: './node_modules/luscious-sass',
+				output: './luscious-sass',
+				overwrite: false
+			},
+			scaffold: {
+				input: './node_modules/luscious-sass/scaffold',
+				output: srcStyles
+			}
+		};
 
 // ------------------------------------
 // CONFIGURE - Developement
@@ -178,60 +192,42 @@ var config = {
 	}
 }
 
-
 // ------------------------------------
 // CONFIGURE - Project Dependencies
 // ------------------------------------
-var dependencies = {
-	luscious: {
-		core: {
-			input: './node_modules/luscious-sass',
-			output: './dependencies/luscious-sass'
-		},
-		scaffold: {
-			input: './node_modules/luscious-sass/scaffold',
-			output: srcStyles
-		},
-		overwrite: false
-	},
-
-	// ------------------------------------
-	// CONFIGURE - Project Dependencies
-	// ------------------------------------
-	// Un-comment any of the dependencies below to include them in the project.
-	// You can also add any others to the list that you want to bring in.
-	// Just make sure to add them to the package.json.
-	"vendors": [{
-		// Normalize - CSS
+// Un-comment any of the dependencies below to include them in the project.
+// You can also add any others to the list that you want to bring in.
+// Just make sure to add them to the package.json.
+var vendors = [{
+	// 	// Normalize - CSS
 	// 	"input": "./node_modules/normalize.css/normalize.css",
 	// 	"output": buildCss
 	// }, {
-		// Font Awesome - CSS
+	// 	// Font Awesome - CSS
 	// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
 	// 	"output": buildCss
 	// }, {
-		// Font Awesome - Fonts
+	// 	// Font Awesome - Fonts
 	// 	"input": "./node_modules/font-awesome/fonts/**/*",
 	// 	"output": buildFonts
 	// }, {
-		// Owl Carousel - CSS
+	// 	// Owl Carousel - CSS
 	// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
 	// 	"output": buildCss
 	// }, {
-		// Owl Carousel - JS
+	// 	// Owl Carousel - JS
 	// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
 	// 	"output": buildJs
 	// }, {
 		// Jquery
 		"input": "./node_modules/jquery/dist/jquery.js",
 		"output": buildJs
-	}]
-};
+}];
 
 
-// ------------------------------------
+// ------------------------------------------------------------------
 // Plugins
-// ------------------------------------
+// ------------------------------------------------------------------
 var g = require('gulp');
 		sass = require('gulp-sass'),
 		prefix = require('gulp-autoprefixer'),
@@ -260,16 +256,16 @@ var g = require('gulp');
 		del = require('del'),
 		usage = require('gulp-help-doc'),
 		open = require('gulp-open'),
+		plumber = require('gulp-plumber'),
 		// Tree
 		archy = require('archy'),
 		map = require('gulp-map'),
 		filetree = require('gulp-filetree');
 
 
-// ------------------------------------------------------------------
+// ------------------------------------
 // Tasks
-// ------------------------------------------------------------------
-
+// ------------------------------------
 /**
  * Runs compile tasks and starts the localhost server
  * @task  {default}
@@ -316,7 +312,7 @@ g.task('build', function(callback) {
 
 
 // ------------------------------------
-// Get Dependencies
+// Get Luscious
 // ------------------------------------
 /**
  * Copies Luscious from node_modules and adds it to the project's dependencies.
@@ -324,14 +320,13 @@ g.task('build', function(callback) {
  * @group {Main}
  */
 g.task('luscious', () => {
-	fs.copy(dependencies.luscious.core.input, dependencies.luscious.core.output, {
-		overwrite: dependencies.luscious.overwrite,
+	fs.copy(luscious.core.input, luscious.core.output, {
+		overwrite: luscious.core.overwrite,
 		preserveTimestamps: true
 	}, err => {
 		if (err) return console.error(err)
 	})
 })
-
 
 /**
  * Copies Luscious-Scaffold to the SASS directory
@@ -339,14 +334,13 @@ g.task('luscious', () => {
  * @group {Main}
  */
 g.task('scaffold', () => {
-	fs.copy(dependencies.luscious.scaffold.input, dependencies.luscious.scaffold.output, {
+	fs.copy(luscious.scaffold.input, luscious.scaffold.output, {
 		overwrite: false,
 		preserveTimestamps: true
 	}, err => {
 		if (err) return console.error(err)
 	})
 })
-
 
 /**
  * Gives user info on initial project setup.
@@ -449,6 +443,7 @@ g.task('pug', ['data'], function() {
 			return JSON.parse(fs.readFileSync(db.fileDir + '/' + db.fileName));
 		})))
 		.pipe(gulpif(views.opts.lint, puglint()))
+		.pipe(plumber())
 		.pipe(pug(views.opts.output))
 		.pipe(g.dest(views.output));
 });
@@ -594,13 +589,13 @@ g.task('o', ['open']);
 
 
 /**
- * Imports dependencies specified in the 'dependencies.vendors' array
+ * Imports dependencies specified in the 'vendors' array
  * @task {vendors}
  * @group {Utilities}
  */
 g.task('vendors', function() {
-	for(var i = 0; i < dependencies.vendors.length; i++) {
-		var file = dependencies.vendors[i]
+	for(var i = 0; i < vendors.length; i++) {
+		var file = vendors[i]
 		g.src(file.input)
 			.pipe(g.dest(file.output));
 	}

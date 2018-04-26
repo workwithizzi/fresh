@@ -2627,6 +2627,15 @@ gulp-open@^3.0.1:
     plugin-log "^0.1.0"
     through2 "^2.0.1"
 
+gulp-plumber@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-plumber/-/gulp-plumber-1.2.0.tgz#18ea03912c9ee483f8a5499973b5954cd90f6ad8"
+  dependencies:
+    chalk "^1.1.3"
+    fancy-log "^1.3.2"
+    plugin-error "^0.1.2"
+    through2 "^2.0.3"
+
 gulp-pug-beautify@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/gulp-pug-beautify/-/gulp-pug-beautify-0.0.1.tgz#5ca8e19f40c8c16cb31ce087e6d45ba43c493c86"
