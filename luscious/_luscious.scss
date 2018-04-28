@@ -26,8 +26,8 @@ $production_mode: false !default;
 
 // Bin - Core functions/mixins
 @import
-	'bin/modularscale',
 	'bin/dev_config',
+	'bin/modularscale',
 	'bin/rem_em_calc',
 	'bin/zindex',
 	'bin/fonts',
