@@ -1,0 +1,15 @@
+// Luscious
+// @since v0.0.1
+//
+// 
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+// 2DO-LUS: Add tests/info mixins here.
+
+@mixin __info_dev_config {
+	@debug "[INFO]
+	Add info about config settings here
+	";
+}

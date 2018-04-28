@@ -1,0 +1,74 @@
+// Luscious //
+// @since v0.0.1
+//
+// Dependencies: NONE
+//
+// Removes any measurment unit from a number
+//
+// sass-lint:disable no-css-comments
+// ===================================================================
+
+// # Strip Units
+//
+// Used as a helper in other mixins/functions.
+// Strips the unit from the number and/or removes the unit of a length.
+//
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+// @access public
+//
+// @example SCSS
+//   .element {
+//     line-height: 1.8rem;
+//   }
+//
+//   // CSS Output
+//   .element {
+//     line-height: 1.8;
+//   }
+//
+// @author Hugo Giraudel
+// @group Helpers - Functions
+// @link https://css-tricks.com/snippets/sass/strip-unit-function/
+// @since: v1.1.3
+//
+
+@mixin __info_strip_unit {
+	@debug "[INFO]
+	The `strip_unit` function is used to remove the unit from a number.
+	Type  : Function
+	Params:
+	- $number: The number with unit that needs to be removed.
+	";
+}
+@function strip_unit($value) {
+	@if $value == "info" {
+		@include __info_strip_unit;
+	}
+	@else {
+		@return ($value / ($value * 0 + 1));
+	}
+}
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_strip_unit {
+	@if $output_test_message { @debug "[TESTING] `strip_unit`"; }
+	/* `strip_unit` --------------------- */
+	/*
+	$test_num_with_unit: 1.5rem;
+	.test_strip_unit {
+		font-size: $test_num_with_unit;
+		line-height: strip_unit($test_num_with_unit);
+	}
+	*/
+	$test_num_with_unit: 1.5rem;
+	.test_strip_unit {
+		font-size: $test_num_with_unit;
+		line-height: strip_unit($test_num_with_unit);
+	}
+	/* End `strip_unit` ----------------- */
+}

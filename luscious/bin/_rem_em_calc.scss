@@ -1,0 +1,170 @@
+// Luscious
+// @since v0.0.5
+//
+// Converts numbers to rem/em equivalent
+//
+// sass-lint:disable no-css-comments
+// ===================================================================
+
+// Rem Calculator
+
+@mixin __info_rem_calc {
+	@debug "[INFO]
+	The `rem_calc` function takes a unitless or px number and converts it to the rem equivalent based on `$root_font_size` (#{$root_font_size}).
+	Type  : Function
+	Params:
+	- $pxval: Required. Only accepts unitless or px numbers.
+	Alias : `rem()` and `r()`
+	";
+}
+
+
+@function rem_calc($pxval) {
+	@if unit($pxval) == "px" or unitless($pxval) {
+		// Get the rembase from font_size in 'settings/base'
+		$rembase: ($root_font_size / 100%) * 16;
+		// Remove units if they exist
+		$unitless: strip_unit($pxval);
+		// Do the math, output a rem
+		$remval: ($unitless / $rembase) * 1rem;
+		@return $remval;
+	}
+	@else {
+		@debug "The `rem_calc` function only accepts unitless or px numbers.
+		Try `__info(rem)` for more info.";
+	}
+}
+
+// Alias
+@mixin __info_rem {
+	@include __info_rem_calc;
+}
+@function rem($pxval) {
+	@return rem_calc($pxval);
+}
+@function r($pxval) {
+	@return rem_calc($pxval);
+}
+
+
+// -------------------------------------
+
+// Em Calculator
+
+@mixin __info_em_calc {
+	@debug "[INFO]
+	The `em_calc` function takes a unitless or px number and converts it to the em equivalent based on `$root_font_size` (#{$root_font_size}).
+	Type  : Function
+	Params:
+	- $pxval: Required. Only accepts unitless or px numbers.
+	";
+}
+
+
+@function em_calc($pxval) {
+	@if unit($pxval) == "px" or unitless($pxval) {
+		// Get the embase from font_size in 'settings/base'
+		$embase: ($root_font_size / 100%) * 16;
+		// Remove units if they exist
+		$unitless: strip_unit($pxval);
+		// Do the math, output an em
+		$emval: ($unitless / $embase) * 1em;
+		@return $emval;
+	}
+	@else {
+		@debug "The `em_calc` function only accepts unitless or px numbers.
+		Try `__info(em)` for more info.";
+	}
+}
+
+// Alias
+@mixin __info_em {
+	@include __info_em_calc;
+}
+@function em($pxval) {
+	@return em_calc($pxval);
+}
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_rem_calc {
+	@if $output_test_message { @debug "[TESTING] `rem_calc`"; }
+	/* `rem_calc` ----------------------- */
+	/*
+	.test.rem_calc {
+		height: 32px;
+		font-size: 3.2rem;
+		line-height: 2rem;
+		width: rem_calc(32);
+	}
+	*/
+	.test.rem_calc {
+		height: 32px;
+		font-size: 3.2rem;
+		line-height: 2rem;
+		width: rem_calc(32);
+	}
+	/*
+	.test.rem {
+		height: 32px;
+		font-size: 3.2rem;
+		line-height: 2rem;
+		width: rem(32);
+	}
+	*/
+	.test.rem {
+		height: 32px;
+		font-size: 3.2rem;
+		line-height: 2rem;
+		width: rem(32);
+	}
+	/* End `rem_calc` ------------------- */
+}
+
+// Alias
+@mixin __test_rem {
+	@include __test_rem_calc;
+}
+
+
+@mixin __test_em_calc {
+	@if $output_test_message { @debug "[TESTING] `em_calc`"; }
+	/* `em_calc` ------------------------ */
+	/*
+	.test.em_calc {
+		height: 32px;
+		font-size: 3.2em;
+		line-height: 2em;
+		width: em_calc(32);
+	}
+	*/
+	.test.em_calc {
+		height: 32px;
+		font-size: 3.2em;
+		line-height: 2em;
+		width: em_calc(32);
+	}
+	/*
+	.test.em {
+		height: 32px;
+		font-size: 3.2em;
+		line-height: 2em;
+		width: em(32);
+	}
+	*/
+	.test.em {
+		height: 32px;
+		font-size: 3.2em;
+		line-height: 2em;
+		width: em(32);
+	}
+	/* End `em_calc` -------------------- */
+}
+
+// Alias
+@mixin __test_em {
+	@include __test_em_calc;
+}
