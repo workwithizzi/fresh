@@ -1,17 +1,31 @@
-// Defaults and variables
-@import 'modularscale/vars';
 
-// Core functions
-@import 'modularscale/settings';
-@import 'modularscale/pow';
-@import 'modularscale/strip-units';
-@import 'modularscale/sort';
-@import 'modularscale/round-px';
-@import 'modularscale/target';
-@import 'modularscale/function';
 
-// Mixins
-@import 'modularscale/respond';
+// Info about a previous version https://zellwk.com/blog/modular-scale/
 
-// Syntax sugar
-@import 'modularscale/sugar';
+// Modular Scale site: http://www.modularscale.com/
+// https://github.com/modularscale/modularscale-sass/tree/v3.0.5
+
+
+@import 'modularscale-v3.0.5/index';
+
+
+// Need to add info for tests and usage.
+
+// .test-0 {
+// 	font-size: ms(0);
+// }
+// .test-1 {
+// 	font-size: ms(1);
+// }
+// .test-2 {
+// 	font-size: ms(2);
+// }
+// .test-3 {
+// 	font-size: ms(3);
+// }
+// .test-4 {
+// 	font-size: ms(4);
+// }
+// .test-5 {
+// 	font-size: ms(5);
+// }
