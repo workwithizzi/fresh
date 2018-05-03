@@ -1,0 +1,227 @@
+// -------------------------------------------------------------
+// Luscious Grid
+//
+// Simple column/row grid built with mixins.
+// -------------------------------------------------------------
+
+$luscious-grid-width:          100%   !default;
+$luscious-grid-max-width:      100%   !default;
+$luscious-grid-margins:        0 auto !default;
+$luscious-grid-padding:        0      !default;
+$luscious-grid-gutter:         4%     !default;
+$number-of-luscious-columns:   12     !default;
+$luscious-column-padding:      0      !default;
+$columns-min-width-breakpoint: $xs    !default;
+
+// $xs == 600px
+
+$include-luscious-grid-utility-classes: true !default;
+
+// -------------------------------------------------------------
+
+// Abreviated Variables
+$num-o-col: $number-of-luscious-columns;
+$gutter: $luscious-grid-gutter;
+$colbp: $columns-min-width-breakpoint;
+
+// Clearfix Helper
+@mixin lus-cf {
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+// Base Column Stuff
+@mixin lus-col-base {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	box-sizing: border-box;
+}
+
+// Column Width Helper
+@function col-number($col-num) {
+	$width-config: (100% + $gutter) / $num-o-col;
+	$col-width: $col-num * $width-config - $gutter;
+
+	@return $col-width;
+}
+
+
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+// TODO: Look into changing num-o-col number.
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+
+// -------------------------------------------------------------
+
+// Luscious Row
+@mixin row {
+	width: $luscious-grid-width;
+	max-width: $luscious-grid-max-width;
+	margin: $luscious-grid-margins;
+	padding: $luscious-grid-padding;
+	box-sizing: border-box;
+
+	@include lus-cf;
+}
+
+// Luscious Row Alias
+@mixin lus-row {
+	@include row;
+}
+
+// Luscious Columns
+@mixin col($col-num, $order: null) {
+	@if $col-num == first {
+		@media (min-width: $colbp) {
+			float: left;
+			margin-left: 0;
+		}
+	}
+	@else if $col-num == last {
+		@media (min-width: $colbp) {
+			float: left;
+			margin-right: 0;
+			}
+		}
+	@else if $col-num == $num-o-col {
+		@include lus-col-base;
+	}
+	@else {
+		@include lus-col-base;
+
+		@media (min-width: $colbp) {
+			float: left;
+			width: col-number($col-num);
+
+			@if $order == first {
+				margin-left: 0;
+			}
+			@else if $order == last {
+				@if $col-num == $num-o-col {
+					margin-left: 0;
+				}
+				@else {
+					margin-right: 0;
+					margin-left: $gutter;
+				}
+			}
+			@else if $order == null {
+				@if $col-num == $num-o-col {
+					margin-left: 0;
+				}
+				@else {
+					margin-left: $gutter;
+				}
+			}
+			@else if $order != first or $order != last or $order != null {
+				@warn "Sorry, '#{$order}' isn't a valid position. 'first' or 'last' would work if this column is the... umm... first or last in the row. If it's somewhere in the middle then leave the second option blank. It'll default to 'margin-left: #{$gutter}' and 'margin-right: auto'.";
+
+				margin-left: $gutter;
+			}
+		}
+	}
+}
+
+
+// -------------------------------------------------------------
+// Column Offset
+
+// Column Offset Helper
+@function offsetter($offset-by) {
+	$col-width: col-number($offset-by);
+	$offset-width: $col-width + $gutter;
+
+	@return $offset-width;
+}
+
+
+@mixin col-offset($offset-by) {
+	@media (min-width: $colbp) {
+		margin-left: offsetter($offset-by);
+	}
+}
+
+// -------------------------------------------------------------
+// Column Push/Pull
+
+// @function pushpull($offset-by) {
+// 	$col-width: col-number($offset-by);
+// 	$offset-width: $col-width + $gutter;
+//
+// 	@return $offset-width;
+// }
+
+
+//
+// @mixin push($push-by) {
+// 	@media (min-width: $colbp) {
+// 		left: offsetter($push-by);
+// 	}
+// }
+// @mixin pull($push-by) {
+// 	@media (min-width: $colbp) {
+// 		right: offsetter($push-by);
+// 	}
+// }
+
+
+
+
+
+
+
+
+
+// Optionally include utility classes here
+@if $include-luscious-grid-utility-classes == true {
+
+	.lus-row, .row { @include row; }
+
+	.col-first, .first-col { @include col(first); }
+	.col-last, .last-col   { @include col(last) ; }
+
+// Column Widths
+	.col-1   { @include col(1);  }
+	.col-2   { @include col(2);  }
+	.col-3   { @include col(3);  }
+	.col-4   { @include col(4);  }
+	.col-5   { @include col(5);  }
+	.col-6   { @include col(6);  }
+	.col-7   { @include col(7);  }
+	.col-8   { @include col(8);  }
+	.col-9   { @include col(9);  }
+	.col-10  { @include col(10); }
+	.col-11  { @include col(11); }
+	.col-12  { @include col(12); }
+
+// Column Offsets
+	.col-offset-1   { @include col-offset(1);   }
+	.col-offset-2   { @include col-offset(2);   }
+	.col-offset-3   { @include col-offset(3);   }
+	.col-offset-4   { @include col-offset(4);   }
+	.col-offset-5   { @include col-offset(5);   }
+	.col-offset-6   { @include col-offset(6);   }
+	.col-offset-7   { @include col-offset(7);   }
+	.col-offset-8   { @include col-offset(8);   }
+	.col-offset-9   { @include col-offset(9);   }
+	.col-offset-10  { @include col-offset(10);  }
+	.col-offset-11  { @include col-offset(11);  }
+	.col-offset-12  { @include col-offset(12);  }
+
+}
+
+
+// -------------------------------------------------------------
+// Demo Content Classs
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+	text-align: center;
+}

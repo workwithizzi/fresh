@@ -1,0 +1,49 @@
+// -------------------------------------------------------------
+// ~Temporary Variables
+//
+// Used just until the project is converted over and then deleted.
+// -------------------------------------------------------------
+
+// Old shadow vairable to new shadow variable
+$def-shadow: $base-shadow;
+$nav-shadow: $base-nav-shadow;
+
+$def-duration: $base-duration;
+$def-timing: $base-timing;
+$def-delay: $base-delay;
+$def-transition: $base-transition;
+
+$def-radius: $base-radius;
+$def-border: $base-border;
+
+// TODO: Figure out where this mixin is being used.
+
+// @mixin lus-def-border {
+// 	border: $def-border;
+// 	border-radius: $def-radius;
+// 	@include lus-border-opacity($c_midgrey, 65);
+// 	@include lus-transition(all $def-duration $def-timing);
+//
+// 	&:hover {
+// 		@include lus-border-opacity($c_midgrey, 100);
+// 	}
+// }
+
+// TODO: Delete after integration
+$c_nav-blackblue: $c_nav_bg;
+$c_nav-blackblue-hover: $c_nav_hover;
+$c_nav-ocean-blackblue: $c_nav_active;
+$c_nav-submenu: $c_subnav_bg;
+$c_nav-submenu-hover: $c_subnav_hover;
+$nav-link: $c_nav_link;
+
+$btn_default-color: $btn_base_c !default;
+$btn_default-bg: $btn_base_bg !default;
+$btn_default-border: $btn_base_border !default;
+$btn_primary_color: $btn_primary_c !default;
+$btn_secondary_color: $btn_secondary_c !default;
+$btn_light_color: $btn_light_c !default;
+$btn_link_color: $btn_link_c !default;
+
+// TODO: remove the 'lus' variable. #deprecated
+$lus-icon-font: $icon-font !default;
