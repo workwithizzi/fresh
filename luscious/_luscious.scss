@@ -20,6 +20,7 @@ $production_mode: false !default;
 // Helpers
 @import
 	'helpers/deprecation_warning',
+	'helpers/info-log',
 	'helpers/maps',
 	'helpers/strip_unit'
 ;
@@ -46,6 +47,7 @@ $production_mode: false !default;
 	'bin/square_size',
 	'bin/move',
 	'bin/visibility',
+	'bin/vertical-rhythm',
 	'bin/when_is',
 	'bin/placeholder',
 	'bin/google_fonts',

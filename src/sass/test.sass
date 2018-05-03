@@ -1,0 +1,65 @@
+@charset 'utf-8'
+/*! ================================ */
+/*! Testing Vertical Rhythms         */
+/*! ================================ */
+
+
+
+// Project Settings
+@import settings
+
+
+// Utilities/Vendors/Tools
+@import ../../luscious/luscious
+
+// Variables and reset for testing
+$test-document_font_size: $document_font_size
+// Needs to be a ratio
+$test-base_line_height: $base_line_height
+// Should be a relative unit
+$test-base_font_size: $base_font_size
+
+// WIP functions/mixins
+// @import vertical-rhythm
+
+// Temporary Reset for testing
+@import hard-reset-test
+
+
+// ------------------------------------
+// Test output
+// ------------------------------------
+
+
+// @debug vr()
+// @debug vr(base)
+// @debug vr(info)
+
+
+// .vr-tests
+// 	.null
+// 		line-height: vr()
+// 	.base
+// 		line-height: vr(base)
+// 	.step-1
+// 		line-height: vr(1)
+// 	.step-2
+// 		line-height: vr(2)
+// 	.step-3
+// 		line-height: vr(3)
+// 	.step-half
+// 		line-height: vr(.5)
+
+// .vr-tests
+	.errors
+		.info
+			line-height: vr(info)
+		.not-unitless
+			line-height: vr(2rem)
+
+
+
+
+
+// .clearfix
+// 	+clearfix(info)

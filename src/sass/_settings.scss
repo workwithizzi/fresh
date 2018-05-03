@@ -35,18 +35,29 @@ $output_dev_color_classes: false !default;
 // -------------------------------------
 // HTML Root Font Size (in percentages)
 // Set's up your $rembase. 62.5% == 10px, 100% == 16px
-$document_font_size: 62.5% !default;
-$rembase: 10 !default;
+$document_font_size: 100%;
+$rembase: 16;
 
 // Baseline Height
 // Used for vertical rhythm and baseline grids
-$base_line_height: 1.15 !default;
+$base_line_height: 1.5;
 
 // Base Font-Size
-$base_font_size: 1.6rem !default;
+$base_font_size: 1rem;
 
 // The amount lists and blockquotes are indented.
 $base_indent_amount: 4rem !default;
+
+
+// ------------------------------------
+// Modular Scale
+// ------------------------------------
+$ms-base          : 1em;
+$ms-ratio         : 1.5;
+$modularscale     : (
+	base: $base_font_size,
+	ratio: 1.33
+);
 
 // -------------------------------------
 // 3. Colors
