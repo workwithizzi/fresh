@@ -1,0 +1,91 @@
+// Vertical Rhythm Functions
+// ------------------------------------------------------------------
+
+$test_base_line_height: 24px;
+$baseline-grid: 8px;
+
+// ------------------------------------
+// Info
+// ------------------------------------
+$debug_feedback-vr: "[INFO]";
+@mixin __info_vr { @debug $debug_feedback-vr; }
+
+
+
+@function convert_rem($num) {
+	$unitless: strip_unit($num);
+	$convert: ($unitless / $rembase);
+	@return $convert + rem;
+}
+@function convert_rem_ratio($num) {
+	$unitless: strip_unit($num);
+	$convert: ($unitless / $rembase);
+	@return $convert;
+}
+
+// ------------------------------------
+// VR Function
+// ------------------------------------
+
+@function vr($val: base, $unit: rem) {
+	// Return a ridiculous number for errors
+	$output: 1000px;
+	$error: false;
+
+	// $output: $test_base_line_height-unitless + $unit;
+	$base: convert_rem_ratio($test_base_line_height);
+
+	@if $val == 'base' {
+		@return $base + $unit;
+
+	} @else {
+		$baseline-grid-rem: convert_rem_ratio($baseline-grid);
+
+		$multiple: $baseline-grid-rem * $val;
+		// $val: $val + 1;
+		// @debug $baseline-grid-rem;
+		// $multiple: $baseline-grid-rem * $val;
+		// @debug .5rem * $val;
+		// @return $baseline-grid-rem * $val;
+		// @return 1.5rem + $multiple;
+		@return $base + $multiple + $unit;
+
+	}
+
+
+	// @return $output;
+}
+
+
+
+
+
+
+
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_vr {
+	@if $output_test_message { @debug "[TESTING] `vr`"; }
+	/* `vr` ----------------------------- */
+	.vr-tests {
+		.null      { line-height: vr();     }
+		.base      { line-height: vr(base); }
+		.step-1    { line-height: vr(1);    }
+		.step-2    { line-height: vr(2);    }
+		.step-3    { line-height: vr(3);    }
+		.step-half { line-height: vr(.5);   }
+
+		.errors {
+			.info         { line-height: vr(info); }
+			.not-unitless { line-height: vr(2rem); }
+		}
+	}
+	/* End `vr` ------------------------- */
+}
+
+// TODO: Add test and info mixins to the global mixins
