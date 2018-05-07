@@ -1,72 +1,72 @@
-// // Vertical Rhythm Functions
-// // ------------------------------------------------------------------
-//
-// $test_base_line_height: 24px;
-//
-//
-// // ------------------------------------
-// // Info
-// // ------------------------------------
-// $debug_feedback-vr: info-log(
-// 	'The `vr` function takes a unitless number and calculates the vertical-rhythm for the element using `$base_font_size` (#{$base_font_size}) and `$test_base_line_height` (#{$test_base_line_height}).'
-// 	'Type  : Function'
-// 	'Params: $val -- Not required. Accepts only a unitless number. If empty, defaults to the base ($base_font_size * $test_base_line_height).'
-// );
-//
-// @mixin __info_vr {
-// 	@debug $debug_feedback-vr;
-// }
-//
-//
-// // ------------------------------------
-// // VR Function
-// // ------------------------------------
-// // @function vr($val: base) {
-// // 	// Calculate the base line-height
-// // 	$base: $base_font_size * $test_base_line_height;
-// // 	// Return a ridiculous number for errors
-// // 	$output: 1000px;
-// // 	$error: false;
-// //
-// // 	// Make sure $base_font_size is unitless
-// // 	@if unitless($base_font_size) {
-// // 		@debug info-log('Your base font size CANNOT be a unitless number.'
-// // 		'Current value is (#{$base_font_size})'
-// // 		'@SEE: variable `$base_font_size`');
-// // 	}
-// // 	// Make sure $test_base_line_height has a unit
-// // 	@if not unitless($test_base_line_height) {
-// // 		@debug info-log('Your base line-height MUST be a unitless number.'
-// // 		'Current value is (#{$test_base_line_height})'
-// // 		'@SEE: variable `$test_base_line_height`');
-// // 	}
-// // 	// If 'info' is passed
-// // 	@if $val == 'info' {
-// // 		@debug $debug_feedback-vr;
-// // 		$error: true;
-// // 	}
-// // 	// Make sure $val is unitless
-// // 	@if ($val != 'base' and $val != 'info' and not unitless($val)) {
-// // 		@debug info-log(
-// // 			'You entered (#{$val}) in the `vr` function'
-// // 			'Please change this to a unitless number.');
-// // 	}
-// //
-// // 	// If there are no errors:
-// // 	@if not($error) {
-// // 		@if $val == 'base' {
-// // 			$output: $base;
-// // 		} @else if unitless($val) {
-// // 			$output: $base * $val;
-// // 		} @else {
-// // 			@debug $debug_feedback-vr;
-// // 		}
-// // 	}
-// //
-// // 	@return $output;
-// // }
-//
-//
+// Vertical Rhythm Functions
+// ------------------------------------------------------------------
+
+$test_base_line_height: 24px;
+
+
+// ------------------------------------
+// Info
+// ------------------------------------
+$debug_feedback-vr: info-log(
+	'The `vr` function takes a unitless number and calculates the vertical-rhythm for the element using `$base_font_size` (#{$base_font_size}) and `$test_base_line_height` (#{$test_base_line_height}).'
+	'Type  : Function'
+	'Params: $val -- Not required. Accepts only a unitless number. If empty, defaults to the base ($base_font_size * $test_base_line_height).'
+);
+
+@mixin __info_vr {
+	@debug $debug_feedback-vr;
+}
+
+
+// ------------------------------------
+// VR Function
+// ------------------------------------
+@function vr($val: base) {
+	// Calculate the base line-height
+	$base: $base_font_size * $test_base_line_height;
+	// Return a ridiculous number for errors
+	$output: 1000px;
+	$error: false;
+
+	// Make sure $base_font_size is unitless
+	@if unitless($base_font_size) {
+		@debug info-log('Your base font size CANNOT be a unitless number.'
+		'Current value is (#{$base_font_size})'
+		'@SEE: variable `$base_font_size`');
+	}
+	// Make sure $test_base_line_height has a unit
+	@if not unitless($test_base_line_height) {
+		@debug info-log('Your base line-height MUST be a unitless number.'
+		'Current value is (#{$test_base_line_height})'
+		'@SEE: variable `$test_base_line_height`');
+	}
+	// If 'info' is passed
+	@if $val == 'info' {
+		@debug $debug_feedback-vr;
+		$error: true;
+	}
+	// Make sure $val is unitless
+	@if ($val != 'base' and $val != 'info' and not unitless($val)) {
+		@debug info-log(
+			'You entered (#{$val}) in the `vr` function'
+			'Please change this to a unitless number.');
+	}
+
+	// If there are no errors:
+	@if not($error) {
+		@if $val == 'base' {
+			$output: $base;
+		} @else if unitless($val) {
+			$output: $base * $val;
+		} @else {
+			@debug $debug_feedback-vr;
+		}
+	}
+
+	@return $output;
+}
+
+
 // @function vr($val: base, $unit: rem) {
 // 	// Return a ridiculous number for errors
 // 	$output: 1000px;
@@ -126,30 +126,30 @@
 //
 // 	@return $output;
 // }
-//
-//
-//
-// // ===================================================================
-// // Tests
-// // ===================================================================
-//
-// @mixin __test_vr {
-// 	@if $output_test_message { @debug "[TESTING] `vr`"; }
-// 	/* `vr` ----------------------------- */
-// 	.vr-tests {
-// 		.null      { line-height: vr();     }
-// 		.base      { line-height: vr(base); }
-// 		.step-1    { line-height: vr(1);    }
-// 		.step-2    { line-height: vr(2);    }
-// 		.step-3    { line-height: vr(3);    }
-// 		.step-half { line-height: vr(.5);   }
-//
-// 		.errors {
-// 			.info         { line-height: vr(info); }
-// 			.not-unitless { line-height: vr(2rem); }
-// 		}
-// 	}
-// 	/* End `vr` ------------------------- */
-// }
-//
-// // TODO: Add test and info mixins to the global mixins
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_vr {
+	@if $output_test_message { @debug "[TESTING] `vr`"; }
+	/* `vr` ----------------------------- */
+	.vr-tests {
+		.null      { line-height: vr();     }
+		.base      { line-height: vr(base); }
+		.step-1    { line-height: vr(1);    }
+		.step-2    { line-height: vr(2);    }
+		.step-3    { line-height: vr(3);    }
+		.step-half { line-height: vr(.5);   }
+
+		.errors {
+			.info         { line-height: vr(info); }
+			.not-unitless { line-height: vr(2rem); }
+		}
+	}
+	/* End `vr` ------------------------- */
+}
+
+// TODO: Add test and info mixins to the global mixins
