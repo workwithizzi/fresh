@@ -19,9 +19,16 @@ body
 
 // ----------------
 
+p
+	margin: 0 0 vr(-1)
+	padding: 0
+	// line-height: vr(base)
+
+// ----------------
+
 blockquote
-	margin: 1em $base_indent_amount
-// REVIEW:
+	margin: vr(-1) $base_indent_amount
+	// line-height: vr(base)
 
 // ----------------
 
@@ -64,6 +71,12 @@ samp
 
 // ----------------
 
+pre
+	line-height: vr(base)
+	margin-bottom: vr(-1)
+
+// ----------------
+
 dfn
 	// @nrml: Add the correct font style in Android 4.3-.
 	font-style: italic
@@ -79,7 +92,7 @@ mark
 
 small
 	// @nrml: Add the correct font size in all browsers.
-	font-size: 80%
+	font-size: ms(-1)
 
 // ----------------
 
@@ -88,16 +101,15 @@ sup
 	// @nrml: Prevent elements from affecting
 	// the line height in all browsers.
 	line-height: 0
-	font-size: 75%
+	font-size: ms(-1)
 	position: relative
 	vertical-align: baseline
 
 sub
-	bottom: -0.25em
+	bottom: -0.25rem
 
 sup
-	top: -0.5em
-// REVIEW: Test spacing with 'em' units
+	top: -0.5rem
 
 // ----------------
 
