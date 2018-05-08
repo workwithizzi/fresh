@@ -40,7 +40,11 @@ $rembase: 16;
 
 // Baseline Height
 // Used for vertical rhythm and baseline grids
-$base_line_height: 1.5;
+$base_line_height: 24px;
+
+// Used for vertical rhythm (with baseline grids)
+// Incremental steps for vr
+$baseline-grid: 8px;
 
 // Base Font-Size
 $base_font_size: 1rem;

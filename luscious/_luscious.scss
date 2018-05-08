@@ -22,7 +22,9 @@ $production_mode: false !default;
 	'helpers/deprecation_warning',
 	'helpers/info-log',
 	'helpers/maps',
-	'helpers/strip_unit'
+	'helpers/strip_unit',
+	'helpers/convert-rem-ratio',
+	'helpers/type-checking'
 ;
 
 // Bin - Core functions/mixins

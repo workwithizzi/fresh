@@ -1,0 +1,8 @@
+// TODO: Add info, notes, error handling, and tests
+
+
+@function convert_rem_ratio($num) {
+	$unitless: strip_unit($num);
+	$convert: ($unitless / $rembase);
+	@return $convert;
+}

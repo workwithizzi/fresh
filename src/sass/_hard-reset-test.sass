@@ -15,46 +15,49 @@ p, blockquote
 
 // ----------------
 
-// html
-// 	font-size: $document_font_size
-// 	// @nrml: Correct the line height in all browsers.
-// 	// line-height: $base_line_height
-// 	line-height: vr(1)
-//
-// // ----------------
-//
-// body
-// 	line-height: vr(1)
-// 	font-size: ms(0)
-// 	max-width: 35rem
-//
-// // ----------------
-//
-//
-// h1
-// 	font-size: ms(3)
-// 	// line-height: vr(2)
-// h2
-// 	font-size: ms(2)
-// 	// line-height: vr(2)
-// h3
-// 	font-size: ms(1)
-// 	// line-height: vr(2)
-// h4
-// 	font-size: ms(0)
-// 	// line-height: vr(2)
-// h5
-// 	font-size: ms(-1)
-// 	// line-height: vr(2)
-// h6
-// 	font-size: ms(-2)
-// 	// line-height: vr(2)
-//
-//
-// h1, h2, h3, h4, h5, h6
-// 	line-height: vr(2)
-// 	margin-top: vr(1)
-//
+html
+	font-size: $document_font_size
+	// @nrml: Correct the line height in all browsers.
+	// line-height: $base_line_height
+	line-height: vr(base)
+
+// ----------------
+
+body
+	line-height: vr(base)
+	font-size: ms(0)
+	max-width: 35rem
+
+// ----------------
+
+h1
+	font-size: ms(4)
+	line-height: vr(3)
+	// margin-top: vr(1)
+	margin-bottom: vr(1)
+h2
+	font-size: ms(3)
+	line-height: vr(2)
+h3
+	font-size: ms(2)
+	line-height: vr(1)
+h4
+	font-size: ms(1)
+	line-height: vr(1)
+h5
+	font-size: ms(0)
+	line-height: vr(base)
+	margin-top: vr(base)
+h6
+	font-size: ms(-1)
+	line-height: vr(base)
+	margin-top: vr(base)
+
+
+h1, h2, h3, h4
+	// line-height: vr(2)
+	margin-top: vr(1)
+
 // h1
 // 	margin-bottom: vr(2)
 //
@@ -65,12 +68,30 @@ p, blockquote
 // 	margin-bottom: 0
 //
 //
-// p, ul, ol, pre, table, blockquote
-// 	line-height: vr(1)
-// 	// +v(margin, vr(.5))
-// 	margin-top: 0
-// 	margin-bottom: vr(1)
+p, ul, ol, pre, table, blockquote
+	line-height: vr(base)
+	margin-bottom: vr(-1)
+
 //
 //
 // ul ul, ol ol, ul ol, ol ul
 // 	+v(margin, 0)
+
+
+
+
+
+
+
+
+
+
+
+// pre, code, kbd,
+// samp, small,
+// sub, sup,
+// ol, ul, ol ol, ol ul, ul ol, ul ul,
+// dd, dl,
+// h1, h2, h3, h4, h5, h6,
+// p, blockquote
+// 	outline: 1px solid blue
