@@ -1,0 +1,125 @@
+// Base Forms Styles
+//
+// ------------------------------------------------------------------
+
+
+input,
+textarea
+	border-width: r(1)
+	border-style: solid
+	border-radius: 0
+	appearance: textfield
+
+// ----------------
+
+input,
+optgroup,
+select,
+textarea
+	// @nrml: Remove the margin in Firefox and Safari.
+	margin: 0
+	// @nrml: Change the font styles in all browsers. ---
+	font-family: inherit
+	font-size: 100%
+	line-height: vr(base)
+
+// ----------------
+
+input
+	// @nrml: Show the overflow in Edge.
+	overflow: visible
+
+// ----------------
+
+select
+	// @nrml: Remove the inheritance of text transform in Firefox.
+	text-transform: none
+
+// ----------------
+
+textarea
+	// @nrml: Remove the default vertical scrollbar in IE 10+.
+	overflow: auto
+
+// ----------------
+
+fieldset
+	// @nrml: Correct the padding in Firefox.
+	padding: vr(-1)
+
+// ----------------
+
+legend
+	// @nrml: Correct the color inheritance from `fieldset` elements in IE.
+	color: inherit
+	// @nrml: Remove the padding so developers are not caught out when
+	// they zero out `fieldset` elements in all browsers.
+	padding: 0
+	// @nrml: Correct the text wrapping in Edge and IE. ---
+	box-sizing: border-box
+	display: table
+	max-width: 100%
+	white-space: normal
+	// ---
+
+// ----------------
+
+progress
+	// @nrml: Add the correct display in IE 9-.
+	display: inline-block
+	// @nrml: Add the correct vertical alignment in Chrome, Firefox, and Opera.
+	vertical-align: baseline
+
+// ----------------
+
+details
+	// @nrml: Add the correct display in Edge, IE, and Firefox.
+	display: block
+
+// ----------------
+
+summary
+	// @nrml: Add the correct display in all browsers.
+	display: list-item
+
+// ----------------
+
+menu
+	// @nrml: Add the correct display in IE 9-.
+	display: block
+
+// ----------------
+
+[type="checkbox"],
+[type="radio"]
+	// @nrml: Add the correct box sizing in IE 10.
+	box-sizing: border-box
+	// @nrml: Remove the padding in IE 10.
+	padding: 0
+
+[type="checkbox"]
+	appearance: checkbox
+
+[type="radio"]
+	appearance: radio
+
+// ----------------
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button
+	// @nrml: Correct cursor style of increment/decrement buttons in Chrome.
+	height: auto
+
+// ----------------
+
+[type="search"]
+	// @nrml: Correct the odd appearance in Chrome and Safari.
+	-webkit-appearance: textfield
+	// @nrml: Correct the outline style in Safari.
+	outline-offset: r(-2px)
+	// REVIEW:
+
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-decoration
+		// @nrml: Remove inner padding & cancel buttons in Chrome & Safari on macOS.
+		-webkit-appearance: none
