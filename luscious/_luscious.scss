@@ -15,7 +15,8 @@ $production_mode: false !default;
 // -------------------------------------
 
 // Settings
-@import "settings";
+// TODO: Make sure to add this import back before production
+// @import "settings";
 
 // Helpers
 @import
