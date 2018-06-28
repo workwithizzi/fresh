@@ -4,7 +4,7 @@
 
 
 // Open new browser window every time you run 'gulp'?
-var openBrowserWindow = true;
+var openBrowserWindow = false;
 
 
 var base = {

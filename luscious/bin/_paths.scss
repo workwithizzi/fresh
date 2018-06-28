@@ -8,22 +8,25 @@
 
 
 // Images
-@mixin __info_img {
-	@debug "[INFO]
-	The `img` function creates an `asset-path` to
+$info-img: info-log(
+	'The `img` function creates an `asset-path` to
 	make it easier to insert images in your SASS.
 	Type  :  Function
 	Params:
 	- $file:      Required. Enter the file name including extension in quotes.
 	- $base_path: Optional. Defaults to `$img_base_path` set in the config file.
 	-             $img_base_path == `#{$img_base_path}`
-	Alias:        `image`
-	";
+	Alias:        `image`'
+);
+
+
+@mixin __info_img {
+	@debug $info-img;
 }
 
 
 @function img($file, $base_path: $img_base_path) {
-	@if $file == "info" { @include __info_img; } 
+	@if $file == "info" { @debug $info-img; }
 	@else {
 		@return url($base_path + '/' + $file);
 	}
@@ -41,23 +44,25 @@
 // -------------------------------------
 
 // Fonts
-
-@mixin __info_font {
-	@debug "[INFO]
-	The `font` function creates an `asset-path` to
+$info-font: info-log(
+	'The `font` function creates an `asset-path` to
 	make it easier to source fonts in your SASS.
 	Type  :  Function
 	Params:
-	- $file:      Required. Enter the file name and extension from 
+	- $file:      Required. Enter the file name and extension from
 	-             the `$font_base_path` in quotes.
 	- $base_path: Optional. Defaults to `$font_base_path` set in the config file.
-	-             $font_base_path == `#{$font_base_path}`
-	";
+	-             $font_base_path == `#{$font_base_path}`'
+);
+
+
+@mixin __info_font {
+	@debug $info-font;
 }
 
 
 @function font($file, $base_path: $font_base_path) {
-	@if $file == "info" { @include __info_font; } 
+	@if $file == "info" { @debug $info-font; }
 	@else {
 		@return url($base_path + '/' + $file);
 	}

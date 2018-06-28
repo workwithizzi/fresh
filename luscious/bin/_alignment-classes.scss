@@ -16,10 +16,13 @@
 // ----------------
 // Info
 // ----------------
+$info_text_alignment: info-log(
+	'Need to add info about the text alignment outputs and utility classes.'
+);
+
+
 @mixin __info_text_alignment {
-	@debug "[INFO]
-	Need to add info about the text alignment outputs and utility classes.
-	";
+	@debug $info_text_alignment;
 }
 
 
@@ -28,7 +31,7 @@
 // ----------------
 // Align Left
 @mixin t-left($info: null) {
-	@if $info { @include __info_text_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		text-align: left;
 	}
@@ -36,7 +39,7 @@
 
 // Align Left-Justify
 @mixin t-left--justify($info: null) {
-	@if $info { @include __info_text_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		text-align: justify;
 		direction: ltr;
@@ -45,7 +48,7 @@
 
 // Align Right
 @mixin t-right($info: null) {
-	@if $info { @include __info_text_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		text-align: right;
 	}
@@ -53,7 +56,7 @@
 
 // Align Right-Justify
 @mixin t-right--justify($info: null) {
-	@if $info { @include __info_text_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		text-align: justify;
 		direction: rtl;
@@ -62,7 +65,7 @@
 
 // Align Center
 @mixin t-center($info: null) {
-	@if $info { @include __info_text_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		text-align: center;
 	}
@@ -70,7 +73,7 @@
 
 // Align Center-Justify
 @mixin t-center--justify($info: null) {
-	@if $info { @include __info_text_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		text-align: justify;
 		text-align-last: center
@@ -87,10 +90,13 @@
 // ----------------
 // Info
 // ----------------
+$info_text_alignment: info-log(
+	'Need to add info about the image alignment outputs and utility classes.
+	Include note about adding `+container` to <main>.'
+);
+
 @mixin __info_img_alignment {
-	@debug "[INFO]
-	Need to add info about the image alignment outputs and utility classes. Include note about adding `+container` to <main>.
-	";
+	@debug $info_text_alignment;
 }
 
 
@@ -101,7 +107,7 @@
 // Img Left
 @mixin img-left($info: null, $margin: r(10)) {
 	// TODO: Add error handler to make sure margin is not unitless
-	@if $info { @include __info_img_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		float: left;
 		margin-right: $margin;
@@ -111,7 +117,7 @@
 // Img Right
 @mixin img-right($info: null, $margin: r(10)) {
 	// TODO: Add error handler to make sure margin is not unitless
-	@if $info { @include __info_img_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		float: right;
 		margin-left: $margin;
@@ -121,7 +127,7 @@
 // Img Center
 @mixin img-center($info: null) {
 	// TODO: Add error handler to make sure margin is not unitless
-	@if $info { @include __info_img_alignment; }
+	@if $info { @debug $info_text_alignment; }
 	@else {
 		display: block;
 		margin-left: auto;

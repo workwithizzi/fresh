@@ -31,9 +31,8 @@
 //   }
 //
 
-@mixin __info_bg_image {
-	@debug "[INFO]
-	The `bg_image` mixin creates a background-image in an element.
+$info-bg_image: info-log(
+	'The `bg_image` mixin creates a background-image in an element.
 	Type  : Included Mixin
 	Params:
 	- $attachment: Optional. Defaults to `fixed`.
@@ -43,14 +42,17 @@
 	- background-attachment: $attachment;
 	- background-position: center center;
 	- background-size: cover;
-	Alias:  none.
-	";
+	Alias:  none.'
+);
+
+@mixin __info_bg_image {
+	@debug $info-bg_image;
 }
 
 
 @mixin bg_image($attachment: fixed) {
 	@if $attachment == "info" {
-		@include __info_bg_image;
+		@debug $info-bg_image;
 	}
 	@else {
 		background-repeat: no-repeat;
@@ -66,7 +68,7 @@
 // ===================================================================
 
 @mixin __test_bg_image {
-	@if $output_test_message { @debug "[TESTING] `bg_image`"; }
+	@if $output_test_message { @debug $info-bg_image; }
 	/* `bg_image` ----------------------- */
 	/*
 	.test.bg_image {

@@ -4,14 +4,14 @@
 // Susy Support Defaults
 // ---------------------
 @include susy-defaults((
-  use-custom: (
-    clearfix: false,
-    background-image: true,
-    background-options: false,
-    breakpoint: true,
-    box-sizing: true,
-    rem: true,
-  ),
+	use-custom: (
+		clearfix: false,
+		background-image: true,
+		background-options: false,
+		breakpoint: true,
+		box-sizing: true,
+		rem: true,
+	),
 ));
 
 
@@ -21,29 +21,29 @@
 // - $prop  : <css property>
 // - $val   : <css value>
 @mixin susy-support(
-  $prop,
-  $val
+	$prop,
+	$val
 ) {
-  // Background Support
-  @if $prop == background-image {
-    @include susy-background-image($val);
-  } @else if $prop == background-size {
-    @include susy-background-size($val);
-  } @else if $prop == background-origin {
-    @include susy-background-origin($val);
-  } @else if $prop == background-clip {
-    @include susy-background-clip($val);
-  }
+	// Background Support
+	@if $prop == background-image {
+		@include susy-background-image($val);
+	} @else if $prop == background-size {
+		@include susy-background-size($val);
+	} @else if $prop == background-origin {
+		@include susy-background-origin($val);
+	} @else if $prop == background-clip {
+		@include susy-background-clip($val);
+	}
 
-  // Box-Sizing Support
-  @else if $prop == box-sizing {
-    @include susy-box-sizing($val);
-  }
+	// Box-Sizing Support
+	@else if $prop == box-sizing {
+		@include susy-box-sizing($val);
+	}
 
-  // Rem Support
-  @else {
-    @include susy-rem($prop, $val);
-  }
+	// Rem Support
+	@else {
+		@include susy-rem($prop, $val);
+	}
 }
 
 
@@ -56,30 +56,34 @@
 //                    - e.g (variable: rem-with-px-fallback, mixin: rem)
 // - $warn          : <bool>
 @function susy-support(
-  $feature,
-  $requirements: (),
-  $warn: true
+	$feature,
+	$requirements: (),
+	$warn: true
 ) {
-  $_support: susy-get(use-custom $feature);
+	$_support: susy-get(use-custom $feature);
 
-  @if $_support {
-    $_fail: false;
+	@if $_support {
+		$_fail: false;
 
-    @each $_type, $_req in $requirements {
-      @each $_i in $_req {
-        $_pass: call(unquote("#{$_type}-exists"), $_i);
+		@each $_type, $_req in $requirements {
+			@each $_i in $_req {
 
-        @if not($_pass) {
-          $_fail: true;
-          @if $warn {
-            @warn "You requested custom support of #{$feature}, but the #{$_i} #{$_type} is not available.";
-          }
-        }
-      }
-    }
+				// HACK: Temp to remove sass deprecation warning. Not sure if it works properly
+				// https://git.io/f4FLn
+				// $_pass: call(unquote("#{$_type}-exists"), $_i);
+				$_pass: call(get-function(unquote("#{$_type}-exists")), $_i);
 
-    $_support: if($_fail, false, $_support);
-  }
+				@if not($_pass) {
+					$_fail: true;
+					@if $warn {
+						@warn "You requested custom support of #{$feature}, but the #{$_i} #{$_type} is not available.";
+					}
+				}
+			}
+		}
 
-  @return $_support;
+		$_support: if($_fail, false, $_support);
+	}
+
+	@return $_support;
 }
