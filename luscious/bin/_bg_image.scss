@@ -51,9 +51,7 @@ $info-bg_image: info-log(
 
 
 @mixin bg_image($attachment: fixed) {
-	@if $attachment == "info" {
-		@debug $info-bg_image;
-	}
+	@if $attachment == "info" { @debug $info-bg_image; }
 	@else {
 		background-repeat: no-repeat;
 		background-attachment: $attachment;
