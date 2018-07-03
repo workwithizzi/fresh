@@ -7,15 +7,16 @@
 // ===================================================================
 
 // Rem Calculator
-
-@mixin __info_rem_calc {
-	@debug "[INFO]
-	The `rem_calc` function takes a unitless or px number and converts it to the rem equivalent based on `$document_font_size` (#{$document_font_size}).
+$info_rem_calc: info-log(
+	'The `rem_calc` function takes a unitless or px number and converts it to the rem equivalent based on `$document_font_size` (#{$document_font_size}).
 	Type  : Function
 	Params:
 	- $pxval: Required. Only accepts unitless or px numbers.
-	Alias : `rem()` and `r()`
-	";
+	Alias : `rem()` and `r()`'
+);
+
+@mixin __info_rem_calc {
+	@debug $info_rem_calc;
 }
 
 
@@ -50,14 +51,14 @@
 // -------------------------------------
 
 // Em Calculator
-
-@mixin __info_em_calc {
-	@debug "[INFO]
-	The `em_calc` function takes a unitless or px number and converts it to the em equivalent based on `$document_font_size` (#{$document_font_size}).
+$info_em_calc: info-log(
+	'The `em_calc` function takes a unitless or px number and converts it to the em equivalent based on `$document_font_size` (#{$document_font_size}).
 	Type  : Function
 	Params:
-	- $pxval: Required. Only accepts unitless or px numbers.
-	";
+	- $pxval: Required. Only accepts unitless or px numbers.'
+);
+@mixin __info_em_calc {
+	@debug $info_em_calc;
 }
 
 
