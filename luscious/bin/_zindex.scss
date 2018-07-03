@@ -8,16 +8,19 @@
 
 
 // Info
-@mixin __info_zindex {
-	@debug "[INFO]
-	The `zindex` function/mixin makes it easier to get z-index
+
+$info_zindex: info-log(
+	'The `zindex` function/mixin makes it easier to get z-index
 	values from the `$z_index map.
 	To see available keys, use `@debug $z_index`
 	Params:
 	- $key: A key from the $z_index map.
 	Type  : Function or (included) Mixin
-	Alias : `z`
-	";
+	Alias : `z`'
+);
+
+@mixin __info_zindex {
+	@debug $info_zindex;
 }
 
 // As a function
