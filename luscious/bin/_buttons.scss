@@ -9,20 +9,20 @@
 
 // Reset button styles created by most browsers
 
-@mixin __info_reset_html_button {
-	@debug "[INFO]
-	The `reset_html_button` mixin resets button styles
+$info_reset_html_button: info-log(
+	'The `reset_html_button` mixin resets button styles
 	created by most browsers.
 	To see the output css, use `__test(reset_html_button)`.
 	Type  : Standalone Mixin
-	Params: none
-	";
+	Params: none'
+);
+
+@mixin __info_reset_html_button {
+	@debug $info_reset_html_button;
 }
 
 @mixin reset_html_button($info: null) {
-	@if $info {
-		@include __info_reset_html_button;
-	}
+	@if $info { @debug $info_reset_html_button; }
 	@else {
 		button {
 			@include disable_mouse_outline;
@@ -58,10 +58,8 @@ $button_default_style: primary !default;
 
 // -------------------------------------
 
-// Create the button styling based on parameters
-@mixin __info_btn {
-	@debug "[INFO]
-	The `btn` mixin sets up your styling for different button styles.
+$info_btn: info-log(
+	"The `btn` mixin sets up your styling for different button styles.
 	Type  : Included Mixin
 	Params:
 	- $style  : Optional. Defaults to $button_default_style (`#{$button_default_style}`).
@@ -75,8 +73,12 @@ $button_default_style: primary !default;
 	Alias :     `button`
 	The rules that are applied will come from the 1st level map in
 	`$button_styles` map. If there isn't a rule in that map, then
-	it will fall back to the `defualt` key in the same map.
-	";
+	it will fall back to the `defualt` key in the same map."
+);
+
+// Create the button styling based on parameters
+@mixin __info_btn {
+	@debug $info_btn;
 }
 
 
@@ -204,9 +206,8 @@ $button_default_style: primary !default;
 // Global Utility Prefix
 $utility_class_prefix: 'u_' !default;
 
-@mixin __info_btn_utility_classes {
-	@debug "[INFO]
-	The `btn_utility_classes` makes it so that you can output
+$info_btn_utility_classes: info-log(
+	'The `btn_utility_classes` makes it so that you can output
 	button utility classes from anywhere in the project.
 	Type  : Standalone Mixin
 	Params:
@@ -224,15 +225,16 @@ $utility_class_prefix: 'u_' !default;
 	-       --hollow,
 	-       --expanded,
 	-       --block,
-	-       --disabled,
-	";
+	-       --disabled,'
+);
+
+@mixin __info_btn_utility_classes {
+	@debug $info_btn_utility_classes;
 }
 
 
 @mixin btn_utility_classes($prefix: btn) {
-	@if $prefix == "info" {
-		@include __info_btn_utility_classes;
-	}
+	@if $prefix == "info" { @debug $info_btn_utility_classes; }
 	@else {
 		$btn: ".#{$utility_class_prefix}#{$prefix}";
 		// Default
