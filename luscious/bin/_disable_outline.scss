@@ -8,21 +8,22 @@
 // http://foundation.zurb.com/sites/docs/accessibility.html
 // 2DO-LUS: Double check this with the `what input` library. https://git.io/v5D4x
 
+$info_disable_mouse_outline: info-log(
+	'The `disable_mouse_outline` mixin removes the focus outline for
+	mouse users, but not for keyboard users for accessibility.
+	Type  : Included Mixin
+	Params: none'
+);
 
 // Info Mixin
 @mixin __info_disable_mouse_outline {
-	@debug "[INFO]
-	The `disable_mouse_outline` mixin removes the focus outline for 
-	mouse users, but not for keyboard users for accessibility.
-	Type  : Included Mixin
-	Params: none
-	";
+	@debug $info_disable_mouse_outline;
 }
 
 
 // Removes the focus outline for mouse users, but not for keyboard users.
 @mixin disable_mouse_outline($info: null) {
-	@if $info { @include __info_disable_mouse_outline; }
+	@if $info { @debug $info_disable_mouse_outline; }
 	[data-whatinput='mouse'] & {
 		outline: 0;
 	}
