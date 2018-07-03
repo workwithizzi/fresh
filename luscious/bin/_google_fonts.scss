@@ -8,41 +8,40 @@
 // ===================================================================
 
 
-//  Subset config 
-//    
-//  Note! 
-//  The Latin subset is always included if available and need not be specified. 
-//  Please note that if a client browser supports unicode-range the subset parameter 
-//  is ignored; the browser will select from the subsets supported by the font to 
+//  Subset config
+//
+//  Note!
+//  The Latin subset is always included if available and need not be specified.
+//  Please note that if a client browser supports unicode-range the subset parameter
+//  is ignored; the browser will select from the subsets supported by the font to
 //  get what it needs to render the text.
 //  Source: https://developers.google.com/fonts/docs/getting_started
 //
 $google-font-subsets: (
-	'arabic'      : false 
-	, 'bengali'     : false 
-	, 'cyrillic'    : false 
-	, 'cyrillic-ext': false 
-	, 'devanagari'  : false 
-	, 'greek'       : false 
-	, 'greek-ext'   : false 
+	'arabic'      : false
+	, 'bengali'     : false
+	, 'cyrillic'    : false
+	, 'cyrillic-ext': false
+	, 'devanagari'  : false
+	, 'greek'       : false
+	, 'greek-ext'   : false
 	, 'gujarati'    : false
-	, 'hebrew'      : false 
-	, 'khmer'       : false 
+	, 'hebrew'      : false
+	, 'khmer'       : false
 	, 'latin'       : false
-	, 'latin-ext'   : false 
-	, 'tamil'       : false 
-	, 'telugu'      : false 
+	, 'latin-ext'   : false
+	, 'tamil'       : false
+	, 'telugu'      : false
 	, 'thai'        : false
-	, 'vietnamese'  : false 
+	, 'vietnamese'  : false
 ) !default;
 
-//  
+//
 //   Google Fonts
 //
 
-@mixin __info_google_fonts {
-	@debug "[INFO]
-	The `google_fonts` mixin can be used to simplify embedding Google fonts.
+$info_google_fonts: info-log(
+	'The `google_fonts` mixin can be used to simplify embedding Google fonts.
 	Type      : Standalone Mixin
 	Parameters:
 	- $name   : Required. Accepts any Google font name. Ex: `Open Sans`
@@ -55,16 +54,19 @@ $google-font-subsets: (
 	Extra     : This mixin allows nesting within itself (parent accepts no params)
 	-           so that the all fonts will be imported in the same request.
 	See       : https://goo.gl/LSNXCF
-	
+
 	Example SCSS: (Single font import)
 	@include google_fonts(\"Open Sans\", 400 700, normal);
-	
+
 	Example SCSS: (Multiple imports)
 	@include google_fonts {
 		@include google_fonts(Material Icons);
 		@include google_fonts(Lato, 400 700, normal);
-	};
-	";
+	};'
+);
+
+@mixin __info_google_fonts {
+	@debug $info_google_fonts;
 }
 
 
@@ -74,23 +76,23 @@ $google-font-subsets: (
 	$styles : normal,       //  list or string (normal and or italic)
 	$limit  : null          //  string (don\'t forget to unescape )
 	){
-		
-		@if $name == 'info' { @include __info_google_fonts; }
-		
+
+		@if $name == 'info' { @debug $info_google_fonts; }
+
 		//  base url
 		$URL: 'https://fonts.googleapis.com/css?family=';
 
-		//  create global variables 
+		//  create global variables
 		@if not variable-exists(__gf__combine){ $__gf__combine: false !global; }
-		@if not variable-exists(__gf__map){ $__gf__map: () !global; }   
-		@if not variable-exists(google-font-subsets){ $google-font-subsets: () !global; }   
+		@if not variable-exists(__gf__map){ $__gf__map: () !global; }
+		@if not variable-exists(google-font-subsets){ $google-font-subsets: () !global; }
 
 		//  append italic to weights
 		@if index($styles, italic) and not str-index($weights+'',i){
-			$wgt: if(index($styles, normal), $weights, ()); 
+			$wgt: if(index($styles, normal), $weights, ());
 			@each $weight in $weights { $wgt: append($wgt, $weight + i); }
 			$weights: $wgt;
-		} 
+		}
 
 		//  reduce and encode text
 		@if $limit {
@@ -99,7 +101,7 @@ $google-font-subsets: (
 			$encode:('!':'%21','#':'%23','$':'%24','&':'%26','\'':'%27',
 							 '(':'%28',')':'%29','*':'%2A','+':'%2B',',':'%2C',
 							 '/':'%2F',':':'%3A',';':'%3B','=':'%3D','?':'%3F',
-							 '@':'%40','[':'%5B',']':'%5D',' ':'%20');           
+							 '@':'%40','[':'%5B',']':'%5D',' ':'%20');
 			@for $i from 1 through length($list) {
 				$char: map-get($encode,nth($list,$i)) or nth($list,$i);
 				$limit: $limit + $char;
@@ -107,20 +109,20 @@ $google-font-subsets: (
 		}
 
 		//  subsets from config
-		$subset: '';    
+		$subset: '';
 		@each $set, $enabled in $google-font-subsets {
 			@if $enabled {
-				$subset: $subset + if($subset == '', '', ',') + $set;            
+				$subset: $subset + if($subset == '', '', ',') + $set;
 			}
-		} 
+		}
 		$subset: if(str-length($subset) > 0 and $subset != latin, '&subset=' + $subset, '');
 
 		@if $name {
-			//  replace name whitespaces  
+			//  replace name whitespaces
 			$name: if(type-of($name) == string, unquote($name),$name);
 			$name: __gf__str-replace(inspect($name),' ','+');
 			@if $__gf__combine and not $limit {
-				//  add weights to combine map 
+				//  add weights to combine map
 				$wgt: map-get($__gf__map, $name) or ();
 				$wgt: __gf__list-unique(join($wgt, $weights, comma));
 				$__gf__map: map-merge($__gf__map, ($name: $wgt)) !global;
@@ -138,19 +140,19 @@ $google-font-subsets: (
 			//  set combine flag
 			$__gf__combine: true  !global;
 
-			//  nested includes   
+			//  nested includes
 			@content;
 
 			//  convert combine map to query
 			//  (remove weights if just 400)
-			$query:'';        
+			$query:'';
 			@each $font, $weights in $__gf__map {
-				$query: $query + if($query != '', '|', '') + $font + 
-								if(length($weights) == 1 and (nth($weights, 1) == '400'), 
+				$query: $query + if($query != '', '|', '') + $font +
+								if(length($weights) == 1 and (nth($weights, 1) == '400'),
 								'', ':' + join((), $weights, comma));
-			}       
+			}
 
-			//  remove query whitespaces 
+			//  remove query whitespaces
 			$query: __gf__str-replace($query,' ');
 
 			//  create combined immport
@@ -162,7 +164,7 @@ $google-font-subsets: (
 } // end: mixin
 
 
-// 
+//
 //  Helper functions
 //
 @function __gf__list-unique($list) {
@@ -172,16 +174,16 @@ $google-font-subsets: (
 	@return $result;
 }
 @function __gf__str-replace($string, $search, $replace: '') {
-	$index: str-index($string, $search); 
-	@return if($index, 
-		str-slice($string, 1, $index - 1) + $replace + 
-		__gf__str-replace(str-slice($string, $index + 
-		str-length($search)), $search, $replace), 
+	$index: str-index($string, $search);
+	@return if($index,
+		str-slice($string, 1, $index - 1) + $replace +
+		__gf__str-replace(str-slice($string, $index +
+		str-length($search)), $search, $replace),
 		$string);
 }
 @function __gf__str-explode($string){
-	$list:(); 
-	@for $i from 1 through str-length($string) { $list: append($list, str-slice($string, $i, $i)); } 
+	$list:();
+	@for $i from 1 through str-length($string) { $list: append($list, str-slice($string, $i, $i)); }
 	@return $list;
 }
 
