@@ -136,10 +136,8 @@
 	}
 }
 
-// Info
-@mixin __info_color_function {
-	@debug "[INFO]
-	The `color_function` function is a work-around so that
+$info_color_function: info-log(
+	'The `color_function` function is a work-around so that
 	you can turn on/off color functions from a previously
 	imported file by using a variable.
 	Type  : Function
@@ -148,8 +146,12 @@
 	-             desaturate, adjust-hue, transparentize, rgba,
 	-             tint, shade, and tone
 	- $color    : Required. Accepts any color value.
-	- $percent  : Required. Accepts any percent value.
-	";
+	- $percent  : Required. Accepts any percent value.'
+);
+
+// Info
+@mixin __info_color_function {
+	@debug $info_color_function;
 }
 
 
