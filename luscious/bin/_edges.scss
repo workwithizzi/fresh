@@ -75,7 +75,7 @@ $info_horizontal: info-log(
 
 // Alias
 @mixin __info_h {
-	@debug $info_horizontal;
+	@include __info_horizontal;
 }
 
 @mixin h($property, $val: null) {
