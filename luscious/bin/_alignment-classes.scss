@@ -108,7 +108,6 @@ $info_text_alignment: info-log(
 @mixin img-left($info: null, $margin: r(10)) {
 	// TODO: Add error handler to make sure margin is not unitless
 	@if $info { @debug $info_text_alignment; }
-	@if is-number($margin) { @warn 'Margin should be a unit value, e.g. px or rem' }
 	@else {
 		float: left;
 		margin-right: $margin;
