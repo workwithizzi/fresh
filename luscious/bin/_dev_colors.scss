@@ -75,7 +75,7 @@ $info_dev_color: info-log(
 
 // Alias
 @mixin __info_dev_cl {
-	@debug $info_dev_color;
+	@include __info_dev_color;
 }
 
 @mixin dev_cl($color, $type: bg, $width: 1px, $style: solid) {
