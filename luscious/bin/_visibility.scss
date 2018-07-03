@@ -7,35 +7,41 @@
 
 // Hidden
 // Hide from both screenreaders and browsers
-@mixin __info_hidden {
-	@debug "[INFO]
-	The `hidden` mixin hides the element from
+
+$info_hidden: info-log(
+	'The `hidden` mixin hides the element from
 	screen readers and visual browsers.
 	Type  : Included Mixin
-	Params: none
-	";
+	Params: none'
+);
+
+@mixin __info_hidden {
+	@debug $info_hidden;
 }
 
 @mixin hidden($info: null) {
 	display: none !important;
 	visibility: hidden;
-	@if $info { @include __info_hidden; }
+	@if $info { @debug $info_hidden; }
 }
 
 // -------------------------------------
 
 // Hide Text
-@mixin __info_hide_text {
-	@debug "[INFO]
-	The `hide_text` mixin hides the text for visual browsers
+
+$info_hide_text: info-log(
+	'The `hide_text` mixin hides the text for visual browsers
 	but keeps it accessible to screen readers.
 	Type  : Included Mixin
-	Params: none
-	";
+	Params: none'
+);
+
+@mixin __info_hide_text {
+	@debug $info_hide_text;
 }
 
 @mixin hide_text($info: null) {
-	@if $info { @include __info_hide_text; }
+	@if $info { @debug $info_hide_text; }
 
 	@else {
 		overflow: hidden;
@@ -48,18 +54,21 @@
 
 // Visually Hidden
 // Hide only visually, but have it available for screenreaders
-@mixin __info_vissuallyhidden {
-	@debug "[INFO]
-	The `visuallyhidden` mixin hides the element for visual browsers
+
+$info_vissuallyhidden: info-log(
+	'The `visuallyhidden` mixin hides the element for visual browsers
 	but keeps it accessible to screen readers.
 	Type  : Included Mixin
 	Params: none
-	Alias : `sr_only`
-	";
+	Alias : `sr_only`'
+);
+
+@mixin __info_vissuallyhidden {
+	@debug $info_vissuallyhidden;
 }
 
 @mixin visuallyhidden($info: null) {
-	@if $info { @include __info_vissuallyhidden; }
+	@if $info { @debug $info_vissuallyhidden; }
 
 	@else {
 		border: 0;
@@ -102,17 +111,20 @@
 
 // Invisible
 // Hide visually and from screenreaders, but maintains layout
-@mixin __info_invisible {
-	@debug "[INFO]
-	The `invisible` mixin hides the element visually
+
+$info_invisible: info-log(
+	'The `invisible` mixin hides the element visually
 	and from screenreaders, but maintains layout.
 	Type  : Included Mixin
-	Params: none
-	";
+	Params: none'
+);
+
+@mixin __info_invisible {
+	@debug $info_invisible;
 }
 
 @mixin invisible($info: null) {
-	@if $info { @include __info_invisible; }
+	@if $info { @debug $info_invisible; }
 	@else {
 		visibility: hidden;
 	}
@@ -121,16 +133,19 @@
 // -------------------------------------
 
 // Show
-@mixin __info_show {
-	@debug "[INFO]
-	The `show` mixin sets `display: block !important`.
+
+$info_show: info-log(
+	'The `show` mixin sets `display: block !important`.
 	Type  : Included Mixin
-	Params: none
-	";
+	Params: none'
+);
+
+@mixin __info_show {
+	@debug $info_show;
 }
 
 @mixin show($info: null) {
-	@if $info { @include __info_show; }
+	@if $info { @debug $info_show; }
 
 	@else {
 		display: block !important;
@@ -144,9 +159,8 @@
 // Global Utility Class Prefix
 $utility_class_prefix: 'u_' !default;
 
-@mixin __info_visibility_utility_classes {
-	@debug "[INFO]
-	Adds utilitiy classes:
+$info_visibility_utility_classes: info-log(
+	"Adds utilitiy classes:
 	- .#{$utility_class_prefix}hidden         (mixin: +hidden)
 	- .#{$utility_class_prefix}hide_text      (mixin: +hide_text)
 	- .#{$utility_class_prefix}visuallyhidden (mixin: +visuallyhidden)
@@ -158,12 +172,15 @@ $utility_class_prefix: 'u_' !default;
 	parameter to see what it specifically does.
 
 	Example:
-	+__info(hidden)
-	";
+	+__info(hidden)"
+);
+
+@mixin __info_visibility_utility_classes {
+	@debug $info_visibility_utility_classes;
 }
 
 @mixin visibility_utility_classes($info: null) {
-	@if $info { @include __info_visibility_utility_classes; }
+	@if $info { @debug $info_visibility_utility_classes; }
 	@else {
 		.#{$utility_class_prefix}hidden         { @include hidden;         }
 		.#{$utility_class_prefix}hide_text      { @include hide_text;      }
