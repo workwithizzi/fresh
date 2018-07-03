@@ -11,10 +11,8 @@
 // ===================================================================
 
 
-// Info for `breakpoint` mixin
-@mixin __info_breakpoint {
-	@debug "[INFO]
-	The `breakpoint` mixin creates basic `screen-only` media-queries.
+$info_breakpoint: info-log(
+	'The `breakpoint` mixin creates basic `screen-only` media-queries.
 	Type    : Mixin (Stadalone or Included)
 	Params  :
 	- $size : Required. Accepts key from `$breakpoints` (default) map
@@ -24,8 +22,12 @@
 	- $map  : Optional. Defaults to `$breakpoints` map.
 	Requires: Content Block
 	Related : Mixins- `between_breakpoints`, `for_print`
-	Alias   : `bp`
-	";
+	Alias   : `bp`'
+);
+
+// Info for `breakpoint` mixin
+@mixin __info_breakpoint {
+	@debug $info_breakpoint;
 }
 
 // -----------------
@@ -39,7 +41,7 @@
 		@warn "Use the `for_print` mixin for `print` media queries.";
 	}
 	// Provide info to terminal
-	@if $size == "info" { @include __info_breakpoint; }
+	@if $size == "info" { @debug $info_breakpoint; }
 	@else {
 
 		// Use the sass map if the key matches the map
@@ -72,10 +74,8 @@
 
 // -------------------------------------
 
-// Info for `between_breakpoints` mixin
-@mixin __info_between_breakpoints {
-	@debug "[INFO]
-	The `between_breakpoints` mixin creates a basic `min - max` width media-query.
+$info_between_breakpoints: info-log(
+	'The `between_breakpoints` mixin creates a basic `min - max` width media-query.
 	Type  :   Mixin (Stadalone or Included)
 	Params:
 	- $min  : Required.
@@ -86,8 +86,12 @@
 	- $map:   Optional. Defaults to `$breakpoints` map.
 	Requires: Content Block
 	Related : Mixins- `breakpoint`, `for_print`
-	Alias   : `between_bp`
-	";
+	Alias   : `between_bp`'
+);
+
+// Info for `between_breakpoints` mixin
+@mixin __info_between_breakpoints {
+	@debug $info_between_breakpoints;
 }
 
 // -----------------
@@ -96,7 +100,7 @@
 @mixin between_breakpoints($min, $max: null, $map: $breakpoints) {
 
 	// Provide info to terminal
-	@if $min == "info" { @include __info_between_breakpoints; }
+	@if $min == "info" { @debug $info_between_breakpoints; }
 	@else {
 
 		// Validate $min param
@@ -126,7 +130,7 @@
 // -----------------
 
 // Alias mixin
-@mixin between_bp($size, $query: 'min-width', $map: $breakpoints) {
+@mixin between_bp($min, $max, $query: 'min-width', $map: $breakpoints) {
 	@include between_breakpoints($min, $max, $map) {
 		@content;
 	}
@@ -134,19 +138,21 @@
 
 // -------------------------------------
 
-// Info for `for_print` mixin
-@mixin __info_for_print {
-	@debug "[INFO]
-	The `for_print` mixin creates a basic `@media print` query.
+$info_for_print: info-log(
+	'The `for_print` mixin creates a basic `@media print` query.
 	Params  : none
 	Requires: Content Block
-	Related : Mixins- `breakpoint`, `between_breakpoints`
-	";
+	Related : Mixins- `breakpoint`, `between_breakpoints`'
+);
+
+// Info for `for_print` mixin
+@mixin __info_for_print {
+	@debug $info_for_print;
 }
 
 // Print Media Query
 @mixin for_print($info: null) {
-	@if $info { @include __info_for_print; }
+	@if $info { @debug $info_for_print; }
 	@else {
 		@media print {
 			@content;
