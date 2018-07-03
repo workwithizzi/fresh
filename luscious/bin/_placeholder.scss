@@ -7,21 +7,20 @@
 // ===================================================================
 // 2DO-LUS: Review this mixin and make sure it works properly
 
-
-@mixin __info_placeholder {
-	@debug "[INFO]
-	The `placeholder` mixin adds cross-browser support for
+$info_placeholder: info-log(
+	'The `placeholder` mixin adds cross-browser support for
 	placeholder elements. More info: `https://goo.gl/ZrdsAe`
 	Type    : Standalone Mixin
 	Params  : none
-	Required: Content Block
-	";
+	Required: Content Block'
+);
+
+@mixin __info_placeholder {
+	@debug $info_placeholder;
 }
 
 @mixin placeholder($info: null) {
-	@if $info {
-		@include __info_placeholder;
-		}
+	@if $info { @debug $info_placeholder; }
 	@else {
 		&::-webkit-input-placeholder,
 		&:-moz-placeholder,
