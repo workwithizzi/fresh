@@ -25,13 +25,15 @@
 //   }
 //
 
-@mixin __info_centerblock {
-	@debug "[INFO]
-	The `centerblock` mixin sets `display: block;`, and left
+$info_centerblock: info-log(
+	'The `centerblock` mixin sets `display: block;`, and left
 	and right margins to auto.
 	Type  : Included Mixin
-	Params: none
-	";
+	Params: none'
+);
+
+@mixin __info_centerblock {
+	@debug $info_centerblock;
 }
 
 @mixin centerblock($info: null) {
@@ -39,9 +41,7 @@
 	margin-right: auto;
 	margin-left: auto;
 
-	@if $info {
-		@include __info_centerblock;
-	}
+	@if $info { @debug $info_centerblock; }
 }
 
 
