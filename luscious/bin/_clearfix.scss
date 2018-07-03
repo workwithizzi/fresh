@@ -20,21 +20,24 @@
 // @link http://nicolasgallagher.com/micro-clearfix-hack/
 // @link https://web-design-weekly.com/2013/05/12/handy-sass-mixins/
 
-@mixin __info_clearfix {
-	@debug "[INFO]
-	Add the `clearfix` mixin to any element that contains floated elements.
+$info_clearfix: info-log(
+	'Add the `clearfix` mixin to any element that contains floated elements.
 	More Info: `https://goo.gl/uJGpG`
 	Type  : Included Mixin
 	Params:
 	- $tip : Optional. Defaults to outputting a helpful message.
 	-        Pass `quiet` to turn it off.
-	Alias: %clearfix placeholder";
+	Alias: %clearfix placeholder'
+);
+
+@mixin __info_clearfix {
+	@debug $info_clearfix;
 }
 
 
 // Mixin
 @mixin clearfix($info: null) {
-	@if $info { @include __info_clearfix; }
+	@if $info { @debug $info_clearfix; }
 
 	@else {
 		*zoom: 1;
@@ -61,17 +64,17 @@
 // Global Utility Class Prefix
 $utility_class_prefix: 'u_' !default;
 
+$info_clearfix_utility_class: info-log(
+	'The `clearfix_utility_class` mixin creates a utility
+	class for clearfix (`.#{$utility_class_prefix}clearfix`)'
+);
+
 @mixin __info_clearfix_utility_class {
-	@debug "[INFO]
-	The `clearfix_utility_class` mixin creates a utility
-	class for clearfix (`.#{$utility_class_prefix}clearfix`)
-	";
+	@debug $info_clearfix_utility_class;
 }
 
 @mixin clearfix_utility_class($info: null) {
-	@if $info {
-		@include __info_clearfix_utility_class;
-	}
+	@if $info { @debug $info_clearfix_utility_class; }
 		@else {
 		.#{$utility_class_prefix}clearfix {
 			@extend %clearfix;
