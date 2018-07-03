@@ -34,22 +34,22 @@
 //   }
 //
 
-// Info Mixin
-@mixin __info_hocus {
-	@debug "[Info]
-	The `hocus` mixin is used to easily add: 
+$info_hocus: info-log(
+	'The `hocus` mixin is used to easily add:
 	hover, active, and focus pseudo classes. See `https://goo.gl/mNzHHc`
 	Type  : Included Mixin
 	Params: none.
-	Requires:   Content block.
-	";
+	Requires:   Content block.'
+);
+
+// Info Mixin
+@mixin __info_hocus {
+	@debug $info_hocus;
 }
 
 
 @mixin hocus($info: null) {
-	@if $info {
-		@include __info_hocus;
-	}
+	@if $info { @debug $info_hocus; }
 	@else {
 		&:hover,
 		&:active,
