@@ -19,13 +19,12 @@
 // 	}
 // 		// Return:
 // 		@at-root #{$app}#{$selector}#{$pre} {
-// 			@content; 
+// 			@content;
 // 		}
 // } // end: mixin
 
-@mixin __info_when_is {
-	@debug "[INFO]
-	The `when_is` mixin passes the `@at-root` sass declaration to the selector
+$info_when_is: info-log(
+	"The `when_is` mixin passes the `@at-root` sass declaration to the selector
 	to add a parent class to the current selector.
 	Type  : Standalone or Included Mixin
 	Params:
@@ -38,14 +37,15 @@
 		@include when_is(\".parent\") { color: green; }
 	}
 	Output CSS:
-	.parent.div { color: green; }
-	";
+	.parent.div { color: green; }"
+);
+
+@mixin __info_when_is {
+	@debug $info_when_is;
 }
 
 @mixin when_is($selector) {
-	@if $selector == "info" {
-		@include __info_when_is;
-	}
+	@if $selector == "info" { @debug $info_when_is; }
 	@else {
 		@at-root #{$selector + &} {
 			@content;
