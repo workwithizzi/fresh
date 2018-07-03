@@ -34,9 +34,8 @@ $dev_colors: (
 
 // -------------------------------------
 
-@mixin __info_dev_color {
-	@debug "[INFO]
-	The `dev_color` mixin adds a background-color
+$info_dev_color: info-log(
+	'The `dev_color` mixin adds a background-color
 	to the element for easier dev.
 	Type  :   Standalone Mixin
 	Params:
@@ -45,8 +44,11 @@ $dev_colors: (
 	- $type:         Optional. Either `bg` (defualt) for background, or `border`.
 	- $border-width: Optional. Defaults to `1px`.
 	- $border-style: Optional. Defaults to `solid`.
-	Alias:    `dev_cl`
-	";
+	Alias:    `dev_cl`'
+);
+
+@mixin __info_dev_color {
+	@debug $info_dev_color;
 }
 
 
@@ -58,9 +60,7 @@ $dev_colors: (
 		Don\'t forget to remove the `dev_colors` (`dev_cl` - alias) mixin from
 		the output before final production so things aren\'t jacked up!";
 	}
-	@if $color == "info" {
-		@include __info_dev_color;
-	}
+	@if $color == "info" { @debug $info_dev_color; }
 	@else {
 		$color: map_get_check($dev_colors, $color);
 		@if $type == "bg" {
@@ -75,7 +75,7 @@ $dev_colors: (
 
 // Alias
 @mixin __info_dev_cl {
-	@include __info_dev_color;
+	@debug $info_dev_color;
 }
 
 @mixin dev_cl($color, $type: bg, $width: 1px, $style: solid) {
@@ -87,11 +87,8 @@ $dev_colors: (
 // Utility Classes
 $utility_class_prefix: 'u_' !default;
 
-
-// Helper Mixin
-@mixin __info_dev_color_utility_classes {
-	@debug "[INFO]
-	The mixin `dev_color_utility_classes` outputs background-color
+$info_dev_color_utility_classes: info-log(
+	'The mixin `dev_color_utility_classes` outputs background-color
 	and border utility classes for each color
 	listed in the map `$dev_colors`.
 	Type  :  Standalone Mixin
@@ -103,14 +100,18 @@ $utility_class_prefix: 'u_' !default;
 	- .u_dev_border_s1 - Border color class
 	Available:
 	- Saturated Colors:   (s1-s9)
-	- Desaturated Colors: (d1-d9)
-	";
+	- Desaturated Colors: (d1-d9)'
+);
+
+// Helper Mixin
+@mixin __info_dev_color_utility_classes {
+	@debug $info_dev_color_utility_classes;
 }
 
 
 // Outputs Utility Classes for `dev_colors`
 @mixin dev_color_utility_classes($width: 1px, $style: solid) {
-	@if $width == "info" { @include __info_dev_color_utility_classes; }
+	@if $width == "info" { @debug $info_dev_color_utility_classes; }
 	@else {
 		// Notify me if I'm outputting these classes.
 		@if $production_mode {
