@@ -190,7 +190,7 @@ $info_btn: info-log(
 
 // Alias
 @mixin __info_button {
-	@debug $info_btn;
+	@include __info_btn;
 }
 
 // Alias
@@ -272,7 +272,7 @@ $info_btn_utility_classes: info-log(
 
 // Alias
 @mixin __info_button_utility_classes {
-	@debug $info_btn_utility_classes;
+	@include __info_btn_utility_classes;
 }
 
 @mixin button_utility_classes($prefix: btn) {
