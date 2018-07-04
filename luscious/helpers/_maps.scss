@@ -7,22 +7,25 @@
 // ===================================================================
 
 // Add error handling to the `map-get` function
-@mixin __info_map_get_check {
-	@debug "[INFO]
-	The `map_get_check` function just adds error handling to the built-in
+
+$info_map_get_check: info-log(
+	'The `map_get_check` function just adds error handling to the built-in
 	`map-get` function and is used in the exact same way.
 	Type  : Function
 	Params:
 	- $map: A single, predefined map.
-	- $key: A key that is contained in the map.
-	";
+	- $key: A key that is contained in the map.'
+);
+
+@mixin __info_map_get_check {
+	@debug $info_map_get_check;
 }
 
 @function map_get_check($map, $key) {
 	@if map-has-key($map, $key) {
 		@return map-get($map, $key);
 	}
-	@warn "The key `#{$key}` is not in the map `#{$map}`. 
+	@warn "The key `#{$key}` is not in the map `#{$map}`.
 	For more info, try the `__info(map_get_check)` mixin.";
 	@return null;
 }
@@ -30,14 +33,17 @@
 // -------------------------------------
 
 // Replace the `map-merge` function so that more than 2 maps can be merged.
-@mixin __info_map_collect {
-	@debug "[INFO]
-	The `map_collect` function adds the ability to merge more than two maps.
+
+$info_map_collect: info-log(
+	'The `map_collect` function adds the ability to merge more than two maps.
 	Use it like you would use `map-merge` but add as many maps as you want.
 	Type  : Function
 	Params:
-	- $maps: 2 or more predefined maps separated by commas.
-	";
+	- $maps: 2 or more predefined maps separated by commas.'
+);
+
+@mixin __info_map_collect {
+	@debug $info_map_collect;
 }
 
 // 2DO-LUS: Add better error handling for when a map doesn't exist
@@ -57,16 +63,18 @@
 	@return map-get(map-get($parent, $child), $key);
 }
 
-@mixin __info_map_get_nested {
-	@debug "[INFO]
-	The `map_get_nested` function works just like the `map-get` function
+$info_map_get_nested: info-log(
+	'The `map_get_nested` function works just like the `map-get` function
 	but for nested maps (1 layer deep).
 	Type  : Function
 	Params:
 	- $parent: The parent map
 	- $child : The map nested in parent
-	- $key   : The key defined in the $child map
-	";
+	- $key   : The key defined in the $child map'
+);
+
+@mixin __info_map_get_nested {
+	@debug $info_map_get_nested;
 }
 
 // Loop through nested maps
@@ -108,7 +116,7 @@
 	$test_map1: ( 1one: red, 1two: blue );
 	$test_map2: ( 2one: pink, 2two: purple );
 	$test_map3: ( 3one: white, 3two: black );
-	
+
 	$collect_test: map_collect($test_map1, $test_map2, $test_map3);
 	.test.map_collect {
 		color: map_get_check($collect_test, 1one);
@@ -117,7 +125,7 @@
 	$test_map1: ( 1one: red, 1two: blue );
 	$test_map2: ( 2one: pink, 2two: purple );
 	$test_map3: ( 3one: white, 3two: black );
-	
+
 	$collect_test: map_collect($test_map1, $test_map2, $test_map3);
 	.test.map_collect {
 		color: map_get_check($collect_test, 1one);
