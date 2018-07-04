@@ -8,9 +8,9 @@
 
 
 // Info for `bp` mixin
-@mixin __info_bp {
-	@debug "[INFO]
-	The `bp` mixin creates basic media-queryies.
+
+$info_bp: info-log(
+	'The `bp` mixin creates basic media-queryies.
 	Type    : Mixin (Stadalone or Included)
 	Params  :
 	- $size : Required. Uses value from key in `$breakpoints` (default) map.
@@ -20,8 +20,11 @@
 	- $map  : Defaults to `$breakpoints` map. Can specify another map or `null`
 	-         to use an individual number or variable.
 	Alias:    mq
-	Requires: Content Block
-	";
+	Requires: Content Block'
+);
+
+@mixin __info_bp {
+	@debug $info_bp;
 }
 // Alias
 @mixin __info_mq {
@@ -31,7 +34,7 @@
 
 // Basic Media Query Mixin
 @mixin bp($size, $query: 'min-width', $type: 'screen', $map: $bp) {
-	@if $size == "info" { @include __info_bp; }
+	@if $size == "info" { @debug $info_bp; }
 	@else if $map {
 		@media only #{$type} and (#{$query}: map_get_check($map, $size)) {
 			@content;
@@ -54,9 +57,9 @@
 // -------------------------------------
 
 // Info for `between_sizes` mixin
-@mixin __info_between_sizes {
-	@debug "[INFO]
-	The `between_sizes` mixin creates a basic `min - max` width media-query.
+
+$info_between_sizes: info-log(
+	'The `between_sizes` mixin creates a basic `min - max` width media-query.
 	Type  :   Mixin (Stadalone or Included)
 	Params:
 	- $min:  Required. Uses value from key in `$breakpoints` (default) map.
@@ -64,15 +67,16 @@
 	-        $min/$max will accept any unit or variable. (See $map param.)
 	- $type: Optional. Can be any query type. Defaults to `screen`.
 	- $map:  Defaults to `$breakpoints` map. Can also specify another map.
-	-        Use `null` to use an individual number or custom variable.
-	";
+	-        Use `null` to use an individual number or custom variable.'
+);
+
+@mixin __info_between_sizes {
+	@debug $info_between_sizes;
 }
 
 // Generic Min/Max Width Media Query Mixin
 @mixin between_sizes($min, $max, $type: 'screen', $map: $bp) {
-	@if $min == "info" {
-		@include __info_between_sizes;
-	}
+	@if $min == "info" { @debug $info_between_sizes; }
 	@else if $map {
 		@media only #{$type} and (min-width: map_get_check($map, $min)) and (max-width: map_get_check($map, $max)) {
 			@content;
@@ -167,7 +171,7 @@
 		@content;
 	}
 }
-// Info Mixin 
+// Info Mixin
 @mixin __info_for_desktop_up {
 	@include for_desktop_up(info);
 }
@@ -179,7 +183,7 @@
 		@content;
 	}
 }
-// Info Mixin 
+// Info Mixin
 @mixin __info_for_big_desktop_up {
 	@include for_big_desktop_up(info);
 }
@@ -187,13 +191,16 @@
 // -------------------------------------------------------------------
 
 // Info Mixin for `print`
-@mixin __info_print {
-	@debug "[INFO]
-	The `print` mixin sets up a basic `@media print` query.
+
+$info_print: info-log(
+	'The `print` mixin sets up a basic `@media print` query.
 	Params  : none
 	Alias   : `for_print_only`
-	Requires: Content Block
-	";
+	Requires: Content Block'
+);
+
+@mixin __info_print {
+	@debug $info_print;
 }
 
 // Alias Info
@@ -204,9 +211,7 @@
 
 // // Print Query
 @mixin print($info: null) {
-	@if $info {
-		@include __info_print;
-	}
+	@if $info { @debug $info_print; }
 	@else {
 		@media print {
 			@content;

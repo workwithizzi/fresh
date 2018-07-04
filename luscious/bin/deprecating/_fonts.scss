@@ -8,15 +8,18 @@
 
 
 // Info for font_weight function
-@mixin __info_font_weight {
-	@debug "[INFO]
-	The `font_weight` function is used to make it easier to get the
+
+$info_font_weight: info-log(
+	'The `font_weight` function is used to make it easier to get the
 	font-weight keys form the map `$font_weights`.
 	Params:
 	- $key: A key from the map
 	Alias : `fw`
-	Type  : Function
-	";
+	Type  : Function'
+);
+
+@mixin __info_font_weight {
+	@debug $info_font_weight;
 }
 
 
@@ -34,22 +37,22 @@
 
 // Font Weights
 
-@mixin __info_font_weights_utility_classes {
-	@debug "[INFO]
-	The `font_weights_utility_classes` mixin makes it so that
+$info_font_weights_utility_classes: info-log(
+	'The `font_weights_utility_classes` mixin makes it so that
 	you can output font-weight utility classes from
 	anywhere in the project. Weights are determined by the
 	map `$font_weights` in `settings/fonts`.
 	You can also turn on utility classes from `settings/utility_classes`.
 	Type   : Standalone Mixin
-	Params : none
-	";
+	Params : none'
+);
+
+@mixin __info_font_weights_utility_classes {
+	@debug $info_font_weights_utility_classes;
 }
 
 @mixin font_weights_utility_classes($info: null) {
-	@if $info {
-		@include __info_font_weights_utility_classes;
-	}
+	@if $info { @debug $info_font_weights_utility_classes; }
 	@else {
 		@if variable-exists(font_weights) {
 			@each $key, $value in $font_weights {
