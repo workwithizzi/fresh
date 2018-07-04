@@ -7,9 +7,8 @@
 // ===================================================================
 
 
-@mixin __info_test {
-	@debug "[INFO]
-	Each function and mixin in Luscious contain
+$info_test: info-log(
+	'Each function and mixin in Luscious contain
 	a test to make sure things are working properly and to help
 	you see how some things work behind the scenes. To see a compiled
 	example of the `feature`, try `__test(feature)` and view the CSS.
@@ -17,8 +16,11 @@
 	try `__info(feature)`.
 	Params     :
 	- $feature : mixin/function/variable that you want to test
-	Type       : Standalone Mixin
-	";
+	Type       : Standalone Mixin'
+);
+
+@mixin __info_test {
+	@debug $info_test;
 }
 
 
@@ -28,7 +30,7 @@
 	$all: null;
 	@if $x == "all" { $all: true; }
 
-	@if $x == "info" { @include __info_test; }
+	@if $x == "info" { @debug $info_test; }
 
 	// -------------------------------------
 	// Helpers
