@@ -8,22 +8,25 @@
 // Add info mixin for Luscious to list available mixins/functions/project structure
 
 // Info about the `__info` mixin.
-@mixin __info_info {
-	@debug "[INFO]
-	Each function and mixin in Luscious contain
+
+$info_info: info-log(
+	'Each function and mixin in Luscious contain
 	an info mixin to help you easily trouble-shoot any errors and
 	learn what things are doing behind the scenes. To see a compiled
 	example of the `feature`, try `__test(feature)` and view the CSS.
 	Params     :
 	- $feature : mixin/function/variable that you want info about
-	Type       : Standalone Mixin
-	";
+	Type       : Standalone Mixin'
+);
+
+@mixin __info_info {
+	@debug $info_info;
 }
 
 
 
 @mixin __info($x) {
-	@if $x == "info" { @include __info_info; }
+	@if $x == "info" { @debug $info_info; }
 	@if $x == "test" { @include __info_test; }
 
 	// -------------------------------------
