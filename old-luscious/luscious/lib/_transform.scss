@@ -1,0 +1,53 @@
+// ==========================================================================
+// ~Transform
+// ==========================================================================
+//  Transform Mixin from previous version of Bourbon
+
+/// # Transform
+///
+/// "Mixin Cloned from Bourbon v4.
+///
+/// The CSS `transform` property lets you
+/// modify the coordinate space of the CSS visual formatting model.
+/// Using it, elements can be translated, rotated, scaled, and
+/// skewed according to the values set.
+///
+/// The `transform-origin` CSS property lets you modify the origin
+/// for transformations of an element.
+///
+/// The `transform-style` CSS property determines if the children of the
+/// element are positioned in the 3D-space or are flattened in the
+/// plane of the element."
+///
+/// ### Location:
+/// `luscious/lib/_transform.scss`
+///
+/// @param {property} $property - Property to be transformed.
+/// @author [thoughtbot](https://thoughtbot.com/)
+/// @link http://bourbon.io/docs/#transform
+/// @since v1.0.1
+/// @group Styling
+/// @require {mixin} prefixer - Defines global prefixes.
+///
+/// @example scss - SCSS Input
+///   @include lus-transform(translateY(50px))
+///   @include lus-transform(scale(0.9) rotate(-3deg))
+///   @include lus-transform-origin(center top)
+///   @include lus-transform-style(preserve-3d)
+///
+
+@mixin lus-transform($property: none) {
+	// none | <transform-function>
+	@include prefixer(transform, $property, webkit moz ms o spec);
+}
+
+@mixin lus-transform-origin($axes: 50%) {
+	// x-axis - left | center | right  | length | %
+	// y-axis - top  | center | bottom | length | %
+	// z-axis -                          length
+	@include prefixer(transform-origin, $axes, webkit moz ms o spec);
+}
+
+@mixin lus-transform-style($style: flat) {
+	@include prefixer(transform-style, $style, webkit moz ms o spec);
+}

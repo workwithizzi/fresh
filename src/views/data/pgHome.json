@@ -4,5 +4,7 @@
 		"keywords": " homepage keywords, pug, sass, gulp, yarn",
 		"description": "This is a meta description for the home page."
 	},
-	"title": "Home"
+	"title": "Fresh Starter Project",
+	"subtitle": "A modern way to create responsive, accessible, and maintainable front-end web projects.",
+	"description": "Built using Pug, SASS (with Luscious), and Javascript. Compiled with Gulp and pulled together with Yarn."
 }

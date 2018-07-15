@@ -9,7 +9,7 @@ block vars
 	- var bodyClass = 'page--home';
 
 block title
-	title !{SITE.meta.title} | !{PGHOME.title}
+	title !{SITE.meta.title} | !{PGHOME.meta.title}
 
 
 //- -----------------------------------
@@ -19,21 +19,17 @@ block content
 	//- Feel free to remove everything below this
 	//- and start doing your own thing.
 
-	h1 #{SITE.meta.title}!
+	h1 #{PGHOME.title}!
 		//- If you're not using gulp-data, You can remove these variables
 
-	h2.
-		A modern way to create responsive, accessible, and maintainable front-end web projects.
+	h2 #{PGHOME.subtitle}
 
-	p.
-		Built using Pug, SASS (with Luscious), and Javascript. Compiled with Gulp and pulled together with Yarn.
+	p #{PGHOME.description}
+
 
 	img(src='images/gulp.svg', alt='Gulp Logo')
-
 	img(src='images/sass.svg', alt='Sass Logo')
-
 	img(src='images/pug.svg', alt='Pug Logo')
-
 	img(src='images/yarn.svg', alt='Yarn Logo')
 
 	hr

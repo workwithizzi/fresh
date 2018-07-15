@@ -1,0 +1,116 @@
+// hamburgers
+// @description Tasty CSS-animated hamburgers
+// @author Jonathan Suh @jonsuh
+// @site https://jonsuh.com/hamburgers
+// @link https://github.com/jonsuh/hamburgers
+
+
+// Configs
+
+// Sizes (in rem)
+$burger-padding-x                       : 1.5rem !default;
+$burger-padding-y                       : 1.5rem !default;
+$burger-layer-width                     : 4rem   !default;
+$burger-layer-height                    : .4rem  !default;
+$burger-layer-spacing                   : .6rem  !default;
+$burger-layer-border-radius             : .4rem  !default;
+
+// Settings
+$burger-layer-color                     : $cl_nav     !default;
+$burger-background-color                : transparent !default;
+$burger-hover-opacity                   : 0.7         !default;
+$burger-hover-transition-duration       : 0.15s       !default;
+$burger-hover-transition-timing-function: linear      !default;
+
+// To use CSS filters as the hover effect instead of opacity,
+// set $burger-hover-use-filter as true and
+// change the value of $burger-hover-filter accordingly.
+$burger-hover-use-filter: false        !default;
+$burger-hover-filter    : opacity(50%) !default;
+
+// Base Utility Classes
+$burger-base-classes: (
+	// burger,
+	// burger-box,
+	// burger-inner,
+) !default;
+
+
+// Types (Remove or comment out what you don’t need)
+$burger-types: (
+	// 3dx,
+	// 3dx-r,
+	// 3dy,
+	// 3dy-r,
+	// arrow,
+	// arrow-r,
+	// arrowalt,
+	// arrowalt-r,
+	// boring,
+	// collapse,
+	// collapse-r,
+	// elastic,
+	// elastic-r,
+	// emphatic,
+	// emphatic-r,
+	// slider,
+	// slider-r,
+	// spring,
+	// spring-r,
+	// stand,
+	// stand-r,
+	// spin,
+	// spin-r,
+	// squeeze,
+	// vortex,
+	// vortex-r
+) !default;
+
+// Base burger (We need this)
+// ==================================================
+@import "base";
+
+// burger types
+// ==================================================
+@import "types/3dx";
+@import "types/3dx-r";
+@import "types/3dy";
+@import "types/3dy-r";
+@import "types/arrow";
+@import "types/arrow-r";
+@import "types/arrowalt";
+@import "types/arrowalt-r";
+@import "types/boring";
+@import "types/collapse";
+@import "types/collapse-r";
+@import "types/elastic";
+@import "types/elastic-r";
+@import "types/emphatic";
+@import "types/emphatic-r";
+@import "types/slider";
+@import "types/slider-r";
+@import "types/spring";
+@import "types/spring-r";
+@import "types/stand";
+@import "types/stand-r";
+@import "types/spin";
+@import "types/spin-r";
+@import "types/squeeze";
+@import "types/vortex";
+@import "types/vortex-r";
+
+// ==================================================
+// Cooking up additional types:
+//
+// The Sass for each burger type should be nested
+// inside an @if directive to check whether or not
+// it exists in $burger-types so only the CSS for
+// included types are generated.
+//
+// e.g. burgers/types/_new-type.scss
+//
+// @if index($burger-types, new-type) {
+//   .burger--new-type {
+//     ...
+//   }
+// }

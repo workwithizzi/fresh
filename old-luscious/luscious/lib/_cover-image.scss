@@ -1,0 +1,80 @@
+// -------------------------------------------------------------
+// ~Cover Image Placeholdder
+// -------------------------------------------------------------
+
+////
+/// @author [Yisrael Grimes](http://yisraelgrimes.com)
+/// @since v1.0.2
+/// @group styling
+/// @link http://www.w3schools.com/css/css_background.asp
+/// @link http://www.w3schools.com/cssref/css3_pr_background-size.asp
+////
+
+/// # Background Image Extend
+///
+/// Simple extend that can be used when you want to make an image
+/// fill it's parent container.
+///
+/// ### Location:
+/// `luscious/lib/_cover-image.scss`
+///
+/// @example scss - SCSS Input
+///   .element {
+///     @extend %bg-image
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-repeat: no-repeat;
+///     background-position: center center;
+///     background-attachment: initial;
+///     background-size: cover;
+///   }
+///
+
+%bg-image {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: initial;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/// # Background Image Extend Fixed
+///
+/// Simple extend that can be used when you want to make a fixed image
+/// fill it's parent container.
+///
+/// ### Location:
+/// `luscious/lib/_cover-image.scss`
+///
+/// @example scss - SCSS Input
+///   .element {
+///     @extend %bg-image-fixed
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-repeat: no-repeat;
+///     background-position: center top;
+///     background-attachment: fixed;
+///     background-size: cover;
+///   }
+///
+
+%bg-image-fixed {
+	background-repeat: no-repeat;
+
+	// background-position: center top;
+	background-position: center center;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+// TODO: Update filename/path to match udated extend name
+// TODO: Update ^Lus--

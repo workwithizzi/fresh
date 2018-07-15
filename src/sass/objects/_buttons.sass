@@ -17,13 +17,23 @@
 
 // ----------------
 
+// From normalize
 button
 	// @nrml: Remove the margin in Firefox and Safari.
 	margin: 0
 	// @nrml: Change the font styles in all browsers. ---
 	font-family: inherit
 	font-size: 100%
-	line-height: $base_line_height
+	line-height: vr(base)
+
+
+button
+	// @nrml: Remove the margin in Firefox and Safari.
+	margin: 0
+	// @nrml: Change the font styles in all browsers. ---
+	font-family: inherit
+	font-size: 100%
+	line-height: vr(base)
 	// @nrml: Show the overflow in Edge.
 	overflow: visible
 	// @nrml: Remove the inheritance of text transform in Edge/Firefox/IE.
@@ -53,7 +63,7 @@ button,
 
 	&:-moz-focusring
 		// @nrml: Restore the focus styles unset by the previous rule.
-		outline: 1px dotted ButtonText
+		outline: r(1px) dotted ButtonText
 
 // ----------------
 
