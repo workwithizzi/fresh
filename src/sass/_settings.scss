@@ -206,6 +206,13 @@ $fa-li-width:         (30em / 14)      !default;
 //   	'spread': 'narrow',
 //   	'container-spread': 'narrow',
 // ) !default;
+$susy: (
+	'columns': susy-repeat(4),
+	'gutters': 0.25,
+	'spread': 'narrow',
+	'container-spread': 'narrow',
+);
+// @IVAN: I grabbed their example map from http://oddbird.net/susy/docs/config.html to test it out.
 
 
 // -------------------------------------

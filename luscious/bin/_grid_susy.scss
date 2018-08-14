@@ -6,6 +6,8 @@
 // sass-lint:disable no-css-comments
 // ===================================================================
 
+// @IVAN: Are the global defaults here the ones from Susy2 or 3?
+// If they're for 2 then let's add a comment to make it clear and also add the defaults for 3 for reference.
 
 // Susy Global Defaults for reference. Add/Override these in settings.
 
@@ -37,4 +39,7 @@
 
 
 
-@import "susy3.0.5/susy";
+// @import "susy3.0.5/susy";
+@import "susy3.0.5/susy-prefix";
+// @IVAN: Maybe this has something to do with the error?
+// Check out the top section "Installation" http://oddbird.net/susy/docs/
