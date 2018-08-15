@@ -214,13 +214,26 @@ $fa-li-width:         (30em / 14)      !default;
 
 // This will work as well
 // @import "./../../luscious/bin/susy3.0.5/susy";
+
+// @IVAN-OLD: I grabbed their example map from http://oddbird.net/susy/docs/config.html to test it out.
+
+
+// ------------------------------------------------------------------
+// @IVAN: One way to set up Susy config
+// ------------------------------------------------------------------
+// This variable overrides the !default variable that is declared in '_grid_susy.scss'.
+// The problem was that the new $susy map uses the 'susy-repeat()' function inside the map. Which means you have to import the susy library before you can add the map. But we want to keep the settings file so that it imports before Luscious.
+// Alternatively, we could actually turn all the susy map options into variables and control them from here like that. It might actually be clearer that way. What do you think?
+$base_grid_columns: 6;
+
+// @IVAN: Change the value for the variable and uncomment the debug below to see the compiled value in terminal
+// @debug susy-repeat($base_grid_columns)
+
 $susy: (
-	'columns': susy-repeat(12),
 	'gutters': 0.5em,
 	'spread': 'wide',
 	'container-spread': 'wide',
 );
-// @IVAN: I grabbed their example map from http://oddbird.net/susy/docs/config.html to test it out.
 
 
 // -------------------------------------

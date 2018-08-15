@@ -6,7 +6,7 @@
 // sass-lint:disable no-css-comments
 // ===================================================================
 
-// @IVAN: Are the global defaults here the ones from Susy2 or 3?
+// @IVAN-OLD: Are the global defaults here the ones from Susy2 or 3?
 // If they're for 2 then let's add a comment to make it clear and also add the defaults for 3 for reference.
 
 // Susy Global Defaults for reference. Add/Override these in settings.
@@ -49,5 +49,17 @@
 // This doesn't work
 // @import "susy3.0.5/susy-prefix";
 
-// @IVAN: Maybe this has something to do with the error?
+// @IVAN-OLD: Maybe this has something to do with the error?
 // Check out the top section "Installation" http://oddbird.net/susy/docs/
+
+
+
+@import "susy3.0.5/susy";
+
+
+$base_grid_columns: 12 !default;
+
+// @IVAN: This map is used just to override the susy map in their library so we can make the columns a variable and control it from the project settings file. Before we finish updating Luscious, we will probably move the variable declaration above to the Luscious settings file which will mirror the project settings file by default.
+$susy: (
+	'columns': susy-repeat($base_grid_columns),
+);
