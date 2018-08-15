@@ -21,7 +21,7 @@
 
 // -------------------------------------------------------------------
 
-
+// @import "./../../luscious/bin/susy3.0.5/_susy";
 // -------------------------------------
 // 1. Developement
 // -------------------------------------
@@ -200,17 +200,25 @@ $fa-li-width:         (30em / 14)      !default;
 //	last-flow: to,
 //) !default;
 
-// $susy: (
-// 	'columns': susy-repeat(4),
-// 	'gutters': 0.25,
-//   	'spread': 'narrow',
-//   	'container-spread': 'narrow',
-// ) !default;
+// @YISRAEL: if you uncomment this below, the $susy will be imported and will work well
+// I've tested from 3 different folders. The result is the same.
+// Susy ONLY works if to import it RIGHT here, not through the '_grid_susy.scss'
+// I am kinda lost in here ... This is so confusing!!! ahah
+// Seems like '_grid_susy.scss' hasn't been imported, but IT IS IMPORTED, as susy2 worked, and I see
+// that '_luscious.scss' imports it
+
+// @import "./../../node_modules/susy/sass/susy";
+
+// This will work as well
+// @import "./../../luscious/bin/susy/sass/_susy";
+
+// This will work as well
+// @import "./../../luscious/bin/susy3.0.5/susy";
 $susy: (
-	'columns': susy-repeat(4),
-	'gutters': 0.25,
-	'spread': 'narrow',
-	'container-spread': 'narrow',
+	'columns': susy-repeat(12),
+	'gutters': 0.5em,
+	'spread': 'wide',
+	'container-spread': 'wide',
 );
 // @IVAN: I grabbed their example map from http://oddbird.net/susy/docs/config.html to test it out.
 
