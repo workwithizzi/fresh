@@ -14,6 +14,17 @@ $production_mode: false !default;
 
 // -------------------------------------
 
+// -------------------------------------
+// Default Variables to control Susy Map
+// Should be overwritten in _settings.scss (project settings) file
+
+$base_grid_columns: 12 !default;
+$base_grid_gutters: 0.25 !default;
+$base_grid_spread: 'wide' !default;
+$base_grid_container-spread: 'wide' !default;
+
+// -------------------------------------
+
 // Settings
 // TODO: Make sure to add this import back before production. Also make sure to incorporate updates (that we want to keep as defaults) from src/sass/-settings.scss.
 // @import "settings";
