@@ -202,9 +202,8 @@ $fa-li-width:         (30em / 14)      !default;
 // ------------------------------------------------------------------
 // Susy config
 // ------------------------------------------------------------------
-// This variables override the !default variables that are declared in '_grid_susy.scss'.
-// All the susy map options were turned into variables and control $susy
-// from here like in form of variables.
+// This variables override the !default variables that are declared in '_luscious.scss'.
+// All the susy map options were turned into variables and control $susy from here in form of variables.
 
 $base_grid_columns: 6;
 $base_grid_gutters: 0.25;
