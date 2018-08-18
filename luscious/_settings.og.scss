@@ -59,15 +59,15 @@ $cl_warning   : #ffa000 !default;
 $cl_alert     : #ef5350 !default;
 
 // UI Colors
-$cl_body_bg    : $cl_white                    !default;
+$cl_bg    : $cl_white                    !default;
 $cl_body       : $cl_black                    !default;
 $cl_border     : lighten($cl_black, 30% )     !default;
 $cl_link       : $cl_secondary                !default;
-$cl_link_hover : darken( $cl_secondary, 15% ) !default;
-$cl_nav_bg     : $cl_primary                  !default;
-$cl_nav        : $cl_white                    !default;
-$cl_nav_active : $cl_secondary                !default;
-$cl_nav_hover  : darken($cl_nav, 15% )        !default;
+$cl_link-hover : darken( $cl_secondary, 15% ) !default;
+$cl_nav-bg     : $cl_primary                  !default;
+$cl_nav-text        : $cl_white                    !default;
+$cl_nav-active : $cl_secondary                !default;
+$cl_nav_hover  : darken($cl_nav-text, 15% )        !default;
 
 
 // ------------------------------------
@@ -256,7 +256,7 @@ $burger-layer-spacing                   : .6rem  !default;
 $burger-layer-border-radius             : .4rem  !default;
 
 // Settings
-$burger-layer-color                     : $cl_nav     !default;
+$burger-layer-color                     : $cl_nav-text     !default;
 $burger-background-color                : transparent !default;
 $burger-hover-opacity                   : 0.7         !default;
 $burger-hover-transition-duration       : 0.15s       !default;

@@ -12,7 +12,10 @@
 // 2. Base
 // 3. Colors
 // 4. Animation
-// 5. Font Stacks
+// 5. Typography
+//   5.1 Font-Stacks
+//   5.2 Font Weights
+//   5.3 Modular Scale
 // 6. Breakpoints
 // 7. Z-index Map
 // 8. Asset Paths
@@ -46,10 +49,12 @@ $rembase: 16;
 
 // Baseline Height
 // Used for vertical rhythm and baseline grids
+// 2DO-YG: Test and add info - Possibly go back to using rem units
 $base_line_height: 24px;
 
 // Used for vertical rhythm (with baseline grids)
 // Incremental steps for vr
+// 2DO-YG: Test and add info - Possibly go back to using rem units
 $baseline-grid: 8px;
 
 // Base Font-Size
@@ -62,8 +67,7 @@ $base_indent_amount: 4rem !default;
 // -------------------------------------
 // 3. Colors
 // -------------------------------------
-
-// Base Colors: All Project colors are built using these.
+// Base: All Project colors are built using these.
 
 // Grey Scale
 $cl_black  : #1F2D3D !default;
@@ -86,81 +90,97 @@ $cl_warning   : #FFC82C !default;
 $cl_alert     : #FF4949 !default;
 
 // ----------------
-// UI Colors
-$cl_body_bg    : $cl_white                    !default;
-$cl_body_text  : $cl_black                    !default;
-$cl_border     : $cl_light                    !default;
-$cl_link       : $cl_primary                !default;
-$cl_link_hover : $cl_primary-dk !default;
-$cl_nav_bg     : $cl_primary                  !default;
-$cl_nav        : $cl_white                    !default;
-$cl_nav_active : $cl_secondary                !default;
-$cl_nav_hover  : darken($cl_nav, 15% )        !default;
-$cl_highlight  : #ff0                         !default;
+// UI Colors: These colors are the ones used throughout the project files
+
+// Default
+$cl_bg             : $cl_white      !default;
+$cl_text           : $cl_black      !default;
+$cl_border         : $cl_light      !default;
+$cl_text-highlight : #ff0           !default;
+$cl_link           : $cl_primary    !default;
+$cl_link-hover     : $cl_primary-dk !default;
+
+// Nav
+$cl_nav-bg         : $cl_primary    !default;
+$cl_nav-text       : $cl_white      !default;
+$cl_nav-active     : $cl_secondary  !default;
 
 
 // ------------------------------------
 // 4. Animation
 // ------------------------------------
 
-// Default Timing Function
+// Timing Function
 $base_timing: ease-in-out !default;
 
-// Default Delay Time
+// Delay Time
 $base_delay: 250ms !default;
 
-// Default Animation Combined
+// Animation Combined
 $base_animation: all $base_delay $base_timing !default;
 
 
 // -------------------------------------
-// 5. Font Stacks
+// 5. Typography
 // -------------------------------------
-// Sans-Serif Font Stack
-$font_stack_sans: ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif,) !default;
-
-// Serif Font Stack
-$font_stack_serif: ('Georgia', 'Times', 'Times New Roman', serif,) !default;
-
-// Monospace Font Stack
-$font_stack_mono: ('Courier New', 'Courier', 'Lucida Typewriter', monospace,) !default;
-
 
 // ----------------
+// 5.1 Font-Stacks
+// ----------------
+// Base: Project font-stacks are built using these as fallback.
 
-// UI Font-Stacks
+// Sans-Serif
+$font_stack_sans: ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif,) !default;
+
+// Serif
+$font_stack_serif: ('Georgia', 'Times', 'Times New Roman', serif,) !default;
+
+// Monospace
+$font_stack_mono: ('Courier New', 'Courier', 'Lucida Typewriter', monospace,) !default;
+
+// ----------------
+// UI Font-Stacks: Use these throughout in the project files.
+
+// Default Headings
 $font_stack_heading: (
 	$font_stack_sans,
 ) !default;
 
+// Default Body
 $font_stack_body: (
 	$font_stack_sans,
 ) !default;
 
+// Default Monospace
 $font_stack_code: $font_stack_mono !default;
 
 // ----------------
-
-// Font Weight
+// 5.2 Font Weights
+// ----------------
+// @IVAN: Maybe we should remove these variables all-together since the heavily
+// depend on what fonts/weights are imported in the project?
 $fw_light  : 300 !default;
 $fw_normal : 400 !default;
 $fw_medium : 500 !default;
 $fw_bold   : 700 !default;
 
-
-// ------------------------------------
-// Modular Scale
-// ------------------------------------
+// ----------------
+// 5.3 Modular Scale
+// ----------------
+// 2DO-YG: Test and add info
 $ms-base          : 1em;
 $ms-ratio         : 1.5;
 $modularscale     : (
 	base: $base_font_size,
 	ratio: 1.33
-);
+) !default;
+
 
 // -------------------------------------
 // 6. Breakpoints
 // -------------------------------------
+// Use `em` units as they are the most consistent
+// for media queries across browsers
 $breakpoints: (
 	xs : 37.437em, // 599px
 	sm : 37.5em ,  // 600px
@@ -173,6 +193,7 @@ $breakpoints: (
 // -------------------------------------
 // 7. Z-index Map
 // -------------------------------------
+// 2DO-YG: Possibly remove the map in-favor of regular variables
 $z_index: (
 	nosebleed    : 9999,
 	tooltip      : 600,
@@ -307,7 +328,7 @@ $a11y_zindex: map-get($z_index, nosebleed) + 1000 !default;
 // $burger-layer-border-radius             : .4rem  !default;
 //
 // // Settings
-// $burger-layer-color                     : $cl_nav     !default;
+// $burger-layer-color                     : $cl_nav-text     !default;
 // $burger-background-color                : transparent !default;
 // $burger-hover-opacity                   : 0.7         !default;
 // $burger-hover-transition-duration       : 0.15s       !default;
