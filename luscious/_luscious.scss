@@ -1,10 +1,10 @@
 @charset 'utf-8';
 // Luscious
-// @since v0.0.4
+// @since v0.0.5
 // ===================================================================
 
 // Luscious Current Version
-$lus_current_version: "v0.0.4 alpha";
+$lus_current_version: "v0.0.5 alpha";
 // Output a notification of a test to the console
 $output_test_message: false !default;
 // Warn user of a deprecated function/mixin
@@ -17,10 +17,11 @@ $production_mode: false !default;
 // -------------------------------------
 // Default Variables to control Susy Map
 // Should be overwritten in _settings.scss (project settings) file
+// @IVAN: The last step in finishing our updates will be to move all the new default settings to `luscious/_settings.scss` (currently called _settings.og.scss). I changed the name and commented out the import in this file so that we could explicitly control the settings from the project settings file during testing.
 
-$base_grid_columns: 12 !default;
-$base_grid_gutters: 0.25 !default;
-$base_grid_spread: 'wide' !default;
+$base_grid_columns: 12              !default;
+$base_grid_gutters: 0.25            !default;
+$base_grid_spread: 'wide'           !default;
 $base_grid_container-spread: 'wide' !default;
 
 // -------------------------------------
