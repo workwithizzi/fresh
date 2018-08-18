@@ -1,7 +1,10 @@
-// Luscious
-// @since v0.0.4
-//
-// Luscious Settings
+// @title: Project Settings
+// @since: v0.0.5
+// @desc:  Use this file to override Luscious defualt configs or create
+//         new configs. If overriding a default, remove the `!default`
+//         flag. You can remove any default here and the setting will
+//         fall back to Luscious' settings.
+// @see:   url/to/luscious/documentation
 // ===================================================================
 
 // Contents
@@ -19,23 +22,26 @@
 // 12. Accessibility
 // 13. Hamburger Menus
 
-// -------------------------------------------------------------------
+// --------------------------------------------------------------------
 
-// @import "./../../luscious/bin/susy3.0.5/_susy";
+
 // -------------------------------------
 // 1. Developement
 // -------------------------------------
+// Use pesticide.css to debug layouts. @see: git.io/fAe8o
 $pesticide_debug_outlines: false !default;
 $pesticide_debug_depth:    false !default;
+// CSS Utility Classes for debugging.
 $output_dev_color_classes: false !default;
 
 
 // -------------------------------------
 // 2. Base
 // -------------------------------------
-// HTML Root Font Size (in percentages)
-// Set's up your $rembase. 62.5% == 10px, 100% == 16px
+// HTML Root Font Size (use percent values)
 $document_font_size: 100%;
+// Based on $document_font_size. (62.5% == 10, 100% == 16)
+// Used for Luscious utilities
 $rembase: 16;
 
 // Baseline Height
@@ -49,38 +55,43 @@ $baseline-grid: 8px;
 // Base Font-Size
 $base_font_size: 1rem;
 
-// The amount lists and blockquotes are indented.
+// How much things like lists and blockquotes are indented.
 $base_indent_amount: 4rem !default;
 
-
-// ------------------------------------
-// Modular Scale
-// ------------------------------------
-$ms-base          : 1em;
-$ms-ratio         : 1.5;
-$modularscale     : (
-	base: $base_font_size,
-	ratio: 1.33
-);
 
 // -------------------------------------
 // 3. Colors
 // -------------------------------------
-// Base Colors (other colors are built on top of these)
-$cl_primary   : #546e7a !default;
-$cl_secondary : #00b8d4 !default;
-$cl_black     : #263238 !default;
-$cl_white     : #fafbfc !default;
-$cl_success   : #66bb6a !default;
-$cl_warning   : #ffa000 !default;
-$cl_alert     : #ef5350 !default;
 
+// Base Colors: All Project colors are built using these.
+
+// Grey Scale
+$cl_black  : #1F2D3D !default;
+$cl_dark   : #3C4858 !default;
+$cl_middle : #8492A6 !default;
+$cl_light  : #EFF2F7 !default;
+$cl_white  : #F9FAFC !default;
+
+// Brand
+$cl_primary   :   #1FB6FF !default;
+$cl_primary-dk:   #009EEB !default;
+$cl_primary-lt:   #85D7FF !default;
+$cl_secondary :   #F24878 !default;
+$cl_secondary-dk: #Ef1855 !default;
+$cl_secondary-lt: #F5789B !default;
+
+// Feedback
+$cl_success   : #13CE66 !default;
+$cl_warning   : #FFC82C !default;
+$cl_alert     : #FF4949 !default;
+
+// ----------------
 // UI Colors
 $cl_body_bg    : $cl_white                    !default;
-$cl_body       : $cl_black                    !default;
-$cl_border     : lighten($cl_black, 30% )     !default;
-$cl_link       : $cl_secondary                !default;
-$cl_link_hover : darken( $cl_secondary, 15% ) !default;
+$cl_body_text  : $cl_black                    !default;
+$cl_border     : $cl_light                    !default;
+$cl_link       : $cl_primary                !default;
+$cl_link_hover : $cl_primary-dk !default;
 $cl_nav_bg     : $cl_primary                  !default;
 $cl_nav        : $cl_white                    !default;
 $cl_nav_active : $cl_secondary                !default;
@@ -137,6 +148,16 @@ $fw_medium : 500 !default;
 $fw_bold   : 700 !default;
 
 
+// ------------------------------------
+// Modular Scale
+// ------------------------------------
+$ms-base          : 1em;
+$ms-ratio         : 1.5;
+$modularscale     : (
+	base: $base_font_size,
+	ratio: 1.33
+);
+
 // -------------------------------------
 // 6. Breakpoints
 // -------------------------------------
@@ -188,28 +209,18 @@ $fa-li-width:         (30em / 14)      !default;
 
 
 // -------------------------------------
-// 10. Grid
+// 10. Grid - Susy Config
 // -------------------------------------
-// Susy Default settings
-// $susy: (
-//   'columns': susy-repeat(4),
-//   'gutters': 0.25,
-//   'spread': 'narrow',
-//   'container-spread': 'narrow',
-// ) !default;
-
-
-// ------------------------------------------------------------------
-// Susy config
-// ------------------------------------------------------------------
-// This variables override the !default variables that are declared in '_grid_susy.scss'.
-// All the susy map options were turned into variables and control $susy
-// from here like in form of variables.
+// This variables override the !default variables declared in Luscious.
+// All the $susy map options were turned into variables so that they can
+// be controled from here.
+// @see: goo.gl/Ak5Bo8
 
 $base_grid_columns: 6;
 $base_grid_gutters: 0.25;
 $base_grid_spread: 'narrow';
 $base_grid_container-spread: 'narrow';
+// @IVAN: Can you add a really short description for what each one of these does?
 
 
 // -------------------------------------
