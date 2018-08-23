@@ -11,18 +11,18 @@
 // 1. Developement
 // 2. Base
 // 3. Colors
-// 4. Animation
-// 5. Typography
-//   5.1 Font-Stacks
-//   5.2 Font Weights
-//   5.3 Modular Scale
-// 6. Breakpoints
-// 7. Z-index Map
-// 8. Asset Paths
-// 9. Icons
-// 10. Grid
-// 11. Buttons
-// 12. Accessibility
+// 4. Accessibility
+// 5. Animation
+// 6. Typography
+//   6.1 Font-Stacks
+//   6.2 Font Weights
+//   6.3 Modular Scale
+// 7. Breakpoints
+// 8. Z-index Map
+// 9. Asset Paths
+// 10. Icons
+// 11. Grid
+// 12. Buttons
 // 13. Hamburger Menus
 
 // --------------------------------------------------------------------
@@ -105,9 +105,24 @@ $cl_nav-bg         : $cl_primary    !default;
 $cl_nav-text       : $cl_white      !default;
 $cl_nav-active     : $cl_secondary  !default;
 
+// Icons
+$cl_icon-border    : $cl_white      !default;
+$cl_icon-inverse   : $cl_white      !default;
+
 
 // ------------------------------------
-// 4. Animation
+// 4. A11Y
+// ------------------------------------
+// Colors
+$a11y_attention : #E60000 !default;
+$a11y_light     : #ffffff !default;
+
+// Z-index
+$a11y_zindex    : 19999   !default;
+
+
+// ------------------------------------
+// 5. Animation
 // ------------------------------------
 
 // Timing Function
@@ -121,11 +136,11 @@ $base_animation: all $base_delay $base_timing !default;
 
 
 // -------------------------------------
-// 5. Typography
+// 6. Typography
 // -------------------------------------
 
 // ----------------
-// 5.1 Font-Stacks
+// 6.1 Font-Stacks
 // ----------------
 // Base: Project font-stacks are built using these as fallback.
 
@@ -142,20 +157,16 @@ $font_stack_mono: ('Courier New', 'Courier', 'Lucida Typewriter', monospace,) !d
 // UI Font-Stacks: Use these throughout in the project files.
 
 // Default Headings
-$font_stack_heading: (
-	$font_stack_sans,
-) !default;
+$font_stack_heading: ('Open Sans', $font_stack_sans,) !default;
 
 // Default Body
-$font_stack_body: (
-	$font_stack_sans,
-) !default;
+$font_stack_body: ('Open Sans', $font_stack_sans,) !default;
 
 // Default Monospace
 $font_stack_code: $font_stack_mono !default;
 
 // ----------------
-// 5.2 Font Weights
+// 6.2 Font Weights
 // ----------------
 // @IVAN: Maybe we should remove these variables all-together since the heavily
 // depend on what fonts/weights are imported in the project?
@@ -165,7 +176,7 @@ $fw_medium : 500 !default;
 $fw_bold   : 700 !default;
 
 // ----------------
-// 5.3 Modular Scale
+// 6.3 Modular Scale
 // ----------------
 // 2DO-YG: Test and add info
 $ms-base          : 1em;
@@ -177,7 +188,7 @@ $modularscale     : (
 
 
 // -------------------------------------
-// 6. Breakpoints
+// 7. Breakpoints
 // -------------------------------------
 // Use `em` units as they are the most consistent
 // for media queries across browsers
@@ -191,7 +202,7 @@ $breakpoints: (
 
 
 // -------------------------------------
-// 7. Z-index Map
+// 8. Z-index Map
 // -------------------------------------
 // 2DO-YG: Possibly remove the map in-favor of regular variables
 $z_index: (
@@ -209,43 +220,43 @@ $z_index: (
 
 
 // -------------------------------------
-// 8. Asset Paths
+// 9. Asset Paths
 // -------------------------------------
-// Path to the root images & fonts folders
+// Path to the root images & fonts folders (in './build')
 $img_base_path: '../images' !default;
 $font_base_path: '../fonts' !default;
 
 
 // -------------------------------------
-// 9. Icons
+// 10. Icons
 // -------------------------------------
 // Font-Awesome
 $fa-font-path:        $font_base_path  !default;
 $fa-font-size-base:   1.4rem           !default;
 $fa-line-height-base: 1                !default;
 $fa-css-prefix:       fa               !default;
-$fa-border-color:     $cl_white        !default;
-$fa-inverse:          $cl_white        !default;
+$fa-border-color:     $cl_icon-border  !default;
+$fa-inverse:          $cl_icon-inverse !default;
 $fa-li-width:         (30em / 14)      !default;
 
 
 // -------------------------------------
-// 10. Grid - Susy Config
+// 11. Grid - Susy Config
 // -------------------------------------
-// This variables override the !default variables declared in Luscious.
-// All the $susy map options were turned into variables so that they can
-// be controled from here.
+// These vars override !defaults declared in Luscious settings.
+// All $susy map options available as variables so they can
+// be controled globally here.
 // @see: goo.gl/Ak5Bo8
 
+// @IVAN: Can you add a really short description for what each one of these does?
 $base_grid_columns: 6;
 $base_grid_gutters: 0.25;
 $base_grid_spread: 'narrow';
 $base_grid_container-spread: 'narrow';
-// @IVAN: Can you add a really short description for what each one of these does?
 
 
 // -------------------------------------
-// 11. Buttons
+// 12. Buttons
 // -------------------------------------
 // Decide if buttons are solid or hollow by defualt
 $button_fill: solid !default;
@@ -303,16 +314,6 @@ $button_styles: (
 		background-color: $cl_black,
 	),
 ) !default;
-
-
-// ------------------------------------
-// 12. Accessibility
-// ------------------------------------
-// Colors
-$a11y_attention: darken(red, 5%)                  !default;
-$a11y_light: #ffffff                              !default;
-// Z-index
-$a11y_zindex: map-get($z_index, nosebleed) + 1000 !default;
 
 
 // -------------------------------------
