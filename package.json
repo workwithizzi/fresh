@@ -13,9 +13,11 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp initial:help"
+		"install": "gulp initial:help",
+		"build-ssg": "npx eleventy"
 	},
 	"devDependencies": {
+		"@11ty/eleventy": "^0.5.2",
 		"archy": "^1.0.0",
 		"browser-sync": "^2.21.0",
 		"del": "^3.0.0",
