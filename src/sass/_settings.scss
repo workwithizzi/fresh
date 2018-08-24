@@ -157,10 +157,10 @@ $font_stack_mono: ('Courier New', 'Courier', 'Lucida Typewriter', monospace,) !d
 // UI Font-Stacks: Use these throughout in the project files.
 
 // Default Headings
-$font_stack_heading: ('Open Sans', $font_stack_sans,) !default;
+$font_stack_heading: ('Open Sans', $font_stack_serif,) !default;
 
 // Default Body
-$font_stack_body: ('Open Sans', $font_stack_sans,) !default;
+$font_stack_body: ('Open Sans', $font_stack_serif,) !default;
 
 // Default Monospace
 $font_stack_code: $font_stack_mono !default;
