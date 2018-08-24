@@ -35,6 +35,7 @@ $base_grid_container-spread: 'wide' !default;
 	'helpers/deprecation_warning',
 	'helpers/info-log',
 	'helpers/maps',
+	'helpers/in-list',
 	'helpers/strip_unit',
 	'helpers/convert-rem-ratio',
 	'helpers/type-checking'
@@ -67,6 +68,7 @@ $base_grid_container-spread: 'wide' !default;
 	'bin/when_is',
 	'bin/placeholder',
 	'bin/google_fonts',
+	'bin/font-face',
 	'bin/grid_susy',
 	'bin/burgers/burgers'
 ;
