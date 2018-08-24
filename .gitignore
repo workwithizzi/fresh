@@ -234,4 +234,8 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 
+
+### VSCode ###
+.vscode/
+
 # End of https://www.gitignore.io/api/node,sass,macos,windows,sublimetext
