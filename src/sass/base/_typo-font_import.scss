@@ -19,9 +19,93 @@
 // }
 
 
+// @mixin ff($family, $link) {
+// 	@font-face {
+// 		font-family: '#{$family}';
+// 		src: url('#{$link}');
+// 	/* fftest */
+//
+// 	}
+// }
 
 
-// -------------------------------------------------------------------
+// @include ff(Open Sans, '#{$font_base_path}/OpenSans/OpenSans-Regular-webfont.eot');
+
+
+
+// Font-Face Mixin
+// https://git.io/fAq0z
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+
+$font-types: ( eot woff2 woff ttf svg );
+
+// @debug $font-types;
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: $font-types, $svgID: null) {
+	$src: null;
+
+	@if $exts == "all" {
+		$exts: $font-types;
+	}
+	// @debug index($exts, eot);
+
+	// @each $i in $exts {
+	// 	@if $ext !=
+	// }
+
+	@if $svgID {
+		@debug "Testing";
+	}
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+		/* fftest */
+	}
+}
+
+
+// '#{$font_base_path}/OpenSans/OpenSans-Regular-webfont.eot')
+
+@include font-face(
+	'Open Sans',
+	#{$font_base_path}/OpenSans/OpenSans-Regular-webfont, 400, normal
+);
+
+@include font-face(
+	'Open Sans',
+	#{$font_base_path}/OpenSans/OpenSans-Italic-webfont, 400, italic, all
+);
+
+/* ------------------------------------------------------------------- */
 // -------------------------------------------------------------------
 // -------------------------------------------------------------------
 
