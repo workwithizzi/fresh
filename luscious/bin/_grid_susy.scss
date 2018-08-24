@@ -1,0 +1,42 @@
+// Luscious
+// @since v0.0.1
+//
+// Info mixin, tests, and import Susy
+//
+// sass-lint:disable no-css-comments
+// ===================================================================
+
+@import "susy3.0.5/susy";
+
+// Susy Global Defaults for reference. Add/Override these in settings.
+
+// $_susy-defaults: (
+//   'columns': susy-repeat(4),
+//   'gutters': 0.25,
+//   'spread': 'narrow',
+//   'container-spread': 'narrow',
+// );
+
+// ===================================================================
+// Susy default variables that are defined at _luscious.scss
+// Should be overwritten in _settings.scss (project settings)
+// ===================================================================
+
+// $base_grid_columns: 12 !default;
+// $base_grid_gutters: 0.25 !default;
+// $base_grid_spread: 'wide' !default;
+// $base_grid_container-spread: 'wide' !default;
+
+
+// ===================================================================
+// This map is used just to override the Susy map in their library.
+// All the settings turned into variables and controled from the project settings file.
+// The variables declared in Luscious settings file which mirror the project settings file by default.
+// ===================================================================
+
+$susy: (
+	'columns': susy-repeat($base_grid_columns),
+	'gutters': $base_grid_gutters,
+	'spread': $base_grid_spread,
+	'container-spread': $base_grid_container-spread,
+);

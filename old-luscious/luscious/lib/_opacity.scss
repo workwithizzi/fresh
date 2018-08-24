@@ -1,0 +1,136 @@
+// -------------------------------------------------------------
+// ~Opacity
+//
+// This file has mixings for generic opacity, background opacity,
+// border opacity and Cross Browser compatibility.
+// Also contains a placeholder for the base-border styles.
+// -------------------------------------------------------------
+
+////
+/// @since v1.0
+/// @group Styling
+////
+
+/// # Cross Browser Opacity
+///
+/// "This mixin ensures cross browser opacity all the way down to
+/// Internet Explorer 5. Though if you have to optomize for IE5,
+/// you have a lot bigger problems than opacity, godspeed my friend."
+/// -Sebastian Ekström
+///
+/// ### Location:
+/// `luscious/lib/_opacity.scss`
+///
+/// @param {number} $opacity - Set on 1 point scale (0.0-1.0 instead of 0-100)
+/// @author Sebastian Ekström
+/// @link http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+/// @deprecated This mixin will be deprecated by v2.0
+///
+/// @example scss - SCSS Input
+///   .element {
+///     @include lus-opacity(0.8);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     opacity: 0.8;
+///     filter: alpha(opacity=80);
+///   }
+///
+
+@mixin lus-opacity($opacity) {
+	opacity: $opacity;
+
+	$opacity-ie: $opacity * 100;
+
+	filter: alpha(opacity = $opacity-ie);
+
+	//IE8
+}
+
+/// # Cross Browser Background Opacity
+///
+/// Based on `lus-opacity` but targeted specifically at `background-color`
+/// and also allows for a color parameter as a fallback.
+///
+/// ### Location:
+/// `luscious/lib/_opacity.scss`
+///
+/// @param {number} $color - Use the color value for the background.
+/// @param {number} $opacity - Set on 100 point scale (0-100 instead of 0.0-1.0)
+/// @author [Yisrael Grimes](http://yisraelgrimes.com)
+///
+/// @example scss - SCSS Input
+///   .element {
+///     @include lus-background-opacity(black, 50);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-color: black;
+///     background-color: rgba(0, 0, 0, 0.5);
+///   }
+///
+
+@mixin lus-background-opacity($color, $opacity) {
+	$opacity: $opacity / 100;
+
+	//  Unsupporting browsers get this
+	background-color: $color;
+
+	//  Browsers that support RGBA will get this instead
+	background-color: rgba($color, $opacity);
+}
+
+/// # Border Opacity
+///
+/// Opacity should be on a 100 point scale (0-100 instead of 0.0-1.0)
+/// This should be used to supplement a normal border definition as it
+/// only deals with the `border-color` property.
+/// Also includes a solid color fallback.
+///
+/// ### Location:
+/// `luscious/lib/_opacity.scss`
+///
+/// @param {number} $color - Use the color value for the background.
+/// @param {number} $opacity - Set on 100 point scale (0-100 instead of 0.0-1.0)
+/// @author [Yisrael Grimes](http://yisraelgrimes.com)
+///
+/// @example scss - SCSS Input
+///   .element {
+///     @include lus-border-opacity(black, 50);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     border-color: black;
+///     border-color: rgba(0, 0, 0, 0.5);
+///     background-clip: padding-box;
+///   }
+///
+
+@mixin lus-border-opacity($color, $opacity) {
+	$opacity: $opacity / 100;
+
+	//  Unsupporting browsers get this
+	border-color: $color;
+
+	//  Browsers that support RGBA will get this instead
+	border-color: rgba($color, $opacity);
+
+	//  Prevent the element's background from reaching the edge of the border
+}
+
+// TODO: Consider removing or adding to project specific files.
+%lus-base-border-hover {
+	border: $base-border;
+	border-radius: $base-radius;
+
+	@include lus-border-opacity($c_border_color, 65);
+
+	@include lus-transition(all $base-duration $base-timing);
+
+	&:hover {
+		@include lus-border-opacity($c_border_color, 100);
+	}
+}

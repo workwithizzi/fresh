@@ -1,0 +1,77 @@
+@charset 'utf-8';
+// Luscious
+// @since v0.0.4
+// ===================================================================
+
+// Luscious Current Version
+$lus_current_version: "v0.0.4 alpha";
+// Output a notification of a test to the console
+$output_test_message: false !default;
+// Warn user of a deprecated function/mixin
+$output_deprecation_warnings: true !default;
+// Output warnings for pesticide and dev_colors during production
+$production_mode: false !default;
+
+// -------------------------------------
+
+// -------------------------------------
+// Default Variables to control Susy Map
+// Should be overwritten in _settings.scss (project settings) file
+
+$base_grid_columns: 12 !default;
+$base_grid_gutters: 0.25 !default;
+$base_grid_spread: 'wide' !default;
+$base_grid_container-spread: 'wide' !default;
+
+// -------------------------------------
+
+// Settings
+// TODO: Make sure to add this import back before production. Also make sure to incorporate updates (that we want to keep as defaults) from src/sass/-settings.scss.
+// @import "settings";
+
+// Helpers
+@import
+	'helpers/deprecation_warning',
+	'helpers/info-log',
+	'helpers/maps',
+	'helpers/strip_unit',
+	'helpers/convert-rem-ratio',
+	'helpers/type-checking'
+;
+
+// Bin - Core functions/mixins
+@import
+	'bin/dev_config',
+	'bin/modularscale',
+	'bin/rem_em_calc',
+	'bin/zindex',
+	'bin/fonts',
+	'bin/breakpoints',
+	'bin/colors',
+	'bin/disable_outline',
+	'bin/buttons',
+	'bin/pesticide',
+	'bin/dev_colors',
+	'bin/paths',
+	'bin/clearfix',
+	'bin/centerblock',
+	'bin/bg_image',
+	'bin/hocus',
+	'bin/edges',
+	'bin/square_size',
+	'bin/move',
+	'bin/visibility',
+	'bin/alignment-classes',
+	'bin/vertical-rhythm',
+	'bin/when_is',
+	'bin/placeholder',
+	'bin/google_fonts',
+	'bin/grid_susy',
+	'bin/burgers/burgers'
+;
+
+// Tests and Info for Luscious Stuff
+@import
+	'helpers/tests',
+	'helpers/info'
+;

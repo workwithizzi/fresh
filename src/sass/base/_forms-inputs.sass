@@ -1,0 +1,66 @@
+// input, input types, & textarea styling
+//
+// ------------------------------------------------------------------
+
+
+// ------------------------------------
+// input & textarea
+// ------------------------------------
+input,
+textarea
+	// @nrml: Remove the margin in Firefox and Safari.
+	margin: 0
+	// @nrml: Change the font styles in all browsers. ---
+	font-family: inherit
+	font-size: 100%
+	line-height: vr(base)
+	border-width: r(1)
+	border-style: solid
+	border-radius: 0
+	appearance: textfield
+
+input
+	// @nrml: Show the overflow in Edge.
+	overflow: visible
+
+textarea
+	// @nrml: Remove the default vertical scrollbar in IE 10+.
+	overflow: auto
+
+
+// ------------------------------------
+// input types
+// ------------------------------------
+[type="checkbox"],
+[type="radio"]
+	// @nrml: Add the correct box sizing in IE 10.
+	box-sizing: border-box
+	// @nrml: Remove the padding in IE 10.
+	padding: 0
+
+[type="checkbox"]
+	appearance: checkbox
+
+[type="radio"]
+	appearance: radio
+
+// ----------------
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button
+	// @nrml: Correct cursor style of increment/decrement buttons in Chrome.
+	height: auto
+
+// ----------------
+
+[type="search"]
+	// @nrml: Correct the odd appearance in Chrome and Safari.
+	-webkit-appearance: textfield
+	// @nrml: Correct the outline style in Safari.
+	outline-offset: r(-2px)
+	// REVIEW:
+
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-decoration
+		// @nrml: Remove inner padding & cancel buttons in Chrome & Safari on macOS.
+		-webkit-appearance: none

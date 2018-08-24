@@ -1,0 +1,89 @@
+// -------------------------------------------------------------
+// ~Rem to Px Fallback
+//
+// Px fallback for outdated browsers.
+// -------------------------------------------------------------
+// TODO: Either remove or add to a fallback folder in the future. #deprecated
+
+//  Helpers (but don't want to include them in docs)
+@function parseInt($n) {
+	/* 2 */
+	@return $n / ($n * 0 + 1);
+}
+
+$unitless-em-base: $em-base;
+
+/* $em-base */
+
+/// # Rem to Px Fallback
+///
+/// This `rem` mixin will accept the property and the measurement in
+/// either px or rem and will output the property in rem with a
+/// px fallback based on the project `$em-base` size. For more info
+/// on `em-base` and `font-size` declarations see project-init.scss file.
+///
+/// Original mixin from Hugo Giraudel
+///
+/// ### Location:
+/// `luscious/lib/_px-fallback.scss`
+///
+/// @param {string} $property
+/// @param {string} $value - Accepts px, rem, %, 0, auto
+/// @author Yisrael Grimes
+/// @link http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+/// @since v1.0.0
+/// @deprecated Will likely be deprecated by v2.0
+/// @group Styling
+/// @todo
+/// - Add the related mixins/variables/settings in documentation
+/// - Add required labels ($em-base, declaration)
+/// - See about changing visual name of mixin.
+///
+/// @example scss - SCSS Input
+///   .element {
+///     @include rem(font-size, 1rem)
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     font-size: 16px; /* With optimize turned off
+///     font-size: 1rem;
+///   }
+///
+
+@mixin rem($property, $values) {
+	$px: ();
+	$rem: ();
+
+	@each $value in $values {
+		@if $value == 0 or type-of($value) != "number" or unit($value) == "%" {
+			/* 5 */
+			$px: append($px, $value);
+			$rem: append($rem, $value);
+		}
+		@else {
+			$unit: unit($value);
+			$val: parseInt($value);
+
+			$unitless-em-base: lus-strip-unit($unitless-em-base);
+
+			@if $unit == "px" {
+				$px: append($px, $value);
+				$rem: append($rem, $val / $unitless-em-base + rem);
+			}
+
+			@if $unit == "rem" {
+				$px: append($px, $val * $unitless-em-base + px);
+				$rem: append($rem, $value);
+			}
+		}
+	}
+
+	@if $px == $rem {
+		#{$property}: $px;
+	}
+	@else {
+		#{$property}: $px;
+		#{$property}: $rem;
+	}
+}

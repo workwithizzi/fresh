@@ -4,7 +4,7 @@
 
 
 // Open new browser window every time you run 'gulp'?
-var openBrowserWindow = true;
+var openBrowserWindow = false;
 
 
 var base = {
@@ -129,17 +129,8 @@ var base = {
 
 		images = {
 			// Paths
-			site: {
-				input: [
-					srcImages + '/**/*.+(png|jpg|jpeg|gif|svg|ico)',
-					'!/**/*(favicon.ico|apple-touch-icon.png)'
-				],
-				output: buildImages
-			},
-			root: {
-				input: srcImages + '/**/*(favicon.ico|apple-touch-icon.png)',
-				output: base.build
-			},
+			input: base.src + '/images/**/*.+(png|jpg|jpeg|gif|svg|ico)',
+			output: base.build + '/images/',
 
 			// Config Options
 			opts: {
@@ -168,7 +159,9 @@ var base = {
 var config = {
 	// Add files to the array to open them manually using 'gulp open'
 	openfile: [
-		base.build + '/index.html'
+		base.build + '/demo-forms.html',
+		base.build + '/demo-media.html',
+		base.build + '/demo-text.html'
 	],
 	// Configure browserSync settings
 	browserSync: {
@@ -615,17 +608,14 @@ g.task('fonts', function() {
 
 /**
  * Copies/optimizes/caches images from ./src to ./build directory
- *   (Use 'images:clean:cache' to remove cached files)
+ *   (Use 'clean' to remove cached images. This also removes the `./build` directory.)
  * @task  {images}
  * @group {Main}
  */
 g.task('images', function() {
-	g.src(images.site.input)
+	g.src(images.input)
 		.pipe(cache(imagemin(images.opts)))
-		.pipe(g.dest(images.site.output));
-	g.src(images.root.input)
-		.pipe(cache(imagemin(images.opts)))
-		.pipe(g.dest(images.root.output));
+		.pipe(g.dest(images.output));
 });
 
 

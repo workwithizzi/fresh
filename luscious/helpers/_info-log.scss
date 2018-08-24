@@ -1,0 +1,37 @@
+// Function used to output info to the command line about functions or mixins
+//
+// @see: https://hugogiraudel.com/2013/10/21/sass-debug/
+// ------------------------------------------------------------------
+
+// TODO: Add info and tests for this function
+
+
+@function info-log($list) {
+	$br: '\A ';
+	$space: '';
+	$tab: '  ';
+	$result: $br + $space + '[INFO]' + $br;
+
+	@each $item in $list {
+		$result: $result + $tab + $space + $item + $br;
+	}
+	$result: $result;
+	@return quote($result);
+}
+
+
+
+// // Quick Example:
+// $debug_feedback: info-log(
+// 	'This is the first info line.'
+// 	'This is another line.'
+// );
+//
+//
+// @debug $debug_feedback;
+
+// // Or, use it directly:
+// @debug info-log(
+// 	'This is the first info line.'
+// 	'This is another line.'
+// );

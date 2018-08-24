@@ -1,4 +1,4 @@
-// Base styles for html and body
+// base layout styles for html, body, and other generic elements
 //
 // ------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ html
 // ----------------
 
 body
-	// @nrml: Remove the margin in all browsers.
+	// @nrml: Remove the margin in all browsers
 	margin: 0
 	padding: 0
 	// Make sure body isn't smaller than the window
@@ -31,7 +31,6 @@ body
 
 // ----------------
 
-// Add the correct display in IE 9-.
 main,
 article,
 aside,
@@ -39,4 +38,10 @@ footer,
 header,
 nav,
 section
+	// @nrml: Add the correct display in IE 9-
 	display: block
+
+
+// Make sure floated elements don't break <main>
+main
+	width: span(6)

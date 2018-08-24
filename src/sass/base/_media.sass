@@ -1,0 +1,53 @@
+// basic html5 media elements
+//
+// ------------------------------------------------------------------
+
+
+// ------------------------------------
+// images
+// ------------------------------------
+img
+	// @nrml: Remove the border on images inside links in IE 10.
+	border-style: none
+	max-width: 100%
+
+
+svg:not(:root)
+	// @nrml: Hide the overflow in IE.
+	overflow: hidden
+
+
+// ------------------------------------
+// audio
+// ------------------------------------
+audio
+	// @nrml: Add the correct display in IE 9-.
+	display: inline-block
+
+audio:not([controls])
+	// @nrml: Add the correct display in iOS 4-7.
+	display: none
+	height: 0
+
+
+// ------------------------------------
+// video
+// ------------------------------------
+video
+	max-width: 100%
+	// @nrml: Add the correct display in IE 9-.
+	display: inline-block
+
+
+// ------------------------------------
+// figure & caption
+// ------------------------------------
+figure,
+figcaption
+	// @nrml: Add the correct display in IE 9-.
+	display: block
+
+
+// @nrml: Add the correct margin in IE 8.
+figure
+	margin: vr(-1) $base_indent_amount
