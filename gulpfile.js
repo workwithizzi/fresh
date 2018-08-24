@@ -27,7 +27,9 @@ var base = {
 		// ------------------------------------
 		styles = {
 			// Paths
-			input: srcStyles + '/**/*.{scss,sass}',
+			input: [srcStyles + '/**/*.{scss,sass}', './luscious/**/*.{scss,sass}'],
+			// 2DO-YG: Change input back to only watch src files after Luscious dev
+			// input: srcStyles + '/**/*.{scss,sass}',
 			output: buildCss,
 
 			// Config Options
@@ -177,11 +179,12 @@ var config = {
 	// Comment out anything in the array that you
 	// don't want to watch/trigger build on change.
 	watch: {
-		data: db.input,
-		views: views.input,
+		// 2DO-YG: Make sure to turn on other watch files after sass dev
+		// data: db.input,
+		// views: views.input,
 		styles: styles.input,
-		scripts: scripts.input,
-		reload: html.productionFiles
+		// scripts: scripts.input,
+		// reload: html.productionFiles
 	}
 }
 
