@@ -672,11 +672,21 @@ g.task('help', function() { return usage(g); });
  */
 
 // NOTE: For some reason it transforms .md content into .html content, but the extension remains .md
-
+// @IVAN: Seems like it was a bug but got fixed. And then came back? (see: https://git.io/fAmm1)
+// I added a 'work-around' solution below.
 var markdown = require('gulp-markdown');
 
+// g.task('markdown', () => {
+//   g.src('src/*.md')
+//     .pipe(markdown())
+//     .pipe(g.dest('build/'))
+// });
+
 g.task('markdown', () => {
-  g.src('src/*.md')
-    .pipe(markdown())
-    .pipe(g.dest('build/'))
+	g.src('src/*.md')
+		.pipe(markdown())
+		.pipe(rename(function(path) {
+			path.extname = ".html";
+		}))
+		.pipe(g.dest('build/'))
 });
