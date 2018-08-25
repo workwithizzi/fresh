@@ -1,15 +1,30 @@
 // @since: v0.0.5
-
-// Font-Face Mixin
-// Adapted from: https://git.io/fAq0z
-
-// @title: Font-Face Mixin
-// @since: v0.0.5
-// @desc:  A mixin to declare/link fonts for a family with @font-face
+// Import local fonts with @font-face syntax
 // ===================================================================
-// 2DO-YG: Add info mixins and tests
 
+// All font styles are imported for demonstration and development use
+// Remove any (or all) fonts that are not being used in actual Project or if
+// fonts are being imported from url with '@import' or 'google_fonts' mixin.
+
+// Variable used only within this file
 $_opsans: $font_base_path + "/OpenSans/";
+
+// -------------------------------------------------------------------
+
+
+// -------------------------------------
+// @import a Google font with the below mixin
+// -------------------------------------
+// @include google_fonts(
+// 	"Open Sans",
+// 	300 300i 400 400i 600 600i 700 700i 800 800i,
+// 	normal
+// );
+
+
+// -------------------------------------
+// Use the 'font-face' mixin to declare local fonts
+// -------------------------------------
 
 // Regular
 @include font-face(
@@ -47,75 +62,32 @@ $_opsans: $font_base_path + "/OpenSans/";
 	#{$_opsans}OpenSans-Semibold-webfont, 500, normal, all, OpenSansSemibold
 );
 
-// Semibold
+// Semibold Italic
 @include font-face(
 	'Open Sans',
-	#{$_opsans}OpenSans-Semibold-webfont, 500, normal, all, OpenSansSemibold
+	#{$_opsans}OpenSans-SemiboldItalic-webfont, 500, italic, all, OpenSansSemiboldItalic
 );
 
-/* ------------------------------------------------------------------- */
-// -------------------------------------------------------------------
-// -------------------------------------------------------------------
+// Bold
+@include font-face(
+	'Open Sans',
+	#{$_opsans}OpenSans-Bold-webfont, 700, normal, all, OpenSansBold
+);
 
+// Bold Italic
+@include font-face(
+	'Open Sans',
+	#{$_opsans}OpenSans-BoldItalic-webfont, 700, italic, all, OpenSansBoldItalic
+);
 
-/* Semibold Italic */
-@font-face {
-	font-family: 'Open Sans';
-	src: url('#{$font_base_path}/OpenSans/OpenSans-SemiboldItalic-webfont.eot');
-	src: url('#{$font_base_path}/OpenSans/OpenSans-SemiboldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-SemiboldItalic-webfont.woff') format('woff'),
-		url('#{$font_base_path}/OpenSans/OpenSans-SemiboldItalic-webfont.ttf') format('truetype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-SemiboldItalic-webfont.svg#OpenSansSemiboldItalic') format('svg');
-	font-weight: 500;
-	font-style: italic;
-}
+// Extra Bold
+@include font-face(
+	'Open Sans',
+	#{$_opsans}OpenSans-ExtraBold-webfont, 900, normal, all, OpenSansExtrabold
+);
 
-/* Bold */
-@font-face {
-	font-family: 'Open Sans';
-	src: url('#{$font_base_path}/OpenSans/OpenSans-Bold-webfont.eot');
-	src: url('#{$font_base_path}/OpenSans/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-Bold-webfont.woff') format('woff'),
-		url('#{$font_base_path}/OpenSans/OpenSans-Bold-webfont.ttf') format('truetype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-Bold-webfont.svg#OpenSansBold') format('svg');
-	font-weight: bold;
-	font-weight: 700;
-	font-style: normal;
-}
-
-/* Bold Italic */
-@font-face {
-	font-family: 'Open Sans';
-	src: url('#{$font_base_path}/OpenSans/OpenSans-BoldItalic-webfont.eot');
-	src: url('#{$font_base_path}/OpenSans/OpenSans-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-BoldItalic-webfont.woff') format('woff'),
-		url('#{$font_base_path}/OpenSans/OpenSans-BoldItalic-webfont.ttf') format('truetype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-BoldItalic-webfont.svg#OpenSansBoldItalic') format('svg');
-	font-weight: bold;
-	font-weight: 700;
-	font-style: italic;
-}
-
-/* Extra Bold */
-@font-face {
-	font-family: 'Open Sans';
-	src: url('#{$font_base_path}/OpenSans/OpenSans-ExtraBold-webfont.eot');
-	src: url('#{$font_base_path}/OpenSans/OpenSans-ExtraBold-webfont.eot?#iefix') format('embedded-opentype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-ExtraBold-webfont.woff') format('woff'),
-		url('#{$font_base_path}/OpenSans/OpenSans-ExtraBold-webfont.ttf') format('truetype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-ExtraBold-webfont.svg#OpenSansExtrabold') format('svg');
-	font-weight: 900;
-	font-style: normal;
-}
-
-/* Extra Bold Italic */
-@font-face {
-	font-family: 'Open Sans';
-	src: url('#{$font_base_path}/OpenSans/OpenSans-ExtraBoldItalic-webfont.eot');
-	src: url('#{$font_base_path}/OpenSans/OpenSans-ExtraBoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-ExtraBoldItalic-webfont.woff') format('woff'),
-		url('#{$font_base_path}/OpenSans/OpenSans-ExtraBoldItalic-webfont.ttf') format('truetype'),
-		url('#{$font_base_path}/OpenSans/OpenSans-ExtraBoldItalic-webfont.svg#OpenSansExtraboldItalic') format('svg');
-	font-weight: 900;
-	font-style: italic;
-}
+// Extra Italic
+@include font-face(
+	'Open Sans',
+	#{$_opsans}OpenSans-ExtraBoldItalic-webfont, 900, italic, all, OpenSansExtraboldItalic
+);
