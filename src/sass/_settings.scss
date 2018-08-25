@@ -15,8 +15,7 @@
 // 5. Animation
 // 6. Typography
 //   6.1 Font-Stacks
-//   6.2 Font Weights
-//   6.3 Modular Scale
+//   6.2 Modular Scale
 // 7. Breakpoints
 // 8. Z-index Map
 // 9. Asset Paths
@@ -165,18 +164,9 @@ $font_stack_body: ('Open Sans', $font_stack_serif,) !default;
 // Default Monospace
 $font_stack_code: $font_stack_mono !default;
 
-// ----------------
-// 6.2 Font Weights
-// ----------------
-// @IVAN: Maybe we should remove these variables all-together since the heavily
-// depend on what fonts/weights are imported in the project?
-$fw_light  : 300 !default;
-$fw_normal : 400 !default;
-$fw_medium : 500 !default;
-$fw_bold   : 700 !default;
 
 // ----------------
-// 6.3 Modular Scale
+// 6.2 Modular Scale
 // ----------------
 // 2DO-YG: Test and add info
 $ms-base          : 1em;
