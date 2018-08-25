@@ -38,6 +38,7 @@
 		"gulp-imagemin": "^4.0.0",
 		"gulp-jshint": "^2.0.4",
 		"gulp-map": "^0.0.2",
+		"gulp-markdown": "^3.0.0",
 		"gulp-merge-json": "^1.2.1",
 		"gulp-open": "^3.0.1",
 		"gulp-plumber": "^1.2.0",

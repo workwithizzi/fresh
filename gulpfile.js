@@ -284,6 +284,7 @@ g.task('compile', [
 	'pug',
 	'images',
 	'fonts',
+	'markdown',
 ]);
 
 
@@ -661,3 +662,21 @@ g.task('serve', function() {
  * @group {Utilities}
  */
 g.task('help', function() { return usage(g); });
+
+
+
+/**
+ * Transform '*.md' files into '*.html'
+ * @task {markdown}
+ * @group {Utilities}
+ */
+
+// NOTE: For some reason it transforms .md content into .html content, but the extension remains .md
+
+var markdown = require('gulp-markdown');
+
+g.task('markdown', () => {
+  g.src('src/*.md')
+    .pipe(markdown())
+    .pipe(g.dest('build/'))
+});
