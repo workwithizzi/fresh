@@ -25,6 +25,7 @@ $info_reset_html_button: info-log(
 	@if $info { @debug $info_reset_html_button; }
 	@else {
 		button {
+			/* TESTBTN reset_html_button */
 			@include disable_mouse_outline;
 			appearance: none;
 			cursor: pointer;
@@ -83,6 +84,7 @@ $info_btn: info-log(
 
 
 @mixin btn( $style: $button_default_style, $mods...) {
+	/* TESTBTN btn mixin */
 	// 2DO-LUS: Figure out how to include info option without conflict if user adds and `info style` button.
 
 	// Set `default` style to follow global config
