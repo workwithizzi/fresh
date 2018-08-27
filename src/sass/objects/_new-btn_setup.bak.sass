@@ -1,0 +1,102 @@
+// Temporary File for testing/setting up new button styling
+// ------------------------------------------------------------------
+
+
+// btn(default) and +btn(primary) are the same
+
+// Diffs between default vs secondary/hollow/light/dark are all colors
+
+// @btn(disable)
+// @btn(expand)
+// @btn(block)
+
+// ------------------------------------
+// Stuff for New BTN base mixin
+// ------------------------------------
+.testbtn-base
+	/* TESTBTN btn mixin */
+	display: inline-block
+	// display: block // @btn(expand)
+	// display: block // @btn(block)
+	border: 0.1rem solid
+	// border-color: transparent
+	vertical-align: middle
+	// color: #F9FAFC
+	// @nrml: Remove the margin in Firefox and Safari.
+	margin: 0
+	// margin-right: 0 // @btn(expand)
+	// margin-left: 0 // @btn(expand)
+	width: auto
+	// width: 100% // @btn(expand)
+	// background-color: #1FB6FF
+	padding: 0.8rem
+	// @nrml: Change the font styles in all browsers. ---
+	font-family: inherit
+	font-size: 1rem
+	// @nrml: Show the overflow in Edge.
+	overflow: visible
+	font-weight: 600
+	line-height: vr(base)
+	text-decoration: none
+	// @nrml: Remove the inheritance of text transform in Edge/Firefox/IE.
+	text-transform: none
+	text-align: center
+	border-radius: 0px
+	transition: all 250ms ease-in-out
+	cursor: pointer
+	// @nrml: Correct the inability to style clickable types in iOS & Safari.
+	appearance: button
+	// Maybe this should be appearance: none?
+	// cursor: default // @btn(disable)
+	// opacity: 0.4 // @btn(disable)
+
+	&::-moz-focus-inner
+		// @REVIEW: This from normalize?
+		// @nrml: Remove the inner border and padding in Firefox.
+		border-style: none
+		padding: 0
+
+	&:-moz-focusring
+		// @REVIEW: This from normalize?
+		// @nrml: Restore the focus styles unset by the previous rule.
+		outline: r(1px) dotted ButtonText
+
+[data-whatinput='mouse'] .testbtn-base
+	outline: 0
+
+.testbtn-base:hover
+	// background-color: cl_function(lighten, #1FB6FF, 30%)
+	// border-color: cl_function(lighten, transparent, 30%)
+	// color: cl_function(lighten, #F9FAFC, 30%)
+
+// ------------------------------------
+// End new btn base mixin
+// ------------------------------------
+
+
+// ----------------
+
+html [type="button"],
+[type="button"],
+[type="reset"],
+[type="submit"]
+	// @nrml: Correct the inability to style clickable types in iOS & Safari.
+	appearance: button
+	// Maybe this should be appearance: none?
+
+	&::-moz-focus-inner
+		// @nrml: Remove the inner border and padding in Firefox.
+		border-style: none
+		padding: 0
+
+	&:-moz-focusring
+		// @nrml: Restore the focus styles unset by the previous rule.
+		outline: r(1px) dotted ButtonText
+
+// ----------------
+
+::-webkit-file-upload-button
+	// @nrml: Correct the inability to style clickable types in iOS & Safari.
+	-webkit-appearance: button
+	// @nrml: Change font properties to `inherit` in Safari.
+	font: inherit
