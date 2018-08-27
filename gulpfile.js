@@ -675,8 +675,6 @@ var markdown = require('gulp-markdown');
 g.task('markdown', () => {
 	g.src('src/*.md')
 		.pipe(markdown())
-		.pipe(rename(function(path) {
-			path.extname = ".html";
-		}))
+		.pipe(rename(path => path.extname = ".html"))
 		.pipe(g.dest('build/'))
 });
