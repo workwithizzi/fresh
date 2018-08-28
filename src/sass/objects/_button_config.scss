@@ -1,0 +1,198 @@
+
+
+@mixin new-btn($args: null) {
+	// -------------------------------------
+	// CONFIGURE:
+	// Default colors from settings.scss $new-btn-colors
+	// -------------------------------------
+	$_profile: primary;
+
+	// -------------------------------------
+	// CONFIGURE:
+	// Other default styles
+	// -------------------------------------
+	$_text-decoration: none;
+	$_display: inline-block;
+	$_margin-top: .5rem;
+	$_margin-right: 0;
+	$_margin-bottom: .5rem;
+	$_margin-left: 0;
+	$_width: auto;
+	$_cursor: pointer;
+	$_opacity: 1;
+
+	// @nrml: Remove the margin in Firefox and Safari.
+	padding: 0.8rem;
+	// @nrml: Change the font family/size/weight in all browsers.
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: vr(base);
+	border: 0.1rem solid;
+	border-radius: 0px;
+	transition: all 250ms ease-in-out;
+
+	// ----------------
+	// CSS resets
+	// ----------------
+	text-align: center;
+	vertical-align: middle;
+	// @nrml: Show the overflow in Edge.
+	overflow: visible;
+	// @nrml: Correct the inability to style clickable types in iOS & Safari.
+	appearance: none;
+	// @nrml: Remove the inheritance of text transform in Edge/Firefox/IE.
+	text-transform: none;
+	[data-whatinput='mouse'] & {
+		outline: 0;
+	}
+
+	// -------------------------------------
+	// IGNORE: You can ignore everything else
+	// -------------------------------------
+	@each $arg in $args {
+		@if index(map-keys($new-btn-colors), $arg) {
+			$_profile: $arg;
+		}
+	}
+
+	// Default Colors based on map ($new-btn-colors) from 'settings.scss'
+	$_text         : map_get_nested($new-btn-colors, $_profile, color);
+	$_bg           : map_get_nested($new-btn-colors, $_profile, background);
+	$_border       : map_get_nested($new-btn-colors, $_profile, border);
+	$_text-hover   : map_get_nested($new-btn-colors, $_profile, hover-color);
+	$_bg-hover     : map_get_nested($new-btn-colors, $_profile, hover-background);
+	$_border-hover : map_get_nested($new-btn-colors, $_profile, hover-border);
+
+	// ----------------
+	// Button Modifications
+	// ----------------
+	@each $arg in $args {
+		// Link
+		@if index(link, $arg) {
+			$_text         : $cl_link;
+			$_bg           : transparent;
+			$_border       : transparent;
+			$_text-hover   : $cl_link-hover;
+			$_bg-hover     : transparent;
+			$_border-hover : transparent;
+			$_text-decoration: underline;
+		}
+		// Hollow
+		@if index(hollow, $arg) {
+			$_text         : $_bg;
+			$_border       : $_bg;
+			$_bg           : transparent;
+			$_text-hover   : $_text-hover;
+			$_bg-hover     : $_bg-hover;
+			$_border-hover : $_border-hover;
+		}
+		// Block
+		@if index(block, $arg) {
+			$_display: block;
+		}
+		// Expand
+		@if index(expand, $arg) {
+			$_display: block;
+			$_margin-right: 0;
+			$_margin-left: 0;
+			$_width: 100%;
+		}
+		// Disable
+		@if index(disable, $arg) {
+			$_cursor: default;
+			$_opacity: 0.4;
+			$_text-hover: $_text;
+			$_bg-hover: $_bg;
+			$_border-hover: $_border;
+		}
+	} //@each
+
+	// Modifications Applied
+	margin: $_margin-top $_margin-right $_margin-bottom $_margin-left;
+	width: $_width;
+	display: $_display;
+	cursor: $_cursor;
+	opacity: $_opacity;
+	text-decoration: $_text-decoration;
+	color: $_text;
+	background: $_bg;
+	border-color: $_border;
+	&:hover {
+		color: $_text-hover;
+		background: $_bg-hover;
+		border-color: $_border-hover;
+	}
+} //new-btn mixin
+
+
+// -------------------------------------
+// Tests
+// -------------------------------------
+.btn-default {
+	@include new-btn;
+}
+.btn-primary {
+	@include new-btn(primary);
+}
+.btn-secondary {
+	@include new-btn(secondary);
+}
+.btn-block-default {
+	@include new-btn(block);
+}
+.btn-primary-block {
+	@include new-btn(primary block);
+}
+.btn-block-primary {
+	@include new-btn(block primary);
+}
+.btn-secondary-block {
+	@include new-btn(secondary block);
+}
+.btn-block-secondary {
+	@include new-btn(block secondary);
+}
+.btn-block-secondary-disabled {
+	@include new-btn(block secondary disable);
+}
+.btn-expand-default {
+	@include new-btn(expand);
+}
+.btn-primary-expand {
+	@include new-btn(primary expand);
+}
+.btn-expand-primary {
+	@include new-btn(expand primary);
+}
+.btn-disable-default {
+	@include new-btn(disable);
+}
+.btn-primary-disable {
+	@include new-btn(primary disable);
+}
+.btn-disable-primary {
+	@include new-btn(disable primary);
+}
+.btn-link {
+	@include new-btn(link);
+}
+.btn-link-block {
+	@include new-btn(link block);
+}
+.btn-link-block-disable {
+	@include new-btn(link block disable);
+}
+.btn-default-hollow {
+	@include new-btn(default hollow);
+}
+.btn-primary-hollow {
+	@include new-btn(primary hollow);
+}
+.btn-secondary-hollow {
+	@include new-btn(secondary hollow);
+}
+
+.btn-success {
+	@include new-btn(success);
+}

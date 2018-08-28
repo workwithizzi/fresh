@@ -92,22 +92,48 @@ $cl_alert     : #FF4949 !default;
 // UI Colors: These colors are the ones used throughout the project files
 
 // Default
-$cl_bg             : $cl_white      !default;
-$cl_text           : $cl_black      !default;
-$cl_border         : $cl_light      !default;
-$cl_text-highlight : #ff0           !default;
-$cl_link           : $cl_primary    !default;
-$cl_link-hover     : $cl_primary-dk !default;
+$cl_bg              : $cl_white      !default;
+$cl_text            : $cl_black      !default;
+$cl_border          : $cl_light      !default;
+$cl_text-highlight  : #ff0           !default;
+$cl_link            : $cl_primary    !default;
+$cl_link-hover      : $cl_primary-dk !default;
 
 // Nav
-$cl_nav-bg         : $cl_primary    !default;
-$cl_nav-text       : $cl_white      !default;
-$cl_nav-active     : $cl_secondary  !default;
+$cl_nav-bg          : $cl_primary    !default;
+$cl_nav-text        : $cl_white      !default;
+$cl_nav-active      : $cl_secondary  !default;
 
 // Icons
-$cl_icon-border    : $cl_white      !default;
-$cl_icon-inverse   : $cl_white      !default;
+$cl_icon-border     : $cl_white      !default;
+$cl_icon-inverse    : $cl_white      !default;
 
+// Buttons
+$btn_text-primary       : $cl_white      !default;
+$btn_bg-primary         : $cl_primary    !default;
+$btn_bg-primary-hover   : $cl_primary-dk !default;
+$btn_text-secondary     : $cl_white      !default;
+$btn_bg-secondary       : $cl_secondary  !default;
+$btn_bg-secondary-hover : $cl_secondary-dk  !default;
+
+$new-btn-colors: (
+	primary: (
+		color: $cl_white,
+		background: $cl_primary,
+		border: transparent,
+		hover-color: $cl_white,
+		hover-background: $cl_primary-dk,
+		hover-border: transparent
+	),
+	secondary: (
+		color: $cl_white,
+		background: $cl_secondary,
+		border: transparent,
+		hover-color: $cl_white,
+		hover-background: $cl_secondary-dk,
+		hover-border: transparent
+	)
+);
 
 // ------------------------------------
 // 4. A11Y

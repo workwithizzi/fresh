@@ -15,4 +15,198 @@
 
 // Button Mixins:
 // - base mixin: basic settings, no colors.
-// -
+// - Color Mixins (includes base mixin):
+//   - Primary/default
+//   - Secondary
+//   - Hollow
+//
+
+// ------------------------------------
+// CSS resets for button styling
+// ------------------------------------
+=btn-reset
+	text-decoration: none
+	text-align: center
+	cursor: pointer
+	vertical-align: middle
+	// @nrml: Show the overflow in Edge.
+	overflow: visible
+	// @nrml: Correct the inability to style clickable types in iOS & Safari.
+	appearance: none
+	// @nrml: Remove the inheritance of text transform in Edge/Firefox/IE.
+	text-transform: none
+
+	[data-whatinput='mouse'] &
+		outline: 0
+
+
+// ------------------------------------
+// Base button core-styles
+// ------------------------------------
+=btn-base($option: null)
+	+btn-reset
+	// @nrml: Remove the margin in Firefox and Safari.
+	margin: 0
+	width: auto
+	padding: 0.8rem
+	// @nrml: Change the font family/size/weight in all browsers.
+	font-family: inherit
+	font-size: 1rem
+	font-weight: 600
+	line-height: vr(base)
+	border: 0.1rem solid
+	border-radius: 0px
+	transition: all 250ms ease-in-out
+	// Block Button
+	@if $option == "block" or $option == "expand"
+		display: block
+	@else
+		display: inline-block
+
+	@if $option == "expand"
+		margin-right: 0
+		margin-left: 0
+
+	@if $option == "disable"
+		cursor: default
+		opacity: 0.4
+
+
+
+// ------------------------------------
+// Primary Button
+// ------------------------------------
+=btn-primary
+	+btn-base
+	border-color: transparent
+	color: $cl_bg
+	background-color: $cl_primary
+	&:hover
+		border-color: $cl_primary-dk
+		background-color: $cl_primary-dk
+
+
+// ------------------------------------
+// Secondary Button
+// ------------------------------------
+=btn-secondary
+	+btn-base
+	border-color: transparent
+	color: $cl_bg
+	background-color: $cl_secondary
+	&:hover
+		border-color: $cl_secondary-dk
+		background-color: $cl_secondary-dk
+
+
+// ------------------------------------
+// Link Button
+// ------------------------------------
+=btn-link
+	+btn-base
+	border-color: transparent
+	color: $cl_link
+	background-color: transparent
+	text-decoration: underline
+	&:hover
+		color: $cl_link-hover
+
+
+// ------------------------------------
+// Hollow Button
+// ------------------------------------
+=btn-hollow
+	+btn-base
+	border-color: $cl_primary
+	color: $cl_primary
+	background-color: transparent
+	&:hover
+		border-color: $cl_primary-dk
+		color: $cl_bg
+		background-color: $cl_primary-dk
+
+
+// ------------------------------------
+// Block Button
+// ------------------------------------
+=btn-block
+	+btn-base(block)
+	border-color: transparent
+	color: $cl_bg
+	background-color: $cl_primary
+	&:hover
+		border-color: $cl_primary-dk
+		background-color: $cl_primary-dk
+
+
+// ------------------------------------
+// Expand Button
+// ------------------------------------
+=btn-expand
+	+btn-base(expand)
+	border-color: transparent
+	color: $cl_bg
+	background-color: $cl_primary
+	&:hover
+		border-color: $cl_primary-dk
+		background-color: $cl_primary-dk
+
+
+// ------------------------------------
+// Disble Button
+// ------------------------------------
+=btn-disable
+	+btn-base(disable)
+	border-color: transparent
+	color: $cl_bg
+	background-color: $cl_primary
+
+
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// Testing
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
+.btn-base
+	+btn-base
+
+.btn-primary
+	+btn-primary
+
+.btn-secondary
+	+btn-secondary
+
+.btn-link
+	+btn-link
+
+.btn-hollow
+	+btn-hollow
+
+.btn-block
+	+btn-block
+
+.btn-expand
+	+btn-expand
+
+.btn-disable
+	+btn-disable
+
+
+
+
+
+
+// @debug "margin: #{$_margin-top} #{$_margin-right} #{$_margin-bottom} #{$_margin-left}";
+// @debug "width: #{$_width}";
+// @debug "display: #{$_display}";
+// @debug "cursor: #{$_cursor}";
+// @debug "color: #{$_text}";
+// @debug "background: #{$_bg}";
+// @debug "border-color: #{$_border}";
+// @debug "hover: color: #{$_text-hover}";
+// @debug "hover: background: #{$_bg-hover}";
+// @debug "hover: border-color: #{$_border-hover}";
+//
+// @debug "=================";

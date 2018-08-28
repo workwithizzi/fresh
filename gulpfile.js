@@ -181,10 +181,10 @@ var config = {
 	watch: {
 		// 2DO-YG: Make sure to turn on other watch files after sass dev
 		// data: db.input,
-		// views: views.input,
+		views: views.input,
 		styles: styles.input,
 		// scripts: scripts.input,
-		// reload: html.productionFiles
+		reload: html.productionFiles
 	}
 }
 
