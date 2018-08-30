@@ -285,6 +285,7 @@ g.task('compile', [
 	'images',
 	'fonts',
 	'markdown',
+	'marked',
 ]);
 
 
@@ -667,6 +668,7 @@ g.task('help', function() { return usage(g); });
 // import the needed 'gulp-markdown' package to transform '*.md' files into '*.html'
 var markdown = require('gulp-markdown');
 
+
 /**
  * Transform '*.md' files into '*.html'
  * @task {markdown}
@@ -677,4 +679,30 @@ g.task('markdown', () => {
 		.pipe(markdown())
 		.pipe(rename(path => path.extname = ".html"))
 		.pipe(g.dest('build/'))
+});
+
+
+// import needed 'gulp-markdown-to-json' and 'marked' packages to transform '*.md' files into '*.json' data
+var markdownToJSON = require('gulp-markdown-to-json');
+var marked = require('marked');
+
+// 'marked' package options
+marked.setOptions({
+	pedantic: true,
+	smartypants: true
+});
+
+
+/**
+ * Transform '*.md' files into '*.json' data
+ * @task {marked}
+ * @group {Utilities}
+ */
+g.task('marked', () => {
+	g.src('./src/*.md')
+		.pipe(markdownToJSON(marked))
+		.pipe(rename(function(path) {
+			path.extname = ".json";
+		}))
+		.pipe(g.dest('src/views/data/'))
 });
