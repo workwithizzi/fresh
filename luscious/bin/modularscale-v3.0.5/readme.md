@@ -24,7 +24,7 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Terminal: `bower install modular-scale --save-dev`
 * SCSS: `@import '../link_to_component_dir/modularscale';`
 
-### Vanilla Sass
+### bernice Sass
 
 * [Download the latest zip](https://github.com/modularscale/modularscale-sass/releases/latest)
 * Extract into your project

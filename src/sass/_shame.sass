@@ -16,99 +16,29 @@
 	// TODO: Add some basic style for this. Maybe add a condition so that the `o-intro` class isn't even needed? Like: p:first-child or something.
 
 
-// The next lines are just to check Info for @mixin and @function
-.test.img
-	// --- _breakpoints.scss ---
-	//+__info_breakpoint
-	//+breakpoint('info')
-  //
-	//+__info_between_breakpoints
-	//+between_breakpoints('info')
-  //
-	//+__info_for_print
-	//+for_print('info')
-	// --- _buttons.scss ---
-	//+__info_reset_html_button
-	//+reset_html_button('info')
-	//+__info_btn
-	//+__info_button
-	//+__info_btn_utility_classes
-	//+__info_button_utility_classes
-	//+btn_utility_classes('info')
-	// --- _centerblock.scss ---
-	//+__info_centerblock
-	//+centerblock('info')
-	// --- _clearfix.scss ---
-	//+__info_clearfix
-	//+clearfix('info')
-	//+__info_clearfix_utility_class
-	//+clearfix_utility_class('info')
-	// --- colors.scss ---
-	//+__info_color_function
-	// --- _dev_colors.scss ---
-	//+__info_dev_color
-	//+dev_color("info")
-	//+__info_dev_cl
-	//+__info_dev_color_utility_classes
-	//+dev_color_utility_classes('info')
-	// --- _dev_config.scss ---
-	//+__info_dev_config
-	// --- _disable_outline.scss ---
-	//+__info_disable_mouse_outline
-	//+disable_mouse_outline('info')
-	// --- _edges.scss ---
-	//+__info_vertical
-	//+vertical('info')
-	//+__info_v
-	//+__info_horizontal
-	//+horizontal('info')
-	//+__info_h
-	// --- _fonts.scss ---
-	//+__info_font_stacks
-	// --- _google_fonts.scss ---
-	//+__info_google_fonts
-	//+google_fonts('info')
-	// --- _hocus.scss ---
-	//+__info_hocus
-	//+hocus('info')
-  // --- _move.scss ---
-  //+__info_move
-  //+move('info')
-  //+__info_move_utility_classes
-  //+move_utility_classes('info')
-  // --- _pesticide.scss ---
-  //+__info_pesticide
-  //+pesticide('info')
-	// --- _placeholder.scss ---
-	//+__info_placeholder
-	//+placeholder('info')
-	// --- _rem_em_calc.scss ---
-	//+__info_rem_calc
-	//+__info_em_calc
-  // --- _square_size.scss ---
-  //+__info_size
-  //+size('info')
-  //+__info_square
-  //+square('info')
-  // --- _visibility.scss ---
-  //+__info_hidden
-  //+hidden('info')
-  //+__info_hide_text
-  //+hide_text('info')
-  //+__info_vissuallyhidden
-  //+visuallyhidden('info')
-  //+__info_invisible
-  //+invisible('info')
-  //+__info_show
-  //+show('info')
-  //+__info_visibility_utility_classes
-  //+visibility_utility_classes('info')
-	// --- _when_is.scss ---
-	//+__info_when_is
-	//+when_is('info')
-	// --- _zindex.scss	---
-	//+__info_zindex
-	// Helpers
-	//+__info_test
-	//+__info('test')
+body
+	background: #333
 
+
+// Button mixin tests
+
+.btn-default
+	+btn
+
+.btn-primary
+	+btn(primary)
+
+.btn-secondary
+	+btn(secondary)
+
+.btn-block
+	+btn(block)
+
+.btn-block-secondary
+	+btn(block secondary)
+
+.btn-expand
+	+btn(expand)
+
+.btn-expand-secondary
+	+btn(expand secondary)
