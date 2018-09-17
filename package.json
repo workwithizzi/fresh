@@ -13,7 +13,9 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp initial:help"
+		"install": "gulp initial:help",
+		"fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
+		"fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' "
 	},
 	"devDependencies": {
 		"archy": "^1.0.0",
@@ -62,6 +64,10 @@
 		"owl.carousel": "^2.3.4",
 		"path": "^0.12.7",
 		"prettier": "1.14.2",
-		"run-sequence": "^2.2.0"
+		"prettier-eslint": "^8.8.2",
+		"prettier-eslint-cli": "^4.7.1",
+		"prettier-stylelint": "^0.4.2",
+		"run-sequence": "^2.2.0",
+		"stylelint-config-recommended": "^2.1.0"
 	}
 }
