@@ -60,6 +60,7 @@
 		"normalize.css": "^8.0.0",
 		"owl.carousel": "^2.3.4",
 		"path": "^0.12.7",
+		"prettier": "1.14.2",
 		"run-sequence": "^2.2.0"
 	}
 }
