@@ -125,4 +125,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# IDE and Code Editors
+.idea/
+.vscode/
+
 # End of https://www.gitignore.io/api/node,sass,macos,windows,sublimetext
