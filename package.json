@@ -15,7 +15,8 @@
 	"scripts": {
 		"install": "gulp initial:help",
 		"fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
-		"fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' "
+		"fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' ",
+		"lint:fix": "sass-lint-auto-fix"
 	},
 	"devDependencies": {
 		"archy": "^1.0.0",
