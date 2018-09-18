@@ -241,7 +241,7 @@ $button_styles: (
 // ------------------------------------
 // Colors
 $a11y_attention: darken(red, 5%) !default;
-$a11y_light: #ffffff !default;
+$a11y_light: #fff !default;
 // Z-index
 $a11y_zindex: map-get($z_index, nosebleed) + 1000 !default;
 
