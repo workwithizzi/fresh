@@ -15,9 +15,10 @@
 	"scripts": {
 		"install": "gulp initial:help",
 		"fix-code": "prettier-eslint --write \"src/**/*.js\"",
-		"fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' ",
+		"fix-styles": "stylelint \"**/*.{css,scss,less,sss}\" --fix",
 		"lint:fix": "sass-lint-auto-fix"
 	},
+	"prettier": {},
 	"devDependencies": {
 		"archy": "^1.0.0",
 		"browser-sync": "^2.21.0",
@@ -70,6 +71,7 @@
 		"prettier-stylelint": "^0.4.2",
 		"run-sequence": "^2.2.0",
 		"sass-lint-auto-fix": "^0.12.0",
+		"stylelint-config-idiomatic-order": "^5.0.0",
 		"stylelint-config-recommended": "^2.1.0"
 	}
 }

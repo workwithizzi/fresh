@@ -1,13 +1,33 @@
 {
-	"extends": "stylelint-config-recommended",
+	"extends": [
+		"stylelint-config-idiomatic-order",
+		"./node_modules/prettier-stylelint/config.js"
+	],
 	"rules": {
-		"at-rule-no-unknown": [
-			true,
+		"string-quotes": "single",
+		"block-no-empty": null,
+		"color-no-invalid-hex": true,
+		"comment-empty-line-before": [
+			"always",
 			{
-				"ignoreAtRules": ["extends"]
+				"ignore": ["stylelint-commands", "after-comment"]
 			}
 		],
-		"block-no-empty": null,
-		"unit-whitelist": ["em", "rem", "s", "%", "ms", "px"]
+		"declaration-colon-space-after": "always",
+		"indentation": [
+			"tab",
+			{
+				"except": ["value"]
+			}
+		],
+		"max-empty-lines": 2,
+		"rule-empty-line-before": [
+			"always",
+			{
+				"except": ["first-nested"],
+				"ignore": ["after-comment"]
+			}
+		],
+		"unit-whitelist": ["em", "rem", "%", "s"]
 	}
 }
