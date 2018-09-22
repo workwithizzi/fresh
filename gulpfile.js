@@ -260,7 +260,8 @@ var g = require('gulp');
 		// Tree
 		archy = require('archy'),
 		map = require('gulp-map'),
-		filetree = require('gulp-filetree');
+		filetree = require('gulp-filetree'),
+		prettierEslint = require('gulp-prettier-eslint');
 
 
 // ------------------------------------
@@ -415,6 +416,16 @@ g.task('scripts:lint', function() {
 		.pipe(jshint.reporter('jshint-stylish-ex'))
 });
 
+/**
+ * Fixes JS
+ * @task  {scripts:fix}
+ * @group {Utilities}
+ */
+g.task('scripts:fix', function() {
+	return g.src(scripts.input, { base: './' } )
+		.pipe(prettierEslint() )
+		.pipe(g.dest('./') )
+});
 
 /**
  * Makes JS files pretty and readible. Helpful when you need to dig through a file that's been minified

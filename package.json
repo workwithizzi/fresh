@@ -46,6 +46,7 @@
 		"gulp-merge-json": "^1.2.1",
 		"gulp-open": "^3.0.1",
 		"gulp-plumber": "^1.2.0",
+		"gulp-prettier-eslint": "^1.1.0",
 		"gulp-pug": "^3.3.0",
 		"gulp-pug-beautify": "^0.0.1",
 		"gulp-pug-lint": "^0.1.6",
