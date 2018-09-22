@@ -5,7 +5,7 @@
 options:
   formatter: stylish
 files:
-  include: '**/*.s+(a|c)ss'
+  include: "**/*.s+(a|c)ss"
 rules:
   # Extends
   extends-before-mixins: 1 # in ruleset
@@ -15,15 +15,13 @@ rules:
   # Mixins
   mixins-before-declarations: # in ruleset
     - 1
-    -
-      exclude: [mq, clearfix, hocus, placeholder-color, placeholder, rooter]
+    - exclude: [mq, clearfix, hocus, placeholder-color, placeholder, rooter]
 
   # Line Spacing
   one-declaration-per-line: 1
   empty-line-between-blocks:
     - 1
-    -
-      include: true
+    - include: true
       allow-single-line-rulesets: true
   single-line-per-selector: 0
 
@@ -33,8 +31,7 @@ rules:
   no-color-keywords: 0
   no-color-literals:
     - 1
-    -
-      allow-variable-identifiers: true # true
+    - allow-variable-identifiers: true # true
       allow-map-identifiers: true # true
       allow-rgba: true # false
   no-combinators: 0
@@ -51,8 +48,7 @@ rules:
   no-misspelled-properties: 1
   no-qualifying-elements:
     - 1
-    -
-      - allow-element-with-attribute: true
+    - - allow-element-with-attribute: true
       - allow-element-with-class: true
       - allow-element-with-id: false
   no-trailing-zero: 1
@@ -62,15 +58,13 @@ rules:
   no-url-protocols: 0
   no-vendor-prefixes:
     - 1
-    -
-      - additional-identifiers: []
+    - - additional-identifiers: []
       - excluded-identifiers: []
       - ignore-non-standard: false
   no-warn: 0
   property-units:
     - 1
-    -
-      - global: []
+    - - global: []
       - per-property: {}
       # - per-property: { width: ['rem', 'px', etc], height: ['rem', 'px', etc], }
 
@@ -84,10 +78,9 @@ rules:
   # TO-LUS: Update the warnings settings here.
   class-name-format:
     - 0
-    -
-      allow-leading-underscore: true # true
+    - allow-leading-underscore: true # true
       convention: lowercase # hyphenatedlowercase
-      convention-explanation: 'Class must be lowercase.'
+      convention-explanation: "Class must be lowercase."
       ignore: .btn_, .z_
   function-name-format: 1
   id-name-format: 1
@@ -95,10 +88,9 @@ rules:
   placeholder-name-format: 1
   variable-name-format:
     - 1
-    -
-      allow-leading-underscore: true
+    - allow-leading-underscore: true
       convention: ^[_a-z-1-9-]+$
-      convention-explanation: 'Variable should be all lowercase and will accept hyphens and underscores.'
+      convention-explanation: "Variable should be all lowercase and will accept hyphens and underscores."
 
   # Style Guide
   attribute-quotes: 1
@@ -109,43 +101,34 @@ rules:
   empty-args: 0
   hex-length:
     - 1
-    -
-      style: short # long
+    - style: short # long
   hex-notation:
     - 1
-    -
-      style: lowercase # uppercase
+    - style: lowercase # uppercase
   indentation:
     - 0
-    -
-      size: tab
-  leading-zero: 1
+    - size: tab
+  leading-zero: 0
   nesting-depth:
     - 2
-    -
-      max-depth: 3
+    - max-depth: 3
   property-sort-order:
     - 0
-    -
-      order: 'alphabetical' # array of properties
+    - order: "alphabetical" # array of properties
   quotes:
     - 1
-    -
-      style: single # double
+    - style: single # double
   shorthand-values:
     - 0
-    -
-      allowed-shorthands: [1, 2, 3]
+    - allowed-shorthands: [1, 2, 3]
   url-quotes: 1
   variable-for-property:
-  - 1
-  -
-    properties:
-      - 'color'
+    - 1
+    - properties:
+        - "color"
   zero-unit:
     - 0
-    -
-      include: true # false
+    - include: true # false
 
   # Inner Spacing
   space-after-comma: 0
@@ -160,7 +143,6 @@ rules:
   # Final Items
   trailing-semicolon: 1
   final-newline: 1
-
 
 # Info ##########################################################
 
@@ -187,11 +169,7 @@ rules:
 # // sass-lint:disable-all
 # // sass-lint:enable-all
 
-
-
 # // sass-lint:disable-block no-vendor-prefixes
-
-
 
 # utilities
 # 03-base

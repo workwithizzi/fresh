@@ -23,6 +23,7 @@
 				"ignore": ["after-comment"]
 			}
 		],
-		"unit-whitelist": ["em", "rem", "%", "s", "ms"]
+		"unit-whitelist": ["em", "rem", "%", "s", "ms"],
+		"number-leading-zero": "always"
 	}
 }
