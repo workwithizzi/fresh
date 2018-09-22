@@ -15,7 +15,7 @@
 	"scripts": {
 		"install": "gulp initial:help",
 		"fix-code": "prettier-eslint --write \"src/**/*.js\"",
-		"fix-styles": "stylelint \"**/*.{css,scss,less,sss}\" --fix",
+		"fix-styles": "stylelint \"**/*.scss\" --fix",
 		"lint:fix": "sass-lint-auto-fix"
 	},
 	"prettier": {},
@@ -55,6 +55,7 @@
 		"gulp-sass": "^3.1.0",
 		"gulp-sass-lint": "^1.3.4",
 		"gulp-sourcemaps": "^2.6.2",
+		"gulp-stylelint": "^7.0.0",
 		"gulp-todo": "^5.4.0",
 		"gulp-uglify": "^3.0.0",
 		"gulp-useref": "^3.1.3",
