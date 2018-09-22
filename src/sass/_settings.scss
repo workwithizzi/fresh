@@ -94,10 +94,10 @@ $font_stack_serif: ('Georgia', 'Times', 'Times New Roman', serif) !default;
 
 // Monospace Font Stack
 $font_stack_mono: (
-'Courier New',
-'Courier',
-'Lucida Typewriter',
-monospace
+	'Courier New',
+	'Courier',
+	'Lucida Typewriter',
+	monospace
 ) !default;
 
 // ----------------
@@ -121,27 +121,27 @@ $fw_bold: 700 !default;
 // 6. Breakpoints
 // -------------------------------------
 $breakpoints: (
-xs: 37.437em,
-sm: 37.5,
-md: 61875em,
-lg: 75em,
-xl: 112.5em
+	xs: 37.437em,
+	sm: 37.5,
+	md: 61875em,
+	lg: 75em,
+	xl: 112.5em
 ) !default;
 
 // -------------------------------------
 // 7. Z-index Map
 // -------------------------------------
 $z_index: (
-nosebleed: 9999,
-tooltip: 600,
-popup: 500,
-popup_bg: 400,
-nav: 300,
-footer: 200,
-scrim: 100,
-overlay_base: 100,
-base: 1,
-bottomless: -9999
+	nosebleed: 9999,
+	tooltip: 600,
+	popup: 500,
+	popup_bg: 400,
+	nav: 300,
+	footer: 200,
+	scrim: 100,
+	overlay_base: 100,
+	base: 1,
+	bottomless: -9999
 ) !default;
 
 // -------------------------------------
@@ -167,13 +167,13 @@ $fa-li-width: (30em / 14) !default;
 // 10. Grid
 // -------------------------------------
 $susy: (
-gutter-position: after,
-container: auto,
-container-position: center,
-columns: 12,
-gutters: 0.25,
-global-box-sizing: border-box,
-last-flow: to
+	gutter-position: after,
+	container: auto,
+	container-position: center,
+	columns: 12,
+	gutters: 0.25,
+	global-box-sizing: border-box,
+	last-flow: to
 ) !default;
 
 // -------------------------------------
@@ -200,40 +200,40 @@ $button_disabled_opacity: 0.4 !default;
 $button_default_style: primary !default;
 
 $button_styles: (
-default: (
-	width: auto,
-	margin: 0.4rem,
-	padding: 0.8rem,
-	font-family: inherit,
-	font-size: 1rem,
-	font-weight: 600,
-	line-height: 1,
-	text-decoration: none,
-	text-transform: none,
-	text-align: center,
-	transition: all 250ms ease-in-out,
-	border-width: $button_border_width,
-	border-style: solid,
-	border-color: transparent,
-	border-radius: 0rem
-),
-primary: (
-	color: $cl_white,
-	background-color: $cl_primary
-),
-secondary: (
-	color: $cl_white,
-	background-color: $cl_secondary
-),
-light: (
-	color: $cl_black,
-	background-color: $cl_white,
-	border-color: $cl_black
-),
-dark: (
-	color: $cl_white,
-	background-color: $cl_black
-)
+	default: (
+		width: auto,
+		margin: 0.4rem,
+		padding: 0.8rem,
+		font-family: inherit,
+		font-size: 1rem,
+		font-weight: 600,
+		line-height: 1,
+		text-decoration: none,
+		text-transform: none,
+		text-align: center,
+		transition: all 250ms ease-in-out,
+		border-width: $button_border_width,
+		border-style: solid,
+		border-color: transparent,
+		border-radius: 0rem
+	),
+	primary: (
+		color: $cl_white,
+		background-color: $cl_primary
+	),
+	secondary: (
+		color: $cl_white,
+		background-color: $cl_secondary
+	),
+	light: (
+		color: $cl_black,
+		background-color: $cl_white,
+		border-color: $cl_black
+	),
+	dark: (
+		color: $cl_white,
+		background-color: $cl_black
+	)
 ) !default;
 
 // ------------------------------------

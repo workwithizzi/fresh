@@ -14,12 +14,7 @@
 			}
 		],
 		"declaration-colon-space-after": "always",
-		"indentation": [
-			"tab",
-			{
-				"except": ["value"]
-			}
-		],
+		"indentation": "tab",
 		"max-empty-lines": 2,
 		"rule-empty-line-before": [
 			"always",
@@ -28,6 +23,6 @@
 				"ignore": ["after-comment"]
 			}
 		],
-		"unit-whitelist": ["em", "rem", "%", "s"]
+		"unit-whitelist": ["em", "rem", "%", "s", "ms"]
 	}
 }
