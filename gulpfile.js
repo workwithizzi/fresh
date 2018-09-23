@@ -242,11 +242,12 @@ var g = require("gulp");
 	(usage = require("gulp-help-doc")),
 	(open = require("gulp-open")),
 	(plumber = require("gulp-plumber")),
+	(prettierEslint = require("gulp-prettier-eslint")),
+	(run = require("gulp-run")),
 	// Tree
 	(archy = require("archy")),
 	(map = require("gulp-map")),
-	(filetree = require("gulp-filetree")),
-	(prettierEslint = require("gulp-prettier-eslint"));
+	(filetree = require("gulp-filetree"));
 
 // ------------------------------------
 // Tasks
@@ -362,6 +363,24 @@ g.task("styles:lint", function() {
 		.src(styles.input)
 		.pipe(sassLint(styles.opts.lintConfig))
 		.pipe(sassLint.format());
+});
+
+/**
+ * Fixes SCSS
+ * @task  {scss:fix}
+ * @group {Utilities}
+ */
+g.task("scss:fix", function() {
+	return run("yarn scss:fix").exec();
+});
+
+/**
+ * Fixes SASS
+ * @task  {sass:fix}
+ * @group {Utilities}
+ */
+g.task("sass:fix", function() {
+	return run("yarn sass:fix").exec();
 });
 
 // ------------------------------------
