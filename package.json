@@ -16,7 +16,7 @@
 		"install": "gulp initial:help",
 		"js:fix": "prettier-eslint --write \"src/**/*.js\"",
 		"scss:fix": "stylelint \"**/*.scss\" --fix",
-		"sass:fix": "sass-lint-auto-fix"
+		"sass:fix": "sass-lint-auto-fix -c '.sass-lint.yml'"
 	},
 	"prettier": {},
 	"devDependencies": {
@@ -52,6 +52,7 @@
 		"gulp-pug-lint": "^0.1.6",
 		"gulp-remove-code": "^1.0.2",
 		"gulp-rename": "^1.2.2",
+		"gulp-run": "^1.7.1",
 		"gulp-sass": "^3.1.0",
 		"gulp-sass-lint": "^1.4.0",
 		"gulp-sourcemaps": "^2.6.2",
@@ -73,6 +74,7 @@
 		"run-sequence": "^2.2.0",
 		"sass-lint-auto-fix": "^0.12.0",
 		"stylelint-config-idiomatic-order": "^5.0.0",
-		"stylelint-config-recommended": "^2.1.0"
+		"stylelint-config-recommended": "^2.1.0",
+		"stylelint-scss": "^3.3.0"
 	}
 }
