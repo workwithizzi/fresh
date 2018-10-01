@@ -196,14 +196,6 @@ var vendors = [
 		// 	"input": "./node_modules/font-awesome/fonts/**/*",
 		// 	"output": buildFonts
 		// }, {
-		// 	// Owl Carousel - CSS
-		// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
-		// 	"output": buildCss
-		// }, {
-		// 	// Owl Carousel - JS
-		// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
-		// 	"output": buildJs
-		// }, {
 		// Jquery
 		input: "./node_modules/jquery/dist/jquery.js",
 		output: buildJs
