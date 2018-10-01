@@ -1,0 +1,44 @@
+// -------------------------------------------------------------
+// ~Box Sizing
+//
+// Adds vendor prefixes
+// -------------------------------------------------------------
+
+/// # Mixin to add vendor prefixes for easy box sizing.
+///
+/// ### Location:
+/// `luscious/lib/_box-sizing.scss`
+///
+/// @param {value} $box-model
+/// @author Jake Bresnehan, Zell Liew
+/// @link https://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+/// @link http://zellwk.com/blog/understanding-css-box-sizing/
+/// @since: v1.0.2
+/// @group Styling
+/// @deprecated Will be deprecated in V2.0
+///
+/// @example scss - SCSS Input
+///  *,
+///  *:after,
+///  *:before {
+///    @include box-sizing(border-box);
+///  }
+///
+/// @example css - CSS Output
+///  *,
+///  *:after,
+///  *:before {
+///    -webkit-box-sizing: border-box;
+///    -moz-box-sizing: border-box;
+///    box-sizing: border-box;
+///  }
+
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model;
+
+	// Safari <= 5
+	-moz-box-sizing: $box-model;
+
+	// Firefox <= 19
+	box-sizing: $box-model;
+}

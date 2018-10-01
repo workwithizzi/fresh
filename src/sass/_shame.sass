@@ -9,78 +9,36 @@
 //
 // ===================================================================
 
-.space100
-	+v(margin, 50px)
-	height: 4px
-	border-top: 1px solid lightseagreen
-	border-bottom: 1px solid lightseagreen
-
-
-
-
-// ------------------------------------------------------------------
-// ------------------------------------------------------------------
-
-
-
-
 // ------------------------------------
 // Intro <p> class
 // ------------------------------------
 // .o-intro
-	// 2DO-YG: Add some basic style for this. Maybe add a condition so that the `o-intro` class isn't even needed? Like: p:first-child or something.
+	// TODO: Add some basic style for this. Maybe add a condition so that the `o-intro` class isn't even needed? Like: p:first-child or something.
 
 
-// ------------------------------------
-// Text Alignment Classes
-// ------------------------------------
-// Left & Left Justify
-.text_left
-	text-align: left
-	&--justify
-		text-align: justify
-		direction: ltr
-
-// Right & Right Justify
-.text_right
-	text-align: right
-	&--justify
-		text-align: justify
-		direction: rtl
-
-// Center & Center Justify
-.text_center
-	text-align: center
-
-	&--justify
-		text-align: justify
-		text-align-last: center
-		// 2DO-LUS: Check on browser support
+body
+	background: #333
 
 
-// ------------------------------------
-// Image Alignment
-// ------------------------------------
-main
-	+container
+// Button mixin tests
 
-// ------------------------------------
-// Image Alignment
-// ------------------------------------
-.img_left
-	float: left
-	margin-right: r(10)
+.btn-default
+	+btn
 
-.img_right
-	float: right
-	margin-left: r(10)
+.btn-primary
+	+btn(primary)
 
-.img_center
-	+h(margin, auto)
-	display: block
+.btn-secondary
+	+btn(secondary)
 
+.btn-block
+	+btn(block)
 
+.btn-block-secondary
+	+btn(block secondary)
 
+.btn-expand
+	+btn(expand)
 
-// ------------------------------------------------------------------
-// ------------------------------------------------------------------
+.btn-expand-secondary
+	+btn(expand secondary)

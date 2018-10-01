@@ -1,0 +1,78 @@
+// misc html5 type elements
+//
+// ------------------------------------------------------------------
+
+
+// ------------------------------------
+// subscript & superscript
+// ------------------------------------
+sub,
+sup
+	// @nrml: Prevent elements from affecting
+	// the line height in all browsers.
+	line-height: 0
+	font-size: ms(-1)
+	position: relative
+	vertical-align: baseline
+
+sub
+	bottom: -0.25rem
+
+sup
+	top: -0.5rem
+
+
+// ------------------------------------
+// raw text elements
+// ------------------------------------
+pre,
+code,
+kbd,
+samp
+	// @nrml: Correct the inheritance and scaling of font size in all browsers.
+	font-family: $font_stack_code
+	// @nrml: Correct the odd `em` font sizing in all browsers.
+	font-size: $base_font_size
+
+pre
+	line-height: vr(base)
+	margin-bottom: vr(-1)
+
+
+// ------------------------------------
+// definitions and description details
+// ------------------------------------
+dd
+	margin: 0 0 0 $base_indent_amount
+
+dfn
+	// @nrml: Add the correct font style in Android 4.3-.
+	font-style: italic
+
+
+// ------------------------------------
+// other inline-text elements
+// ------------------------------------
+mark
+	// @nrml: Add the correct background and color in IE 9-.
+	background-color: $cl_text-highlight
+	color: $cl_bg
+
+
+small
+	// @nrml: Add the correct font size in all browsers.
+	font-size: ms(-1)
+
+
+b,
+strong
+	// @nrml: Add the correct font weight in Chrome, Edge, and Safari.
+	font-weight: bold
+
+
+abbr[title]
+	// @nrml: Remove the bottom border in Chrome 57- and Firefox 39-.
+	border-bottom: none
+	// @nrml: Add the correct text decoration in
+	// Chrome, Edge, IE, Opera, and Safari. ---
+	text-decoration: underline dotted

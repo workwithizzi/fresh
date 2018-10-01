@@ -1,0 +1,100 @@
+// Luscious
+// @since v0.0.1
+//
+// function to get values form $z_index map and utility classes
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+// Info
+
+$info_zindex: info-log(
+	'The `zindex` function/mixin makes it easier to get z-index
+	values from the `$z_index map.
+	To see available keys, use `@debug $z_index`
+	Params:
+	- $key: A key from the $z_index map.
+	Type  : Function or (included) Mixin
+	Alias : `z`'
+);
+
+@mixin __info_zindex {
+	@debug $info_zindex;
+}
+
+// As a function
+@function zindex($key) {
+	@return map_get_check($z_index, $key);
+}
+
+// As a mixin
+@mixin zindex($key) {
+	z-index: map_get_check($z_index, $key);
+}
+
+// Aliases
+@function z($key) {
+	@return map_get_check($z_index, $key);
+}
+
+@mixin __info_z {
+	@include __info_zindex;
+}
+
+@mixin z($key) {
+	z-index: map_get_check($z_index, $key);
+}
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_zindex {
+	@if $output_test_message { @debug "[TESTING] `zindex`"; }
+	@if variable-exists(z_index) {
+		/* `zindex` ------------------------- */
+		/*
+		.test.z_index_function {
+			z-index: zindex(nav);
+		}
+		*/
+		.test.z_index_function {
+			z-index: zindex(nav);
+		}
+		/*
+		.test.z_index_function_alias {
+			z-index: z(nav);
+		}
+		*/
+		.test.z_index_function_alias {
+			z-index: z(nav);
+		}
+		/*
+		.z_index_mixin {
+			@include zindex(nav);
+		}
+		*/
+		.z_index_mixin {
+			@include zindex(nav);
+		}
+		/*
+		.z_index_mixin_alias {
+			@include z(nav);
+		}
+		*/
+		.z_index_mixin_alias {
+			@include z(nav);
+		}
+		/* end `zindex` --------------------- */
+	} @else {
+		@warn "The map `$z_index` isn’t defined or isn't found.";
+	}
+}
+
+// Alias
+@mixin __test_z {
+	@include __test_zindex;
+}

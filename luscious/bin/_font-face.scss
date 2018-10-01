@@ -1,0 +1,105 @@
+// @since: v0.0.5
+
+// Font-Face Mixin
+// Adapted from: https://git.io/fAq0z
+
+// @title: Font-Face Mixin
+// @since: v0.0.5
+// @desc:  A mixin to declare/link fonts for a family with @font-face
+// ===================================================================
+// 2DO-YG: Add info mixins and tests
+
+
+// Font-Face helper function
+@function _ff-str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + _ff-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+
+// Declare accepted font extensions
+$font-types: ( eot woff2 woff ttf svg ) !default;
+
+
+// 2DO-YG: Add info mixin and include it in font-face mixin as well as global info mixin.
+// $name = font family name, $path = relative path to font file,
+// $weight = font weight (can be num or text), style = font-style,
+// $exts = accepted font-type extensions,
+// $svgID = override the default svg id given to the font (must match font file id)
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: $font-types, $svgID: null) {
+	$src: null;
+	@if $exts == "all" { $exts: $font-types; }
+
+	$svgmod: _ff-str-replace($name, " ", "_");
+	@if $svgID {
+		$svgmod: $svgID;
+	}
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + $svgmod
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		@if index($font-types, $ext) {
+			$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+			$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+			$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+		} @else {
+			@warn "The extension '#{$ext}' is not a supported font-type. Available font-types are: #{$font-types}";
+		}
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+
+
+// -------------------------------------------------------------------
+// Examples:
+
+
+// SCSS Inputs:
+// @include font-face( 'Open Sans', 'path/to/font-file', 400, normal);
+//
+// @include font-face( 'Open Sans', 'path/to/font-file', 400, italic, all, OpenSansItalic );
+
+// CSS Outputs
+// @font-face {
+// 	font-family: "Open Sans";
+// 	font-style: normal;
+// 	font-weight: 400;
+// 	src: url("path/to/font-file.eot?") format("eot"),
+// 			 url("path/to/font-file.woff2") format("woff2"),
+// 			 url("path/to/font-file.woff") format("woff"),
+// 			 url("path/to/font-file.ttf") format("truetype"),
+// 			 url("path/to/font-file.svg#Open_Sans") format("svg");
+// 	/* fftest */
+// }
+//
+// @font-face {
+// 	font-family: "Open Sans";
+// 	font-style: italic;
+// 	font-weight: 400;
+// 	src: url("path/to/font-file.eot?") format("eot"),
+// 			 url("path/to/font-file.woff2") format("woff2"),
+// 			 url("path/to/font-file.woff") format("woff"),
+// 			 url("path/to/font-file.ttf") format("truetype"),
+// 			 url("path/to/font-file.svg#OpenSansItalic") format("svg");
+// 	/* fftest */
+// }

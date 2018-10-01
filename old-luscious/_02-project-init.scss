@@ -1,0 +1,207 @@
+// -------------------------------------------------------------
+// ~Project Initialization
+//
+// Core config settings for the project. Everything in this file
+// should either create new settings or override settings.
+// This file should have no dependencies.
+// -------------------------------------------------------------
+// TODO: Add to #sassdoc
+
+/// # Pesticide Debug with Outline
+///
+/// Changing to `true` will add a colored border around all
+/// elements for testing.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @see $pesticide-debug-outline
+/// @link http://pesticide.io/
+/// @group test-tools
+///
+$pesticide-debug-outline: false;
+
+/// # Pesticide Debug with Depth
+///
+/// Changing to `true` will add a shadow around all elements for testing.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group test-tools
+/// @link http://pesticide.io/
+/// @see $pesticide-debug-outline
+///
+$pesticide-debug-depth: false !default;
+
+// -------------------------------------------------------------
+
+/// # Optimize Font Size for Developement
+///
+/// Defaults to `false` which assumes the browswers default font-size of
+/// `100%` or `16px`. Setting to `true` will set the html font-size
+/// to `62.5%` and also changes `$em-base` & `$rem-base` to `10px` for
+/// other project settings.
+///
+/// This setting is designed to be overridden through the
+/// project-config settings.
+///
+/// ### Location:
+/// `01-utilities/_declare-base-font.scss`
+///
+/// @group configuration
+/// @see $optimize-font-size-for-development
+///
+$optimize-font-size-for-development: true !default;
+
+/// # Optimize only the Em-base for Developement
+///
+/// Defaults to `false` which sets the `$em-base` to the browser
+/// default size of `16px`. Setting to `true` will set them to `10px`
+/// but won't effect the actual html font-size. IF you only want to affect
+/// the em-base then use this toggle. If you want to affect both html font-size
+/// and em-base, use the `$optimize-font-size-for-development` toggle.
+///
+/// `$rem-base` declaration is also available and equal to `$em-base`
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group configuration
+/// @see $optimize-em-base-value-but-leave-default-font-size
+///
+$optimize-em-base-value-but-leave-default-font-size: true !default;
+
+// TODO: Test font size argument inside function to see if it'll run on sassdoc
+
+// -------------------------------------------------------------
+
+/// # Base Line-Height
+///
+/// Sets up your base line-height for the project.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group configuration
+/// @see $base-line-height
+///
+$base-line-height: 1.4 !default;
+
+// -------------------------------------------------------------
+
+/// # Vertical Rhythm Declaration
+///
+/// Declares your unit for calculating vertical rhythm within your
+/// project. Used for function vr() and mixin vvr().
+/// Acceptable units are `rem` and `em.`
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group configuration
+///
+/// @see {function} vr()
+///
+$pick-em-or-rem-for-vertical-rhythm-unit: em !default;
+
+// -------------------------------------------------------------
+
+/// # Base Site Padding
+///
+/// Sets up your default padding. I mostly use this for my outer-containers.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group configuration
+///
+$base-site-pad: 5% !default;
+
+// -------------------------------------------------------------
+
+/// # Default Animation Duration
+///
+/// Defaults to `550ms`. Used in various mixins/funcitons.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group configuration
+///
+$base-duration: 550ms !default;
+
+/// # Default Animation Timing
+///
+/// Defaults to `ease-in-out`. Used in various mixins/funcitons.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group configuration
+///
+$base-timing: ease-in-out !default;
+
+/// # Default Animation Delay
+///
+/// Defaults to `500ms`. Used in various mixins/funcitons.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @group configuration
+///
+$base-delay: 500ms !default;
+
+/// # Default Transistion
+///
+/// Sets up your default transistion string. Used in various mixins/funcitons.
+///
+/// ### Location:
+/// `01-utilities/_02-project-init.sass`
+///
+/// @require {variable} $base-duration
+/// @require {variable} $base-timing
+/// @group configuration
+///
+$base-transition: all $base-duration $base-timing !default;
+
+// -------------------------------------------------------------
+
+// # Defines Global Prefixes
+//
+// Set to true to turn on prefixing within the Bourbon's prefixer mixin.
+//
+$prefix-for-webkit: false !default;
+$prefix-for-mozilla: false !default;
+$prefix-for-microsoft: false !default;
+$prefix-for-opera: false !default;
+$prefix-for-spec: false !default;
+
+// =============================================================================
+
+// -------------------------------------------------------------
+// DO NOT MODIFY PER/PROJECT
+// -------------------------------------------------------------
+// # Optimize font-size settings arguments.
+// HTML Font Size
+$traditional-size: 100%;
+$optimized-size: 62.5%;
+
+// Default html font-size (100%) and em-base (16px)
+$base-html-font-size: $traditional-size !default;
+$em-base: 16px !default;
+
+// Base font-size Argument
+@if $optimize-font-size-for-development == true {
+	$base-html-font-size: $optimized-size;
+	$em-base: 10px;
+}
+
+// Just for em-base Argument
+@if $optimize-em-base-value-but-leave-default-font-size == true {
+	$em-base: 10px;
+}
+
+// Just incase you actually write/need it.
+$rem-base: $em-base !default;

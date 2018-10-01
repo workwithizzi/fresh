@@ -1,0 +1,65 @@
+// Luscious
+// @since v0.0.1
+//
+// Description
+//
+// sass-lint:disable class-name-format
+// ===================================================================
+
+
+// # Center Block
+//
+// A quick way to make an element block level and center
+// it within it's parent.
+//
+// @example SCSS - Input
+//   .element {
+//     @include centerblock;
+//   }
+//
+// @example CSS - Output
+//   .element {
+//     display: block;
+//     margin-right: auto;
+//     margin-left: auto;
+//   }
+//
+
+$info_centerblock: info-log(
+	'The `centerblock` mixin sets `display: block;`, and left
+	and right margins to auto.
+	Type  : Included Mixin
+	Params: none'
+);
+
+@mixin __info_centerblock {
+	@debug $info_centerblock;
+}
+
+@mixin centerblock($info: null) {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+
+	@if $info { @debug $info_centerblock; }
+}
+
+
+
+// ===================================================================
+// Tests
+// ===================================================================
+
+@mixin __test_centerblock {
+	@if $output_test_message { @debug "[TESTING] `centerblock`"; }
+	/* `centerblock` -------------------- */
+	/*
+	.test.centerblock {
+		@include centerblock;
+	}
+	*/
+	.test.centerblock {
+		@include centerblock;
+	}
+	/* End `centerblock` ---------------- */
+}

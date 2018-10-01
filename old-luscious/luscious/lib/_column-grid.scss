@@ -1,0 +1,588 @@
+// -------------------------------------------------------------
+// ~Skeleton Grid
+// -------------------------------------------------------------
+
+$skeleton-width: 100% !default;
+$skeleton-max-width: 100% !default;
+$skeleton-margin: 0 auto !default;
+$skeleton-padding: 0 !default;
+$grid-mq: $xs !default;
+
+// min-width 600px
+
+////
+/// @author [Yisrael Grimes](http://yisraelgrimes.com/)
+/// @since v1.0.2
+/// @group Layout
+////
+
+///
+/// # Skeleton Row
+///
+/// Simple utility placeholder to use if you need to wrap rows around
+/// columns. You can control the row width and max-width by changing
+/// the `$skeleton-width` and `$skeleton-max-width` variables in
+/// the settings file.
+///
+/// ### Location:
+/// `luscious/lib/_column-grid.scss`
+///
+/// @requires {variable} $skeleton-width [100%] Change total width
+/// from settings file.
+/// @requires {variable} $skeleton-max-width [100%] Change total max-width
+/// from settings file.
+/// @requires {mixin} lus-clearfix Clearfix mixin
+///
+/// @example scss - SCSS Input
+///   .element {
+///     @extend %skeleton-row
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     width: 100%; /* Assumes $skeleton-width is 100%
+///     max-width: 100%; /* Assumes $skeleton-max-width is 100%
+///     margin: 0 auto;
+///     box-sizing: border-box;
+///     @include lus-clearfix;
+///   }
+///
+///   .element:before, .div:after {
+///     content: "";
+///     display: table;
+///   }
+///
+///   .element:after {
+///     clear: both;
+///   }
+
+// %skeleton-row {
+// 	width: $skeleton-width;
+// 	max-width: $skeleton-max-width;
+// 	margin: 0 auto;
+// 	box-sizing: border-box;
+// 	@include lus-clearfix;
+// }
+
+@mixin skeleton-row {
+	width: $skeleton-width;
+	max-width: $skeleton-max-width;
+	margin: $skeleton-margin;
+	padding: $skeleton-padding;
+	box-sizing: border-box;
+
+	@include lus-clearfix;
+}
+
+%skeleton-row {
+	@include skeleton-row;
+}
+
+///
+/// # Skeleton Grid
+///
+/// 12 column grid system based on [Skeleton CSS.](http://getskeleton.com/)
+/// Instead of adding columns through the through the html, this version
+/// is completely css/sass based using variables. Columns are all percentage
+/// based. Each column has a `max-width` of `100%` and a `margin-left`
+/// of `4%` (except for the first column.)
+///
+/// Any element that comes after a comlumn will need to clear it's floats.
+/// Parent elements will need a clearfix.
+///
+/// ### Location:
+/// `luscious/lib/_column-grid.scss`
+///
+/// @requires {mixin} mq($xs) min-width 600px media query with breakpoint-sass
+///
+/// @example scss - SCSS Input
+///   .element-one {
+///     @extend %col-3; /* Three columns wide
+///     @extend %col-first; /* First column in the row
+///   }
+///
+///   .element-two {
+///     @extend %col-9; /* Nine columns wide
+///   }
+///
+/// @example css - CSS Output
+///   .element-one,
+///   .element-two {
+///     width: 100%;
+///     margin-right: auto;
+///     margin-left: auto;
+///   }
+///
+///   @media (min-width: 600px) {
+///     .element-one,
+///     .element-two {
+///       float: left;
+///       margin-left: 4%;
+///     }
+///     .element-one {
+///       margin-left: 0; // from %col-first
+///       width: 4.66666666667%;
+///     }
+///     .element-two {
+///       width: 74.0%;
+///     }
+///   }
+///
+/// @ignore Setup Column
+
+%skeleton-grid {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+
+	@include mq($grid-mq) {
+		float: left;
+		margin-left: 4%;
+	}
+}
+
+@mixin skeleton-grid {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+
+	@include mq($grid-mq) {
+		float: left;
+		margin-left: 4%;
+	}
+}
+
+///
+/// # Available Skeleton Colums
+///
+/// If you need more info on how these work, checkout
+/// the "Skeleton Grid" section.
+///
+/// | Name                   | Column Width       | Width  |
+/// | :--------------------- | :----------------- | -----: |
+/// | `%col-1`               | = 1                | 5%     |
+/// | `%col-2`               | = 2                | 13%    |
+/// | `%col-3`               | = 3                | 22%    |
+/// | `%col-4`               | = 4                | 30%    |
+/// | `%col-5`               | = 5                | 39%    |
+/// | `%col-6`               | = 6                | 48%    |
+/// | `%col-7`               | = 7                | 57%    |
+/// | `%col-8`               | = 8                | 65%    |
+/// | `%col-9`               | = 9                | 74%    |
+/// | `%col-10`              | = 10               | 83%    |
+/// | `%col-11`              | = 11               | 91%    |
+/// | `%col-12`              | = Full Width       | 100%   |
+/// | Fractions              |                    |        |
+/// | `%col-one-third`       | = 1/3 of grid      | 31%    |
+/// | `%col-two-third`       | = 2/3 of grid      | 65%    |
+/// | `%col-one-half`        | = 1/2 of grid      | 48%    |
+/// | Modifyers              | `margin-left: 0;`  |        |
+/// | `%col-first`           | on 1st Column      |        |
+///
+/// ### Location:
+/// `luscious/lib/_column-grid.scss`
+///
+/// @requires {placeholder} %skeleton-grid Core-reusable column styles.
+/// @requires {mixin} mq($xs) min-width 600px media query with breakpoint-sass
+///
+/// @example css
+/// /* See Skeleton Grid Section for examples.
+///
+
+%skeleton-columns {
+	/* Ignore */
+}
+
+// @ignore Column Widths
+%col-1 {
+	@extend %skeleton-grid;
+}
+
+%col-2 {
+	@extend %skeleton-grid;
+}
+
+%col-3 {
+	@extend %skeleton-grid;
+}
+
+%col-4 {
+	@extend %skeleton-grid;
+}
+
+%col-5 {
+	@extend %skeleton-grid;
+}
+
+%col-6 {
+	@extend %skeleton-grid;
+}
+
+%col-7 {
+	@extend %skeleton-grid;
+}
+
+%col-8 {
+	@extend %skeleton-grid;
+}
+
+%col-9 {
+	@extend %skeleton-grid;
+}
+
+%col-10 {
+	@extend %skeleton-grid;
+}
+
+%col-11 {
+	@extend %skeleton-grid;
+}
+
+%col-12 {
+	@extend %skeleton-grid;
+}
+
+%col-one-third {
+	@extend %skeleton-grid;
+}
+
+%col-two-third,
+%col-two-thirds {
+	@extend %skeleton-grid;
+}
+
+%col-half,
+%col-one-half {
+	@extend %skeleton-grid;
+}
+
+///
+/// @ignore
+///
+
+@include mq($grid-mq) {
+	%first-col,
+	%col-first {
+		margin-left: 0;
+	}
+
+	%col-1 {
+		width: 4.66666666667%;
+	}
+
+	%col-2 {
+		width: 13.3333333333%;
+	}
+
+	%col-3 {
+		width: 22%;
+	}
+
+	%col-4 {
+		width: 30.6666666667%;
+	}
+
+	%col-5 {
+		width: 39.3333333333%;
+	}
+
+	%col-6 {
+		width: 48%;
+	}
+
+	%col-7 {
+		width: 56.6666666667%;
+	}
+
+	%col-8 {
+		width: 65.3333333333%;
+	}
+
+	%col-9 {
+		width: 74.0%;
+	}
+
+	%col-10 {
+		width: 82.6666666667%;
+	}
+
+	%col-11 {
+		width: 91.3333333333%;
+	}
+
+	%col-12 {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	%col-one-third {
+		width: 30.6666666667%;
+	}
+
+	%col-two-third,
+	%col-two-thirds {
+		width: 65.3333333333%;
+	}
+
+	%col-half,
+	%col-one-half {
+		width: 48%;
+	}
+
+	///
+	/// # Skeleton Column Offsets
+	///
+	/// The offsets section is for when you want to use a columns that total less than 12, but want to leave the remaining grid blank.
+	///
+	/// ### Right Offset Columns
+	///
+	/// | Name                       | Column Width          | Margin |
+	/// | :------------------------- | :-------------------- | -----: |
+	/// | `%col-1-offset-r`          | = 1   pushed right    | 95%    |
+	/// | `%col-2-offset-r`          | = 2   pushed right    | 87%    |
+	/// | `%col-3-offset-r`          | = 3   pushed right    | 78%    |
+	/// | `%col-4-offset-r`          | = 4   pushed right    | 69%    |
+	/// | `%col-5-offset-r`          | = 5   pushed right    | 61%    |
+	/// | `%col-6-offset-r`          | = 6   pushed right    | 52%    |
+	/// | `%col-7-offset-r`          | = 7   pushed right    | 43%    |
+	/// | `%col-8-offset-r`          | = 8   pushed right    | 35%    |
+	/// | `%col-9-offset-r`          | = 9   pushed right    | 26%    |
+	/// | `%col-10-offset-r`         | = 10  pushed right    | 17%    |
+	/// | `%col-11-offset-r`         | = 11  pushed right    | 9%     |
+	/// | `%col-two-third-offset-r,` |                       |        |
+	/// | `%col-one-third-offset-r`  | = 1/3 pushed right    | 35%    |
+	/// | `%col-half-offset-r,`      |                       |        |
+	/// | `%col-two-thirds-offset-r` | = 2/3 pushed right    | 69%    |
+	/// | `%col-one-half-offset-r`   | = 6   pushed right    | 52%    |
+	///
+	/// ### Left Offset Columns
+	///
+	/// | Name                       | Column Width         | Margin |
+	/// | :------------------------- | :------------------- | -----: |
+	/// | `%col-1-offset-L`          | = 1   pushed left    | 95%    |
+	/// | `%col-2-offset-L`          | = 2   pushed left    | 87%    |
+	/// | `%col-3-offset-L`          | = 3   pushed left    | 78%    |
+	/// | `%col-4-offset-L`          | = 4   pushed left    | 69%    |
+	/// | `%col-5-offset-L`          | = 5   pushed left    | 61%    |
+	/// | `%col-6-offset-L`          | = 6   pushed left    | 52%    |
+	/// | `%col-7-offset-L`          | = 7   pushed left    | 43%    |
+	/// | `%col-8-offset-L`          | = 8   pushed left    | 35%    |
+	/// | `%col-9-offset-L`          | = 9   pushed left    | 26%    |
+	/// | `%col-10-offset-L`         | = 10  pushed left    | 17%    |
+	/// | `%col-11-offset-L`         | = 11  pushed left    | 9%     |
+	/// | `%col-two-third-offset-L,` |                      |        |
+	/// | `%col-one-third-offset-L`  | = 1/3 pushed left    | 35%    |
+	/// | `%col-half-offset-L,`      |                      |        |
+	/// | `%col-two-thirds-offset-L` | = 2/3 pushed left    | 69%    |
+	/// | `%col-one-half-offset-L`   | = 6   pushed left    | 52%    |
+	///
+	///
+	/// ### Location:
+	/// `luscious/lib/_column-grid.scss`
+	///
+	/// @example scss - SCSS Input
+	///   .element-one {
+	///     @extend %col-first;       /* First column in the row
+	///     @extend %col-4-offset-L;  /* 4 Column width with no siblings
+	///   }
+	///
+	///   .element-two {
+	///     @extend %col-9-offset-r;  /* 9 Column width with no siblings
+	///   }
+	///
+	/// @example css - CSS Output
+	///   @media (min-width: 600px) {
+	///     .element-one {
+	///       margin-left: 0;
+	///       margin-right: 69.3333333333%;
+	///     }
+	///
+	///     .element-two {
+	///       margin-left: 26%;
+	///     }
+	///   } /* End media query */
+
+	%skeleton-column-offset {
+		/* Ignore */
+	}
+
+	// @ignore Offsets Widths
+	%col-1-offset-r {
+		margin-left: 95.3333333333%;
+	}
+
+	%col-2-offset-r {
+		margin-left: 86.6666666667%;
+	}
+
+	%col-3-offset-r {
+		margin-left: 78.0%;
+	}
+
+	%col-4-offset-r {
+		margin-left: 69.3333333333%;
+	}
+
+
+	%col-5-offset-r {
+		margin-left: 60.6666666667%;
+	}
+
+	%col-6-offset-r {
+		margin-left: 52%;
+	}
+
+	%col-7-offset-r {
+		margin-left: 43.3333333333%;
+	}
+
+	%col-8-offset-r {
+		margin-left: 34.6666666667%;
+	}
+
+	%col-9-offset-r {
+		margin-left: 26%;
+	}
+
+	%col-10-offset-r {
+		margin-left: 17.3333333333%;
+	}
+
+	%col-11-offset-r {
+		margin-left: 8.66666666667%;
+	}
+
+	%col-one-third-offset-r {
+		margin-left: 34.6666666667%;
+	}
+
+	%col-two-third-offset-r,
+	%col-two-thirds-offset-r {
+		margin-left: 69.3333333333%;
+	}
+
+	%col-half-offset-r,
+	%col-one-half-offset-r {
+		margin-left: 52%;
+	}
+
+	// Left Offsets
+	%col-1-offset-L {
+		margin-right: 95.3333333333%;
+	}
+
+	%col-2-offset-L {
+		margin-right: 86.6666666667%;
+	}
+
+	%col-3-offset-L {
+		margin-right: 78.0%;
+	}
+
+	%col-4-offset-L {
+		margin-right: 69.3333333333%;
+	}
+
+	%col-5-offset-L {
+		margin-right: 60.6666666667%;
+	}
+
+	%col-6-offset-L {
+		margin-right: 52%;
+	}
+
+	%col-7-offset-L {
+		margin-right: 43.3333333333%;
+	}
+
+	%col-8-offset-L {
+		margin-right: 34.6666666667%;
+	}
+
+	%col-9-offset-L {
+		margin-right: 26%;
+	}
+
+	%col-10-offset-L {
+		margin-right: 17.3333333333%;
+	}
+
+	%col-11-offset-L {
+		margin-right: 8.66666666667%;
+	}
+
+	%col-one-third-offset-L {
+		margin-right: 34.6666666667%;
+	}
+
+	%col-two-third-offset-L,
+	%col-two-thirds-offset-L {
+		margin-right: 69.3333333333%;
+	}
+
+	%col-half-offset-L,
+	%col-one-half-offset-L {
+		margin-right: 52%;
+	}
+}
+
+
+@mixin col-4-offset-L {
+	@include mq($grid-mq) {
+		margin-right: 69.3333333333%;
+	}
+}
+
+@mixin col-9-offset-r {
+	@include mq($grid-mq) {
+		margin-left: 26%;
+	}
+}
+
+
+
+
+
+
+
+/* End Media Query */
+
+@mixin col-4 {
+	@include skeleton-grid;
+
+	@include mq($grid-mq) {
+		width: 30.6666666667%;
+	}
+}
+
+@mixin col-6 {
+	@include skeleton-grid;
+
+	@include mq($grid-mq) {
+		width: 48%;
+	}
+}
+
+@mixin col-first {
+	@include mq($grid-mq) {
+		margin-left: 0 !important;
+	}
+}
+
+// Alias
+@mixin first-col {
+	@include col-first;
+}
+
+// Utility Class
+.col-first {
+	@include col-first;
+}
+
+// -------------------------------------------------------------
+
+// @import "column-grid-mix";
+
+// -------------------------------------------------------------
+
+// TODO: Replace this file and the config file in ^Lus--

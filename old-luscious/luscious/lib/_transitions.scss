@@ -1,0 +1,47 @@
+// -------------------------------------------------------------
+// ~Transitions
+//
+// Adds vendor prefixes
+// -------------------------------------------------------------
+
+/// # Cross Browser Transistions
+///
+/// Adds vendor prefixes to standard transisions.
+///
+/// ### Location:
+/// `luscious/lib/_transitions.scss`
+///
+/// @param {string} $args - Enter transisition properties. (Ex: color .4s ease)
+/// @author Sebastian Ekström
+/// @link http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+/// @since v1.0.0
+/// @group styling
+/// @deprecated Will be deprecated by v2.0
+///
+/// @example scss - SCSS Input
+///   .element {
+///     color: black;
+///     @include lus-transition(color .4s ease);
+///
+///     &:hover {
+///       color: white;
+///     }
+///
+/// @example css - CSS Output
+///   .element {
+///     color: black;
+///     -webkit-transition: color 0.4s ease;
+///     transition: color 0.4s ease;
+///   }
+///
+///   .element:hover {
+///     color: white;
+///   }
+
+@mixin lus-transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}

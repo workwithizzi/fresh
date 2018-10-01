@@ -9,7 +9,7 @@ block vars
 	- var bodyClass = 'page--home';
 
 block title
-	title !{SITE.meta.title} | !{PGHOME.title}
+	title !{SITE.meta.title} | !{PGHOME.meta.title}
 
 
 //- -----------------------------------
@@ -19,22 +19,18 @@ block content
 	//- Feel free to remove everything below this
 	//- and start doing your own thing.
 
-	h1 #{SITE.meta.title}!
+	h1 #{PGHOME.title}!
 		//- If you're not using gulp-data, You can remove these variables
 
-	h2.
-		A modern way to create responsive, accessible, and maintainable front-end web projects.
+	h2 #{PGHOME.subtitle}
 
-	p.
-		Built using Pug, SASS (with Luscious), and Javascript. Compiled with Gulp and pulled together with Yarn.
+	p #{PGHOME.description}
 
-	img(src='images/gulp.svg', alt='Gulp Logo')
-
-	img(src='images/sass.svg', alt='Sass Logo')
-
-	img(src='images/pug.svg', alt='Pug Logo')
-
-	img(src='images/yarn.svg', alt='Yarn Logo')
+	div
+		img(src='images/gulp.svg', alt='Gulp Logo')
+		img(src='images/sass.svg', alt='Sass Logo')
+		img(src='images/pug.svg', alt='Pug Logo')
+		img(src='images/yarn.svg', alt='Yarn Logo')
 
 	hr
 
@@ -44,3 +40,66 @@ block content
 		li: a(href='./demo-text.html') Text Elements
 		li: a(href='./demo-forms.html') Form Elements
 		li: a(href='./demo-media.html') Media Elements
+
+	h2 Test Some Button Stuff
+
+	button Button Tag
+
+	.btn-default +btn
+
+	.btn-primary +btn(primary)
+
+	.btn-secondary +btn(secondary)
+
+	hr
+
+	h2 Test out Block Butonns
+
+	.btn-block +btn(block)
+
+	.btn-block-secondary +btn(block secondary)
+
+	hr
+
+	h2 Test our Expanded Buttons
+
+	.btn-expanded +btn(expand)
+
+	.btn-expanded-secondary +btn(expand secondary)
+
+	//-
+	//- .btn-block-default Default Block
+	//-
+	//- .btn-primary-block Primary Block
+	//-
+	//- .btn-block-primary Block Primary
+	//-
+	//- .btn-secondary-block Secondary Block
+	//-
+	//- .btn-block-secondary Block Secondary
+	//-
+	//- .btn-expand-default Default Expand
+	//-
+	//- .btn-primary-expand Primary Expand
+	//-
+	//- .btn-expand-primary Expand Primary
+	//-
+	//- .btn-disable-default Default Disable
+	//-
+	//- .btn-primary-disable Primary Disable
+	//-
+	//- .btn-disable-primary Disable Primary
+	//-
+	//- .btn-link Default Link
+	//-
+	//- .btn-link-block Link Block
+	//-
+	//- .btn-link-block-disable Link Block Disabled
+	//-
+	//- .btn-block-secondary-disabled Block Secondary Disable
+	//-
+	//- .btn-default-hollow Default Hollow
+	//-
+	//- .btn-primary-hollow Primary Hollow
+	//-
+	//- .btn-secondary-hollow Secondary Hollow

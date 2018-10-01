@@ -1,0 +1,94 @@
+// -------------------------------------------------------------
+// ~Tint-Shade-Tone
+// -------------------------------------------------------------
+
+////
+/// @since v1.0.2
+/// @group Color
+////
+
+/// # Tint
+///
+/// Mixes a color with white.
+///
+/// ### Location:
+/// `luscious/lib/_tint-shade-tone.scss`
+///
+/// @param {Color} $color
+/// @param {Number (Percentage)} $percent
+///   The amount of white to be mixed in.
+/// @author thoughtbot
+/// @link http://bourbon.io/docs/#tint-shade
+///
+/// @example scss - SCSS Input
+///   .element {
+///     background-color: tint(#6ecaa6, 40%);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-color: #a8dfc9;
+///   }
+///
+/// @return {Color}
+
+@function tint($color, $percent) {
+	@return mix(#fff, $color, $percent);
+}
+
+/// # Shade
+///
+/// Mixes a color with black.
+///
+/// ### Location:
+/// `luscious/lib/_tint-shade-tone.scss`
+///
+/// @param {Color} $color
+/// @param {Number (Percentage)} $percent
+///   The amount of black to be mixed in.
+/// @author thoughtbot
+/// @link http://bourbon.io/docs/#tint-shade
+///
+/// @example scss - SCSS Input
+///   .element {
+///     background-color: shade(#ffbb52, 60%);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-color: #664a20;
+///   }
+///
+/// @return {Color}
+
+@function shade($color, $percent) {
+	@return mix(#000, $color, $percent);
+}
+
+/// # Tone
+///
+/// Mixes a color with grey.
+///
+/// ### Location:
+/// `luscious/lib/_tint-shade-tone.scss`
+///
+/// @param {Color} $color
+/// @param {Number (Percentage)} $percent
+///   The amount of grey to be mixed in.
+/// @author [Yisrael Grimes](http://yisraelgrimes.com)
+///
+/// @example scss - SCSS Input
+///   .element {
+///     background-color: tone(#ffbb52, 60%);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-color: #b3986e;
+///   }
+///
+/// @return {Color}
+
+@function tone($color, $percent) {
+	@return mix(#808080, $color, $percent);
+}

@@ -1,0 +1,263 @@
+// Luscious
+// @since v0.0.4
+//
+// Luscious Settings
+// ===================================================================
+
+// Contents
+// 1. Developement
+// 2. Base
+// 3. Colors
+// 4. Animation
+// 5. Font Stacks
+// 6. Breakpoints
+// 7. Z-index Map
+// 8. Asset Paths
+// 9. Icons
+// 10. Grid
+// 11. Buttons
+// 12. Accessibility
+// 13. Hamburger Menus
+
+// -------------------------------------------------------------------
+
+
+// -------------------------------------
+// 1. Developement
+// -------------------------------------
+$pesticide_debug_outlines: false !default;
+$pesticide_debug_depth:    false !default;
+$output_dev_color_classes: false !default;
+
+
+// -------------------------------------
+// 2. Base
+// -------------------------------------
+// HTML Root Font Size (in percentages)
+// Set's up your $rembase. 62.5% == 10px, 100% == 16px
+$document_font_size: 62.5% !default;
+$rembase: 10 !default;
+
+// Baseline Height
+// Used for vertical rhythm and baseline grids
+$base_line_height: 1.5 !default;
+
+// Base Font-Size
+$base_font_size: 1.6rem !default;
+
+
+// -------------------------------------
+// 3. Colors
+// -------------------------------------
+// Base Colors (other colors are built on top of these)
+$cl_primary   : #546e7a !default;
+$cl_secondary : #00b8d4 !default;
+$cl_black     : #263238 !default;
+$cl_white     : #fafbfc !default;
+$cl_success   : #66bb6a !default;
+$cl_warning   : #ffa000 !default;
+$cl_alert     : #ef5350 !default;
+
+// UI Colors
+$cl_bg    : $cl_white                    !default;
+$cl_body       : $cl_black                    !default;
+$cl_border     : lighten($cl_black, 30% )     !default;
+$cl_link       : $cl_secondary                !default;
+$cl_link-hover : darken( $cl_secondary, 15% ) !default;
+$cl_nav-bg     : $cl_primary                  !default;
+$cl_nav-text        : $cl_white                    !default;
+$cl_nav-active : $cl_secondary                !default;
+$cl_nav_hover  : darken($cl_nav-text, 15% )        !default;
+
+
+// ------------------------------------
+// 4. Animation
+// ------------------------------------
+
+// Default Timing Function
+$base_timing: ease-in-out !default;
+
+// Default Delay Time
+$base_delay: 250ms !default;
+
+// Default Animation Combined
+$base_animation: all $base_delay $base_timing !default;
+
+
+// -------------------------------------
+// 5. Font Stacks
+// -------------------------------------
+// Sans-Serif Font Stack
+$font_stack_sans: ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif,) !default;
+
+// Serif Font Stack
+$font_stack_serif: ('Georgia', 'Times', 'Times New Roman', serif,) !default;
+
+// Monospace Font Stack
+$font_stack_mono: ('Courier New', 'Courier', 'Lucida Typewriter', monospace,) !default;
+
+// ----------------
+// UI Font-Stacks
+$font_stack_heading: (
+	$font_stack_sans,
+) !default;
+
+$font_stack_body: (
+	$font_stack_sans,
+) !default;
+
+$font_stack_code: $font_stack_mono !default;
+
+
+// -------------------------------------
+// 6. Breakpoints
+// -------------------------------------
+$breakpoints: (
+	xs : 37.437em, // 599px
+	sm : 37.5em ,  // 600px
+	md : 61.875em, // 990px
+	lg : 75em,     // 1200px
+	xl : 112.5em,  // 1800px
+) !default;
+
+
+// -------------------------------------
+// 7. Z-index Map
+// -------------------------------------
+$z_index: (
+	nosebleed    : 9999,
+	tooltip      : 600,
+	popup        : 500,
+	popup_bg     : 400,
+	nav          : 300,
+	footer       : 200,
+	scrim        : 100,
+	overlay_base : 100,
+	base         : 1,
+	bottomless   : -9999,
+) !default;
+
+
+// -------------------------------------
+// 8. Asset Paths
+// -------------------------------------
+// Path to the root images & fonts folders
+$img_base_path: '../images' !default;
+$font_base_path: '../fonts' !default;
+
+
+// -------------------------------------
+// 9. Icons
+// -------------------------------------
+// Font-Awesome
+$fa-font-path:        $font_base_path  !default;
+$fa-font-size-base:   1.4rem           !default;
+$fa-line-height-base: 1                !default;
+$fa-css-prefix:       fa               !default;
+$fa-border-color:     $cl_white        !default;
+$fa-inverse:          $cl_white        !default;
+$fa-li-width:         (30em / 14)      !default;
+
+
+// -------------------------------------
+// 10. Grid
+// -------------------------------------
+$susy: (
+	gutter-position: after,
+	container: auto,
+	container-position: center,
+	columns: 12,
+	gutters: .25,
+	global-box-sizing: border-box,
+	last-flow: to,
+) !default;
+
+
+// -------------------------------------
+// 11. Buttons
+// -------------------------------------
+// Decide if buttons are solid or hollow by defualt
+$button_fill: solid !default;
+
+// Default border-width for buttons
+$button_border_width: .1rem !default;
+
+// Default hover style
+$button_hover: lighten !default; // Sass color functions: goo.gl/Qdc0rM
+$button_hover_amount: 30% !default;
+
+// Hollow Button
+$button_hollow_border_width: $button_border_width !default;
+// $button_hollow_hover: -50%;
+
+// Disabled Buttons
+$button_disabled_opacity: .4 !default;
+
+// Set default button to primary
+$button_default_style: primary !default;
+
+$button_styles: (
+	default: (
+		width: auto,
+		margin: .4rem,
+		padding: .8rem,
+		font-family: inherit,
+		font-size: 1rem,
+		font-weight: 600,
+		line-height: 1,
+		text-decoration: none,
+		text-transform: none,
+		text-align: center,
+		transition: all 250ms ease-in-out,
+		border-width: $button_border_width,
+		border-style: solid,
+		border-color: transparent,
+		border-radius: 0px,
+	),
+	primary: (
+		color: $cl_white,
+		background-color: $cl_primary,
+	),
+	secondary: (
+		color: $cl_white,
+		background-color: $cl_secondary,
+	),
+	light: (
+		color: $cl_black,
+		background-color: $cl_white,
+		border-color: $cl_black,
+	),
+	dark: (
+		color: $cl_white,
+		background-color: $cl_black,
+	),
+) !default;
+
+
+// ------------------------------------
+// 12. Accessibility
+// ------------------------------------
+// Colors
+$a11y_attention: darken(red, 5%)                  !default;
+$a11y_light: #ffffff                              !default;
+// Z-index
+$a11y_zindex: map-get($z_index, nosebleed) + 1000 !default;
+
+
+// -------------------------------------
+// 13. Hamburger Menus
+// -------------------------------------
+// Sizes (in rem)
+$burger-padding-x                       : 1.5rem !default;
+$burger-padding-y                       : 1.5rem !default;
+$burger-layer-width                     : 4rem   !default;
+$burger-layer-height                    : .4rem  !default;
+$burger-layer-spacing                   : .6rem  !default;
+$burger-layer-border-radius             : .4rem  !default;
+
+// Settings
+$burger-layer-color                     : $cl_nav-text     !default;
+$burger-background-color                : transparent !default;
+$burger-hover-opacity                   : 0.7         !default;
+$burger-hover-transition-duration       : 0.15s       !default;
+$burger-hover-transition-timing-function: linear      !default;
