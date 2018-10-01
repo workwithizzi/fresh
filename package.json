@@ -13,10 +13,12 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp initial:help"
+		"install": "gulp initial:help",
+		"build-ssg": "npx eleventy"
 	},
 	"prettier": {},
 	"devDependencies": {
+		"@11ty/eleventy": "^0.5.2",
 		"archy": "^1.0.0",
 		"babel-eslint": "^10.0.1",
 		"browser-sync": "^2.21.0",
@@ -40,6 +42,8 @@
 		"gulp-imagemin": "^4.0.0",
 		"gulp-jshint": "^2.0.4",
 		"gulp-map": "^0.0.2",
+		"gulp-markdown": "^3.0.0",
+		"gulp-markdown-to-json": "^1.1.0",
 		"gulp-merge-json": "^1.2.1",
 		"gulp-open": "^3.0.1",
 		"gulp-plugin-prettier": "^1.1.0",
@@ -62,6 +66,7 @@
 		"jshint-stylish-ex": "^0.2.0",
 		"jstransformer-markdown-it": "^2.0.0",
 		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.5",
+		"marked": "^0.5.0",
 		"normalize.css": "^8.0.0",
 		"path": "^0.12.7",
 		"prettier": "1.14.2",

@@ -28,9 +28,9 @@
 // $base_grid_container-spread: 'wide' !default;
 
 // ===================================================================
-// This map is used just to override the Susy map in their library
-// so we can make the columns a variable and control it from the
-// Luscious settings and ultimately your project settings file.
+// This map is used just to override the Susy map in their library.
+// All the settings turned into variables and controled from the project settings file.
+// The variables declared in Luscious settings file which mirror the project settings file by default.
 // ===================================================================
 
 $susy: (
