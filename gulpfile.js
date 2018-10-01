@@ -213,41 +213,42 @@ var vendors = [
 // ------------------------------------------------------------------
 // Plugins
 // ------------------------------------------------------------------
-var g = require("gulp");
-(sass = require("gulp-sass")),
-	(prefix = require("gulp-autoprefixer")),
-	(sassLint = require("gulp-sass-lint")),
-	(cssnano = require("gulp-cssnano")),
-	(jshint = require("gulp-jshint")),
-	(uglify = require("gulp-uglify")),
-	(beautify = require("gulp-beautify")),
-	(sourcemaps = require("gulp-sourcemaps")),
-	(htmlmin = require("gulp-htmlmin")),
-	(html2pug = require("gulp-html2pug")),
-	(prettyPug = require("gulp-pug-beautify")),
-	(puglint = require("gulp-pug-lint")),
-	(pug = require("gulp-pug")),
-	(data = require("gulp-data")),
-	(path = require("path")),
-	(merge = require("gulp-merge-json")),
-	(imagemin = require("gulp-imagemin")),
-	(cache = require("gulp-cache")),
-	(fs = require("fs-extra")),
-	(useref = require("gulp-useref")),
-	(gulpif = require("gulp-if")),
-	(browserSync = require("browser-sync")),
-	(runSequence = require("run-sequence")),
-	(rename = require("gulp-rename")),
-	(del = require("del")),
-	(usage = require("gulp-help-doc")),
-	(open = require("gulp-open")),
-	(plumber = require("gulp-plumber")),
-	(prettierEslint = require("gulp-prettier-eslint")),
-	(run = require("gulp-run")),
+var g = require("gulp"),
+	sass = require("gulp-sass"),
+	sassLint = require("gulp-sass-lint"),
+	prefix = require("gulp-autoprefixer"),
+	cssnano = require("gulp-cssnano"),
+	jshint = require("gulp-jshint"),
+	uglify = require("gulp-uglify"),
+	beautify = require("gulp-beautify"),
+	sourcemaps = require("gulp-sourcemaps"),
+	htmlmin = require("gulp-htmlmin"),
+	html2pug = require("gulp-html2pug"),
+	prettyPug = require("gulp-pug-beautify"),
+	puglint = require("gulp-pug-lint"),
+	pug = require("gulp-pug"),
+	data = require("gulp-data"),
+	path = require("path"),
+	merge = require("gulp-merge-json"),
+	imagemin = require("gulp-imagemin"),
+	cache = require("gulp-cache"),
+	fs = require("fs-extra"),
+	useref = require("gulp-useref"),
+	gulpif = require("gulp-if"),
+	browserSync = require("browser-sync"),
+	runSequence = require("run-sequence"),
+	rename = require("gulp-rename"),
+	del = require("del"),
+	usage = require("gulp-help-doc"),
+	open = require("gulp-open"),
+	plumber = require("gulp-plumber"),
+	prettierEslint = require("gulp-prettier-eslint"),
+	run = require("gulp-run"),
 	// Tree
-	(archy = require("archy")),
-	(map = require("gulp-map")),
-	(filetree = require("gulp-filetree"));
+	archy = require("archy"),
+	map = require("gulp-map"),
+	filetree = require("gulp-filetree"),
+	prettier = require("gulp-plugin-prettier");
 
 // ------------------------------------
 // Tasks
@@ -366,22 +367,16 @@ g.task("styles:lint", function() {
 });
 
 /**
- * Fixes SCSS
- * @task  {scss:fix}
+ * Fixes styles (.sass and .scss files)
+ * @task  {styles:fix}
  * @group {Utilities}
  */
-g.task("scss:fix", function() {
-	return run("yarn scss:fix").exec();
-});
-
-/**
- * Fixes SASS
- * @task  {sass:fix}
- * @group {Utilities}
- */
-g.task("sass:fix", function() {
-	return run("yarn sass:fix").exec();
-});
+g.task("styles:fix", () =>
+	g
+		.src(styles.input)
+		.pipe(prettier.format(styles.opts.lintConfig.configFile))
+		.pipe(g.dest(file => file.base))
+);
 
 // ------------------------------------
 // Scripts
@@ -421,9 +416,9 @@ g.task("scripts:lint", function() {
  */
 g.task("scripts:fix", function() {
 	return g
-		.src(scripts.input, { base: "./" })
+		.src(scripts.input)
 		.pipe(prettierEslint())
-		.pipe(g.dest("./"));
+		.pipe(g.dest(file => file.base));
 });
 
 /**
