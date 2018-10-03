@@ -182,10 +182,6 @@ var config = {
 // Just make sure to add them to the package.json.
 var vendors = [
 	{
-		// 	// Normalize - CSS
-		// 	"input": "./node_modules/normalize.css/normalize.css",
-		// 	"output": buildCss
-		// }, {
 		// 	// Font Awesome - CSS
 		// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
 		// 	"output": buildCss
