@@ -182,14 +182,6 @@ var config = {
 // Just make sure to add them to the package.json.
 var vendors = [
 	{
-		// 	// Font Awesome - CSS
-		// 	"input": "./node_modules/font-awesome/css/font-awesome.css",
-		// 	"output": buildCss
-		// }, {
-		// 	// Font Awesome - Fonts
-		// 	"input": "./node_modules/font-awesome/fonts/**/*",
-		// 	"output": buildFonts
-		// }, {
 		// Jquery
 		input: "./node_modules/jquery/dist/jquery.js",
 		output: buildJs
