@@ -99,6 +99,16 @@ _This downloads all your dependencies to the `./node_modules` directory and sets
    gulp build
    ```
 
+6. Owl-carousel dependency.
+
+   - If you need a slider/carousel dependency for the project add it to the `build/` directory in the following way:
+
+     ```shell
+     yarn add -D owl.carousel
+     cp "./node_modules/owl.carousel/dist/assets/owl.carousel.css" "./build/css"
+     cp "./node_modules/owl.carousel/dist/owl.carousel.js" "./build/js"
+     ```
+
 ### Configuration
 
 **BrowserSync Settings:**
