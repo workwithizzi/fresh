@@ -19,10 +19,10 @@ $production_mode: false !default;
 // Should be overwritten in _settings.scss (project settings) file
 // @IVAN: The last step in finishing our updates will be to move all the new default settings to `luscious/_settings.scss` (currently called _settings.og.scss). I changed the name and commented out the import in this file so that we could explicitly control the settings from the project settings file during testing.
 
-$base_grid_columns: 12              !default;
-$base_grid_gutters: 0.25            !default;
-$base_grid_spread: 'wide'           !default;
-$base_grid_container-spread: 'wide' !default;
+$base_grid_columns: 12 !default;
+$base_grid_gutters: 0.25 !default;
+$base_grid_spread: "wide" !default;
+$base_grid_container-spread: "wide" !default;
 
 // -------------------------------------
 
@@ -31,50 +31,18 @@ $base_grid_container-spread: 'wide' !default;
 // @import "settings";
 
 // Helpers
-@import
-	'helpers/deprecation_warning',
-	'helpers/info-log',
-	'helpers/maps',
-	'helpers/in-list',
-	'helpers/strip_unit',
-	'helpers/convert-rem-ratio',
-	'helpers/type-checking'
-;
+@import "helpers/deprecation_warning", "helpers/info-log", "helpers/maps",
+	"helpers/in-list", "helpers/strip_unit", "helpers/convert-rem-ratio",
+	"helpers/type-checking";
 
 // Bin - Core functions/mixins
-@import
-	'bin/dev_config',
-	'bin/modularscale',
-	'bin/rem_em_calc',
-	'bin/zindex',
-	'bin/fonts',
-	'bin/breakpoints',
-	'bin/colors',
-	'bin/disable_outline',
-	'bin/buttons',
-	'bin/pesticide',
-	'bin/dev_colors',
-	'bin/paths',
-	'bin/clearfix',
-	'bin/centerblock',
-	'bin/bg_image',
-	'bin/hocus',
-	'bin/edges',
-	'bin/square_size',
-	'bin/move',
-	'bin/visibility',
-	'bin/alignment-classes',
-	'bin/vertical-rhythm',
-	'bin/when_is',
-	'bin/placeholder',
-	'bin/google_fonts',
-	'bin/font-face',
-	'bin/grid_susy',
-	'bin/burgers/burgers'
-;
+@import "bin/dev_config", "bin/modularscale", "bin/rem_em_calc", "bin/zindex",
+	"bin/fonts", "bin/breakpoints", "bin/colors", "bin/disable_outline",
+	"bin/buttons", "bin/pesticide", "bin/dev_colors", "bin/paths", "bin/clearfix",
+	"bin/centerblock", "bin/bg_image", "bin/hocus", "bin/edges", "bin/square_size",
+	"bin/move", "bin/visibility", "bin/alignment-classes", "bin/vertical-rhythm",
+	"bin/when_is", "bin/placeholder", "bin/google_fonts", "bin/font-face",
+	"bin/grid_susy", "bin/burgers/burgers";
 
 // Tests and Info for Luscious Stuff
-@import
-	'helpers/tests',
-	'helpers/info'
-;
+@import "helpers/tests", "helpers/info";
