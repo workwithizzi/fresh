@@ -101,22 +101,32 @@ _This downloads all your dependencies to the `./node_modules` directory and sets
 
 6.  Owl-carousel dependency.
 
-    - If you need a slider/carousel dependency for the project, add it to the `build/` directory in the following way:
+	- If you need a slider/carousel dependency for the project, add it to the `build/` directory in the following way:
 
-      ```shell
-      yarn add -D owl.carousel
-      cp "./node_modules/owl.carousel/dist/assets/owl.carousel.css" "./build/css"
-      cp "./node_modules/owl.carousel/dist/owl.carousel.js" "./build/js"
-      ```
+		```shell
+		yarn add -D owl.carousel
+		cp "./node_modules/owl.carousel/dist/assets/owl.carousel.css" "./build/css"
+		cp "./node_modules/owl.carousel/dist/owl.carousel.js" "./build/js"
+		```
 
 7.  Normalize.css dependency.
 
-    - If you need a Normalize.css dependency for the project, add it to the `build/` directory in the following way:
+	- If you need Normalize.css dependency for the project, add it to the `build/` directory in the following way:
 
-			```shell
-			yarn add -D normalize.css
-			cp "./node_modules/normalize.css/normalize.css" "./build/css"
-			```
+		```shell
+		yarn add -D normalize.css
+		cp "./node_modules/normalize.css/normalize.css" "./build/css"
+		```
+
+8.  Font-awesome dependency.
+
+    - If you need font-awesome dependency for the project, add it to the `build/` directory in the following way:
+
+		```shell
+		yarn add -D font-awesome
+		cp "./node_modules/font-awesome/css/font-awesome.css" "./build/css"
+		cp -a "./node_modules/font-awesome/fonts/" "./build/fonts"
+		```
 
 ### Configuration
 
