@@ -158,15 +158,17 @@ $fa-li-width: (30em / 14) !default;
 // -------------------------------------
 // 10. Grid
 // -------------------------------------
-$susy: (
-	gutter-position: after,
-	container: auto,
-	container-position: center,
-	columns: 12,
-	gutters: 0.25,
-	global-box-sizing: border-box,
-	last-flow: to
-) !default;
+// Susy 3 Grid Default Settings
+// Should be overwritten in 'src/sass/_settings.scss' (project settings) file only
+
+// Numbers of grid columns
+$base_grid_columns: 12 !default;
+// Spaces between the columns
+$base_grid_gutters: 0.25 !default;
+// Global Grid spread for the whole document
+$base_grid_spread: "wide" !default;
+// container-spread describes how a grid-parent (or container) handles available gutters
+$base_grid_container-spread: "wide" !default;
 
 // -------------------------------------
 // 11. Buttons

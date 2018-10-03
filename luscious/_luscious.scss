@@ -14,22 +14,6 @@ $production_mode: false !default;
 
 // -------------------------------------
 
-// -------------------------------------
-// Default Variables to control Susy Map
-// Should be overwritten in _settings.scss (project settings) file
-
-// -------------------------------------
-// @IVAN: The last step in finishing our updates will be to move all the new default settings to `luscious/_settings.scss` (currently called _settings.og.scss).
-// I changed the name and commented out the import in this file so that we could explicitly control the settings from the project settings file during testing.
-// -------------------------------------
-
-$base_grid_columns: 12 !default;
-$base_grid_gutters: 0.25 !default;
-$base_grid_spread: "wide" !default;
-$base_grid_container-spread: "wide" !default;
-
-// -------------------------------------
-
 // Settings
 // TODO: Make sure to add this import back before production. Also make sure to incorporate updates (that we want to keep as defaults) from src/sass/-settings.scss.
 // @import "settings";
