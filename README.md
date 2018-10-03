@@ -8,7 +8,6 @@
 
 A starter framework for building web projects using Yarn, Sass, Gulp, Pug, and some other modern tools. The main goal for this kit is to be get you up and running as fast as possible using the tools and configurations that we use most.
 
-
 ## Requirements
 
 - [Node/NPM](https://nodejs.org/en/)
@@ -17,10 +16,10 @@ A starter framework for building web projects using Yarn, Sass, Gulp, Pug, and s
 - [Gulp](http://gulpjs.com/)
 
 ### To roll our workflow
+
 - [Gulpy](https://github.com/yisraelgrimes/gulpy): To handle all your build tasks.
 - [Fresh-Scaffold](https://github.com/fresh-scaffold): To set up your dev structure.
 - [Luscious](https://github.com/yisraelgrimes/luscious-sass): For our SASS mixins and functions.
-
 
 ## Features
 
@@ -33,7 +32,6 @@ A starter framework for building web projects using Yarn, Sass, Gulp, Pug, and s
 - Lints SASS/Pug/JS
 - Optimizes production build
 - The voice of [Cleveland Brown](https://goo.gl/ucD1CT). Seriously. Try running `gulp boom` if you don't believe me.
-
 
 ## Installation
 
@@ -61,7 +59,6 @@ brew install node
 
 Install Gulp Globally with NPM: `npm install gulp -g`
 
-
 ### Get Fresh
 
 Clone this repo to your local environment or download the zip file.
@@ -78,8 +75,7 @@ Installs: [Gulpy](https://github.com/yisraelgrimes/gulpy), our [Fresh-Scaffold](
 cd your/fresh/project && yarn install
 ```
 
-*This downloads all your dependencies to the `./node_modules` directory and sets up initial project dev files in `./dev`.*
-
+_This downloads all your dependencies to the `./node_modules` directory and sets up initial project dev files in `./dev`._
 
 ## Project Setup
 
@@ -87,22 +83,22 @@ cd your/fresh/project && yarn install
 2. To update project directory paths and configs, go to `./gulpfile.js`.
 3. To see a list of gulp tasks available in Fresh:
 
-	```sh
-	gulp help
-	```
+   ```sh
+   gulp help
+   ```
 
 4. Run the default Gulp task to get the party started:
 
-	```sh
-	gulp
-	```
+   ```sh
+   gulp
+   ```
 
 5. When you are ready to create your optimized, production site, run:
 
-	```sh
-	gulp build
-	```
-	
+   ```sh
+   gulp build
+   ```
+
 ### Configuration
 
 **BrowserSync Settings:**
@@ -131,16 +127,17 @@ cd your/fresh/project && yarn install
 
 ---
 
-
 ## TODO
+
 - Add modernizr for png fallback for svgs and JS detection.
 
 ## Changelog
-- v3.0.7 *Upcoming*
+
+- v3.0.7 _Upcoming_
   - Added HTML5 test content into pug partials
   - Removed tasks to get `normalize css` and fontawesome dependencies from the default task.
   - Removed development/production environment variables.
-    - Tasks effected: `styles`,` scripts`,` build`,` pug`, `production` (removed).
+    - Tasks effected: `styles`,`scripts`,`build`,`pug`, `production` (removed).
     - Removed dependency `gulp-environments`
   - Removed html minification from `gulp concat` so that the task only works with concating and minifying js and css.
   - Added a new task `gulp minify` to specifically handle html minification.
@@ -160,14 +157,7 @@ cd your/fresh/project && yarn install
   - Updated Luscious dependency to v0.0.5.
   - Separated Pug dummy content into slightly smaller section files.
 - v3.0.3
-  - Updated Gulp tasks.
-  	- Added Run-Sequence to `gulp default` task so that gulp finishes before browser window loads.
-  	- Added Gulp-data to merge multiple data files into a single file for use with Pug.
-  	- Added data files to `gulp watch`.
-  	- Added `gulp normalize:css` task.
-  	- Added `basedir` option to pug task so that the `basedir` is set to `./src/views`.
-  	- Moved install.js scripts to a gulp task as `gulp luscious` and `gulp scaffold`.
-  	- Added `gulp fontawesome` task to move fonts from `node_modules` to `./build`.
+  - Updated Gulp tasks. - Added Run-Sequence to `gulp default` task so that gulp finishes before browser window loads. - Added Gulp-data to merge multiple data files into a single file for use with Pug. - Added data files to `gulp watch`. - Added `gulp normalize:css` task. - Added `basedir` option to pug task so that the `basedir` is set to `./src/views`. - Moved install.js scripts to a gulp task as `gulp luscious` and `gulp scaffold`. - Added `gulp fontawesome` task to move fonts from `node_modules` to `./build`.
   - Added basic navigation to Pug and JS. SASS styles are added through Luscious.
   - Added skiplink to Pug and JS. SASS styles are added through Luscious.
   - Added filler content as a Pug partial.
@@ -180,10 +170,7 @@ cd your/fresh/project && yarn install
   - instead of symlinking core dependencies from `./node_modules`, now using automated install script to move them to `./dependencies` directory. This should be a lot less error prone on Windows OS and will give you the ability to optionally track them in the repo in case you need to make changes to the core for a specific project.
 - v3.0.1
   - Added a 'hack' to the install script to check for the existence of the `README_fresh.md` file before trying to rename `README.md`. This should temporarily keep the installer from exiting with an error.
-  - Updated dependency versions:
-  	- Luscious V0.0.2
-  	- Gulpy v0.0.2
-  	- Fresh-Scaffold v0.0.3
+  - Updated dependency versions: - Luscious V0.0.2 - Gulpy v0.0.2 - Fresh-Scaffold v0.0.3
 - v2.0.5
   - Removed the 'tabify' task from gulp.
   - Minor version bump when moving from Github.
@@ -234,8 +221,6 @@ cd your/fresh/project && yarn install
 - v1.0.0
   - Initial Release
 
-
-
 ## Meta
 
 Yisrael Grimes - @GrimesClassic
@@ -247,6 +232,7 @@ Distributed under the uncopyright license. Which, isn't technically a license, b
 ## Thanks
 
 This project is mostly just a bunch of stuff that was taken from of people. These are a few of them:
+
 - Mina Markham's [Sassy Starter](https://github.com/minamarkham/sassy-starter)
 - [Zell Liew](https://zellwk.com/)
 - [Hugo Giraudel](http://hugogiraudel.com/)
