@@ -266,10 +266,13 @@ $fa-li-width: (30em / 14) !default;
 // This variables override the !default variables that are declared in '_luscious.scss'.
 // All the susy map options were turned into variables and control $susy from here in form of variables.
 
-// @IVAN: Can you add a really short description for what each one of these does?
+// Numbers of grid columns
 $base_grid_columns: 6;
+// Spaces between the columns
 $base_grid_gutters: 0.25;
+// Global Grid spread for the whole document
 $base_grid_spread: "narrow";
+// container-spread describes how a grid-parent (or container) handles available gutters
 $base_grid_container-spread: "narrow";
 
 // // -------------------------------------
