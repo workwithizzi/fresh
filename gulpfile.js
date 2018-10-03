@@ -194,14 +194,6 @@ var vendors = [
 		// 	"input": "./node_modules/font-awesome/fonts/**/*",
 		// 	"output": buildFonts
 		// }, {
-		// 	// Owl Carousel - CSS
-		// 	"input": "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
-		// 	"output": buildCss
-		// }, {
-		// 	// Owl Carousel - JS
-		// 	"input": "./node_modules/owl.carousel/dist/owl.carousel.js",
-		// 	"output": buildJs
-		// }, {
 		// Jquery
 		input: "./node_modules/jquery/dist/jquery.js",
 		output: buildJs
@@ -268,17 +260,16 @@ g.task("d", ["default"]);
  * @task  {compile}
  * @group {Main}
  */
-g.task('compile', [
-	'vendors',
-	'styles',
-	'scripts',
-	'pug',
-	'images',
-	'fonts',
-	'markdown',
-	'marked',
+g.task("compile", [
+	"vendors",
+	"styles",
+	"scripts",
+	"pug",
+	"images",
+	"fonts",
+	"markdown",
+	"marked"
 ]);
-
 
 /**
  * Runs tasks: compile, concat, and tree
@@ -683,29 +674,28 @@ g.task("serve", function() {
  * @task {help}
  * @group {Utilities}
  */
-g.task('help', function() { return usage(g); });
-
+g.task("help", function() {
+	return usage(g);
+});
 
 // import the needed 'gulp-markdown' package to transform '*.md' files into '*.html'
-var markdown = require('gulp-markdown');
-
+var markdown = require("gulp-markdown");
 
 /**
  * Transform '*.md' files into '*.html'
  * @task {markdown}
  * @group {Utilities}
  */
-g.task('markdown', () => {
-	g.src('src/*.md')
+g.task("markdown", () => {
+	g.src("src/*.md")
 		.pipe(markdown())
-		.pipe(rename(path => path.extname = ".html"))
-		.pipe(g.dest('build/'))
+		.pipe(rename(path => (path.extname = ".html")))
+		.pipe(g.dest("build/"));
 });
 
-
 // import needed 'gulp-markdown-to-json' and 'marked' packages to transform '*.md' files into '*.json' data
-var markdownToJSON = require('gulp-markdown-to-json');
-var marked = require('marked');
+var markdownToJSON = require("gulp-markdown-to-json");
+var marked = require("marked");
 
 // 'marked' package options
 marked.setOptions({
@@ -713,17 +703,18 @@ marked.setOptions({
 	smartypants: true
 });
 
-
 /**
  * Transform '*.md' files into '*.json' data
  * @task {marked}
  * @group {Utilities}
  */
-g.task('marked', () => {
-	g.src('./src/*.md')
+g.task("marked", () => {
+	g.src("./src/*.md")
 		.pipe(markdownToJSON(marked))
-		.pipe(rename(function(path) {
-			path.extname = ".json";
-		}))
-		.pipe(g.dest('src/views/data/'))
+		.pipe(
+			rename(function(path) {
+				path.extname = ".json";
+			})
+		)
+		.pipe(g.dest("src/views/data/"));
 });
