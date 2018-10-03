@@ -79,35 +79,44 @@ _This downloads all your dependencies to the `./node_modules` directory and sets
 
 ## Project Setup
 
-1. Update your info in the `package.json` file.
-2. To update project directory paths and configs, go to `./gulpfile.js`.
-3. To see a list of gulp tasks available in Fresh:
+1.  Update your info in the `package.json` file.
+2.  To update project directory paths and configs, go to `./gulpfile.js`.
+3.  To see a list of gulp tasks available in Fresh:
 
-   ```sh
-   gulp help
-   ```
+    ```sh
+    gulp help
+    ```
 
-4. Run the default Gulp task to get the party started:
+4.  Run the default Gulp task to get the party started:
 
-   ```sh
-   gulp
-   ```
+    ```sh
+    gulp
+    ```
 
-5. When you are ready to create your optimized, production site, run:
+5.  When you are ready to create your optimized, production site, run:
 
-   ```sh
-   gulp build
-   ```
+    ```sh
+    gulp build
+    ```
 
-6. Owl-carousel dependency.
+6.  Owl-carousel dependency.
 
-   - If you need a slider/carousel dependency for the project add it to the `build/` directory in the following way:
+    - If you need a slider/carousel dependency for the project, add it to the `build/` directory in the following way:
 
-     ```shell
-     yarn add -D owl.carousel
-     cp "./node_modules/owl.carousel/dist/assets/owl.carousel.css" "./build/css"
-     cp "./node_modules/owl.carousel/dist/owl.carousel.js" "./build/js"
-     ```
+      ```shell
+      yarn add -D owl.carousel
+      cp "./node_modules/owl.carousel/dist/assets/owl.carousel.css" "./build/css"
+      cp "./node_modules/owl.carousel/dist/owl.carousel.js" "./build/js"
+      ```
+
+7.  Normalize.css dependency.
+
+    - If you need a Normalize.css dependency for the project, add it to the `build/` directory in the following way:
+
+			```shell
+			yarn add -D normalize.css
+			cp "./node_modules/normalize.css/normalize.css" "./build/css"
+			```
 
 ### Configuration
 
