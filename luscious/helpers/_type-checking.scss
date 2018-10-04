@@ -1,9 +1,0 @@
-// TODO: Add info, notes, error handling, and tests
-
-
-
-
-// https://goo.gl/g36vWQ
-@function is-number($value) {
-	@return type-of($value) == 'number';
-}
