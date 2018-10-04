@@ -12,9 +12,6 @@
 		"pug",
 		"gulp"
 	],
-	"scripts": {
-		"build-ssg": "npx eleventy"
-	},
 	"prettier": {},
 	"devDependencies": {
 		"@11ty/eleventy": "^0.5.2",
