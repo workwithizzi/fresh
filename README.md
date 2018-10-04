@@ -89,6 +89,14 @@ cd your/fresh/project && yarn
 		gulp build
 		```
 
+### Luscious SASS Scaffold
+To use our scaffold as a starting point for your SASS, run the following commands.
+**WARNING**: This is destructive and will wipe out your current `src/sass`
+	```sh
+	rm -rf ./src/sass && cp -r ./node_modules/luscious/scaffold/ ./src/sass
+	```
+
+
 ### Optional Dependencies
 
 - Owl-carousel (CSS/JS)

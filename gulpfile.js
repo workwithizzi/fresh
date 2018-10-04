@@ -23,9 +23,7 @@ var base = {
 	// ------------------------------------
 	styles = {
 		// Paths
-		input: [srcStyles + "/**/*.{scss,sass}", "./luscious/**/*.{scss,sass}"],
-		// 2DO-YG: Change input back to only watch src files after Luscious dev
-		// input: srcStyles + '/**/*.{scss,sass}',
+		input: srcStyles + '/**/*.{scss,sass}',
 		output: buildCss,
 
 		// Config Options
@@ -131,20 +129,6 @@ var base = {
 			interlaced: true
 		}
 	},
-	// ------------------------------------
-	// Luscious-Sass
-	// ------------------------------------
-	luscious = {
-		core: {
-			input: "./node_modules/luscious-sass",
-			output: "./luscious-sass",
-			overwrite: false
-		},
-		scaffold: {
-			input: "./node_modules/luscious-sass/scaffold",
-			output: srcStyles
-		}
-	};
 
 // ------------------------------------
 // CONFIGURE - Developement
@@ -258,47 +242,6 @@ g.task("compile", [
  */
 g.task("build", function(callback) {
 	runSequence("clean", "compile", "concat", "minify", "tree", callback);
-});
-
-// ------------------------------------
-// Get Luscious
-// ------------------------------------
-/**
- * Copies Luscious from node_modules and adds it to the project's dependencies.
- * @task  {luscious}
- * @group {Main}
- */
-g.task("luscious", () => {
-	fs.copy(
-		luscious.core.input,
-		luscious.core.output,
-		{
-			overwrite: luscious.core.overwrite,
-			preserveTimestamps: true
-		},
-		err => {
-			if (err) return console.error(err);
-		}
-	);
-});
-
-/**
- * Copies Luscious-Scaffold to the SASS directory
- * @task  {scaffold}
- * @group {Main}
- */
-g.task("scaffold", () => {
-	fs.copy(
-		luscious.scaffold.input,
-		luscious.scaffold.output,
-		{
-			overwrite: false,
-			preserveTimestamps: true
-		},
-		err => {
-			if (err) return console.error(err);
-		}
-	);
 });
 
 
