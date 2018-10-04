@@ -128,7 +128,8 @@ var base = {
 		opts: {
 			interlaced: true
 		}
-	},
+	};
+
 
 // ------------------------------------
 // CONFIGURE - Developement
