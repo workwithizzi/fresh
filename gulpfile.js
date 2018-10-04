@@ -54,6 +54,11 @@ var base = {
 		output: buildJs,
 		beautifyOutput: srcScripts,
 
+		jquery: {
+			input: "./node_modules/jquery/dist/jquery.min.js",
+			output: buildJs,
+		},
+
 		// Config Options
 		opts: {
 			lint: false,
@@ -174,19 +179,6 @@ var config = {
 	}
 };
 
-// ------------------------------------
-// CONFIGURE - Project Dependencies
-// ------------------------------------
-// Un-comment any of the dependencies below to include them in the project.
-// You can also add any others to the list that you want to bring in.
-// Just make sure to add them to the package.json.
-var vendors = [
-	{
-		// Jquery
-		input: "./node_modules/jquery/dist/jquery.js",
-		output: buildJs
-	}
-];
 
 // ------------------------------------------------------------------
 // Plugins
@@ -249,9 +241,9 @@ g.task("d", ["default"]);
  * @group {Main}
  */
 g.task("compile", [
-	"vendors",
 	"styles",
 	"scripts",
+	"jquery",
 	"pug",
 	"images",
 	"fonts",
@@ -374,6 +366,7 @@ g.task("scripts", function() {
 		.pipe(browserSync.reload({ stream: true }));
 });
 
+
 /**
  * Lints JS even if linting is off in config
  * @task  {scripts:lint}
@@ -410,6 +403,19 @@ g.task("scripts:beautify", function() {
 		.pipe(g.dest(scripts.beautifyOutput));
 });
 // REVIEW: May be able to use uglify to replace beautify
+
+
+/**
+ * Copies jquery.min.js from node_modules to ./build
+ * @task  {jquery}
+ * @group {Utilities}
+ */
+g.task("jquery", function() {
+	return g
+		.src(scripts.jquery.input)
+		.pipe(g.dest(scripts.jquery.output))
+});
+
 
 // ------------------------------------
 // Pug/HTML/Views
@@ -572,17 +578,6 @@ g.task("open", function() {
 // Alias Task
 g.task("o", ["open"]);
 
-/**
- * Imports dependencies specified in the 'vendors' array
- * @task {vendors}
- * @group {Utilities}
- */
-g.task("vendors", function() {
-	for (var i = 0; i < vendors.length; i++) {
-		var file = vendors[i];
-		g.src(file.input).pipe(g.dest(file.output));
-	}
-});
 
 /**
  * Copies fonts to from ./src to ./build
