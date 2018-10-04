@@ -309,16 +309,6 @@ g.task("scaffold", () => {
 	);
 });
 
-/**
- * Gives user info on initial project setup.
- * @task  {initial:help}
- * @group {Utilities}
- */
-g.task("initial:help", () => {
-	console.log(
-		"If you're installing Fresh for the first time with this project and want to use Luscious with your SASS, run `gulp scaffold` to set up some basic SASS files to get you started."
-	);
-});
 
 // ------------------------------------
 // Styles

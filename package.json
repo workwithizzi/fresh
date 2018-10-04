@@ -13,7 +13,6 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp initial:help",
 		"build-ssg": "npx eleventy"
 	},
 	"prettier": {},
@@ -64,7 +63,6 @@
 		"jshint": "^2.9.5",
 		"jshint-stylish-ex": "^0.2.0",
 		"jstransformer-markdown-it": "^2.0.0",
-		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.5",
 		"marked": "^0.5.0",
 		"path": "^0.12.7",
 		"prettier": "1.14.2",
