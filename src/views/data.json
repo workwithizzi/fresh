@@ -5,9 +5,9 @@
 			"keywords": " homepage keywords, pug, sass, gulp, yarn",
 			"description": "This is a meta description for the home page."
 		},
-		"title": "Fresh Starter Project",
+		"title": "A Fresh Start",
 		"subtitle": "A modern way to create responsive, accessible, and maintainable front-end web projects.",
-		"description": "Built using Pug, SASS (with Luscious), and Javascript. Compiled with Gulp and pulled together with Yarn."
+		"description": "Built using Pug, SASS, and Javascript. Compiled with Gulp and pulled together with Yarn."
 	},
 	"SITE": {
 		"meta": {
@@ -27,23 +27,19 @@
 		"navMain": [
 			{
 				"title": "Home",
-				"path": "index.html"
+				"path": "/"
 			},
 			{
-				"title": "Text",
-				"path": "demo-text.html"
+				"title": "HTML Text Elements",
+				"path": "/demo-html/text.html"
 			},
 			{
-				"title": "Media",
-				"path": "demo-media.html"
+				"title": "HTML Media Elements",
+				"path": "/demo-html/media.html"
 			},
 			{
-				"title": "Forms",
-				"path": "demo-forms.html"
-			},
-			{
-				"title": "External Link",
-				"path": "google.com"
+				"title": "HTML Form Elements",
+				"path": "/demo-html/forms.html"
 			}
 		]
 	}

@@ -1,18 +1,14 @@
-//- Media Content Page
+//- Demo Media Content
 //- -----------------------------------------------------------------
 
 extends /partials/_base
 
-block vars
-	- var metaDescription = "This is the meta description for the Demo Media Content page.";
-	- var metaKeywords = SITE.meta.keywords;
-	//- - var bodyClass = 'page--internal';
-
 block title
-	title !{SITE.meta.title} | Media Demo
+	title HTML Media Elements
 
 block append styles
-	link(rel='stylesheet', href='/css/info.css')
+	style
+		include info.css
 
 
 //- -----------------------------------
@@ -21,7 +17,7 @@ block append styles
 block content
 	article
 		header
-			h1 Element Style Guide
+			h1 Demo Media Elements
 
 			p.o-intro
 				| This page is good place to quickly reference the main style elements used within the project. This is what an intro paragraph looks like using the <code>#{'.o-intro'}</code> class.
@@ -33,28 +29,28 @@ block content
 
 			section
 				header: h3.sg SVG Images
-				include /partials/demo/_media-svg
+				include demo-partials/_media-svg
 
 			hr
 
 			section
 				header: h3.sg Basic, Linked, & Broken Images
-				include /partials/demo/_media-images_basic
+				include demo-partials/_media-images_basic
 
 			hr
 
 			section
 				header: h3.sg Image Alignment
-				include /partials/demo/_media-image_alignment
+				include demo-partials/_media-image_alignment
 
 			hr
 
 			section
 				header: h3.sg Audio Player
-				include /partials/demo/_media-audio
+				include demo-partials/_media-audio
 
 			hr
 
 			section
 				header: h3.sg Video Player
-				include /partials/demo/_media-video
+				include demo-partials/_media-video

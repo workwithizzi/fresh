@@ -1,18 +1,14 @@
-//- Text Content Page
+//- Demo Text Content
 //- -----------------------------------------------------------------
 
 extends /partials/_base
 
-block vars
-	- var metaDescription = "This is the meta description for the Demo Text Content page.";
-	- var metaKeywords = SITE.meta.keywords;
-	//- - var bodyClass = 'page--internal';
-
 block title
-	title !{SITE.meta.title} | Text Demo
+	title HTML Text Elements
 
 block append styles
-	link(rel='stylesheet', href='/css/info.css')
+	style
+		include info.css
 
 //- -----------------------------------
 //- Page Main-Content Starts Here
@@ -35,46 +31,46 @@ block content
 
 			section
 				header: h3.sg Headings
-				include /partials/demo/_text-headings
+				include demo-partials/_text-headings
 
 			hr
 
 			section
 				header: h3.sg Inline Elements
-				include /partials/demo/_text-inline_elements
+				include demo-partials/_text-inline_elements
 
 			hr
 
 			section
 				header: h3.sg Headings Follow By Paragraphs
-				include /partials/demo/_text-headings_paragraphs
+				include demo-partials/_text-headings_paragraphs
 
 			hr
 
 			section
 				header: h3.sg Alignment Styles
-				include /partials/demo/_text-alignment
+				include demo-partials/_text-alignment
 
 			hr
 
 			section
 				header: h3.sg Blockquotes
-				include /partials/demo/_text-blockquotes
+				include demo-partials/_text-blockquotes
 
 			hr
 
 			section
 				header: h3.sg Lists
-				include /partials/demo/_text-lists
+				include demo-partials/_text-lists
 
 			hr
 
 			section
 				header: h3.sg Preformatted Text
-				include /partials/demo/_text-preformatted
+				include demo-partials/_text-preformatted
 
 			hr
 
 			section
 				header: h3.sg Table Data
-				include /partials/demo/_text-tables
+				include demo-partials/_text-tables
