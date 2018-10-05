@@ -23,7 +23,7 @@ var base = {
 	// ------------------------------------
 	styles = {
 		// Paths
-		input: srcStyles + '/**/*.{scss,sass}',
+		input: srcStyles + "/**/*.{scss,sass}",
 		output: buildCss,
 
 		// Config Options
@@ -54,7 +54,7 @@ var base = {
 
 		jquery: {
 			input: "./node_modules/jquery/dist/jquery.min.js",
-			output: buildJs,
+			output: buildJs
 		},
 
 		// Config Options
@@ -130,7 +130,6 @@ var base = {
 		}
 	};
 
-
 // ------------------------------------
 // CONFIGURE - Developement
 // ------------------------------------
@@ -163,7 +162,6 @@ var config = {
 		reload: html.productionFiles
 	}
 };
-
 
 // ------------------------------------------------------------------
 // Plugins
@@ -245,7 +243,6 @@ g.task("build", function(callback) {
 	runSequence("clean", "compile", "concat", "minify", "tree", callback);
 });
 
-
 // ------------------------------------
 // Styles
 // ------------------------------------
@@ -310,7 +307,6 @@ g.task("scripts", function() {
 		.pipe(browserSync.reload({ stream: true }));
 });
 
-
 /**
  * Lints JS even if linting is off in config
  * @task  {scripts:lint}
@@ -348,18 +344,14 @@ g.task("scripts:beautify", function() {
 });
 // REVIEW: May be able to use uglify to replace beautify
 
-
 /**
  * Copies jquery.min.js from node_modules to ./build
  * @task  {jquery}
  * @group {Utilities}
  */
 g.task("jquery", function() {
-	return g
-		.src(scripts.jquery.input)
-		.pipe(g.dest(scripts.jquery.output))
+	return g.src(scripts.jquery.input).pipe(g.dest(scripts.jquery.output));
 });
-
 
 // ------------------------------------
 // Pug/HTML/Views
@@ -521,7 +513,6 @@ g.task("open", function() {
 
 // Alias Task
 g.task("o", ["open"]);
-
 
 /**
  * Copies fonts to from ./src to ./build
