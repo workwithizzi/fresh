@@ -16,3 +16,4 @@ rules:
   quotes:
     - 1
     - style: double # single
+	leading-zero: 0 # disable warning about leading zeros
