@@ -60,7 +60,7 @@ Clone this repo to your local environment or download the zip file.
 
 ### Install Dependencies
 
-_Note: By default, this will install Luscious (our SASS library). If you want to use it and/or our SASS scaffold in your project, follow the setup instructions below for Luscious._
+_Note: By default, this will install Luscious (our SASS library) and also open-sans font files. If you want to use it and/or our SASS scaffold in your project, follow the setup instructions below for Luscious._
 
 ```sh
 cd your/fresh/project && yarn
@@ -96,6 +96,14 @@ To use our scaffold as a starting point for your SASS, run the following command
 	rm -rf ./src/sass && cp -r ./node_modules/luscious/scaffold/ ./src/sass
 	```
 
+[Open-Sans](https://www.npmjs.com/package/open-sans-fonts) font is the default font used in our Scaffold. If you don't want to use it in the project, just remove it from the fonts directory:
+
+	```sh
+	rm -rf ./src/fonts/open-sans
+	```
+
+
+Either way, make sure your font-paths in `_settings.scss` are correct
 
 ### Optional Dependencies
 

@@ -5834,6 +5834,10 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
+open-sans-fonts@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/open-sans-fonts/-/open-sans-fonts-1.4.2.tgz#f2943320da0519cc043e1cea8cda9a52e7373791"
+
 openurl@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/openurl/-/openurl-1.1.1.tgz#3875b4b0ef7a52c156f0db41d4609dbb0f94b387"
