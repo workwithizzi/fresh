@@ -171,7 +171,6 @@ var g = require("gulp"),
 	sassLint = require("gulp-sass-lint"),
 	prefix = require("gulp-autoprefixer"),
 	cssnano = require("gulp-cssnano"),
-	jshint = require("gulp-jshint"),
 	uglify = require("gulp-uglify"),
 	beautify = require("gulp-beautify"),
 	sourcemaps = require("gulp-sourcemaps"),
@@ -299,24 +298,10 @@ g.task("styles:fix", () =>
 g.task("scripts", function() {
 	return g
 		.src(scripts.input)
-		.pipe(gulpif(scripts.opts.lint, jshint()))
-		.pipe(gulpif(scripts.opts.lint, jshint.reporter("jshint-stylish-ex")))
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write({ includeContent: false }))
 		.pipe(g.dest(scripts.output))
 		.pipe(browserSync.reload({ stream: true }));
-});
-
-/**
- * Lints JS even if linting is off in config
- * @task  {scripts:lint}
- * @group {Utilities}
- */
-g.task("scripts:lint", function() {
-	return g
-		.src(scripts.input)
-		.pipe(jshint())
-		.pipe(jshint.reporter("jshint-stylish-ex"));
 });
 
 /**
