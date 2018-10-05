@@ -17,7 +17,6 @@
 	},
 	"prettier": {},
 	"devDependencies": {
-		"@11ty/eleventy": "^0.5.2",
 		"archy": "^1.0.0",
 		"babel-eslint": "^10.0.1",
 		"browser-sync": "^2.21.0",
