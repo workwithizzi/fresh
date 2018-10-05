@@ -13,8 +13,7 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp initial:help",
-		"build-ssg": "npx eleventy"
+		"install": "cp -r ./node_modules/open-sans-fonts/open-sans ./src/fonts/"
 	},
 	"prettier": {},
 	"devDependencies": {
@@ -65,8 +64,9 @@
 		"jshint": "^2.9.5",
 		"jshint-stylish-ex": "^0.2.0",
 		"jstransformer-markdown-it": "^2.0.0",
-		"luscious-sass": "https://github.com/yisraelgrimes/luscious-sass#v0.0.5",
+		"luscious": "^0.0.7",
 		"marked": "^0.5.0",
+		"open-sans-fonts": "^1.4.2",
 		"path": "^0.12.7",
 		"prettier": "1.14.2",
 		"prettier-eslint": "^8.8.2",

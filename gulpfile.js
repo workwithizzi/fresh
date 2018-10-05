@@ -23,9 +23,7 @@ var base = {
 	// ------------------------------------
 	styles = {
 		// Paths
-		input: [srcStyles + "/**/*.{scss,sass}", "./luscious/**/*.{scss,sass}"],
-		// 2DO-YG: Change input back to only watch src files after Luscious dev
-		// input: srcStyles + '/**/*.{scss,sass}',
+		input: srcStyles + '/**/*.{scss,sass}',
 		output: buildCss,
 
 		// Config Options
@@ -53,6 +51,11 @@ var base = {
 		input: srcScripts + "/**/*.js",
 		output: buildJs,
 		beautifyOutput: srcScripts,
+
+		jquery: {
+			input: "./node_modules/jquery/dist/jquery.min.js",
+			output: buildJs,
+		},
 
 		// Config Options
 		opts: {
@@ -125,21 +128,8 @@ var base = {
 		opts: {
 			interlaced: true
 		}
-	},
-	// ------------------------------------
-	// Luscious-Sass
-	// ------------------------------------
-	luscious = {
-		core: {
-			input: "./node_modules/luscious-sass",
-			output: "./luscious-sass",
-			overwrite: false
-		},
-		scaffold: {
-			input: "./node_modules/luscious-sass/scaffold",
-			output: srcStyles
-		}
 	};
+
 
 // ------------------------------------
 // CONFIGURE - Developement
@@ -174,19 +164,6 @@ var config = {
 	}
 };
 
-// ------------------------------------
-// CONFIGURE - Project Dependencies
-// ------------------------------------
-// Un-comment any of the dependencies below to include them in the project.
-// You can also add any others to the list that you want to bring in.
-// Just make sure to add them to the package.json.
-var vendors = [
-	{
-		// Jquery
-		input: "./node_modules/jquery/dist/jquery.js",
-		output: buildJs
-	}
-];
 
 // ------------------------------------------------------------------
 // Plugins
@@ -249,9 +226,9 @@ g.task("d", ["default"]);
  * @group {Main}
  */
 g.task("compile", [
-	"vendors",
 	"styles",
 	"scripts",
+	"jquery",
 	"pug",
 	"images",
 	"fonts",
@@ -268,57 +245,6 @@ g.task("build", function(callback) {
 	runSequence("clean", "compile", "concat", "minify", "tree", callback);
 });
 
-// ------------------------------------
-// Get Luscious
-// ------------------------------------
-/**
- * Copies Luscious from node_modules and adds it to the project's dependencies.
- * @task  {luscious}
- * @group {Main}
- */
-g.task("luscious", () => {
-	fs.copy(
-		luscious.core.input,
-		luscious.core.output,
-		{
-			overwrite: luscious.core.overwrite,
-			preserveTimestamps: true
-		},
-		err => {
-			if (err) return console.error(err);
-		}
-	);
-});
-
-/**
- * Copies Luscious-Scaffold to the SASS directory
- * @task  {scaffold}
- * @group {Main}
- */
-g.task("scaffold", () => {
-	fs.copy(
-		luscious.scaffold.input,
-		luscious.scaffold.output,
-		{
-			overwrite: false,
-			preserveTimestamps: true
-		},
-		err => {
-			if (err) return console.error(err);
-		}
-	);
-});
-
-/**
- * Gives user info on initial project setup.
- * @task  {initial:help}
- * @group {Utilities}
- */
-g.task("initial:help", () => {
-	console.log(
-		"If you're installing Fresh for the first time with this project and want to use Luscious with your SASS, run `gulp scaffold` to set up some basic SASS files to get you started."
-	);
-});
 
 // ------------------------------------
 // Styles
@@ -384,6 +310,7 @@ g.task("scripts", function() {
 		.pipe(browserSync.reload({ stream: true }));
 });
 
+
 /**
  * Lints JS even if linting is off in config
  * @task  {scripts:lint}
@@ -420,6 +347,19 @@ g.task("scripts:beautify", function() {
 		.pipe(g.dest(scripts.beautifyOutput));
 });
 // REVIEW: May be able to use uglify to replace beautify
+
+
+/**
+ * Copies jquery.min.js from node_modules to ./build
+ * @task  {jquery}
+ * @group {Utilities}
+ */
+g.task("jquery", function() {
+	return g
+		.src(scripts.jquery.input)
+		.pipe(g.dest(scripts.jquery.output))
+});
+
 
 // ------------------------------------
 // Pug/HTML/Views
@@ -582,17 +522,6 @@ g.task("open", function() {
 // Alias Task
 g.task("o", ["open"]);
 
-/**
- * Imports dependencies specified in the 'vendors' array
- * @task {vendors}
- * @group {Utilities}
- */
-g.task("vendors", function() {
-	for (var i = 0; i < vendors.length; i++) {
-		var file = vendors[i];
-		g.src(file.input).pipe(g.dest(file.output));
-	}
-});
 
 /**
  * Copies fonts to from ./src to ./build

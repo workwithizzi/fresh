@@ -1,0 +1,56 @@
+//- Demo Media Content
+//- -----------------------------------------------------------------
+
+extends /partials/_base
+
+block title
+	title HTML Media Elements
+
+block append styles
+	style
+		include info.css
+
+
+//- -----------------------------------
+//- Page Main-Content Starts Here
+//- -----------------------------------
+block content
+	article
+		header
+			h1 Demo Media Elements
+
+			p.o-intro
+				| This page is good place to quickly reference the main style elements used within the project. This is what an intro paragraph looks like using the <code>#{'.o-intro'}</code> class.
+
+		hr
+
+		section
+			h2.sg Forms
+
+			section
+				header: h3.sg SVG Images
+				include demo-partials/_media-svg
+
+			hr
+
+			section
+				header: h3.sg Basic, Linked, & Broken Images
+				include demo-partials/_media-images_basic
+
+			hr
+
+			section
+				header: h3.sg Image Alignment
+				include demo-partials/_media-image_alignment
+
+			hr
+
+			section
+				header: h3.sg Audio Player
+				include demo-partials/_media-audio
+
+			hr
+
+			section
+				header: h3.sg Video Player
+				include demo-partials/_media-video
