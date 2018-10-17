@@ -1,2 +1,3 @@
 package.json
 src/js/vendors/
+.sass-lint.yml
