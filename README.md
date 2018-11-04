@@ -75,22 +75,17 @@ cd your/fresh/project && yarn
 5. Then, run `gulp` (default task) to get started:
 6. When you're ready to create your production site, run `gulp build`
 
-### Open-Sans
-[Open-Sans](https://www.npmjs.com/package/open-sans-fonts) font is the default font used in our Scaffold. If you don't want to use it in the project, just remove it from the fonts directory:
+
+### Optional Dependencies
+- Open-Sans
+	[Open-Sans](https://www.npmjs.com/package/open-sans-fonts) font is the default font used in our Scaffold. If you don't want to use it in the project, just remove it from the fonts directory:
 	```sh
 	rm -rf ./src/fonts/open-sans
 	```
 and then removed the install script/and dependency in `package.json`--You'll also want to remove the related code in the Scaffold files (in `sass/base/*`).
 
-
-### Optional Dependencies
 - Owl-carousel (CSS/JS)
-	If you need a slider/carousel dependency for the project, add it to the `build/` directory in the following way:
-	```shell
-	yarn add -D owl.carousel
-	yarn run owl
-	```
-	_Note:_ You will need to run the `owl` script anytime you clean out your `./build` directory.
+	If you need a slider/carousel dependency for the project, add it to `package.json` (`yarn add -D owl.carousel`) and add the task `owl` to the `gulp compile` task. Also make sure to add it to your html.
 
 - Normalize.css
 	If you want to use Normalize.css, add it to the `build/` directory:

@@ -113,11 +113,15 @@ var base = {
 		fileDir: srcViews
 	},
 	// ------------------------------------
-	// Assets - Fonts/Images
+	// Fonts/Images/Misc Dependencies
 	// ------------------------------------
 	fonts = {
 		input: srcFonts + "/**/*",
-		output: buildFonts
+		output: buildFonts,
+		dependency: {
+			input: "./node_modules/open-sans-fonts/open-sans/**/*",
+			output: srcFonts + "/open-sans/"
+		}
 	},
 	images = {
 		// Paths
@@ -128,6 +132,12 @@ var base = {
 		opts: {
 			interlaced: true
 		}
+	},
+	owlCarousel = {
+		inputCss: "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
+		outputCss: buildCss + "/",
+		inputJs: "./node_modules/owl.carousel/dist/owl.carousel.js",
+		outputJs: buildJs + "/"
 	};
 
 // ------------------------------------
@@ -148,11 +158,10 @@ var config = {
 	// Comment out anything in the array that you
 	// don't want to watch/trigger build on change.
 	watch: {
-		// 2DO-YG: Make sure to turn on other watch files after sass dev
-		// data: db.input,
+		data: db.input,
 		views: views.input,
 		styles: styles.input,
-		// scripts: scripts.input,
+		scripts: scripts.input,
 		reload: html.productionFiles
 	}
 };
@@ -206,9 +215,6 @@ var g = require("gulp"),
 g.task("default", function (callback) {
 	runSequence("compile", ["serve"], callback);
 });
-
-// Alias Task
-g.task("d", ["default"]);
 
 /**
  * Runs tasks: styles, scripts, pug, images, and fonts
@@ -541,4 +547,26 @@ g.task("serve", function () {
  */
 g.task("help", function () {
 	return usage(g);
+});
+
+// ------------------------------------
+// Dependency
+// ------------------------------------
+/**
+ * Copies Open-Sans font files from ./node_modules to ./src
+ * @task  {font:dependency}
+ * @group {Utilities}
+ */
+g.task("font:dependency", function () {
+	return g.src(fonts.dependency.input).pipe(g.dest(fonts.dependency.output));
+});
+
+/**
+ * Copies Open-Sans font files from ./node_modules to ./src
+ * @task  {font:dependency}
+ * @group {Utilities}
+ */
+g.task("owl", function () {
+	g.src(owlCarousel.inputCss).pipe(g.dest(owlCarousel.outputCss))
+	g.src(owlCarousel.inputJs).pipe(g.dest(owlCarousel.outputJs))
 });
