@@ -1,11 +1,17 @@
 {
 	"name": "fresh",
-	"version": "3.0.7",
-	"description": "A starter kit for static or cms based websites. Built with Yarn, Gulp, Pug, and SASS.",
-	"repository": "https://gitlab.com/ignitecreative/cookbook/fresh",
+	"version": "3.0.8",
+	"description": "A starter kit for static websites. Built with Yarn, Gulp, Pug, and SASS.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/workwithizzi/fresh"
+	},
+	"bugs": {
+		"url": "https://github.com/workwithizzi/fresh/issues"
+	},
+	"homepage": "https://github.com/workwithizzi/fresh",
 	"author": "Yisrael Grimes <yisrael@ignitehere.com>",
 	"license": "MIT",
-	"private": true,
 	"keywords": [
 		"sass",
 		"scss",
@@ -16,7 +22,6 @@
 		"install": "gulp font:dependency",
 		"fix": "sass-lint-auto-fix -c .sasslint-fix.yml"
 	},
-	"prettier": {},
 	"devDependencies": {
 		"archy": "^1.0.0",
 		"babel-eslint": "^10.0.1",
