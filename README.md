@@ -2,7 +2,7 @@
 
 ---
 
-**v3.0.6**
+**v3.0.7**
 
 # Fresh Starter Kit
 

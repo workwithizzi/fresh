@@ -1,4 +1,4 @@
-// Fresh v3.0.8
+// Fresh v3.0.7
 // ------------------------------------------------------------------
 
 // Open new browser window every time you run 'gulp'?

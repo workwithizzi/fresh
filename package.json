@@ -1,6 +1,6 @@
 {
 	"name": "fresh",
-	"version": "3.0.8",
+	"version": "3.0.7",
 	"description": "A starter kit for static websites. Built with Yarn, Gulp, Pug, and SASS.",
 	"repository": {
 		"type": "git",
