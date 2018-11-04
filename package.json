@@ -13,7 +13,8 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "cp -r ./node_modules/open-sans-fonts/open-sans ./src/fonts/"
+		"install": "cp -r ./node_modules/open-sans-fonts/open-sans ./src/fonts/",
+		"owl": "cp ./node_modules/owl.carousel/dist/assets/owl.carousel.css ./build/css && cp ./node_modules/owl.carousel/dist/owl.carousel.js ./build/js"
 	},
 	"prettier": {},
 	"devDependencies": {
