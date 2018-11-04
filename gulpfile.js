@@ -23,7 +23,7 @@ var base = {
 	// ------------------------------------
 	styles = {
 		// Paths
-		input: srcStyles + "/**/*.{scss,sass}",
+		input: srcStyles + "/**/*.s+(a|c)ss",
 		output: buildCss,
 
 		// Config Options
@@ -43,6 +43,7 @@ var base = {
 			lintFixConfig: {
 				configFile: "./.sasslint-fix.yml"
 			},
+			quoteStyle: "single"
 		}
 	},
 	// ------------------------------------
@@ -194,6 +195,7 @@ var g = require("gulp"),
 	gulpif = require("gulp-if"),
 	browserSync = require("browser-sync"),
 	runSequence = require("run-sequence"),
+	replaceQuotes = require("gulp-replace-quotes"),
 	rename = require("gulp-rename"),
 	del = require("del"),
 	usage = require("gulp-help-doc"),
@@ -279,13 +281,18 @@ g.task("styles:fix", () =>
 		.pipe(g.dest(file => file.base))
 );
 
-// g.task("quotes", () => {
-// 	g.src(styles.src, { base: "./" })
-// 		.pipe(replaceQuotes({
-// 			quote: "single"
-// 		}))
-// 		.pipe(g.dest("./"));
-// });
+/**
+ * Replaces double quotes with single
+ * @task  {styles:quotes}
+ * @group {Utilities}
+ */
+g.task("styles:quotes", () => {
+	g.src(styles.input, { base: "./" })
+		.pipe(replaceQuotes({
+			quote: styles.opts.quoteStyle
+		}))
+		.pipe(g.dest("./"));
+});
 
 // // Fix Sass Files based on linter
 // g.task("fix", ["quotes"], () => run("yarn fix").exec());
