@@ -1,5 +1,4 @@
-// Fresh
-// @since v3.0.7
+// Fresh v3.0.8
 // ------------------------------------------------------------------
 
 // Open new browser window every time you run 'gulp'?
@@ -244,7 +243,7 @@ g.task("build", function (callback) {
  * @task  {styles}
  * @group {Main}
  */
-g.task("styles", function () {
+g.task("styles", () => {
 	return g
 		.src(styles.input)
 		.pipe(gulpif(styles.opts.lint, sassLint(styles.opts.lintConfig)))
@@ -262,7 +261,7 @@ g.task("styles", function () {
  * @task  {styles:lint}
  * @group {Utilities}
  */
-g.task("styles:lint", function () {
+g.task("styles:lint", () => {
 	return g
 		.src(styles.input)
 		.pipe(sassLint(styles.opts.lintConfig))
@@ -298,7 +297,7 @@ g.task("styles:quotes", () => {
  * @task  {scripts}
  * @group {Main}
  */
-g.task("scripts", function () {
+g.task("scripts", () => {
 	return g
 		.src(scripts.input)
 		.pipe(sourcemaps.init())
@@ -312,7 +311,7 @@ g.task("scripts", function () {
  * @task  {scripts:fix}
  * @group {Utilities}
  */
-g.task("scripts:fix", function () {
+g.task("scripts:fix", () => {
 	return g
 		.src(scripts.input)
 		.pipe(prettierEslint())
@@ -324,7 +323,7 @@ g.task("scripts:fix", function () {
  * @task  {scripts:beautify}
  * @group {Utilities}
  */
-g.task("scripts:beautify", function () {
+g.task("scripts:beautify", () => {
 	return g
 		.src(scripts.input)
 		.pipe(beautify(scripts.opts.beautify))
@@ -337,7 +336,7 @@ g.task("scripts:beautify", function () {
  * @task  {jquery}
  * @group {Utilities}
  */
-g.task("jquery", function () {
+g.task("jquery", () => {
 	return g.src(scripts.jquery.input).pipe(g.dest(scripts.jquery.output));
 });
 
@@ -349,7 +348,7 @@ g.task("jquery", function () {
  * @task  {pug}
  * @group {Main}
  */
-g.task("pug", ["data"], function () {
+g.task("pug", ["data"], () => {
 	return g
 		.src([views.input, "!" + views.partials])
 		.pipe(
@@ -371,7 +370,7 @@ g.task("pug", ["data"], function () {
  * @task  {data}
  * @group {Main}
  */
-g.task("data", function () {
+g.task("data", () => {
 	return g
 		.src(db.input)
 		.pipe(
@@ -396,7 +395,7 @@ g.task("data", function () {
  * @task  {pug:lint}
  * @group {Utilities}
  */
-g.task("pug:lint", function () {
+g.task("pug:lint", () => {
 	return g.src([views.input, views.partials]).pipe(puglint());
 });
 
@@ -405,15 +404,15 @@ g.task("pug:lint", function () {
  * @task  {html2pug}
  * @group {Utilities}
  */
-g.task("html2pug", ["move:html"], function () {
+g.task("html2pug", ["move:html"], () => {
 	return del.sync([html.srcFiles, "!" + html.converted + "/**/*.html"]);
 });
 
-g.task("move:html", ["convert:html"], function () {
+g.task("move:html", ["convert:html"], () => {
 	return g.src(html.srcFiles).pipe(g.dest(html.converted));
 });
 
-g.task("convert:html", function () {
+g.task("convert:html", () => {
 	return (
 		g
 			.src(html.srcFiles)
@@ -429,7 +428,7 @@ g.task("convert:html", function () {
  * @task  {clean:html}
  * @group {Utilities}
  */
-g.task("clean:html", function () {
+g.task("clean:html", () => {
 	return del.sync(html.converted);
 });
 
@@ -441,7 +440,7 @@ g.task("clean:html", function () {
  * @task  {concat}
  * @group {Production}
  */
-g.task("concat", function () {
+g.task("concat", () => {
 	return g
 		.src(html.productionFiles)
 		.pipe(useref())
@@ -455,7 +454,7 @@ g.task("concat", function () {
  * @task  {minify}
  * @group {Production}
  */
-g.task("minify", function () {
+g.task("minify", () => {
 	return g
 		.src(html.productionFiles)
 		.pipe(htmlmin(html.opts))
@@ -467,7 +466,7 @@ g.task("minify", function () {
  * @task  {tree}
  * @group {Utilities}
  */
-g.task("tree", function () {
+g.task("tree", () => {
 	var once = true; // lalz0r
 	g.src(base.build + "/**")
 		.pipe(
@@ -495,7 +494,7 @@ g.task("tree", function () {
  * @task  {fonts}
  * @group {Main}
  */
-g.task("fonts", function () {
+g.task("fonts", () => {
 	return g.src(fonts.input).pipe(g.dest(fonts.output));
 });
 
@@ -505,7 +504,7 @@ g.task("fonts", function () {
  * @task  {images}
  * @group {Main}
  */
-g.task("images", function () {
+g.task("images", () => {
 	g.src(images.input)
 		.pipe(cache(imagemin(images.opts)))
 		.pipe(g.dest(images.output));
@@ -533,7 +532,7 @@ g.task("clean", function (callback) {
  * @task  {serve}
  * @group {Main}
  */
-g.task("serve", function () {
+g.task("serve", () => {
 	browserSync.init(config.browserSync);
 	// Watch
 	if (config.watch.styles) {
@@ -558,7 +557,7 @@ g.task("serve", function () {
  * @task {help}
  * @group {Utilities}
  */
-g.task("help", function () {
+g.task("help", () => {
 	return usage(g);
 });
 
@@ -570,7 +569,7 @@ g.task("help", function () {
  * @task  {font:dependency}
  * @group {Utilities}
  */
-g.task("font:dependency", function () {
+g.task("font:dependency", () => {
 	return g.src(fonts.dependency.input).pipe(g.dest(fonts.dependency.output));
 });
 
@@ -579,7 +578,7 @@ g.task("font:dependency", function () {
  * @task  {font:dependency}
  * @group {Utilities}
  */
-g.task("owl", function () {
+g.task("owl", () => {
 	g.src(owlCarousel.inputCss).pipe(g.dest(owlCarousel.outputCss))
 	g.src(owlCarousel.inputJs).pipe(g.dest(owlCarousel.outputJs))
 });
