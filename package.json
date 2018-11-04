@@ -41,7 +41,6 @@
 		"gulp-imagemin": "^4.0.0",
 		"gulp-map": "^0.0.2",
 		"gulp-merge-json": "^1.2.1",
-		"gulp-open": "^3.0.1",
 		"gulp-plugin-prettier": "^1.1.0",
 		"gulp-plumber": "^1.2.0",
 		"gulp-prettier-eslint": "^1.1.0",

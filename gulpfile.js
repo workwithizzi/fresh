@@ -6,9 +6,9 @@
 var openBrowserWindow = false;
 
 var base = {
-		src: "./src",
-		build: "./build"
-	},
+	src: "./src",
+	build: "./build"
+},
 	srcViews = base.src + "/views",
 	srcStyles = base.src + "/sass",
 	srcScripts = base.src + "/js",
@@ -134,12 +134,6 @@ var base = {
 // CONFIGURE - Developement
 // ------------------------------------
 var config = {
-	// Add files to the array to open them manually using 'gulp open'
-	openfile: [
-		base.build + "/demo-forms.html",
-		base.build + "/demo-media.html",
-		base.build + "/demo-text.html"
-	],
 	// Configure browserSync settings
 	browserSync: {
 		// proxy: 'yoursite.dev',
@@ -192,7 +186,6 @@ var g = require("gulp"),
 	rename = require("gulp-rename"),
 	del = require("del"),
 	usage = require("gulp-help-doc"),
-	open = require("gulp-open"),
 	plumber = require("gulp-plumber"),
 	prettierEslint = require("gulp-prettier-eslint"),
 	run = require("gulp-run"),
@@ -210,7 +203,7 @@ var g = require("gulp"),
  * @task  {default}
  * @group {Main}
  */
-g.task("default", function(callback) {
+g.task("default", function (callback) {
 	runSequence("compile", ["serve"], callback);
 });
 
@@ -229,7 +222,7 @@ g.task("compile", ["styles", "scripts", "jquery", "pug", "images", "fonts"]);
  * @task  {build}
  * @group {Production}
  */
-g.task("build", function(callback) {
+g.task("build", function (callback) {
 	runSequence("clean", "compile", "concat", "minify", "tree", callback);
 });
 
@@ -241,7 +234,7 @@ g.task("build", function(callback) {
  * @task  {styles}
  * @group {Main}
  */
-g.task("styles", function() {
+g.task("styles", function () {
 	return g
 		.src(styles.input)
 		.pipe(gulpif(styles.opts.lint, sassLint(styles.opts.lintConfig)))
@@ -259,7 +252,7 @@ g.task("styles", function() {
  * @task  {styles:lint}
  * @group {Utilities}
  */
-g.task("styles:lint", function() {
+g.task("styles:lint", function () {
 	return g
 		.src(styles.input)
 		.pipe(sassLint(styles.opts.lintConfig))
@@ -286,7 +279,7 @@ g.task("styles:fix", () =>
  * @task  {scripts}
  * @group {Main}
  */
-g.task("scripts", function() {
+g.task("scripts", function () {
 	return g
 		.src(scripts.input)
 		.pipe(sourcemaps.init())
@@ -300,7 +293,7 @@ g.task("scripts", function() {
  * @task  {scripts:fix}
  * @group {Utilities}
  */
-g.task("scripts:fix", function() {
+g.task("scripts:fix", function () {
 	return g
 		.src(scripts.input)
 		.pipe(prettierEslint())
@@ -312,7 +305,7 @@ g.task("scripts:fix", function() {
  * @task  {scripts:beautify}
  * @group {Utilities}
  */
-g.task("scripts:beautify", function() {
+g.task("scripts:beautify", function () {
 	return g
 		.src(scripts.input)
 		.pipe(beautify(scripts.opts.beautify))
@@ -325,7 +318,7 @@ g.task("scripts:beautify", function() {
  * @task  {jquery}
  * @group {Utilities}
  */
-g.task("jquery", function() {
+g.task("jquery", function () {
 	return g.src(scripts.jquery.input).pipe(g.dest(scripts.jquery.output));
 });
 
@@ -337,13 +330,13 @@ g.task("jquery", function() {
  * @task  {pug}
  * @group {Main}
  */
-g.task("pug", ["data"], function() {
+g.task("pug", ["data"], function () {
 	return g
 		.src([views.input, "!" + views.partials])
 		.pipe(
 			gulpif(
 				views.opts.useData,
-				data(function(file) {
+				data(function (file) {
 					return JSON.parse(fs.readFileSync(db.fileDir + "/" + db.fileName));
 				})
 			)
@@ -359,7 +352,7 @@ g.task("pug", ["data"], function() {
  * @task  {data}
  * @group {Main}
  */
-g.task("data", function() {
+g.task("data", function () {
 	return g
 		.src(db.input)
 		.pipe(
@@ -384,7 +377,7 @@ g.task("data", function() {
  * @task  {pug:lint}
  * @group {Utilities}
  */
-g.task("pug:lint", function() {
+g.task("pug:lint", function () {
 	return g.src([views.input, views.partials]).pipe(puglint());
 });
 
@@ -393,15 +386,15 @@ g.task("pug:lint", function() {
  * @task  {html2pug}
  * @group {Utilities}
  */
-g.task("html2pug", ["move:html"], function() {
+g.task("html2pug", ["move:html"], function () {
 	return del.sync([html.srcFiles, "!" + html.converted + "/**/*.html"]);
 });
 
-g.task("move:html", ["convert:html"], function() {
+g.task("move:html", ["convert:html"], function () {
 	return g.src(html.srcFiles).pipe(g.dest(html.converted));
 });
 
-g.task("convert:html", function() {
+g.task("convert:html", function () {
 	return (
 		g
 			.src(html.srcFiles)
@@ -417,7 +410,7 @@ g.task("convert:html", function() {
  * @task  {clean:html}
  * @group {Utilities}
  */
-g.task("clean:html", function() {
+g.task("clean:html", function () {
 	return del.sync(html.converted);
 });
 
@@ -429,7 +422,7 @@ g.task("clean:html", function() {
  * @task  {concat}
  * @group {Production}
  */
-g.task("concat", function() {
+g.task("concat", function () {
 	return g
 		.src(html.productionFiles)
 		.pipe(useref())
@@ -443,7 +436,7 @@ g.task("concat", function() {
  * @task  {minify}
  * @group {Production}
  */
-g.task("minify", function() {
+g.task("minify", function () {
 	return g
 		.src(html.productionFiles)
 		.pipe(htmlmin(html.opts))
@@ -455,17 +448,17 @@ g.task("minify", function() {
  * @task  {tree}
  * @group {Utilities}
  */
-g.task("tree", function() {
+g.task("tree", function () {
 	var once = true; // lalz0r
 	g.src(base.build + "/**")
 		.pipe(
-			map(function(file) {
+			map(function (file) {
 				if (file.path.match(base.build)) return file;
 			})
 		)
 		.pipe(filetree({ cwdRelative: true }))
 		.pipe(
-			map(function(file) {
+			map(function (file) {
 				if (once) {
 					console.log(archy(file.tree));
 					once = !once;
@@ -479,23 +472,11 @@ g.task("tree", function() {
 // Utilities/Misc
 // ------------------------------------
 /**
- * Opens browser to the specified file
- * @task {open}
- * @group {Utilities}
- */
-g.task("open", function() {
-	g.src(config.openfile).pipe(open());
-});
-
-// Alias Task
-g.task("o", ["open"]);
-
-/**
  * Copies fonts to from ./src to ./build
  * @task  {fonts}
  * @group {Main}
  */
-g.task("fonts", function() {
+g.task("fonts", function () {
 	return g.src(fonts.input).pipe(g.dest(fonts.output));
 });
 
@@ -505,7 +486,7 @@ g.task("fonts", function() {
  * @task  {images}
  * @group {Main}
  */
-g.task("images", function() {
+g.task("images", function () {
 	g.src(images.input)
 		.pipe(cache(imagemin(images.opts)))
 		.pipe(g.dest(images.output));
@@ -516,7 +497,7 @@ g.task("images", function() {
  * @task  {clean}
  * @group {Utilities}
  */
-g.task("clean", function(callback) {
+g.task("clean", function (callback) {
 	// Clear out image cache
 	cache.clearAll();
 
@@ -533,7 +514,7 @@ g.task("clean", function(callback) {
  * @task  {serve}
  * @group {Main}
  */
-g.task("serve", function() {
+g.task("serve", function () {
 	browserSync.init(config.browserSync);
 	// Watch
 	if (config.watch.styles) {
@@ -558,6 +539,6 @@ g.task("serve", function() {
  * @task {help}
  * @group {Utilities}
  */
-g.task("help", function() {
+g.task("help", function () {
 	return usage(g);
 });
