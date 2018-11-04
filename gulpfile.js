@@ -38,9 +38,11 @@ var base = {
 			prefixer: ["last 2 versions", "ie >= 9", "and_chr >= 2.3"],
 			lint: false,
 			lintConfig: {
-				files: { ignore: "**/*normalize.scss" },
-				configFile: "./.sass-lint.yml"
-			}
+				configFile: "./.sasslint.yml"
+			},
+			lintFixConfig: {
+				configFile: "./.sasslint-fix.yml"
+			},
 		}
 	},
 	// ------------------------------------
@@ -276,6 +278,17 @@ g.task("styles:fix", () =>
 		.pipe(prettier.format(styles.opts.lintConfig.configFile))
 		.pipe(g.dest(file => file.base))
 );
+
+// g.task("quotes", () => {
+// 	g.src(styles.src, { base: "./" })
+// 		.pipe(replaceQuotes({
+// 			quote: "single"
+// 		}))
+// 		.pipe(g.dest("./"));
+// });
+
+// // Fix Sass Files based on linter
+// g.task("fix", ["quotes"], () => run("yarn fix").exec());
 
 // ------------------------------------
 // Scripts

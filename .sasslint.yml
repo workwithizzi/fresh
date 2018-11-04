@@ -1,0 +1,175 @@
+## Sass Lint Configuration ##
+# Sass-Lint Rules: https://git.io/vDfxc
+# Auto-Fix Docs: https://git.io/fxoxa
+#############################
+
+options:
+  formatter: stylish
+  merge-default-rules: false
+files:
+  include: '**/*.s+(a|c)ss'
+  ignore:
+    - node_modules/**
+    - _deprecating/**
+syntax:
+  include:
+    - scss
+    - sass
+rules:
+  # Turn these on during project, ignore during testing
+  no-color-hex: 0
+  no-color-literals: 0
+
+  #################
+  # Extends
+  no-extends: 1 # Try not to use extends
+  extends-before-mixins: 1
+  extends-before-declarations: 1
+  placeholder-in-extend: 0 # Can extend classes too
+
+  # Mixins
+  # Write them first (other than media queries)
+  # in-case you need to override something.
+  mixins-before-declarations:
+    - 1
+    - exclude:
+        - bp
+        - between_bp
+        - for_print
+        - nav-bp
+
+  # Selectors
+  no-attribute-selectors: 0
+  no-combinators: 0
+  no-empty-rulesets: 1
+  no-ids: 1 # Only use ids relating to js. Disable linting per line
+  no-qualifying-elements: 0
+  no-universal-selectors: 0
+  bem-depth: 0
+  nesting-depth:
+    - 1
+    - max-depth: 3
+  pseudo-element: 1 # https://git.io/fxrAu
+
+  # Properties
+  no-disallowed-properties:
+    - 1
+    - properties: [] # blacklist
+  no-important: 1 # Only use for hacks. Disable linting per line
+  no-misspelled-properties: 1
+  no-transition-all: 0
+  no-url-domains: 0
+  no-url-protocols: 0
+  no-vendor-prefixes: 0
+  property-units: # Disallows the use of units not specified below
+    - 0
+    - global: []
+    - per-property:
+        # - font-size: ["rem", "em"]
+  property-sort-order: 0
+  quotes:
+    - 1
+    - style: single
+  variable-for-property:
+    - 1
+    - allow-map-get: true
+    - properties:
+        - font-family
+        - color
+        - background-color
+        - z-index
+    - allowed-functions:
+      - map_get_check
+
+
+  # Name Formats
+  # TODO: Should figure out a good regex pattern at some point
+  class-name-format:
+    - 0
+    - allow-leading-underscore: true
+    - convention: ^[_A-Z]+$
+    - convention-explanation: ''
+    - ignore: []
+  function-name-format: 0
+  id-name-format: 0
+  mixin-name-format: 0
+  placeholder-name-format: 0
+  variable-name-format: 0
+
+  # Error Handling
+  no-debug: 0
+  no-warn: 0
+
+  no-invalid-hex: 1
+
+  #############################
+  # Code Readibility #
+  #############################
+
+  # Selectors
+  no-mergeable-selectors:
+    - 1
+    - whitelist: []
+  declarations-before-nesting: 1
+  brace-style:
+    - 1
+    - style: # https://git.io/fxwlu
+        - 1tbs
+        - stroustrup
+      allow-single-line: true
+  # Nesting
+  force-attribute-nesting: 0
+  force-element-nesting: 0
+  force-pseudo-nesting: 0
+
+  # Properties/Rules
+  no-duplicate-properties:
+    - 1
+    - exclude: # whitelist
+        - margin
+        - padding
+        - border
+  shorthand-values:
+    - 1
+    - allowed-shorthands: [1, 2]
+  leading-zero: 0 #false
+
+  # Spacing
+  one-declaration-per-line: 1
+  single-line-per-selector: 1
+  no-trailing-whitespace: 0 # Should be removed onSave
+  space-after-comma: 1 #true
+  space-before-colon: 0 #false | allow for alignment
+  space-after-colon: 0 #true | allow for alignment
+  space-before-brace: 0 #true | ignore due to interpolation
+  space-between-parens: 1 #false
+  space-around-operator: 1 #true
+
+  # Misc
+  no-css-comments: 0 # Removed during minification
+  clean-import-paths: 1
+  empty-args: 1 #false --Used for mixins
+  max-line-length: 0 #80
+  max-file-line-count: 0 #300
+  trailing-semicolon: 1 #true
+  hex-length: 0 #short | Allow long for alignment
+
+  indentation: 0 #2 spaces | Auto-convert to tabs onSave
+  empty-line-between-blocks: # turned off because linter & auto-fix has trouble
+    - 0
+    - include: true
+      allow-single-line-rulesets: true
+
+  #############################
+  # Corrected using sass-lint-auto-fix
+  #############################
+  no-color-keywords: 0 # auto-fixed
+  hex-notation: 0 #lowercase | auto-fixed
+  border-zero: 0 #0
+  attribute-quotes: 1 #true
+  final-newline: 0 #true # Should be corrected onSave
+  no-trailing-zero: 0 #disallowed | auto-fixed
+  space-before-bang: 0 #true | auto-fixed
+  space-after-bang: 0 #false | auto-fixed
+  url-quotes: 0 #use quotes | auto-fixed
+  zero-unit: 0 #don't include unit | auto-fixed
