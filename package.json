@@ -13,7 +13,8 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp font:dependency"
+		"install": "gulp font:dependency",
+		"fix": "sass-lint-auto-fix -c .sasslint-fix.yml"
 	},
 	"prettier": {},
 	"devDependencies": {
@@ -63,6 +64,7 @@
 		"prettier": "1.14.2",
 		"prettier-eslint": "^8.8.2",
 		"prettier-eslint-cli": "^4.7.1",
-		"run-sequence": "^2.2.0"
+		"run-sequence": "^2.2.0",
+		"sass-lint-auto-fix": "^0.15.0"
 	}
 }

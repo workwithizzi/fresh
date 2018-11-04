@@ -1,0 +1,37 @@
+## Sass Lint Auto-Fix Configuration ##
+# Sass-Lint Rules: https://git.io/vDfxc
+# Auto-Fix Docs: https://git.io/fxoxa
+#############################
+# All auto-fix options are listed even if they are set to ignored.
+options:
+  formatter: stylish
+  merge-default-rules: false
+files:
+  include: '**/*.s+(a|c)ss'
+  ignore:
+    - node_modules/**
+    - _deprecating/**
+syntax:
+  include:
+    - scss
+    - sass
+resolvers:
+  # Auto-fix has trouble with these so they are ignored
+  empty-line-between-blocks: 0 #true
+  indentation: 0 #2 spaces | Auto-convert to tabs onSave
+  hex-length: 0 #short | Allow long for alignment
+  no-css-comments: 0 # Removed during minification
+  no-important: 0 #allowed | Handle per-case by regular linter
+  property-sort-order: 0
+  space-after-colon: 0 #true | allow for alignment
+  space-before-colon: 0 #false | allow for alignment
+  no-color-keywords: 1
+  hex-notation: 1 #lowercase
+  border-zero: 1 #0
+  attribute-quotes: 1 #true
+  final-newline: 1 #true
+  no-trailing-zero: 1 #disallowed
+  space-after-bang: 1 #false
+  space-before-bang: 1 #true
+  url-quotes: 1 #use quotes
+  zero-unit: 1 #false

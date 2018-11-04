@@ -97,6 +97,52 @@
     normalize-path "^2.0.1"
     through2 "^2.0.3"
 
+"@sentry/core@4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-4.2.4.tgz#e4a331512a4db149f14a2976b75a5b3c8ef47f87"
+  dependencies:
+    "@sentry/hub" "4.2.4"
+    "@sentry/minimal" "4.2.4"
+    "@sentry/types" "4.2.4"
+    "@sentry/utils" "4.2.4"
+
+"@sentry/hub@4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-4.2.4.tgz#0248ad50e3a3e248a2086612a19914838694314c"
+  dependencies:
+    "@sentry/types" "4.2.4"
+    "@sentry/utils" "4.2.4"
+
+"@sentry/minimal@4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-4.2.4.tgz#6d7fc8a06395176be53d0941244b8e4a3d74a802"
+  dependencies:
+    "@sentry/hub" "4.2.4"
+    "@sentry/types" "4.2.4"
+
+"@sentry/node@^4.0.0-beta.12":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-4.2.4.tgz#0ae4b6c7303a941fcafa066702ab0b3272d61c1e"
+  dependencies:
+    "@sentry/core" "4.2.4"
+    "@sentry/hub" "4.2.4"
+    "@sentry/types" "4.2.4"
+    "@sentry/utils" "4.2.4"
+    cookie "0.3.1"
+    lsmod "1.0.0"
+    md5 "2.2.1"
+    stack-trace "0.0.10"
+
+"@sentry/types@4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-4.2.4.tgz#c77f5ecdbe38cc826451b11746cde9faf50cb40f"
+
+"@sentry/utils@4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-4.2.4.tgz#6e5f49d8a67b109c48fbe9762e793c8f453513b2"
+  dependencies:
+    "@sentry/types" "4.2.4"
+
 "@types/babel-types@*", "@types/babel-types@^7.0.0":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@types/babel-types/-/babel-types-7.0.4.tgz#bfd5b0d0d1ba13e351dff65b6e52783b816826c8"
@@ -934,7 +980,7 @@ chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.1:
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   dependencies:
@@ -955,6 +1001,10 @@ chardet@^0.4.0:
 chardet@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
+
+charenc@~0.0.1:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
 chokidar@1.7.0:
   version "1.7.0"
@@ -1159,6 +1209,10 @@ commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
+commander@^2.15.1:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+
 commander@~2.8.1:
   version "2.8.1"
   resolved "http://registry.npmjs.org/commander/-/commander-2.8.1.tgz#06be367febfda0c330aa1e2a072d3dc9762425d4"
@@ -1289,6 +1343,10 @@ cross-spawn@^6.0.5:
     semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
+
+crypt@~0.0.1:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
 
 css-color-names@0.0.4:
   version "0.0.4"
@@ -2928,6 +2986,12 @@ gonzales-pe-sl@^4.2.3:
   dependencies:
     minimist "1.1.x"
 
+"gonzales-pe-sl@github:srowhani/gonzales-pe#dev":
+  version "4.2.3"
+  resolved "https://codeload.github.com/srowhani/gonzales-pe/tar.gz/3b052416074edc280f7d04bbe40b2e410693c4a3"
+  dependencies:
+    minimist "1.1.x"
+
 got@^5.0.0:
   version "5.7.1"
   resolved "http://registry.npmjs.org/got/-/got-5.7.1.tgz#5f81635a61e4a6589f180569ea4e381680a51f35"
@@ -3770,7 +3834,7 @@ is-binary-path@^1.0.0:
   dependencies:
     binary-extensions "^1.0.0"
 
-is-buffer@^1.1.5:
+is-buffer@^1.1.5, is-buffer@~1.1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
 
@@ -4170,7 +4234,7 @@ js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
 
-js-yaml@^3.12.0, js-yaml@^3.4.6, js-yaml@^3.5.1, js-yaml@^3.5.4, js-yaml@^3.9.1:
+js-yaml@^3.11.0, js-yaml@^3.12.0, js-yaml@^3.4.6, js-yaml@^3.5.1, js-yaml@^3.5.4, js-yaml@^3.9.1:
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.0.tgz#eaed656ec8344f10f527c6bfa1b6e2244de167d1"
   dependencies:
@@ -4630,6 +4694,10 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
+lsmod@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/lsmod/-/lsmod-1.0.0.tgz#9a00f76dca36eb23fa05350afe1b585d4299e64b"
+
 luscious@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/luscious/-/luscious-0.0.7.tgz#cbea2a4f2b2a8beedabedca9ecf915f63236b350"
@@ -4694,6 +4762,14 @@ math-expression-evaluator@^1.2.14:
 math-random@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/math-random/-/math-random-1.0.1.tgz#8b3aac588b8a66e4975e3cdea67f7bb329601fac"
+
+md5@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/md5/-/md5-2.2.1.tgz#53ab38d5fe3c8891ba465329ea23fac0540126f9"
+  dependencies:
+    charenc "~0.0.1"
+    crypt "~0.0.1"
+    is-buffer "~1.1.1"
 
 mdn-data@~1.1.0:
   version "1.1.4"
@@ -6544,7 +6620,19 @@ sass-graph@^2.2.4:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sass-lint@^1.12.0:
+sass-lint-auto-fix@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/sass-lint-auto-fix/-/sass-lint-auto-fix-0.15.0.tgz#503d1b73aaf5e3e033d4fe3b80f6c7ad80bb7a46"
+  dependencies:
+    "@sentry/node" "^4.0.0-beta.12"
+    chalk "^2.3.2"
+    commander "^2.15.1"
+    glob "^7.1.2"
+    gonzales-pe-sl srowhani/gonzales-pe#dev
+    js-yaml "^3.11.0"
+    sass-lint "^1.12.1"
+
+sass-lint@^1.12.0, sass-lint@^1.12.1:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/sass-lint/-/sass-lint-1.12.1.tgz#630f69c216aa206b8232fb2aa907bdf3336b6d83"
   dependencies:
@@ -6917,6 +7005,10 @@ sshpk@^1.7.0:
 stable@~0.1.6:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
+
+stack-trace@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
 
 stat-mode@^0.2.0:
   version "0.2.2"

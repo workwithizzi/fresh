@@ -274,12 +274,7 @@ g.task("styles:lint", function () {
  * @task  {styles:fix}
  * @group {Utilities}
  */
-g.task("styles:fix", () =>
-	g
-		.src(styles.input)
-		.pipe(prettier.format(styles.opts.lintConfig.configFile))
-		.pipe(g.dest(file => file.base))
-);
+g.task("fix:styles", ["styles:quotes"], () => run("yarn fix").exec());
 
 /**
  * Replaces double quotes with single
@@ -294,8 +289,6 @@ g.task("styles:quotes", () => {
 		.pipe(g.dest("./"));
 });
 
-// // Fix Sass Files based on linter
-// g.task("fix", ["quotes"], () => run("yarn fix").exec());
 
 // ------------------------------------
 // Scripts
