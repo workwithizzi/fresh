@@ -274,7 +274,7 @@ g.task('styles:lint', () => {
  * @task  {styles:fix}
  * @group {Utilities}
  */
-g.task('styles:fix', ['styles:quotes'], () => run('yarn fix').exec());
+g.task('styles:fix', ['styles:quotes'], () => run('yarn styles:fix').exec());
 
 /**
  * Replaces double quotes with single

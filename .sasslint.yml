@@ -79,8 +79,7 @@ rules:
         - background-color
         - z-index
     - allowed-functions:
-      - map_get_check
-
+        - map_get_check
 
   # Name Formats
   # TODO: Should figure out a good regex pattern at some point
