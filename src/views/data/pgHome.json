@@ -1,8 +1,10 @@
 {
 	"meta": {
-		"title": "Fresh",
-		"keywords": "keywords, pug, sass, gulp, yarn",
-		"description": "This is a site description."
+		"title": "Home",
+		"keywords": " homepage keywords, pug, sass, gulp, yarn",
+		"description": "This is a meta description for the home page."
 	},
-	"title": "Home"
+	"title": "A Fresh Start",
+	"subtitle": "A modern way to create responsive, accessible, and maintainable front-end web projects.",
+	"description": "Built using Pug, SASS, and Javascript. Compiled with Gulp and pulled together with Yarn."
 }

@@ -1,0 +1,91 @@
+//- Demo Form Content
+//- -----------------------------------------------------------------
+
+extends /partials/_base
+
+block title
+	title HTML Form Elements
+
+block append styles
+	style
+		include info.css
+
+
+//- -----------------------------------
+//- Page Main-Content Starts Here
+//- -----------------------------------
+block content
+	article
+		header
+			h1 Demo Form Elements
+
+			p.o-intro
+				| This page is good place to quickly reference the main style elements used within the project. This is what an intro paragraph looks like using the <code>#{'.o-intro'}</code> class.
+
+		hr
+
+		section
+			h2.sg Forms
+
+			section
+				header: h3.sg Meters & Progress
+				include demo-partials/_forms-meter_progress
+
+			hr
+
+			section
+				header: h3.sg Fieldset & Legend
+				include demo-partials/_forms-fieldset_legend
+
+			hr
+
+			section
+				header: h3.sg Inputs Fields
+				include demo-partials/_forms-input-fields
+
+			hr
+
+			section
+				header: h3.sg Select
+				include demo-partials/_forms-input-select
+
+			hr
+
+			section
+				header: h3.sg Checkboxes
+				include demo-partials/_forms-input-checkbox
+
+			hr
+
+			section
+				header: h3.sg Radio Inputs
+				include demo-partials/_forms-input-radio
+
+			hr
+
+			section
+				header: h3.sg Textareas
+				include demo-partials/_forms-input-textareas
+
+			hr
+
+			section
+				header: h3.sg Buttons
+				include demo-partials/_forms-input-buttons
+
+
+
+		//- .c-contact-form#nav-contact
+			h4 #{SITE.footer.colThird}
+			p.form-desc Required fields are followed by #[abbr(title='required') *]
+
+			form#contact_form
+				.l-input-wrap
+					label(for='name') Name: #[abbr(title='required') *]
+						input#name(type='text', name='name', placeholder='Amelia Earhart')
+					label(for='email') Email: #[abbr(title='required') *]
+						input#email(type="text", name='email', placeholder="amelia@gmail.com")
+				label.message-input(for='textarea') Message: #[abbr(title='required') *]
+					textarea#textarea(name="textarea", cols="30", rows="10" placeholder='Write something here.' required)
+
+				button(type="submit") Submit

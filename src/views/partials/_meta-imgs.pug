@@ -1,0 +1,34 @@
+//- Favicon and Application Icon images. Generated using
+//- http://www.favicomatic.com/
+//- -----------------------------------------------------------------
+
+//- TODO: See if there is a better way to handle this variable
+- var metaImgUrl = 'images/meta/';
+//- var metaImgUrl = 'http://http(s)://www.' + SITE.meta.url + '/images/meta/';
+
+
+link(rel='apple-touch-icon-precomposed' sizes='57x57' href=metaImgUrl + 'apple-touch-icon-57x57.png')
+link(rel='apple-touch-icon-precomposed' sizes='114x114' href=metaImgUrl + 'apple-touch-icon-114x114.png')
+link(rel='apple-touch-icon-precomposed' sizes='72x72' href=metaImgUrl + 'apple-touch-icon-72x72.png')
+link(rel='apple-touch-icon-precomposed' sizes='144x144' href=metaImgUrl + 'apple-touch-icon-144x144.png')
+link(rel='apple-touch-icon-precomposed' sizes='60x60' href=metaImgUrl + 'apple-touch-icon-60x60.png')
+link(rel='apple-touch-icon-precomposed' sizes='120x120' href=metaImgUrl + 'apple-touch-icon-120x120.png')
+link(rel='apple-touch-icon-precomposed' sizes='76x76' href=metaImgUrl + 'apple-touch-icon-76x76.png')
+link(rel='apple-touch-icon-precomposed' sizes='152x152' href=metaImgUrl + 'apple-touch-icon-152x152.png')
+link(rel='icon' type='image/png' href=metaImgUrl + 'favicon-196x196.png' sizes='196x196')
+link(rel='icon' type='image/png' href=metaImgUrl + 'favicon-96x96.png' sizes='96x96')
+link(rel='icon' type='image/png' href=metaImgUrl + 'favicon-32x32.png' sizes='32x32')
+link(rel='icon' type='image/png' href=metaImgUrl + 'favicon-16x16.png' sizes='16x16')
+link(rel='icon' type='image/png' href=metaImgUrl + 'favicon-128.png' sizes='128x128')
+
+meta(name='application-name' content=SITE.meta.title)
+meta(name='msapplication-TileColor' content='#FFFFFF')
+meta(name='msapplication-TileImage' content=metaImgUrl + 'mstile-144x144.png')
+meta(name='msapplication-square70x70logo' content=metaImgUrl + 'mstile-70x70.png')
+meta(name='msapplication-square150x150logo' content=metaImgUrl + 'mstile-150x150.png')
+meta(name='msapplication-wide310x150logo' content=metaImgUrl + 'mstile-310x150.png')
+meta(name='msapplication-square310x310logo' content=metaImgUrl + 'mstile-310x310.png')
+
+//- RSS Feed for notifications
+if SITE.meta.rssLink
+	meta(name='msapplication-notification' content='frequency=30;polling-uri=https://notifications.buildmypinnedsite.com/?feed=http(s)://www.' + SITE.meta.url + SITE.meta.rssLink + '&id=1;polling-uri2=https://notifications.buildmypinnedsite.com/?feed=http(s)://www.' + SITE.meta.url + SITE.meta.rssLink + '&id=2;polling-uri3=https://notifications.buildmypinnedsite.com/?feed=http(s)://www.' + SITE.meta.url + SITE.meta.rssLink + '&id=3;polling-uri4=https://notifications.buildmypinnedsite.com/?feed=http(s)://www.' + SITE.meta.url + SITE.meta.rssLink + '&id=4;polling-uri5=https://notifications.buildmypinnedsite.com/?feed=http(s)://www.' + SITE.meta.url + SITE.meta.rssLink + '&id=5;cycle=1')

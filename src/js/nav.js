@@ -4,7 +4,6 @@
 // class to '<main>' when '#js-toggle-menu' (nav button) is clicked.
 // ------------------------------------------------------------------
 
-
 // Set button to click.
 var navBtn = document.getElementById('js-toggle-menu');
 
@@ -12,7 +11,6 @@ var navBtn = document.getElementById('js-toggle-menu');
 
 // Control svg animation of button.
 navBtn.onclick = function() {
-
 	// Toggle class "opened". Set also aria-expanded to true or false.
 	if (-1 !== navBtn.className.indexOf('is-active')) {
 		navBtn.className = navBtn.className.replace(' is-active', '');
@@ -21,7 +19,6 @@ navBtn.onclick = function() {
 		navBtn.className += ' is-active';
 		navBtn.setAttribute('aria-expanded', 'true');
 	}
-
 };
 
 // Add 'is-active' class to '.c-nav'

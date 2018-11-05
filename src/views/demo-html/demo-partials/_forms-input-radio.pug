@@ -1,0 +1,20 @@
+//- Forms - Radio Input
+//- -----------------------------------------------------------------
+
+
+p
+	| #{'<input>'} elements of type #{'radio'} are generally used in radio groups—collections of radio buttons describing a set of related options. Only one radio button in a given group can be selected at the same time. Radio buttons are typically rendered as small circles, which are filled or highlighted when selected.
+
+//- ---------------
+
+form
+	fieldset
+		legend Please select your preferred contact method:
+		label(for='fm-rdio1') Music:
+			input#fm-rdio1(type='radio', name='contact' value='email')
+		label(for='fm-rdio2') Phone:
+			input#fm-rdio2(type='radio', name='contact' value='phone' checked)
+		label(for='fm-rdio3') Mail:
+			input#fm-rdio3(type='radio', name='contact' value='mail')
+		br
+		button(type='submit') Submit

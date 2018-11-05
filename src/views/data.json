@@ -1,42 +1,46 @@
 {
-	"NAV": {
-		"menu": [
-			{
-				"title": "Home",
-				"path": "./"
-			},
-			{
-				"title": "About",
-				"path": "./"
-			},
-			{
-				"title": "Work",
-				"path": "./"
-			},
-			{
-				"title": "Contact",
-				"path": "./"
-			},
-			{
-				"title": "External",
-				"path": "https://www.google.com/"
-			}
-		]
-	},
 	"PGHOME": {
 		"meta": {
-			"title": "Fresh",
-			"keywords": "keywords, pug, sass, gulp, yarn",
-			"description": "This is a site description."
+			"title": "Home",
+			"keywords": " homepage keywords, pug, sass, gulp, yarn",
+			"description": "This is a meta description for the home page."
 		},
-		"title": "Home"
+		"title": "A Fresh Start",
+		"subtitle": "A modern way to create responsive, accessible, and maintainable front-end web projects.",
+		"description": "Built using Pug, SASS, and Javascript. Compiled with Gulp and pulled together with Yarn."
 	},
 	"SITE": {
-		"project": "Fresh",
 		"meta": {
+			"url": "exampleweb.site",
 			"title": "Fresh",
-			"keywords": "keywords, pug, sass, gulp, yarn",
-			"description": "This is a site description."
-		}
+			"keywords": " site keywords, pug, sass, gulp, yarn",
+			"description": "This is a meta description for the website.",
+			"rssLink": "/rss"
+		},
+		"copywrite": "© 2018 Your Company",
+		"credits": "Built By Us",
+		"contact": {
+			"name": "Hugh Gaskins",
+			"phone": "483-593-2394",
+			"email": "hello@exampleweb.site"
+		},
+		"navMain": [
+			{
+				"title": "Home",
+				"path": "/"
+			},
+			{
+				"title": "HTML Text Elements",
+				"path": "/demo-html/text.html"
+			},
+			{
+				"title": "HTML Media Elements",
+				"path": "/demo-html/media.html"
+			},
+			{
+				"title": "HTML Form Elements",
+				"path": "/demo-html/forms.html"
+			}
+		]
 	}
 }

@@ -1,0 +1,36 @@
+//- Forms - Meter & Progress Elements
+//- -----------------------------------------------------------------
+
+
+p
+	| The HTML #{'<meter>'} element represents either a scalar value within a known range or a fractional value. By default, the meter is presented as an inline-block.
+
+p
+	| The HTML <code>#{'<progress>'}</code> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar. By default, the meter is presented as an inline-block.
+
+//- ---------------
+
+h4 Meter - Basic & Percentage
+
+meter(value="2" min="0" max="10") 2 out of 10
+meter(value="0.6") 60%
+
+//- ---------------
+
+h4 Meter - High & Low Range
+
+meter(low="69" high="80" max="100" value="84") You get a B!
+
+//- ---------------
+
+h4 Progress - Indeterminate
+
+progress Indeterminate
+progress(max="10") Indeterminate
+
+//- ---------------
+
+h3 Progress - 70%. If 'max' Attribute is Omitted, Then Default is 1
+
+progress(value="7" max="10") 70%
+progress(value=".7") 70%

@@ -1,0 +1,26 @@
+//- Forms - Input Buttons
+//- -----------------------------------------------------------------
+
+
+p
+	| The #{'<button>'} tag defines a clickable button. Inside a #{'<button>'} element you can put content, like text or images. This is the difference between this element and buttons created with the #{'<input>'} element.
+
+p
+	| Tip: Always specify the type attribute for a #{'<button>'} element. Different browsers use different default types for the #{'<button>'} element.
+
+//- ---------------
+
+fieldset
+	legend Default HTML5 Buttons
+
+	button Button
+	br
+	button(type='button') Button Button
+	button(type='submit') Button Submit
+	button(type='reset') Button Reset
+	button(type='button' disabled) Button Disabled
+	br
+	input(type='button' value='Input Button')
+	input(type='submit' value='Input Submit')
+	input(type='reset' value='Input Reset')
+	input(type='button' value='Input Disabled' disabled)

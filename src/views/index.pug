@@ -3,39 +3,31 @@
 
 extends /partials/_base
 
-block title
-	title !{PGHOME.meta.title} | !{PGHOME.title}
-
 block vars
-	//- 'bodyClass' is optional. Remove this var if you don't
-	//- want to output a bodyclass.
+	- var metaDescription = PGHOME.meta.description;
+	- var metaKeywords = PGHOME.meta.keywords;
 	- var bodyClass = 'page--home';
 
-block content
+block title
+	title !{SITE.meta.title} | !{PGHOME.meta.title}
 
+
+//- -----------------------------------
+//- Page Main-Content Starts Here
+//- -----------------------------------
+block content
 	//- Feel free to remove everything below this
 	//- and start doing your own thing.
 
-	h1 #{SITE.project}!
+	h1 #{PGHOME.title}!
 		//- If you're not using gulp-data, You can remove these variables
 
-	h2.
-		A modern way to create responsive, accessible, and maintainable front-end web projects.
+	h2 #{PGHOME.subtitle}
 
-	p.
-		Built using Pug, SASS (with Luscious), and Javascript. Compiled with Gulp and pulled together with Yarn.
+	p #{PGHOME.description}
 
-	img(src='images/gulp.svg', alt='Gulp Logo')
-
-	img(src='images/sass.svg', alt='Sass Logo')
-
-	img(src='images/pug.svg', alt='Pug Logo')
-
-	img(src='images/yarn.svg', alt='Yarn Logo')
-
-	hr
-
-	h2.
-		Here's some filler content to use for testing
-
-	include /partials/demo/_content-index
+	div
+		img(src='images/gulp.svg', alt='Gulp Logo')
+		img(src='images/sass.svg', alt='Sass Logo')
+		img(src='images/pug.svg', alt='Pug Logo')
+		img(src='images/yarn.svg', alt='Yarn Logo')

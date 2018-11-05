@@ -1,8 +1,34 @@
 {
-	"project": "Fresh",
 	"meta": {
+		"url": "exampleweb.site",
 		"title": "Fresh",
-		"keywords": "keywords, pug, sass, gulp, yarn",
-		"description": "This is a site description."
-	}
+		"keywords": " site keywords, pug, sass, gulp, yarn",
+		"description": "This is a meta description for the website.",
+		"rssLink": "/rss"
+	},
+	"copywrite": "© 2018 Your Company",
+	"credits": "Built By Us",
+	"contact": {
+		"name": "Hugh Gaskins",
+		"phone": "483-593-2394",
+		"email": "hello@exampleweb.site"
+	},
+	"navMain": [
+		{
+			"title": "Home",
+			"path": "/"
+		},
+		{
+			"title": "HTML Text Elements",
+			"path": "/demo-html/text.html"
+		},
+		{
+			"title": "HTML Media Elements",
+			"path": "/demo-html/media.html"
+		},
+		{
+			"title": "HTML Form Elements",
+			"path": "/demo-html/forms.html"
+		}
+	]
 }
