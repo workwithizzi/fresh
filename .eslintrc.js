@@ -3,5 +3,6 @@ module.exports = {
 	extends: ['prettier'],
 	rules: {
 		quotes: ['error', 'single'],
+		indent: ['error', 'tab'],
 	},
 };
