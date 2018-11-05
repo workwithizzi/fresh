@@ -66,6 +66,7 @@ var base = {
 				// Options: git.io/vVyYB
 				indent_size: 2,
 				indent_with_tabs: true,
+				end_with_newline: true,
 			},
 		},
 	},

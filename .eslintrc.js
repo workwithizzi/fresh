@@ -1,7 +1,7 @@
 module.exports = {
 	parser: 'babel-eslint',
-	extends: ['plugin:prettier/recommended'],
+	extends: ['prettier'],
 	rules: {
-		'no-tabs': ['error', { allowIndentationTabs: true }],
+		quotes: ['error', 'single'],
 	},
 };
