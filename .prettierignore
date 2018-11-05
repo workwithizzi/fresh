@@ -1,3 +1,4 @@
 package.json
 src/js/vendors/
-.sass-lint.yml
+.sasslint.yml
+.sasslint-fix.yml
