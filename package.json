@@ -20,7 +20,7 @@
 	],
 	"scripts": {
 		"install": "gulp font:dependency",
-		"fix": "sass-lint-auto-fix -c .sasslint-fix.yml"
+		"styles:fix": "sass-lint-auto-fix -c .sasslint-fix.yml"
 	},
 	"devDependencies": {
 		"archy": "^1.0.0",
