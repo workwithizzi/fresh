@@ -4698,11 +4698,11 @@ lsmod@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lsmod/-/lsmod-1.0.0.tgz#9a00f76dca36eb23fa05350afe1b585d4299e64b"
 
-luscious@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/luscious/-/luscious-0.0.7.tgz#cbea2a4f2b2a8beedabedca9ecf915f63236b350"
+luscious@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/luscious/-/luscious-0.0.8.tgz#c72630f81411c24797a6d64da313ebf4b4f289a1"
   dependencies:
-    modularscale-sass "^3.0.5"
+    modularscale-sass "^3.0.8"
     susy "^3.0.5"
 
 make-dir@^1.0.0:
@@ -4944,7 +4944,7 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
-modularscale-sass@^3.0.5:
+modularscale-sass@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/modularscale-sass/-/modularscale-sass-3.0.8.tgz#57c92ee0750f6807e37359699ef2ce63a4997db6"
 
