@@ -4698,9 +4698,9 @@ lsmod@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lsmod/-/lsmod-1.0.0.tgz#9a00f76dca36eb23fa05350afe1b585d4299e64b"
 
-luscious@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/luscious/-/luscious-0.0.8.tgz#c72630f81411c24797a6d64da313ebf4b4f289a1"
+luscious@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/luscious/-/luscious-0.0.9.tgz#397e4ff609e464e35eb840898c6d7b46a47af209"
   dependencies:
     modularscale-sass "^3.0.8"
     susy "^3.0.5"
