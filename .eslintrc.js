@@ -1,8 +1,8 @@
 module.exports = {
 	parser: 'babel-eslint',
 	extends: ['prettier'],
+	plugins: ['prettier'],
 	rules: {
-		quotes: ['error', 'single'],
-		indent: ['error', 'tab']
+		'prettier/prettier': ['error']
 	}
 };
