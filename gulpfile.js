@@ -144,7 +144,7 @@ var base = {
 	};
 
 // ------------------------------------
-// CONFIGURE - Developement
+// CONFIGURE - Development
 // ------------------------------------
 var config = {
 	// Configure browserSync settings
@@ -156,7 +156,9 @@ var config = {
 		injectChanges: true,
 		notify: false,
 		port: 3000,
-		ui: { port: 8080 },
+		ui: {
+			port: 8080
+		},
 	},
 	// Comment out anything in the array that you
 	// don't want to watch/trigger build on change.
@@ -216,7 +218,7 @@ var g = require('gulp'),
  * @task  {default}
  * @group {Main}
  */
-g.task('default', function(callback) {
+g.task('default', function (callback) {
 	runSequence('compile', ['serve'], callback);
 });
 
@@ -232,7 +234,7 @@ g.task('compile', ['styles', 'scripts', 'jquery', 'pug', 'images', 'fonts']);
  * @task  {build}
  * @group {Production}
  */
-g.task('build', function(callback) {
+g.task('build', function (callback) {
 	runSequence('clean', 'compile', 'concat', 'minify', 'tree', callback);
 });
 
@@ -252,9 +254,13 @@ g.task('styles', () => {
 		.pipe(sourcemaps.init())
 		.pipe(sass(styles.opts.output).on('error', sass.logError))
 		.pipe(prefix(styles.opts.prefixer))
-		.pipe(sourcemaps.write({ includeContent: false }))
+		.pipe(sourcemaps.write({
+			includeContent: false
+		}))
 		.pipe(g.dest(styles.output))
-		.pipe(browserSync.reload({ stream: true }));
+		.pipe(browserSync.reload({
+			stream: true
+		}));
 });
 
 /**
@@ -282,7 +288,9 @@ g.task('styles:fix', ['styles:quotes'], () => run('yarn styles:fix').exec());
  * @group {Utilities}
  */
 g.task('styles:quotes', () => {
-	g.src(styles.input, { base: './' })
+	g.src(styles.input, {
+			base: './'
+		})
 		.pipe(
 			replaceQuotes({
 				quote: styles.opts.quoteStyle,
@@ -303,9 +311,13 @@ g.task('scripts', () => {
 	return g
 		.src(scripts.input)
 		.pipe(sourcemaps.init())
-		.pipe(sourcemaps.write({ includeContent: false }))
+		.pipe(sourcemaps.write({
+			includeContent: false
+		}))
 		.pipe(g.dest(scripts.output))
-		.pipe(browserSync.reload({ stream: true }));
+		.pipe(browserSync.reload({
+			stream: true
+		}));
 });
 
 /**
@@ -321,7 +333,7 @@ g.task('scripts:fix', () => {
 });
 
 /**
- * Makes JS files pretty and readible. Helpful when you need to dig through a file that's been minified
+ * Makes JS files pretty and readable. Helpful when you need to dig through a file that's been minified
  * @task  {scripts:beautify}
  * @group {Utilities}
  */
@@ -356,7 +368,7 @@ g.task('pug', ['data'], () => {
 		.pipe(
 			gulpif(
 				views.opts.useData,
-				data(function(file) {
+				data(function (file) {
 					return JSON.parse(fs.readFileSync(db.fileDir + '/' + db.fileName));
 				})
 			)
@@ -417,11 +429,11 @@ g.task('move:html', ['convert:html'], () => {
 g.task('convert:html', () => {
 	return (
 		g
-			.src(html.srcFiles)
-			.pipe(html2pug())
-			// .pipe(rename({ dirname: '' }))
-			.pipe(prettyPug(views.opts.prettyPug))
-			.pipe(g.dest(srcViews))
+		.src(html.srcFiles)
+		.pipe(html2pug())
+		// .pipe(rename({ dirname: '' }))
+		.pipe(prettyPug(views.opts.prettyPug))
+		.pipe(g.dest(srcViews))
 	);
 });
 
@@ -438,7 +450,7 @@ g.task('clean:html', () => {
 // Production
 // ------------------------------------
 /**
- * Concats and Minifys CSS & JS
+ * Concats and Minifies CSS & JS
  * @task  {concat}
  * @group {Production}
  */
@@ -452,7 +464,7 @@ g.task('concat', () => {
 });
 
 /**
- * Minifys HTML. Options: Remove comments, minify inline CSS/JS.
+ * Minifies HTML. Options: Remove comments, minify inline CSS/JS.
  * @task  {minify}
  * @group {Production}
  */
@@ -469,16 +481,18 @@ g.task('minify', () => {
  * @group {Utilities}
  */
 g.task('tree', () => {
-	var once = true; // lalz0r
+	var once = true;
 	g.src(base.build + '/**')
 		.pipe(
-			map(function(file) {
+			map(function (file) {
 				if (file.path.match(base.build)) return file;
 			})
 		)
-		.pipe(filetree({ cwdRelative: true }))
+		.pipe(filetree({
+			cwdRelative: true
+		}))
 		.pipe(
-			map(function(file) {
+			map(function (file) {
 				if (once) {
 					console.log(archy(file.tree));
 					once = !once;
@@ -517,7 +531,7 @@ g.task('images', () => {
  * @task  {clean}
  * @group {Utilities}
  */
-g.task('clean', function(callback) {
+g.task('clean', function (callback) {
 	// Clear out image cache
 	cache.clearAll();
 
