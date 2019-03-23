@@ -4,44 +4,47 @@
 doctype html
 html.no-js(lang='en')
 
-	//- -----------------------------------
 	//- Page Variables
-	//- -----------------------------------
 	block vars
 		- var metaDescription = SITE.meta.description;
 		- var metaKeywords = SITE.meta.keywords;
+		- var bodyClass = '';
 
-	//- -----------------------------------
 	//- Site Head
-	//- -----------------------------------
 	block head
 		head
 			meta(charset='utf-8')
 			meta(http-equiv='x-ua-compatible', content='ie=edge')
 			meta(name='viewport', content='width=device-width,initial-scale=1')
-
-			//- -----------------------------------
-			//- Site/Page Meta Title
-			//- -----------------------------------
-			block title
-				title #{SITE.meta.title}
-
 			meta(name='description', content=metaDescription)
 			meta(name='keywords', content=metaKeywords)
 
+
+			//- Site/Page Meta Title
+			block title
+				title #{SITE.meta.title}
+
+
 			include _meta-imgs
 
-			//- -----------------------------------
+
 			//- Stylesheets
-			//- -----------------------------------
 			// build:css /css/main.min.css
 			block styles
-				//- link(rel='stylesheet', href='/css/normalize.css')
 				link(rel='stylesheet', href='/css/main.css')
 			// endbuild
 			//
 
-	body(class=bodyClass)
+
+	//- If there's no template class in the page, then use the default
+	unless templateClass
+		- var templateClass = 'l_template--defualt';
+
+	//- make sure there's a space between body and template classes
+	if bodyClass
+		- var bodyClass = ' ' + bodyClass;
+
+	body(class=templateClass + bodyClass)
 
 		//- -----------------------------------
 		//- Accessibility Skiplink
