@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    "**/**.md": true,
+    "package.json": true,
+    "gulpfile.js": true,
+    "src/fonts": true,
+    "src/images": true,
+    ".sasslint-fix.yml": true,
+    ".sasslint.yml": true,
+    ".eslintrc.js": true,
+    ".prettierignore": true,
+    ".pug-lintrc": true,
+    ".editorconfig": true,
+    ".gitignore": true,
+    "**/node_modules": true,
+    "yarn.lock": true,
+    "yarn-error.log": true,
+    "**/.git": true
+  }
+}
