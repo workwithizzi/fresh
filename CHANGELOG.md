@@ -1,6 +1,11 @@
 Fresh Changelog
 ==================
 
+3.0.8
+------------------
+- Update Luscious to v0.0.9
+- Added README.md to `.prettierignore`
+
 3.0.7
 ------------------
 - Added HTML5 test content into pug partials
