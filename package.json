@@ -19,9 +19,9 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp font:dependency",
 		"styles:fix": "sass-lint-auto-fix -c .sasslint-fix.yml",
-		"test": "echo 'Test'"
+		"luscious": "echo 'To use Luscious, run: `rm -rf src/sass && cp -R node_modules/luscious/scaffold src/sass`'",
+		"install": "gulp font:dependency && yarn run luscious"
 	},
 	"devDependencies": {
 		"archy": "^1.0.0",
