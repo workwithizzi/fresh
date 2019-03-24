@@ -1,38 +1,51 @@
 // Primary Navigation Component
 //
-// Adds '.is-active' class to '.js-nav' and '.sidebar-active'
-// class to '<main>' when '#js-toggle-menu' (nav button) is clicked.
+// Toggles '.is-active' class for '#js-nav' and '#js-toggle-menu' button
+// Toggles 'area-expanded' attribute for '#js-toggle-menu' button
 // ------------------------------------------------------------------
 
-// Set button to click.
+// Get the Nav Button for "Click" action
 var navBtn = document.getElementById('js-toggle-menu');
+// Get the main navigation for styling on button click
+var navMain = document.getElementById('js-nav');
 
-// Click the button.
 
-// Control svg animation of button.
-navBtn.onclick = function() {
-	// Toggle class "opened". Set also aria-expanded to true or false.
+// Nav Button Interactions
+navBtn.onclick = function () {
+	// If the button 'is-active', then:
 	if (-1 !== navBtn.className.indexOf('is-active')) {
+
+		// Remove 'is-active' class from '#js-toggle-menu' button
+		// and set 'aria-expanded' to false
 		navBtn.className = navBtn.className.replace(' is-active', '');
 		navBtn.setAttribute('aria-expanded', 'false');
+
+		// Remove 'is-active' class from '#js-nav'
+		navMain.className = navMain.className.replace(' is-active', '');
+
+		// If the button is not 'is-active', then:
 	} else {
+		// Add 'is-active' class to '#js-toggle-menu' button
+		// and set 'aria-expanded' to true
 		navBtn.className += ' is-active';
 		navBtn.setAttribute('aria-expanded', 'true');
+
+		// Add 'is-active' class to '#js-nav'
+		navMain.className += ' is-active';
+
 	}
 };
 
-// Add 'is-active' class to '.c-nav'
-$(function() {
-	$('#js-toggle-menu').click(function(e) {
-		e.preventDefault();
-		$('.js-nav').toggleClass('is-active');
-	});
-});
 
-// Add 'sidebar-active' class to '<main>'
-$(function() {
-	$('#js-toggle-menu').click(function(e) {
-		e.preventDefault();
-		$('main').toggleClass('sidebar-active');
-	});
-});
+// ------------------------------------------------------------------
+
+// Add this to your SASS for a quick test:
+// #js-toggle-menu
+// 	background-color: blue
+// 	&.is-active
+// 		background-color: seagreen
+
+// #js-nav
+// 	background-color: lighten(blue, 20%)
+// 	&.is-active
+// 		background-color: lighten(seagreen, 20%)
