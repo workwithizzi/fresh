@@ -14,4 +14,13 @@ nav.c-nav.js-nav(role="navigation")
 
 	ul#main-menu
 		each item in SITE.navMain
-			<li><a href=#{item.path} target='_blank'>#{item.title}</a></li>
+			li
+				if item.path
+					a(href=item.path)=item.title
+				else
+					| item.title
+				if item.subNav
+					ul
+						each subItem in item.subNav
+							li
+								a(href=subItem.path)=subItem.title

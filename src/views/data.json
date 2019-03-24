@@ -30,16 +30,34 @@
 				"path": "/"
 			},
 			{
-				"title": "HTML Text Elements",
-				"path": "/demo-html/text.html"
+				"title": "Single Column",
+				"path": "/"
 			},
 			{
-				"title": "HTML Media Elements",
-				"path": "/demo-html/media.html"
+				"title": "Demo HTML",
+				"path": false,
+				"subNav": [
+					{
+						"title": "Text Elements",
+						"path": "/demo-html/text.html"
+					},
+					{
+						"title": "Media Elements",
+						"path": "/demo-html/media.html"
+					},
+					{
+						"title": "Form Elements",
+						"path": "/demo-html/forms.html"
+					}
+				]
 			},
 			{
-				"title": "HTML Form Elements",
-				"path": "/demo-html/forms.html"
+				"title": "Post Index",
+				"path": "/"
+			},
+			{
+				"title": "Sidebar",
+				"path": "/"
 			}
 		]
 	}
