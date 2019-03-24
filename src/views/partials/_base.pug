@@ -19,6 +19,8 @@ html.no-js(lang='en')
 			block title
 				title #{SITE.meta.title}
 
+			//- Removes the class 'no-js' from <html> when the browser DOES support JS.
+			<script>var element = document.getElementsByTagName("html")[0]; element.className = element.className.replace(/\bno-js\b/g, "");</script>
 
 			//- Stylesheets -- Concated when running "gulp build" or "gulp concat"
 			// build:css /css/main.min.css
