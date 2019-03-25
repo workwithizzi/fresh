@@ -1,8 +1,9 @@
-document.addEventListener('DOMContentLoaded', function(event) {
-	// console.log(window.location.pathname);
-	var links = document.getElementsByTagName('a');
-	for (var i = 0, l = links.length; i < l; i++) {
-		var link = links[i];
+document.addEventListener('DOMContentLoaded', function() {
+	// get all <a> tags
+	const links = document.getElementsByTagName('a');
+	for (let i = 0, l = links.length; i < l; i++) {
+		const link = links[i];
+
 		// basically a.href attribute have a full uri when the site is running
 		// so there are 2 ways to implement it
 
@@ -12,37 +13,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		// if (href === window.location.pathname) {
 		// add class to the <a> tag
 		// console.log(window.location.pathname);
-		// 	links[i].className += ' is-current-page';
+		// 	link.className += ' is-current-page';
 		// }
 
 		// 2 use the href prop over pathname, as href gives the full uri
-		var href = link.href;
+		// get href attribute from <a> tag
+		const href = link.href;
+
+		// if href of <a> tag is the same as rendered by the browser
 		if (href === window.location.href) {
 			// add class to the <a> tag
-			// console.log(window.location.pathname);
-			links[i].className += ' is-current-page';
+			link.className += ' is-current-page';
 		}
 	}
 });
-
-// if (location.pathname == '/') {
-// 	console.log('Home Page');
-// }
-
-// document.addEventListener('DOMContentLoaded', function(event) {
-// 	var path = location.pathname;
-// 	var links = document.getElementsByTagName('a');
-// 	for (var i = 0, l = links.length; i < l; i++) {
-// 		var link = links[i];
-// 		console.log(link);
-// 	}
-// });
-
-// document.addEventListener('DOMContentLoaded', function(event) {
-// 	var path = location.pathname;
-// 	var links = document.getElementsByTagName('a');
-// 	for (var i = 0, l = links.length; i < l; i++) {
-// 		var link = links[i];
-// 		if (link == path) console.log(link);
-// 	}
-// });
