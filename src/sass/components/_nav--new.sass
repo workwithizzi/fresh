@@ -1,0 +1,56 @@
+// Primary Navigation Component
+//
+// Account for:
+//   JS support in-browser
+//   Screen-reader accessibility
+//   Different screen sizes
+//- -----------------------------------------------------------------
+
+
+// Set up an easily reusable mixin
+=_bp
+	+bp(700px)
+		@content
+
+//- ------------------------------------
+
+// Remove the Nav button when there's no JS support as it won't be functional
+.no-js .l-nav__toggle
+	+hidden
+
+
+// nav is hidden by default (for smaller screens)
+.c-nav > ul
+	+hidden
+
+	// Show sav for larger screens
+	+_bp
+		+show
+
+// Show nav when button is clicked
+.c-nav.is-active > ul
+	+show
+
+// Hide the nav button for bigger screens
++_bp
+	.c-nav .l-nav__toggle
+		+hidden
+
+
+.c-nav a.is-current-page
+	background-color: yellow
+
+
+
+
+// Temporary Colors for testing ------------------------------------------------
+
+#js-toggle-menu
+	background-color: blue
+	&.is-active
+		background-color: seagreen
+
+#js-nav
+	background-color: lighten(blue, 20%)
+	&.is-active
+		background-color: lighten(seagreen, 20%)

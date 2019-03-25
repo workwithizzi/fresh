@@ -6,10 +6,10 @@ nav.c-nav#js-nav(role="navigation")
 		//- .nav__toggle#js-toggle-menu(aria-expanded="false" aria-controls="main-menu")
 		button.nav__toggle#js-toggle-menu(type="button" aria-expanded="false" aria-controls="main-menu")
 			.nav__toggle--open
-				span.u_sr_only Open Menu
+				span Open Menu
 				//- If using an icon, add svg here
-			.nav__toggle--close
-				span.u_sr_only Close Menu
+			.nav__toggle--close.u_hidden
+				span Close Menu
 				//- If using an icon, add svg here
 
 	ul#main-menu
@@ -18,7 +18,7 @@ nav.c-nav#js-nav(role="navigation")
 				if item.path
 					a(href=item.path)=item.title
 				else
-					| item.title
+					| #{item.title}
 				if item.subNav
 					ul
 						each subItem in item.subNav

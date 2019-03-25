@@ -4,37 +4,54 @@
 // Toggles 'area-expanded' attribute for '#js-toggle-menu' button
 // ------------------------------------------------------------------
 
-// Get the Nav Button for "Click" action
+// Nav <button> for "Click" action
 var navBtn = document.getElementById('js-toggle-menu');
-// Get the main navigation for styling on button click
+// Nav component for styling on button click
 var navMain = document.getElementById('js-nav');
+// Text or icon inside the Nav <button> depending on current state
+var toggleClose = document.querySelector('.nav__toggle--close');
+var toggleOpen = document.querySelector('.nav__toggle--open');
+
 
 
 // Nav Button Interactions
 navBtn.onclick = function () {
-	// If the button 'is-active', then:
+	// If the button 'is-active', then onClick:
 	if (-1 !== navBtn.className.indexOf('is-active')) {
 
 		// Remove 'is-active' class from '#js-toggle-menu' button
-		// and set 'aria-expanded' to false
-		navBtn.className = navBtn.className.replace(' is-active', '');
+		// Set 'aria-expanded' to false
+		navBtn.classList.toggle('is-active');
 		navBtn.setAttribute('aria-expanded', 'false');
 
-		// Remove 'is-active' class from '#js-nav'
-		navMain.className = navMain.className.replace(' is-active', '');
+		// Removes ".u_hidden" class from ".nav__toggle--close"
+		toggleClose.classList.toggle('u_hidden');
+		// Adds ".u_hidden" class to ".nav__toggle--open"
+		toggleOpen.classList.toggle('u_hidden');
 
-		// If the button is not 'is-active', then:
+		// Remove 'is-active' class from '#js-nav'
+		navMain.classList.toggle('is-active');
+
+
+		// If the button is not 'is-active', then onClick:
 	} else {
 		// Add 'is-active' class to '#js-toggle-menu' button
-		// and set 'aria-expanded' to true
-		navBtn.className += ' is-active';
+		// Set 'aria-expanded' to true
+		navBtn.classList.toggle('is-active');
 		navBtn.setAttribute('aria-expanded', 'true');
 
+		// Adds ".u_hidden" class to ".nav__toggle--close"
+		toggleClose.classList.toggle('u_hidden');
+		// Removes ".u_hidden" class from ".nav__toggle--open"
+		toggleOpen.classList.toggle('u_hidden');
+
 		// Add 'is-active' class to '#js-nav'
-		navMain.className += ' is-active';
+		navMain.classList.toggle('is-active');
 
 	}
 };
+
+
 
 
 // ------------------------------------------------------------------
@@ -44,7 +61,7 @@ navBtn.onclick = function () {
 // 	background-color: blue
 // 	&.is-active
 // 		background-color: seagreen
-
+//
 // #js-nav
 // 	background-color: lighten(blue, 20%)
 // 	&.is-active

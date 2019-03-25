@@ -31,7 +31,7 @@
 			},
 			{
 				"title": "Single Column",
-				"path": "/"
+				"path": "/single-column.html"
 			},
 			{
 				"title": "Demo HTML",
@@ -53,11 +53,11 @@
 			},
 			{
 				"title": "Post Index",
-				"path": "/"
+				"path": "/post-index.html"
 			},
 			{
 				"title": "Sidebar",
-				"path": "/"
+				"path": "/sidebar.html"
 			}
 		]
 	}
