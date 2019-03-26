@@ -6,14 +6,23 @@ document.addEventListener('DOMContentLoaded', function () {
 		// get href attribute from <a> tag
 		const href = link.href;
 
-		// add id if href of <a> === current page
 		if (href === window.location.href) {
-			link.setAttribute('id', 'js-is-current')
-			link.setAttribute('aria-describedby', 'js-a11y-current')
+			// add class if href of <a> === current page
+			link.className += ' js-is-current';
+
+			const text = link.textContent;
+			// Append 'current-page' to link text for the screen reader to read
+			// REVIEW: Not sure if this would work with translated pages.
+			link.setAttribute('aria-label', text + ', current page')
 		}
 	}
 });
 
-// aria - describedby="current"
 
-// 	< div id = "current" > current page</div >
+// ------------------------------------------------------------------
+
+
+// All you need to do for special styling is target the class in CSS. Like:
+// .c-nav .js-is-current {
+//   background-color: hotpink;
+// }
