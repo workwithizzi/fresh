@@ -2,9 +2,25 @@
 //- -----------------------------------------------------------------
 
 header
-	a(href='/')
+	//- a(href='/')
 		//- include /../images/fresh.svg
 		img(src='http://via.placeholder.com/150x150')
+	+logo
 
 	//- Site Nav
 	include _nav
+
+	//- +menu--open(
+	//- 	false,
+	//- 	'burgerTitle',
+	//- 	'Title of svg',
+	//- 	'This is a desciption'
+	//- 	)
+
+	//- +menu--open('info', 'titleid', 'Title of svg', 'Description of svg')
+	+menu--open(
+		'info',
+		'burgerTitle',
+		'Open Menu',
+		'Description of svg graphic'
+		)

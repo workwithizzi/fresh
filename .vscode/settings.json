@@ -1,20 +1,20 @@
 {
-	"files.exclude": {
-		"**/**.md": false,
-		"package.json": false,
-		"gulpfile.js": false,
-		"src/fonts": false,
-		"src/images": false,
-		".sasslint-fix.yml": false,
-		".sasslint.yml": false,
-		".eslintrc.js": false,
-		".prettierignore": false,
-		".pug-lintrc": false,
-		".editorconfig": false,
-		".gitignore": false,
-		"**/node_modules": false,
-		"yarn.lock": false,
-		"yarn-error.log": false,
-		"**/.git": false
-	}
+  "files.exclude": {
+    "**/**.md": true,
+    "package.json": true,
+    "gulpfile.js": true,
+    "src/fonts": true,
+    "src/images": true,
+    ".sasslint-fix.yml": true,
+    ".sasslint.yml": true,
+    ".eslintrc.js": true,
+    ".prettierignore": true,
+    ".pug-lintrc": true,
+    ".editorconfig": true,
+    ".gitignore": true,
+    "**/node_modules": true,
+    "yarn.lock": true,
+    "yarn-error.log": true,
+    "**/.git": true
+  }
 }
