@@ -1,0 +1,31 @@
+//- Basic svg to use as an example for setting up others
+//- -----------------------------------------------------------------
+
+//- If svg is purely decorative, include aria-hidden='true', otherwise:
+//- include aria-labelledby='title-id' in the svg
+//- A <title> tag with id='title-id'
+//- A <desc> tag
+
+//- ------------------------------------
+
+mixin svg_example(titleId, title, desc)
+	//- If there's no title args, then it's just meant as decoration and should be hidden from screen-readers
+	unless titleId
+		- var ariaHidden = 'true';
+
+	//- Give it a default title and description
+	unless title
+		- var title = 'Default Title';
+	unless desc
+		- var desc = 'Default description that\'s a little more detailed.';
+
+	//- ----------------
+
+	svg(aria-labelledby=titleId, aria-hidden=ariaHidden, role='img')
+
+		if titleId
+			title(id=titleId)=title
+			desc=desc
+
+		g
+			rect(x='0', y='0', width='100', height='50', fill='red')

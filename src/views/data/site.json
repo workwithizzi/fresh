@@ -6,8 +6,9 @@
 		"description": "This is a meta description for the website.",
 		"rssLink": "/rss"
 	},
-	"copywrite": "© 2018 Your Company",
-	"credits": "Built By Us",
+	"copywrite": "© 2019 IZZI Software Labs",
+	"credits": "Built By IZZI",
+	"creditsLink": "https://izzi.ws/contact-creds",
 	"contact": {
 		"name": "Hugh Gaskins",
 		"phone": "483-593-2394",

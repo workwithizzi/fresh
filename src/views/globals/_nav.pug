@@ -1,21 +1,19 @@
-//- Primary Navigation Component
+//- Primary Site Navigation
 //- -----------------------------------------------------------------
-
 
 
 
 nav.c-nav#js-nav(role="navigation")
 	.l-nav__toggle
-		//- .nav__toggle#js-toggle-menu(aria-expanded="false" aria-controls="main-menu")
 		button.nav__toggle#js-toggle-menu(type="button" aria-expanded="false" aria-controls="main-menu")
 			.nav__toggle--open
 				span Open Menu
-				//- If using an icon, add svg here
+				+svg_menu--open
 			.nav__toggle--close.u_hidden
 				span Close Menu
-				//- If using an icon, add svg here
+				+svg_menu--close
 
-	ul#main-menu
+	ul.nav__menu
 		each item in SITE.navMain
 			li
 				if item.path

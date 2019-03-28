@@ -1,7 +1,7 @@
 //- Site Home Page
 //- -----------------------------------------------------------------
 
-extends /partials/_base
+extends /globals/_base
 
 block vars
 	- var page = PGHOME; // - should match related json file for the page in "data/"
@@ -15,7 +15,7 @@ block title
 
 
 //- -----------------------------------
-//- Page Main-Content Starts Here
+//- Page <main> Content Starts Here
 //- -----------------------------------
 block content
 	//- Feel free to remove everything below this
@@ -29,7 +29,21 @@ block content
 	p=page.description
 
 	div
+		h3 SVG Images used as regular raster images
+
 		img(src='images/gulp.svg', alt='Gulp Logo')
 		img(src='images/sass.svg', alt='Sass Logo')
 		img(src='images/pug.svg', alt='Pug Logo')
 		img(src='images/yarn.svg', alt='Yarn Logo')
+
+	div
+		h3 SVG Images used "inline"
+
+		//- args for svg mixins: 'arid-labelledby' id | <title> | <desc>
+		+svg_gulp('gulpLabelledby', 'This is the title tag', 'And this is the description tag')
+		//- If you don't include a 2nd or 3rd arg, then the default is used.
+		+svg_sass('sassTitle')
+		//- The first arg is required for it to be accessible, and it has to be unique to the page
+		+svg_pug('youCanWriteAnythingHereAsLongAsItsUnique')
+		//- Don't include any args if it's only decorative and doesn't need to be accessible
+		+svg_yarn
