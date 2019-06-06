@@ -1,0 +1,258 @@
+// @since: v0.0.8
+// @desc:  Project Settings
+//         Use this file to override Luscious default configs or create
+//         new configs. If modifying a default, remove the `!default`
+//         flag. You can remove anything here and the setting will
+//         fall back to Luscious' settings.
+// TODO: Add url to Luscious documentation
+// @see:   url/to/luscious/documentation
+// ===================================================================
+
+// --------------------------------------------------------------------
+// Table of Contents
+// -------------------------------------
+// |	1. Development
+// -------------------------------------
+// |	2. Base
+// -------------------------------------
+// |	3. Colors
+// -------------------------------------
+// |	4. A11Y
+// -------------------------------------
+// |	5. Animation
+// -------------------------------------
+// |	6. Typography
+//	|- 6.1 Font-Stacks
+//	|- 6.2 Modular Scale (font sizes)
+// -------------------------------------
+// | 7. Breakpoints
+// -------------------------------------
+// | 8. Z-Index
+// -------------------------------------
+// | 9. Grid - Susy Config
+// --------------------------------------------------------------------
+
+
+// -------------------------------------
+// 1. Development
+// -------------------------------------
+// Use pesticide.css to debug layouts. @see: git.io/fAe8o
+$pesticide_debug_outlines: false !default;
+$pesticide_debug_depth:    false !default;
+// CSS Utility Classes for debugging.
+$output_dev_color_classes: false !default;
+
+
+// -------------------------------------
+// 2. Base
+// -------------------------------------
+// HTML Root Font Size (use percent values)
+// To use multiples of '10' in your sizes,
+// declare 62.5% instead of the standard '100%'
+$document_font_size: 100% !default;
+
+// Base Font-Size
+$base_font_size: 1rem !default;
+
+// How much things like lists and blockquotes are indented.
+$base_indent_amount: 4rem !default;
+
+
+/// ## Image Asset-Path
+/// Path to your images directory from your compiled `.css` file
+/// Modify this variable in your global settings file.
+/// Make sure to remove `!default` to override Luscious.
+/// @see {function} img
+///
+$img_base_path: '../images' !default;
+
+/// ## Font Asset-Path
+/// Path to your fonts directory from your compiled `.css` file
+/// Modify this variable in your global settings file.
+/// Make sure to remove `!default` to override Luscious.
+/// @see {function} font
+///
+$font_base_path: '../fonts' !default;
+
+// -------------------------------------
+// 3. Colors
+// -------------------------------------
+// Base: All Project colors are built using these.
+
+// Grey Scale
+$cl_black  : #1f2d3d !default;
+$cl_dark   : #3c4858 !default;
+$cl_middle : #8492a6 !default;
+$cl_light  : #eff2f7 !default;
+$cl_white  : #f9fafc !default;
+
+// Brand
+$cl_primary   :   #1fb6ff !default;
+$cl_primary-dk:   #009eeb !default;
+$cl_primary-lt:   #85d7ff !default;
+$cl_secondary :   #f24878 !default;
+$cl_secondary-dk: #ef1855 !default;
+$cl_secondary-lt: #f5789b !default;
+
+// Feedback
+$cl_success   : #13ce66 !default;
+$cl_warning   : #ffc82c !default;
+$cl_alert     : #ff4949 !default;
+
+// ----------------
+// UI Colors: These colors are used throughout the project files
+
+// Default
+$cl_bg              : $cl_white      !default;
+$cl_text            : $cl_black      !default;
+$cl_border          : $cl_light      !default;
+$cl_text-highlight  : #ff0         !default;
+$cl_link            : $cl_primary    !default;
+$cl_link-hover      : $cl_primary-dk !default;
+
+// Nav
+$cl_nav-bg          : $cl_primary    !default;
+$cl_nav-text        : $cl_white      !default;
+$cl_nav-active      : $cl_secondary  !default;
+
+// Icons
+$cl_icon-border     : $cl_white      !default;
+$cl_icon-inverse    : $cl_white      !default;
+
+// Buttons
+$btn_text-primary       : $cl_white      !default;
+$btn_bg-primary         : $cl_primary    !default;
+$btn_bg-primary-hover   : $cl_primary-dk !default;
+$btn_text-secondary     : $cl_white      !default;
+$btn_bg-secondary       : $cl_secondary  !default;
+$btn_bg-secondary-hover : $cl_secondary-dk  !default;
+
+// This map makes the color-profiles available in `+btn()` mixin.
+// To add more profiles, just add another array to
+// the map with the same keys.
+$btn-colors: (
+	primary: ( // Only required array
+		color: $cl_white,
+		background: $cl_primary,
+		border: transparent,
+		hover-color: $cl_white,
+		hover-background: $cl_primary-dk,
+		hover-border: transparent
+	),
+	secondary: (
+		color: $cl_white,
+		background: $cl_secondary,
+		border: transparent,
+		hover-color: $cl_white,
+		hover-background: $cl_secondary-dk,
+		hover-border: transparent
+	)
+) !default;
+
+// ------------------------------------
+// 4. A11Y
+// ------------------------------------
+// Colors
+$a11y_attention : #e60000 !default;
+$a11y_light     : #ffffff !default;
+
+// Z-index
+$a11y_zindex    : 19999   !default;
+
+// ------------------------------------
+// 5. Animation
+// ------------------------------------
+// Timing
+$base_timing: ease-in-out !default;
+
+// Delay
+$base_delay: 250ms !default;
+
+// Combined
+$base_animation: all $base_delay $base_timing !default;
+
+// -------------------------------------
+// 6. Typography
+// -------------------------------------
+
+// -----------------
+// 6.1 Font-Stacks
+// -----------------
+// Default Body
+$font_stack_body: (
+	'Open Sans',
+	'Helvetica Neue',
+	'Helvetica',
+	'Arial',
+	sans-serif
+	) !default;
+
+// Default Headings
+$font_stack_heading: (
+	'Georgia',
+	'Times',
+	'Times New Roman',
+	serif
+	) !default;
+
+// Default Code/Monospace
+$font_stack_code: (
+	'Courier New',
+	'Courier',
+	'Lucida Typewriter',
+	monospace
+	) !default;
+
+// ----------------
+// 6.2 Modular Scale (font sizes)
+// ----------------
+// 2DO-YG: Test and add info
+$modularscale     : (
+	base: $base_font_size,
+	ratio: 1.33
+) !default;
+
+// -------------------------------------
+// 7. Breakpoints
+// -------------------------------------
+/// ## Breakpoint Map
+/// A map for your default breakpoint widths. Prefer `em` units as
+/// they are the most consistent for media queries across browsers
+/// @since v0.0.4
+/// @see {mixin} bp
+/// @see {mixin} between_bp
+///
+$breakpoints: (
+	xs : 37.437em, // 599px
+	sm : 37.5em ,  // 600px
+	md : 61.875em, // 990px
+	lg : 75em,     // 1200px
+	xl : 112.5em,  // 1800px
+) !default;
+
+// -------------------------------------
+// 8. Z-Index
+// -------------------------------------
+$z_nosebleed    : 9999  !default;
+$z_tooltip      : 600   !default;
+$z_popup        : 500   !default;
+$z_popup_bg     : 400   !default;
+$z_nav          : 300   !default;
+$z_footer       : 200   !default;
+$z_scrim        : 100   !default;
+$z_overlay_base : 100   !default;
+$z_base         : 1     !default;
+$z_bottomless   : -9999 !default;
+
+// -------------------------------------
+// 9. Grid - Susy Config
+// -------------------------------------
+// These variables override the !default $susy map settings
+// More info:
+// Susy 3 Docs: https://goo.gl/Ak5Bo8
+// Susy Map Docs: https://goo.gl/BDui9p
+
+$base_grid_columns: 12 !default;
+$base_grid_gutters: 0.25 !default;
+$base_grid_spread: 'narrow' !default;
+$base_grid_container-spread: 'narrow' !default;

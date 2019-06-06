@@ -1,0 +1,32 @@
+// Button Styles
+//
+// ------------------------------------------------------------------
+
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit']
+	// @nrml: Correct the inability to style clickable types in iOS & Safari.
+	-webkit-appearance: button
+	&::-moz-focus-inner
+		// @nrml: Remove the inner border and padding in Firefox.
+		border-style: none
+		padding: 0
+
+	&:-moz-focusring
+		// @nrml: Restore the focus styles unset by the previous rule.
+		outline: r(1px) dotted ButtonText
+
+// ----------------
+
+::-webkit-file-upload-button
+	// @nrml: Correct the inability to style clickable types in iOS & Safari.
+	-webkit-appearance: button
+	// @nrml: Change font properties to `inherit` in Safari.
+	font: inherit
+
+// ----------------
+
+button
+	+btn

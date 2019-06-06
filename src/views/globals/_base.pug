@@ -1,0 +1,75 @@
+//- Contains the html that is reused on most pages
+//- -----------------------------------------------------------------
+
+include /svg/_svg
+
+
+doctype html
+html.no-js(lang='en')
+
+	//- Page Variables
+	block vars
+		- var metaDescription = SITE.meta.description;
+		- var metaKeywords = SITE.meta.keywords;
+
+	//- Site Head
+	block head
+		head
+			//- All the <head> meta stuff
+			include _head__meta
+
+			//- Site/Page Meta Title
+			block title
+				title #{SITE.meta.title}
+
+			//- Replaces the class 'no-js' with 'js' in <html> so we can style for browser support.
+			<script>var element = document.getElementsByTagName("html")[0]; element.className = element.className.replace(/\bno-js\b/g, "js");</script>
+
+			//- Stylesheets -- Concated when running "gulp build" or "gulp concat"
+			<!-- build:css /css/main.min.css -->
+			block styles
+				link(rel='stylesheet', href='/css/main.css')
+			<!-- endbuild -->
+
+
+	//- If there's no template class in the page, then use the default
+	unless templateClass
+		- var templateClass = 'l_template--defualt';
+
+	//- make sure there's a space between body and template classes
+	if bodyClass
+		- var bodyClass = ' ' + bodyClass;
+	else
+		- var bodyClass = '';
+
+	body(class=templateClass + bodyClass)
+
+		//- Accessibility Skiplink
+		a.c-skiplink(href='#main') Jump to main content.
+
+		//- Site Header/Nav
+		block header
+			include _header
+
+		main#main(role='main')
+
+			//- Page Content
+			block content
+
+		//- Site Footer
+		block footer
+			include _footer
+
+
+
+		//- External Scripts
+		block bottom-scripts-external
+			//- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><script>window.jQuery || document.write('<script src="js/vendors/jquery-3.3.1.min.js"><\/script>')</script>
+
+		//- Local Scripts -- Concated when running "gulp build" or "gulp concat"
+		<!-- build:js /js/main.min.js -->
+		block bottom-scripts-local
+			script(src='/js/nav.js')
+			script(src='/js/push-footer.js')
+			script(src='/js/current-page.js')
+		<!-- endbuild -->

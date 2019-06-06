@@ -1,0 +1,21 @@
+//- Contains all the <head> meta stuff that won't normally change between projects
+//- -----------------------------------------------------------------
+
+//- Fall back to the default meta info if it's not set on the specific page/template
+//- Also useful if we compile this page into it's own html file
+unless metaDescription
+	- var metaDescription = SITE.meta.description;
+
+unless metaKeywords
+	- var metaKeywords = SITE.meta.keywords;
+
+
+
+meta(charset='utf-8')
+meta(http-equiv='x-ua-compatible', content='ie=edge')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+meta(name='description', content=metaDescription)
+meta(name='keywords', content=metaKeywords)
+
+
+include _head__meta-imgs

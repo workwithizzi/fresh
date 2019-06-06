@@ -17,8 +17,9 @@
 			"description": "This is a meta description for the website.",
 			"rssLink": "/rss"
 		},
-		"copywrite": "© 2018 Your Company",
-		"credits": "Built By Us",
+		"copywrite": "© 2019 IZZI Software Labs",
+		"credits": "Built By IZZI",
+		"creditsLink": "https://izzi.ws/contact-creds",
 		"contact": {
 			"name": "Hugh Gaskins",
 			"phone": "483-593-2394",
@@ -30,16 +31,34 @@
 				"path": "/"
 			},
 			{
-				"title": "HTML Text Elements",
-				"path": "/demo-html/text.html"
+				"title": "Single Column",
+				"path": "/single-column.html"
 			},
 			{
-				"title": "HTML Media Elements",
-				"path": "/demo-html/media.html"
+				"title": "Demo HTML",
+				"path": false,
+				"subNav": [
+					{
+						"title": "Text Elements",
+						"path": "/demo-html/text.html"
+					},
+					{
+						"title": "Media Elements",
+						"path": "/demo-html/media.html"
+					},
+					{
+						"title": "Form Elements",
+						"path": "/demo-html/forms.html"
+					}
+				]
 			},
 			{
-				"title": "HTML Form Elements",
-				"path": "/demo-html/forms.html"
+				"title": "Post Index",
+				"path": "/post-index.html"
+			},
+			{
+				"title": "Sidebar",
+				"path": "/sidebar.html"
 			}
 		]
 	}

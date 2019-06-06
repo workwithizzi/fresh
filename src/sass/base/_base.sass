@@ -1,0 +1,48 @@
+// base layout styles for html, body, and other generic elements
+//
+// ------------------------------------------------------------------
+
+
+html
+	// Sets the font-size for the DOM (use % unit)
+	font-size: $document_font_size
+	// Make sure the height covers the window
+	height: 100%
+	// Use a decent box model on the root element
+	box-sizing: border-box
+
+// ----------------
+
+// Make all elements from the DOM inherit from the parent box-sizing
+// Since `*` has a specificity of 0, it does not override the `html` value
+*,
+*::before,
+*::after
+	box-sizing: inherit
+
+// ----------------
+
+body
+	// @nrml: Remove the margin in all browsers
+	margin: 0
+	padding: 0
+	// Make sure body isn't smaller than the window
+	min-height: 100%
+
+// ----------------
+
+main,
+article,
+aside,
+footer,
+header,
+nav,
+section
+	// @nrml: Add the correct display in IE 9-
+	display: block
+
+
+// Make sure floated elements don't break <main>
+main
+	width: span(12)
+	padding: gutter()

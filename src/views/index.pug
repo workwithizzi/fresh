@@ -1,33 +1,51 @@
 //- Site Home Page
 //- -----------------------------------------------------------------
 
-extends /partials/_base
+extends /globals/_base
 
 block vars
-	- var metaDescription = PGHOME.meta.description;
-	- var metaKeywords = PGHOME.meta.keywords;
-	- var bodyClass = 'page--home';
+	- var page = PGHOME; // - should match related json file for the page in "data/"
+	- var metaDescription = page.meta.description;
+	- var metaKeywords = page.meta.keywords;
+	- var bodyClass = ''; //- Only define a body class if you need to target the specific page for CSS/JS
+	- var templateClass = 'l_template--home'; //- Class is added to the <body> for specific page template styles. Remove to use the default class: "l_template--default"
 
 block title
-	title !{SITE.meta.title} | !{PGHOME.meta.title}
+	title !{SITE.meta.title} | !{page.meta.title}
 
 
-//- -----------------------------------
-//- Page Main-Content Starts Here
-//- -----------------------------------
 block content
+	//- -----------------------------------
+	//- Page <main> Content Starts Here
+	//-
 	//- Feel free to remove everything below this
 	//- and start doing your own thing.
+	//- -----------------------------------
 
-	h1 #{PGHOME.title}!
+
+	h1=page.title
 		//- If you're not using gulp-data, You can remove these variables
 
-	h2 #{PGHOME.subtitle}
+	h2=page.subtitle
 
-	p #{PGHOME.description}
+	p=page.description
 
 	div
+		h3 SVG Images used as regular raster images
+
 		img(src='images/gulp.svg', alt='Gulp Logo')
 		img(src='images/sass.svg', alt='Sass Logo')
 		img(src='images/pug.svg', alt='Pug Logo')
 		img(src='images/yarn.svg', alt='Yarn Logo')
+
+	div
+		h3 SVG Images used "inline"
+
+		//- args for svg mixins: 'arid-labelledby' id | <title> | <desc>
+		+svg_gulp('gulpLabelledby', 'This is the title tag', 'And this is the description tag')
+		//- If you don't include a 2nd or 3rd arg, then the default is used.
+		+svg_sass('sassTitle')
+		//- The first arg is required for it to be accessible, and it has to be unique to the page
+		+svg_pug('youCanWriteAnythingHereAsLongAsItsUnique')
+		//- Don't include any args if it's only decorative and doesn't need to be accessible
+		+svg_yarn

@@ -1,5 +1,51 @@
 @charset 'utf-8'
 
-// Import your SASS files here
-// Or... replace the entire directory with the SASS scaffold in Luscious
-// See: https://www.npmjs.com/package/luscious
+// Normalize:
+// Don't add it to your project, it's baked into the scaffold.
+// Any properties that have the tag '@nrml' are from normalize.css.
+// You can modify these properties, but completely
+// removing them will have UNPREDICTABLE OUTCOMES.
+
+// Project Settings
+@import 'settings'
+
+// Utilities/Vendors/Tools
+// Path for Luscious core development (comment at production)
+// @import '../core/luscious'
+// Path for production (comment at Luscious core development)
+@import './../../node_modules/luscious/core/luscious'
+
+// Import Font Awesome Sass
+// @import '../../node_modules/font-awesome/scss/font-awesome'
+
+// Project Utilities
+// @import 'utils/your-partial'
+
+// Base Styles
+@import 'base/utility_classes'
+@import 'base/base'
+@import 'base/typo-base'
+@import 'base/typo-headings'
+@import 'base/typo-misc'
+@import 'base/forms'
+@import 'base/forms-inputs'
+@import 'base/media'
+@import 'base/misc-html5'
+
+// Objects
+@import 'objects/button_config'
+@import 'objects/buttons'
+
+// Components
+@import 'components/skiplink'
+// @import 'components/nav'
+@import 'components/nav--new'
+
+// Pages
+@import 'pages/home'
+
+// Themes
+@import 'themes/default'
+
+// Shame
+@import 'shame'

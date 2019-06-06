@@ -1,0 +1,27 @@
+//- Primary Site Navigation
+//- -----------------------------------------------------------------
+
+
+
+nav.c-nav#js-nav(role="navigation")
+	.l-nav__toggle
+		button.nav__toggle#js-toggle-menu(type="button" aria-expanded="false" aria-controls="main-menu")
+			.nav__toggle--open
+				span Open Menu
+				+svg_menu--open
+			.nav__toggle--close.u_hidden
+				span Close Menu
+				+svg_menu--close
+
+	ul.nav__menu
+		each item in SITE.navMain
+			li
+				if item.path
+					a(href=item.path)=item.title
+				else
+					| #{item.title}
+				if item.subNav
+					ul
+						each subItem in item.subNav
+							li
+								a(href=subItem.path)=subItem.title

@@ -1,38 +1,68 @@
 // Primary Navigation Component
 //
-// Adds '.is-active' class to '.js-nav' and '.sidebar-active'
-// class to '<main>' when '#js-toggle-menu' (nav button) is clicked.
+// Toggles '.is-active' class for '#js-nav' and '#js-toggle-menu' button
+// Toggles 'area-expanded' attribute for '#js-toggle-menu' button
 // ------------------------------------------------------------------
 
-// Set button to click.
+// Nav <button> for "Click" action
 var navBtn = document.getElementById('js-toggle-menu');
+// Nav component for styling on button click
+var navMain = document.getElementById('js-nav');
+// Text or icon inside the Nav <button> depending on current state
+var toggleClose = document.querySelector('.nav__toggle--close');
+var toggleOpen = document.querySelector('.nav__toggle--open');
 
-// Click the button.
 
-// Control svg animation of button.
-navBtn.onclick = function() {
-	// Toggle class "opened". Set also aria-expanded to true or false.
+
+// Nav Button Interactions
+navBtn.onclick = function () {
+	// If the button 'is-active', then onClick:
 	if (-1 !== navBtn.className.indexOf('is-active')) {
-		navBtn.className = navBtn.className.replace(' is-active', '');
+
+		// Remove 'is-active' class from '#js-toggle-menu' button
+		// Set 'aria-expanded' to false
+		navBtn.classList.toggle('is-active');
 		navBtn.setAttribute('aria-expanded', 'false');
+
+		// Removes ".u_hidden" class from ".nav__toggle--close"
+		toggleClose.classList.toggle('u_hidden');
+		// Adds ".u_hidden" class to ".nav__toggle--open"
+		toggleOpen.classList.toggle('u_hidden');
+
+		// Remove 'is-active' class from '#js-nav'
+		navMain.classList.toggle('is-active');
+
+
+		// If the button is not 'is-active', then onClick:
 	} else {
-		navBtn.className += ' is-active';
+		// Add 'is-active' class to '#js-toggle-menu' button
+		// Set 'aria-expanded' to true
+		navBtn.classList.toggle('is-active');
 		navBtn.setAttribute('aria-expanded', 'true');
+
+		// Adds ".u_hidden" class to ".nav__toggle--close"
+		toggleClose.classList.toggle('u_hidden');
+		// Removes ".u_hidden" class from ".nav__toggle--open"
+		toggleOpen.classList.toggle('u_hidden');
+
+		// Add 'is-active' class to '#js-nav'
+		navMain.classList.toggle('is-active');
+
 	}
 };
 
-// Add 'is-active' class to '.c-nav'
-$(function() {
-	$('#js-toggle-menu').click(function(e) {
-		e.preventDefault();
-		$('.js-nav').toggleClass('is-active');
-	});
-});
 
-// Add 'sidebar-active' class to '<main>'
-$(function() {
-	$('#js-toggle-menu').click(function(e) {
-		e.preventDefault();
-		$('main').toggleClass('sidebar-active');
-	});
-});
+
+
+// ------------------------------------------------------------------
+
+// Add this to your SASS for a quick test:
+// #js-toggle-menu
+// 	background-color: blue
+// 	&.is-active
+// 		background-color: seagreen
+//
+// #js-nav
+// 	background-color: lighten(blue, 20%)
+// 	&.is-active
+// 		background-color: lighten(seagreen, 20%)

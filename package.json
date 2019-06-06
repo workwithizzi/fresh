@@ -19,8 +19,9 @@
 		"gulp"
 	],
 	"scripts": {
-		"install": "gulp font:dependency",
-		"styles:fix": "sass-lint-auto-fix -c .sasslint-fix.yml"
+		"start": "gulp & open http://localhost:3000",
+		"styles:fix": "sass-lint-auto-fix -c .sasslint-fix.yml",
+		"install": "echo 'If you are setting up a new project and want to use Luscious, run: `rm -rf src/sass && cp -R node_modules/luscious/scaffold src/sass`'"
 	},
 	"devDependencies": {
 		"archy": "^1.0.0",

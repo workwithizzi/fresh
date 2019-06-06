@@ -5,10 +5,9 @@
 
 build/
 src/fonts/open-sans/
-.atomignore
 
 # VSCode
-# .vscode/
+.vscode/
 
 # Created by https://www.gitignore.io/api/node,sass,macos,windows,sublimetext,intellij
 
