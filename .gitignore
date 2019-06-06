@@ -5,7 +5,6 @@
 
 build/
 src/fonts/open-sans/
-.atomignore
 
 # VSCode
 .vscode/

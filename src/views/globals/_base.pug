@@ -26,12 +26,10 @@ html.no-js(lang='en')
 			<script>var element = document.getElementsByTagName("html")[0]; element.className = element.className.replace(/\bno-js\b/g, "js");</script>
 
 			//- Stylesheets -- Concated when running "gulp build" or "gulp concat"
-			// build:css /css/main.min.css
+			<!-- build:css /css/main.min.css -->
 			block styles
 				link(rel='stylesheet', href='/css/main.css')
-			// endbuild
-			//
-
+			<!-- endbuild -->
 
 
 	//- If there's no template class in the page, then use the default
@@ -47,13 +45,13 @@ html.no-js(lang='en')
 	body(class=templateClass + bodyClass)
 
 		//- Accessibility Skiplink
-		a.c-skiplink(href='#nav-main') Jump to main content.
+		a.c-skiplink(href='#main') Jump to main content.
 
 		//- Site Header/Nav
 		block header
 			include _header
 
-		main#nav-main(role='main')
+		main#main(role='main')
 
 			//- Page Content
 			block content
@@ -69,9 +67,9 @@ html.no-js(lang='en')
 			//- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><script>window.jQuery || document.write('<script src="js/vendors/jquery-3.3.1.min.js"><\/script>')</script>
 
 		//- Local Scripts -- Concated when running "gulp build" or "gulp concat"
-		// build:js /js/main.min.js
+		<!-- build:js /js/main.min.js -->
 		block bottom-scripts-local
 			script(src='/js/nav.js')
+			script(src='/js/push-footer.js')
 			script(src='/js/current-page.js')
-		// endbuild
-		//
+		<!-- endbuild -->
