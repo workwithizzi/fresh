@@ -6,7 +6,7 @@ var openBrowserWindow = false;
 
 var base = {
 		src: './src',
-		build: './build',
+		build: './build'
 	},
 	srcViews = base.src + '/views',
 	srcStyles = base.src + '/sass',
@@ -32,18 +32,18 @@ var base = {
 				outputStyle: 'expanded',
 				sourceComments: 'true',
 				indentType: 'tab',
-				indentWidth: '1',
+				indentWidth: '1'
 			},
 			prefixer: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3'],
 			lint: false,
 			lintConfig: {
-				configFile: './.sasslint.yml',
+				configFile: './.sasslint.yml'
 			},
 			lintFixConfig: {
-				configFile: './.sasslint-fix.yml',
+				configFile: './.sasslint-fix.yml'
 			},
-			quoteStyle: 'single',
-		},
+			quoteStyle: 'single'
+		}
 	},
 	// ------------------------------------
 	// Scripts
@@ -56,7 +56,7 @@ var base = {
 
 		jquery: {
 			input: './node_modules/jquery/dist/jquery.min.js',
-			output: buildJs,
+			output: buildJs
 		},
 
 		// Config Options
@@ -66,9 +66,9 @@ var base = {
 				// Options: git.io/vVyYB
 				indent_size: 2,
 				indent_with_tabs: true,
-				end_with_newline: true,
-			},
-		},
+				end_with_newline: true
+			}
+		}
 	},
 	// ------------------------------------
 	// HTML/Views/Database
@@ -84,8 +84,8 @@ var base = {
 			collapseWhitespace: true,
 			removeComments: true,
 			minifyCSS: true,
-			minifyJS: true,
-		},
+			minifyJS: true
+		}
 	},
 	views = {
 		// Paths
@@ -99,21 +99,21 @@ var base = {
 			lint: true,
 			output: {
 				pretty: '	',
-				basedir: srcViews,
+				basedir: srcViews
 			},
 			prettyPug: {
 				omit_empty_lines: true,
 				fill_tab: true,
-				omit_div: true,
+				omit_div: true
 				// tab_size: 2   // Only used with 'fill_tab' == false
-			},
-		},
+			}
+		}
 	},
 	db = {
 		input: srcViews + '/data/**/*.json',
 		output: srcViews,
 		fileName: 'data.json',
-		fileDir: srcViews,
+		fileDir: srcViews
 	},
 	// ------------------------------------
 	// Fonts/Images/Misc Dependencies
@@ -123,8 +123,8 @@ var base = {
 		output: buildFonts,
 		dependency: {
 			input: './node_modules/open-sans-fonts/open-sans/**/*',
-			output: srcFonts + '/open-sans/',
-		},
+			output: srcFonts + '/open-sans/'
+		}
 	},
 	images = {
 		// Paths
@@ -133,14 +133,14 @@ var base = {
 
 		// Config Options
 		opts: {
-			interlaced: true,
-		},
+			interlaced: true
+		}
 	},
 	owlCarousel = {
 		inputCss: './node_modules/owl.carousel/dist/assets/owl.carousel.css',
 		outputCss: buildCss + '/',
 		inputJs: './node_modules/owl.carousel/dist/owl.carousel.js',
-		outputJs: buildJs + '/',
+		outputJs: buildJs + '/'
 	};
 
 // ------------------------------------
@@ -158,7 +158,7 @@ var config = {
 		port: 3000,
 		ui: {
 			port: 8080
-		},
+		}
 	},
 	// Comment out anything in the array that you
 	// don't want to watch/trigger build on change.
@@ -167,8 +167,8 @@ var config = {
 		views: views.input,
 		styles: styles.input,
 		scripts: scripts.input,
-		reload: html.productionFiles,
-	},
+		reload: html.productionFiles
+	}
 };
 
 // ------------------------------------------------------------------
@@ -218,7 +218,7 @@ var g = require('gulp'),
  * @task  {default}
  * @group {Main}
  */
-g.task('default', function (callback) {
+g.task('default', function(callback) {
 	runSequence('compile', ['serve'], callback);
 });
 
@@ -234,7 +234,7 @@ g.task('compile', ['styles', 'scripts', 'jquery', 'pug', 'images', 'fonts']);
  * @task  {build}
  * @group {Production}
  */
-g.task('build', function (callback) {
+g.task('build', function(callback) {
 	runSequence('clean', 'compile', 'concat', 'minify', 'tree', callback);
 });
 
@@ -254,13 +254,17 @@ g.task('styles', () => {
 		.pipe(sourcemaps.init())
 		.pipe(sass(styles.opts.output).on('error', sass.logError))
 		.pipe(prefix(styles.opts.prefixer))
-		.pipe(sourcemaps.write({
-			includeContent: false
-		}))
+		.pipe(
+			sourcemaps.write({
+				includeContent: false
+			})
+		)
 		.pipe(g.dest(styles.output))
-		.pipe(browserSync.reload({
-			stream: true
-		}));
+		.pipe(
+			browserSync.reload({
+				stream: true
+			})
+		);
 });
 
 /**
@@ -289,11 +293,11 @@ g.task('styles:fix', ['styles:quotes'], () => run('yarn styles:fix').exec());
  */
 g.task('styles:quotes', () => {
 	g.src(styles.input, {
-			base: './'
-		})
+		base: './'
+	})
 		.pipe(
 			replaceQuotes({
-				quote: styles.opts.quoteStyle,
+				quote: styles.opts.quoteStyle
 			})
 		)
 		.pipe(g.dest('./'));
@@ -311,13 +315,17 @@ g.task('scripts', () => {
 	return g
 		.src(scripts.input)
 		.pipe(sourcemaps.init())
-		.pipe(sourcemaps.write({
-			includeContent: false
-		}))
+		.pipe(
+			sourcemaps.write({
+				includeContent: false
+			})
+		)
 		.pipe(g.dest(scripts.output))
-		.pipe(browserSync.reload({
-			stream: true
-		}));
+		.pipe(
+			browserSync.reload({
+				stream: true
+			})
+		);
 });
 
 /**
@@ -368,7 +376,7 @@ g.task('pug', ['data'], () => {
 		.pipe(
 			gulpif(
 				views.opts.useData,
-				data(function (file) {
+				data(function(file) {
 					return JSON.parse(fs.readFileSync(db.fileDir + '/' + db.fileName));
 				})
 			)
@@ -398,7 +406,7 @@ g.task('data', () => {
 					var data = {};
 					data[primaryKey.toUpperCase()] = json;
 					return data;
-				},
+				}
 			})
 		)
 		.pipe(g.dest(db.output));
@@ -429,11 +437,11 @@ g.task('move:html', ['convert:html'], () => {
 g.task('convert:html', () => {
 	return (
 		g
-		.src(html.srcFiles)
-		.pipe(html2pug())
-		// .pipe(rename({ dirname: '' }))
-		.pipe(prettyPug(views.opts.prettyPug))
-		.pipe(g.dest(srcViews))
+			.src(html.srcFiles)
+			.pipe(html2pug())
+			// .pipe(rename({ dirname: '' }))
+			.pipe(prettyPug(views.opts.prettyPug))
+			.pipe(g.dest(srcViews))
 	);
 });
 
@@ -484,15 +492,17 @@ g.task('tree', () => {
 	var once = true;
 	g.src(base.build + '/**')
 		.pipe(
-			map(function (file) {
+			map(function(file) {
 				if (file.path.match(base.build)) return file;
 			})
 		)
-		.pipe(filetree({
-			cwdRelative: true
-		}))
 		.pipe(
-			map(function (file) {
+			filetree({
+				cwdRelative: true
+			})
+		)
+		.pipe(
+			map(function(file) {
 				if (once) {
 					console.log(archy(file.tree));
 					once = !once;
@@ -531,7 +541,7 @@ g.task('images', () => {
  * @task  {clean}
  * @group {Utilities}
  */
-g.task('clean', function (callback) {
+g.task('clean', function(callback) {
 	// Clear out image cache
 	cache.clearAll();
 
